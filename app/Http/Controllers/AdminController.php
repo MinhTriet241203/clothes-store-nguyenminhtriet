@@ -8,7 +8,7 @@ use App\Models\Admins;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Database\DBAL\TimestampType;
 
-//This is a test
+//Another test
 
 class AdminController extends Controller
 {
