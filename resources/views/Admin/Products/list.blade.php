@@ -14,7 +14,7 @@
     <div class="container" style="margin-top: 20px;">
         <div class="row">
             <div class="col-md-12">
-                <h2>Product List</h2>'
+                <h2>Product List</h2>
                 @if (Session::has('success'))
                     <div class="alert alert-danger" role="alert">
                         {{Session::get('success')}}
