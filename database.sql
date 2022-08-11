@@ -2,54 +2,54 @@ create database abc_clothing;
 use abc_clothing;
 
 CREATE TABLE `Categories` (
-  `Category_ID` varchar(255) PRIMARY KEY NOT NULL,
-  `Category_Name` varchar(255) NOT NULL
+  `Category_ID` varchar(5) PRIMARY KEY NOT NULL,
+  `Category_Name` varchar(50) NOT NULL
 );
 
 CREATE TABLE `Products` (
-  `Product_ID` varchar(255) PRIMARY KEY NOT NULL,
-  `Product_Name` varchar(255) NOT NULL,
-  `Category_ID` varchar(255) NOT NULL,
-  `Price` int NOT NULL,
+  `Product_ID` varchar(5) PRIMARY KEY NOT NULL,
+  `Product_Name` varchar(50) NOT NULL,
+  `Category_ID` varchar(5) NOT NULL,
+  `Price` int(4) NOT NULL UNSIGNED,
   `Details` text,
   `Images` text NOT NULL,
-  `Size` varchar(255) NOT NULL,
-  `Available` int NOT NULL
+  `Size` varchar(10) NOT NULL,
+  `Available` int(4) NOT NULL UNSIGNED
 );
 
 CREATE TABLE `Customers` (
-  `Customer_ID` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `Customer_Username` varchar(255) NOT NULL,
-  `Customer_Password` varchar(255) NOT NULL,
-  `Customer_Name` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Phone` varchar(255) NOT NULL,
-  `Address` varchar(255) NOT NULL,
-  `Gender` varchar(255),
+  `Customer_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `Customer_Username` varchar(100) NOT NULL,
+  `Customer_Password` varchar(50) NOT NULL,
+  `Customer_Name` varchar(50) NOT NULL,
+  `Email` varchar(100),
+  `Phone` varchar(10),
+  `Address` varchar(100),
+  `Gender` varchar(6),
   `Date_of_Birth` Date
 );
 
 CREATE TABLE `Orders` (
-  `Order_ID` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `Customer_ID` int NOT NULL,
-  `Receive_Phone` varchar(255) NOT NULL,
-  `Receive_Address` varchar(255) NOT NULL,
+  `Order_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `Customer_ID` int(5) NOT NULL,
+  `Receive_Phone` varchar(10) NOT NULL,
+  `Receive_Address` varchar(100) NOT NULL,
   `Date` Date NOT NULL,
-  `Status` varchar(255) NOT NULL
+  `Status` varchar(10) NOT NULL
 );
 
 CREATE TABLE `Order_Details` (
-  `Order_ID` int NOT NULL,
-  `Product_ID` varchar(255) NOT NULL,
-  `Quantity` int NOT NULL,
-  `Size` varchar(255) NOT NULL,
+  `Order_ID` int(5) NOT NULL,
+  `Product_ID` varchar(5) NOT NULL,
+  `Quantity` int(4) NOT NULL,
+  `Size` varchar(10) NOT NULL,
   PRIMARY KEY (`Order_ID`, `Product_ID`)
 );
 
 CREATE TABLE `Admins` (
-  `Admin_Username` varchar(255) PRIMARY KEY NOT NULL,
-  `Admin_Password` varchar(255) NOT NULL,
-  `Admin_Name` varchar(255) NOT NULL
+  `Admin_Username` varchar(100) PRIMARY KEY NOT NULL,
+  `Admin_Password` varchar(50) NOT NULL,
+  `Admin_Name` varchar(50) NOT NULL
 );
 
 ALTER TABLE `Products` ADD FOREIGN KEY (`Category_ID`) REFERENCES `Categories` (`Category_ID`);
