@@ -26,7 +26,7 @@
                 </div>
 
                 @if ((!Session::has('LoginID')))
-                    <?php return redirect()->route('loginAdmin');?>
+                    <?php return redirect('loginAdmin');?>
                 @else
                     <div style="margin-right: 1%; float:right;">
                         <a href="{{url('registrationAdmin')}}" class="btn btn-success">Add new</a>
