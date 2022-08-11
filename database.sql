@@ -20,7 +20,7 @@ CREATE TABLE `Products` (
 CREATE TABLE `Customers` (
   `Customer_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `Customer_Username` varchar(100) NOT NULL,
-  `Customer_Password` varchar(50) NOT NULL,
+  `Customer_Password` text NOT NULL,
   `Customer_Name` varchar(50) NOT NULL,
   `Email` varchar(100),
   `Phone` varchar(10),
@@ -48,7 +48,7 @@ CREATE TABLE `Order_Details` (
 
 CREATE TABLE `Admins` (
   `Admin_Username` varchar(100) PRIMARY KEY NOT NULL,
-  `Admin_Password` varchar(50) NOT NULL,
+  `Admin_Password` text NOT NULL,
   `Admin_Name` varchar(50) NOT NULL
 );
 
