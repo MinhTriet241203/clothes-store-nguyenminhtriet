@@ -29,7 +29,7 @@ Route::post('updateProduct', [ProductController::class, 'update']);
 Route::get('deleteProduct/{id}', [ProductController::class, 'delete']);
 
 //Admin routing
-Route::get('listAdmin', [AdminController::class, 'index']);
+Route::get('listAdmin', [AdminController::class, 'index'])->middleware('isLoggedIn');
 Route::get('addAdmin', [AdminController::class, 'add']);
 Route::post('saveAdmin', [AdminController::class, 'save']);
 Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
@@ -37,7 +37,7 @@ Route::post('updateAdmin', [AdminController::class, 'update']);
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']);
 
 //login routing
-Route::get('loginAdmin',[AdminLoginController::class, 'login']);
+Route::get('loginAdmin',[AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn');
 Route::get('registrationAdmin',[AdminLoginController::class, 'registration']);
 Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin');
 Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn');

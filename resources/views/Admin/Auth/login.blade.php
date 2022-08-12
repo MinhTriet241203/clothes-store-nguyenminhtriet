@@ -21,7 +21,7 @@
                 @else
 
                 @if (Session::has('fail'))
-                    <div class="alert alert-error" role="alert">
+                    <div class="alert alert-danger" role="alert">
                         {{Session::get('fail')}}
                     </div>
                 @endif
