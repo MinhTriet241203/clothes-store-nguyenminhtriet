@@ -23,15 +23,15 @@
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('listAdmin')}}" class="btn btn-success">Admins</a>
                 </div>
+                @if ((!Session::has('LoginID')))
+                <div style="margin-right: 1%; float:right;">
+                    <a href="{{url('loginAdmin')}}" class="btn btn-success">Log in</a>
+                </div>
+                @else
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('addProduct')}}" class="btn btn-success">Add new</a>
                 </div>
-                @if ((!Session::has('LoginID')))
-                    <div style="margin-right: 1%; float:right;">
-                        <a href="{{url('loginAdmin')}}" class="btn btn-success">Log in</a>
-                    </div>
-                @else
-                            
+                
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('adminLogOut')}}" class="btn btn-success">Log out</a>
                 </div>
@@ -52,7 +52,9 @@
                             <th>Images</th>
                             <th>Size</th>
                             <th>Available</th>
+                            @if (Session::has('LoginID'))
                             <th>Actions</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -67,10 +69,12 @@
                                 <td>{{$row->Size}}</td>
                                 <td>{{$row->Available}}</td>                                
 
+                                @if (Session::has('LoginID'))                                    
                                 <td>
                                     <a href="{{url('editProduct/'.$row->Product_ID)}}" class="btn btn-primary">Edit</a>
                                     <a href="{{url('deleteProduct/'.$row->Product_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

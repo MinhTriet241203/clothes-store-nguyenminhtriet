@@ -10,6 +10,7 @@
 
     <title>Admin List</title>
   </head>
+
   <body>
     <div class="container" style="margin-top: 20px;">
         <div class="row">
@@ -19,15 +20,12 @@
                     <div class="alert alert-danger" role="alert">
                         {{Session::get('success')}} 
                     </div>                    
-                @endif
-                
+                @endif                
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('listProduct')}}" class="btn btn-success">Products</a>
                 </div>
 
-                @if ((!Session::has('LoginID')))
-                    <?php return redirect('loginAdmin');?>
-                @else
+                @if ((Session::has('LoginID')))
                     <div style="margin-right: 1%; float:right;">
                         <a href="{{url('registrationAdmin')}}" class="btn btn-success">Add new</a>
                     </div>  

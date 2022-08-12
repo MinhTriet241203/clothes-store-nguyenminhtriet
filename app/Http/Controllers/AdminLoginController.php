@@ -6,7 +6,6 @@ use App\Models\Admins;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminLoginController extends Controller
 {
