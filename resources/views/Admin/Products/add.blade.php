@@ -71,7 +71,7 @@
 
                   <div class="md-3">
                     <label for="images" class="form-label">Images</label>
-                    <input type="file" name="images" class="form-control" multiple='multiple'>
+                    <input type="file" name="images[]" class="form-control" multiple='multiple'>
                   </div>
                   @error('images')
                   <div class="alert alert-danger" role="alert">

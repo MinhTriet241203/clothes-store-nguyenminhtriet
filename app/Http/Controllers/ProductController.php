@@ -41,7 +41,7 @@ class ProductController extends Controller
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
-        $product->Images = $request->images;
+        $product->Images = implode(" ",$request->images);
         $product->Size = $request->size;
         $product->Available = $request->available;
         $product->save();
