@@ -71,9 +71,18 @@
                                 <td>{{$row->Category_ID}}</td>
                                 <td>${{$row->Price}}</td>
                                 <td>{{$row->Details}}</td>
-                                <td>{{$row->Images}}</td>
+                                <td>
+                                    <?php 
+                                        $path="img/products/";
+                                        $ImagesAll = explode("@@@",$row->Images);
+                                        foreach ($ImagesAll as $item) {
+                                            $img = $path.$item;
+                                            echo"<img src='$img' width='100px' height='100px' style='margin-left:5px'>";
+                                        } 
+                                    ?>
+                                </td>
                                 <td>{{$row->Size}}</td>
-                                <td>{{$row->Available}}</td>                                
+                                <td>{{$row->Available}}</td>    <img src="" alt="">                            
 
                                 @if (Session::has('LoginID'))                                    
                                 <td>

@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Routing\Controller;
-use Symfony\Component\Console\Input\Input;
-use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
@@ -16,7 +13,6 @@ class ProductController extends Controller
     public function index()
     {
         $data = Products::get();
-        $data->ImagesAll = explode("@@@",$data->Images);    //images are called using ImagesAll instead of $data->Images
         return view('Admin.Products.list', compact('data'));
     }
 
@@ -42,7 +38,7 @@ class ProductController extends Controller
         $imgArr = [];
 
         foreach($request->images as $file){
-            $filename = $file->getClientOriginalName();
+            $filename = Date('HdY').$file->getClientOriginalName();
             $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }
