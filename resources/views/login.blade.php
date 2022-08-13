@@ -193,7 +193,7 @@
             <input type="password" name="" required="">
             <label>Password</label>
           </div>         
-            
+          <a href="#" title="Facebook" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Facebook</a> 
           
           <a href="#" class="btn">
             <span></span>
