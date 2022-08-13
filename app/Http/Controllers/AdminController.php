@@ -19,11 +19,6 @@ class AdminController extends Controller
         return view('Admin.Admins.list', compact('data'));
     }
 
-    public function add()
-    {
-        return view('Admin.Admins.add');
-    }
-
     public function save(Request $request)
     {
         $request->validate([
