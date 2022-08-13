@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>Zay Shop - Product Detail Page</title>
+    <title>Male Fashion - Product Detail Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="img/logoWebsite.ico">
 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo.css">
@@ -34,8 +34,9 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Zay
+            <a class="navbar-brand text-success logo h2 align-self-center" href="{{url('/')}}">
+                Male Fashion
+                <img src="img/logoWebsite.png" style="width: 50px; height: 50px;"/>
             </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

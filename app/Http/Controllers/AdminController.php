@@ -52,10 +52,14 @@ class AdminController extends Controller
             'confirm_password' => 'required'
         ]);
 
-        $id = $request->username;
-        Admins::where('Admin_Username', '=', $id)->update([
-            'Admin_Password' =>$request->password,
-            'Admin_Name' =>$request->name,
+        $username = $request->username;
+        $admin = new Admins();
+        $admin->Admin_Password = Hash::make($request->password);
+        $admin->Admin_Name = $request->name;
+
+        Admins::where('Admin_Username', '=', $username)->update([
+            'Admin_Password' =>$admin->Admin_Password,
+            'Admin_Name' =>$admin->Admin_Name,
         ]);
         return redirect()->back()->with('success', 'Admin updated successfully!');
     }
