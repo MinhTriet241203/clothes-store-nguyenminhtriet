@@ -21,7 +21,7 @@
                       {{Session::get('success')}}
                     </div>
                 @endif
-                <form action="{{url('saveProduct')}}" method="POST">
+                <form action="{{url('saveProduct')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <div class="md-3">
                     <label for="name" class="form-label">Product Name</label>
@@ -72,7 +72,7 @@
 
                   <div class="md-3">
                     <label for="images" class="form-label">Images</label>
-                    <input type="file" name="images[]" class="form-control" multiple='multiple'>
+                    <input type="file" name="images[]" class="form-control" multiple>
                   </div>
                   @error('images')
                   <div class="alert alert-danger" role="alert">
