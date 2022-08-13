@@ -9,7 +9,7 @@ use Dflydev\DotAccessData\Data;
 use Illuminate\Routing\Controller;
 use Symfony\Component\Console\Input\Input;
 use Illuminate\Database\DBAL\TimestampType;
-
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -39,16 +39,19 @@ class ProductController extends Controller
         ]);
 
         $product = new Products();
+        $imgArr = [];
 
         foreach($request->images as $file){
-            $file->move(public_path('\img\products'), $file->getClientOriginalName());
+            $filename = $file->getClientOriginalName();
+            $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
+            array_push($imgArr, $filename);
         }
 
         $product->Product_Name = $request->name;
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
-        $product->Images = implode(" ",$request->images);
+        $product->Images = implode(" ",$imgArr);
         $product->Size = $request->size;
         $product->Available = $request->available;
         $product->save();
@@ -90,6 +93,12 @@ class ProductController extends Controller
     public function delete($id)
     {
         Products::where('Product_ID', '=', $id)->delete();
+        $data = Products::where('Product_ID', '=', $id);
+        $imgArr = explode(" ",$data->Images);
+        foreach ($imgArr as $image) {
+            $path = public_path('img/products/'.$image);
+            File::delete($path);
+        }
         return redirect()->back()->with('success','Product deleted successfully');
     }
 
