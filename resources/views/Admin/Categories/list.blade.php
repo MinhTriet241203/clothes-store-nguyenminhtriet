@@ -8,13 +8,13 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Product List</title>
+    <title>Category List</title>
   </head>
   <body>
     <div class="container" style="margin-top: 20px;">
         <div class="row">
             <div class="col-md-12">
-                <h2>Product List</h2>
+                <h2>Category List</h2>
                 @if (Session::has('success'))
                     <div class="alert alert-danger" role="alert">
                         {{Session::get('success')}}
@@ -26,7 +26,7 @@
                     <a href="{{url('listAdmin')}}" class="btn btn-success">Admins</a>
                 </div>
                 <div style="margin-right: 1%; float:right;">
-                    <a href="{{url('listCategory')}}" class="btn btn-success">Categories</a>
+                    <a href="{{url('listProduct')}}" class="btn btn-success">Products</a>
                 </div>
                 @if ((!Session::has('LoginID')))
                 <div style="margin-right: 1%; float:right;">
@@ -49,36 +49,27 @@
                 @endif
                 <table class="table table-hover">
                     <thead>
+                        {{-- Table header --}}
                         <tr style="text-align: center">
-                            <th>ID</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Details</th>
-                            <th>Images</th>
-                            <th>Size</th>
-                            <th>Available</th>
+                            <th>Category ID</th>
+                            <th>Category Name</th>
                             @if (Session::has('LoginID'))
                             <th>Actions</th>
                             @endif
                         </tr>
+                        {{-- End table header --}}
                     </thead>
                     <tbody>
+                        {{-- Fetch category data --}}
                         @foreach ($data as $row)
                             <tr>
-                                <td>{{$row->Product_ID}}</td>
-                                <td>{{$row->Product_Name}}</td>
                                 <td>{{$row->Category_ID}}</td>
-                                <td>${{$row->Price}}</td>
-                                <td>{{$row->Details}}</td>
-                                <td>{{$row->Images}}</td>
-                                <td>{{$row->Size}}</td>
-                                <td>{{$row->Available}}</td>                                
+                                <td>{{$row->Category_Name}}</td>                               
 
                                 @if (Session::has('LoginID'))                                    
                                 <td>
-                                    <a href="{{url('editProduct/'.$row->Product_ID)}}" class="btn btn-primary">Edit</a>
-                                    <a href="{{url('deleteProduct/'.$row->Product_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
+                                    <a href="{{url('editProduct/'.$row->Category_ID)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{url('deleteProduct/'.$row->Category_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
                                 </td>
                                 @endif
                             </tr>

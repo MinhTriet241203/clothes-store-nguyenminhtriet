@@ -24,13 +24,11 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
         $category = new Categories();
 
-        $category->Category_ID = $request->id;
         $category->Category_Name = $request->name;
         $category->save();
 

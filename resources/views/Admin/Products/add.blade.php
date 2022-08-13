@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Add a new product</h2>
+                {{-- Notification --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
                       {{Session::get('success')}}

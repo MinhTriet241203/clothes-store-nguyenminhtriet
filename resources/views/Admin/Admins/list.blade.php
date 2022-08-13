@@ -20,7 +20,13 @@
                     <div class="alert alert-danger" role="alert">
                         {{Session::get('success')}} 
                     </div>                    
-                @endif                
+                @endif      
+
+                {{-- Start buttons --}}
+                <div style="margin-right: 1%; float:right;">
+                    <a href="{{url('listCategory')}}" class="btn btn-success">Categories</a>
+                </div>
+
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('listProduct')}}" class="btn btn-success">Products</a>
                 </div>
@@ -38,6 +44,7 @@
                         <p>Welcome <?php echo(session()->get('Name'))?></p> 
                     </div>
                 @endif
+                {{-- End buttons --}}
 
                 @if ($data->isNotEmpty())
                     <table class="table table-hover">

@@ -49,3 +49,11 @@ Route::get('shop', [ProductController::class, 'shop']);
 Route::get('shopSingle', [ProductController::class, 'shopSingle']);
 Route::get('about', [ProductController::class, 'about']);
 Route::get('contact', [ProductController::class, 'contact']);
+
+//category routing
+Route::get('listCategory', [CategoryController::class, 'index']);
+Route::get('addCategory', [ProductController::class, 'add']);
+Route::post('saveCategory', [ProductController::class, 'save']); //!not a page.
+Route::get('editCategory/{id}', [ProductController::class, 'edit']);
+Route::post('updateCategory', [ProductController::class, 'update']); //!not a page.
+Route::get('deleteCategory/{id}', [ProductController::class, 'delete']); //!not a page.
