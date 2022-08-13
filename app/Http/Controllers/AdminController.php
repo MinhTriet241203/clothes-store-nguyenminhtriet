@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $data = Admins::get();
+        $data = Admins::get()->where('Admin_Username', '!=', 'admin'); //get admin list excluding the default 'admin' account
         //return $data;
         return view('Admin.Admins.list', compact('data'));
     }
