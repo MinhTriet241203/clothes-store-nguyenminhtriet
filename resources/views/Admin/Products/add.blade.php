@@ -23,17 +23,6 @@
                 <form action="{{url('saveProduct')}}" method="POST">
                   @csrf
                   <div class="md-3">
-                    <label for="id" class="form-label">ID</label>
-                    <input type="text" name="id" class="form-control" 
-                           placeholder="Enter product id">
-                    @error('id')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
-                    @enderror
-
-                  </div>
-                  <div class="md-3">
                     <label for="name" class="form-label">Product Name</label>
                     <input type="text" name="name" class="form-control" 
                            placeholder="Enter product name">
