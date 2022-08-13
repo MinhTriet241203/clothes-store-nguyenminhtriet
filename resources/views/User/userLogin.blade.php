@@ -29,7 +29,7 @@
                     <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Sign in</span></button>
 					<div class="row">
 						<div class="col text-center ">
-                            <button class="custom-btn btn-1"><a href="{{url('userRegister')}}" class="home">Register now</a></button>
+                            <button class="custom-btn btn-1"><a href="{{url('customerRegister')}}" class="home">Register now</a></button>
 							{{-- <a class="register" href="#">Register now</a> --}}
 						</div>
 						<div class="col text-center">

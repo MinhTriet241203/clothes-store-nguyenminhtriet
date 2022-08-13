@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ProductController;
 use Illuminate\Database\DBAL\TimestampType;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     public function save(Request $request)
     {
@@ -42,7 +42,7 @@ class UserController extends Controller
         return redirect()->back()->with('success','Customers added successfully!');
     }
 
-    public function home()
+    public function homepage()
     {
         $data = Products::get();
         return view('Navigate.home', compact('data'));

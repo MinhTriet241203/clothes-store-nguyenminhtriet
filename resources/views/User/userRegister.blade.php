@@ -115,7 +115,7 @@
 				</form>	
 					<div class="row">
 						<div class="col text-center ">
-                            <button class="custom-btn btn-1"><a href="{{url('userLogin')}}" class="home">Login now</a></button>
+                            <button class="custom-btn btn-1"><a href="{{url('customerLogin')}}" class="home">Login now</a></button>
 							{{-- <a class="register" href="#">Register now</a> --}}
 						</div>
 						<div class="col text-center">
