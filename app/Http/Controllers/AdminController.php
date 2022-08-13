@@ -14,22 +14,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $data = Admins::get();
+        $data = Admins::get()->where('Admin_Username', '!=', 'admin'); //get admin list excluding the default 'admin' account
         //return $data;
         return view('Admin.Admins.list', compact('data'));
-    }
-
-    public function add()
-    {
-        return view('Admin.Admins.add');
     }
 
     public function save(Request $request)
     {
         $request->validate([
             'username' => 'required|unique:admins,Admin_Username',
-            'password' => 'required',
             'name' => 'required',
+            'password' => 'required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
         ]);
 
         $admin = new Admins();
@@ -51,11 +47,12 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'password' => 'required',
             'name' => 'required',
+            'password' => 'required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
         ]);
 
-        $id = $request->id;
+        $id = $request->username;
         Admins::where('Admin_Username', '=', $id)->update([
             'Admin_Password' =>$request->password,
             'Admin_Name' =>$request->name,

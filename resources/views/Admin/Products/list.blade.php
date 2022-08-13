@@ -20,8 +20,13 @@
                         {{Session::get('success')}}
                     </div>                    
                 @endif
+
+                {{-- Start buttons --}}
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{url('listAdmin')}}" class="btn btn-success">Admins</a>
+                </div>
+                <div style="margin-right: 1%; float:right;">
+                    <a href="{{url('listCategory')}}" class="btn btn-success">Categories</a>
                 </div>
                 @if ((!Session::has('LoginID')))
                 <div style="margin-right: 1%; float:right;">
@@ -39,6 +44,7 @@
                 <div style="margin-right: 1%; float:right;">
                     <p>Welcome <?php echo(session()->get('Name'))?></p> 
                 </div>
+                {{-- End buttons --}}
                 
                 @endif
                 <table class="table table-hover">

@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Add a new product</h2>
+                {{-- Notification --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
                       {{Session::get('success')}}
@@ -22,17 +23,6 @@
                 @endif
                 <form action="{{url('saveProduct')}}" method="POST">
                   @csrf
-                  <div class="md-3">
-                    <label for="id" class="form-label">ID</label>
-                    <input type="text" name="id" class="form-control" 
-                           placeholder="Enter product id">
-                    @error('id')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
-                    @enderror
-
-                  </div>
                   <div class="md-3">
                     <label for="name" class="form-label">Product Name</label>
                     <input type="text" name="name" class="form-control" 
@@ -82,7 +72,7 @@
 
                   <div class="md-3">
                     <label for="images" class="form-label">Images</label>
-                    <input type="file" name="images" class="form-control">
+                    <input type="file" name="images[]" class="form-control" multiple='multiple'>
                   </div>
                   @error('images')
                   <div class="alert alert-danger" role="alert">

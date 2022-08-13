@@ -14,13 +14,17 @@
             <div class="col-md-4 col-md-offset-4" style="margin-top: 20px">
                 <h4>Add new admin</h4>
                 <hr>
+                {{-- Notification --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
                         {{Session::get('success')}}
                     </div>
                 @endif
+                {{-- End notification --}}
+                {{-- Start form --}}
                 <form action="{{url('saveAdmin')}}" method="post">
                     @csrf
+                    {{-- Enter name --}}
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" placeholder="Enter Name" name="name" value="{{old('name')}}">
@@ -31,6 +35,7 @@
                     </div>
                     @enderror
 
+                    {{-- Enter username --}}
                     <div class="form-group">
                         <label for="username">Admin username</label>
                         <input type="text" class="form-control" placeholder="Enter admin username" name="username" value="{{old('username')}}">
@@ -41,9 +46,21 @@
                     </div>
                     @enderror
 
+                    {{-- Enter password --}}
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="Enter password" name="password" value="{{old('password')}}">
+                        <input type="password" class="form-control" placeholder="Enter password" name="password">
+                    </div>
+                    @error('password')
+                    <div class="alert alert-danger" role="alert">
+                      {{$message}}
+                    </div>
+                    @enderror
+                    
+                    {{-- Confirm password --}}
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm password" name="confirm_password">
                     </div>
                     @error('password')
                     <div class="alert alert-danger" role="alert">
@@ -51,11 +68,12 @@
                     </div>
                     @enderror
 
+                    <br>
                     <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Add</button>
                     <a href="{{url('listAdmin')}}" class="btn btn-danger" style="margin-top: 10px">Back</a>
                 </form>
                 <br>
-                <a href="loginAdmin">Login Admin</a>
+                <a href="loginAdmin" class="btn btn-success">Login Admin</a>
             </div>
         </div>
     </div>

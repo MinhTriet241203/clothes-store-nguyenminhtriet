@@ -26,7 +26,6 @@ class ProductController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
             'category' => 'required',
             'price' => 'required|integer',
@@ -38,12 +37,11 @@ class ProductController extends Controller
 
         $product = new Products();
 
-        $product->Product_ID = $request->id;
         $product->Product_Name = $request->name;
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
-        $product->Images = $request->images;
+        $product->Images = implode(" ",$request->images);
         $product->Size = $request->size;
         $product->Available = $request->available;
         $product->save();
@@ -60,7 +58,6 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'id' => 'required',
             'name' => 'required',
             'category' => 'required',
             'price' => 'required|integer',

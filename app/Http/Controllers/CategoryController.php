@@ -24,13 +24,11 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
         $category = new Categories();
 
-        $category->Category_ID = $request->id;
         $category->Category_Name = $request->name;
         $category->save();
 
@@ -46,13 +44,12 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
         $id = $request->id;
         Categories::where('Category_ID', '=', $id)->update([
-            'Category_Name' =>$request->name,
+            'Category_Name' =>$request->name
         ]);
         return redirect()->back()->with('success', 'Category updated successfully!');
     }
