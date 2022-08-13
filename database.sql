@@ -10,11 +10,11 @@ CREATE TABLE `Products` (
   `Product_ID` varchar(5) PRIMARY KEY NOT NULL,
   `Product_Name` varchar(50) NOT NULL,
   `Category_ID` varchar(5) NOT NULL,
-  `Price` int(4) NOT NULL UNSIGNED,
+  `Price` int(4) NOT NULL,
   `Details` text,
   `Images` text NOT NULL,
   `Size` varchar(10) NOT NULL,
-  `Available` int(4) NOT NULL UNSIGNED
+  `Available` int(4) NOT NULL
 );
 
 CREATE TABLE `Customers` (
