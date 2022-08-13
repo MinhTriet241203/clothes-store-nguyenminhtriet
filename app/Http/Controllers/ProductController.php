@@ -38,7 +38,7 @@ class ProductController extends Controller
         $imgArr = [];
 
         foreach($request->images as $file){
-            $filename = Date('usiHd').$file->getClientOriginalName();
+            $filename = Date('usiHd').$file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
             $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }

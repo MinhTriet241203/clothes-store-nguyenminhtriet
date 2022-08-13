@@ -3,7 +3,8 @@ use abc_clothing;
 
 CREATE TABLE `Categories` (
   `Category_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  `Category_Name` varchar(50) NOT NULL
+  `Category_Name` varchar(50) NOT NULL,
+  `Category_Images` text NOT NULL
 );
 
 CREATE TABLE `Products` (
