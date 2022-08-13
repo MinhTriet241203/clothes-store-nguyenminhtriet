@@ -22,11 +22,11 @@ CREATE TABLE `Customers` (
   `Customer_Username` varchar(100) NOT NULL,
   `Customer_Password` text NOT NULL,
   `Customer_Name` varchar(50) NOT NULL,
-  `Email` varchar(100),
-  `Phone` varchar(10),
-  `Address` varchar(100),
-  `Gender` varchar(6),
-  `Date_of_Birth` Date
+  `Email` varchar(100) NOT NULL,
+  `Phone` varchar(10) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Gender` varchar(6) NOT NULL,
+  `Date_of_Birth` Date NOT NULL
 );
 
 CREATE TABLE `Orders` (
