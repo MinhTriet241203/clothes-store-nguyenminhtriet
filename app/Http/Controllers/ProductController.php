@@ -98,40 +98,4 @@ class ProductController extends Controller
         return redirect()->back()->with('success','Product deleted successfully');
     }
 
-    public function home()
-    {
-        $data = Products::get();
-        return view('home', compact('data'));
-    }
-    public function shop()
-    {
-        $data = Products::get();
-        return view('shop', compact('data'));
-    }
-    public function about()
-    {
-        $data = Products::get();
-        return view('about', compact('data'));
-    }
-    public function contact()
-    {
-        $data = Products::get();
-        return view('contact', compact('data'));
-    }
-    public function shopSingle()
-    {
-        $data = Products::get();
-        return view('shopSingle', compact('data'));
-    }
-    public function userLogin()
-    {
-       
-        return view('userLogin');
-    }
-    public function userRegister()
-    {
-       
-        return view('userRegister');
-    }
-
 }

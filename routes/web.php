@@ -44,16 +44,7 @@ Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmi
 Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn'); //push form to db //!not a page
 Route::get('adminLogOut',[AdminLoginController::class, 'logOut']); //pull session to log out. //!not a page
 
-//user routing
-Route::get('/', [ProductController::class, 'home']);
-Route::get('shop', [ProductController::class, 'shop']);
-Route::get('shopSingle', [ProductController::class, 'shopSingle']);
-Route::get('about', [ProductController::class, 'about']);
-Route::get('contact', [ProductController::class, 'contact']);
-Route::get('userLogin', [ProductController::class, 'userLogin']);
-Route::get('userRegister', [ProductController::class, 'userRegister']);
-
-//category routing
+//*category routing
 Route::get('listCategory', [CategoryController::class, 'index']); //List category page
 Route::get('addCategory', [CategoryController::class, 'add']); //Add new category page
 Route::post('saveCategory', [CategoryController::class, 'save']); //Save category on add new //!not a page
@@ -61,5 +52,12 @@ Route::get('editCategory/{id}', [CategoryController::class, 'edit']); //Edit cat
 Route::post('updateCategory', [CategoryController::class, 'update']); //Save category on update //!not a page.
 Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Delete category //!not a page.
 
-//user login routing
+//user routing
+Route::get('/', [UserController::class, 'home']);
+Route::get('shop', [UserController::class, 'shop']);
+Route::get('shopSingle', [UserController::class, 'shopSingle']);
+Route::get('about', [UserController::class, 'about']);
+Route::get('contact', [UserController::class, 'contact']);
+Route::get('userLogin', [UserController::class, 'userLogin']);
+Route::get('userRegister', [UserController::class, 'userRegister']);
 Route::post('saveUser', [UserController::class, 'save']); //!not a page.
