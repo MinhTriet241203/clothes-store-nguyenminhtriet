@@ -2,14 +2,14 @@ create database abc_clothing;
 use abc_clothing;
 
 CREATE TABLE `Categories` (
-  `Category_ID` varchar(5) PRIMARY KEY NOT NULL,
+  `Category_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `Category_Name` varchar(50) NOT NULL
 );
 
 CREATE TABLE `Products` (
-  `Product_ID` varchar(5) PRIMARY KEY NOT NULL,
+  `Product_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `Product_Name` varchar(50) NOT NULL,
-  `Category_ID` varchar(5) NOT NULL,
+  `Category_ID` int(5) NOT NULL,
   `Price` int(4) NOT NULL,
   `Details` text,
   `Images` text NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `Orders` (
 
 CREATE TABLE `Order_Details` (
   `Order_ID` int(5) NOT NULL,
-  `Product_ID` varchar(5) NOT NULL,
+  `Product_ID` int(5) NOT NULL,
   `Quantity` int(4) NOT NULL,
   `Size` varchar(10) NOT NULL,
   PRIMARY KEY (`Order_ID`, `Product_ID`)
