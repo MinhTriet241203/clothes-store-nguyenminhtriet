@@ -24,7 +24,7 @@
                 {{-- End notification --}}
 
                 {{-- Start Form --}}
-                <form action="{{url('updateCategory')}}" method="POST">
+                <form action="{{url('updateCategory')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$data->Category_ID}}">
                   {{-- Enter category --}}
@@ -34,6 +34,16 @@
                            placeholder="Enter category name" value="{{$data->Category_Name}}">
                   </div>
                   @error('name')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                  </div>
+                  @enderror
+
+                  <div class="md-3">
+                    <label for="image" class="form-label">Category Image</label>
+                    <input type="file" name="image" class="form-control">
+                  </div>
+                  @error('image')
                   <div class="alert alert-danger" role="alert">
                     {{$message}}
                   </div>

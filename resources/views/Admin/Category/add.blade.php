@@ -24,7 +24,7 @@
                 {{-- End notification --}}
 
                 {{-- Start Form --}}
-                <form action="{{url('saveCategory')}}" method="POST">
+                <form action="{{url('saveCategory')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                   {{-- Enter category --}}
                   <div class="md-3">
@@ -38,6 +38,16 @@
                   </div>
                   @enderror
                   
+                  <div class="md-3">
+                    <label for="image" class="form-label">Category Image</label>
+                    <input type="file" name="image" class="form-control">
+                  </div>
+                  @error('image')
+                  <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                  </div>
+                  @enderror
+
                   <br>
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <a href="{{url('listCategory')}}" class="btn btn-danger">Back</a>
