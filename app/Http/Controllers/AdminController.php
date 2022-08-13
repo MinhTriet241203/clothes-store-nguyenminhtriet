@@ -23,8 +23,9 @@ class AdminController extends Controller
     {
         $request->validate([
             'username' => 'required|unique:admins,Admin_Username',
-            'password' => 'required',
             'name' => 'required',
+            'password' => 'required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
         ]);
 
         $admin = new Admins();
@@ -46,11 +47,12 @@ class AdminController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'password' => 'required',
             'name' => 'required',
+            'password' => 'required_with:confirm_password|same:confirm_password',
+            'confirm_password' => 'required'
         ]);
 
-        $id = $request->id;
+        $id = $request->username;
         Admins::where('Admin_Username', '=', $id)->update([
             'Admin_Password' =>$request->password,
             'Admin_Name' =>$request->name,

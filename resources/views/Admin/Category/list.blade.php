@@ -47,36 +47,42 @@
                 {{-- End buttons --}}
                 
                 @endif
-                <table class="table table-hover">
-                    <thead>
-                        {{-- Table header --}}
-                        <tr style="text-align: center">
-                            <th>Category ID</th>
-                            <th>Category Name</th>
-                            @if (Session::has('LoginID'))
-                            <th>Actions</th>
-                            @endif
-                        </tr>
-                        {{-- End table header --}}
-                    </thead>
-                    <tbody>
-                        {{-- Fetch category data --}}
-                        @foreach ($data as $row)
-                            <tr>
-                                <td style="text-align: center">{{$row->Category_ID}}</td>
-                                <td style="text-align: left">{{$row->Category_Name}}</td>                               
-
-                                @if (Session::has('LoginID'))                                    
-                                <td style="text-align: center">
-                                    <a href="{{url('editCategory/'.$row->Category_ID)}}" class="btn btn-primary">Edit</a>
-                                    <a href="{{url('deleteCategory/'.$row->Category_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
-                                </td>
+                @if ($data->isNotEmpty())
+                    <table class="table table-hover">
+                        <thead>
+                            {{-- Table header --}}
+                            <tr style="text-align: center">
+                                <th>Category ID</th>
+                                <th>Category Name</th>
+                                @if (Session::has('LoginID'))
+                                <th>Actions</th>
                                 @endif
                             </tr>
-                        @endforeach
-                        {{-- End fetching data --}}
-                    </tbody>
-                </table>
+                            {{-- End table header --}}
+                        </thead>
+                        <tbody>
+                            {{-- Fetch category data --}}
+                            @foreach ($data as $row)
+                                <tr>
+                                    <td style="text-align: center">{{$row->Category_ID}}</td>
+                                    <td style="text-align: left">{{$row->Category_Name}}</td>                               
+
+                                    @if (Session::has('LoginID'))                                    
+                                    <td style="text-align: center">
+                                        <a href="{{url('editCategory/'.$row->Category_ID)}}" class="btn btn-primary">Edit</a>
+                                        <a href="{{url('deleteCategory/'.$row->Category_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
+                                    </td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            {{-- End fetching data --}}
+                        </tbody>
+                    </table>
+                @else
+                    <br><br>
+                    <hr>
+                    <div class="text-danger">Error ! No data found !</div>
+                @endif
             </div>
         </div>
     </div>

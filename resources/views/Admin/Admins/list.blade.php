@@ -49,23 +49,27 @@
                 @if ($data->isNotEmpty())
                     <table class="table table-hover">
                         <thead>
+                            {{-- Table header --}}
                             <tr>
-                                <th>Username</th>
-                                <th>name</th>
-                                <th style="margin-right: 0%">Actions</th>
+                                <th style="text-align: center">Username</th>
+                                <th style="text-align: center">Name</th>
+                                <th style="text-align: center">Actions</th>
                             </tr>
+                            {{-- End table header  --}}
                         </thead>
                         <tbody>
+                            {{-- Fetch table data --}}
                             @foreach ($data as $row)
                                 <tr>
-                                    <td>{{$row->Admin_Username}}</td>
-                                    <td>{{$row->Admin_Name}}</td>
-                                    <td>
+                                    <td style="text-align: center">{{$row->Admin_Username}}</td>
+                                    <td style="text-align: center">{{$row->Admin_Name}}</td>
+                                    <td style="text-align: center">
                                         <a href="{{url('editAdmin/'.$row->Admin_Username)}}" class="btn btn-primary">Edit</a>
                                         <a href="{{url('deleteAdmin/'.$row->Admin_Username)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
+                            {{-- End fetching table data --}}
                         </tbody>
                     </table>
                 @else
