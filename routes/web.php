@@ -50,6 +50,7 @@ Route::get('shopSingle', [ProductController::class, 'shopSingle']);
 Route::get('about', [ProductController::class, 'about']);
 Route::get('contact', [ProductController::class, 'contact']);
 Route::get('userLogin', [ProductController::class, 'userLogin']);
+Route::get('userRegister', [ProductController::class, 'userRegister']);
 
 //category routing
 Route::get('listCategory', [CategoryController::class, 'index']); //List category page

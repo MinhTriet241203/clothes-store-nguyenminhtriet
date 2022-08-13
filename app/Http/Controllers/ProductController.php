@@ -128,5 +128,10 @@ class ProductController extends Controller
        
         return view('userLogin');
     }
+    public function userRegister()
+    {
+       
+        return view('userRegister');
+    }
 
 }
