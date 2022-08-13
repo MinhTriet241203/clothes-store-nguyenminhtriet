@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Hash;
 class AdminLoginController extends Controller
 {
     public function login(){
-        return view('Admin.Auth.login');
+        return view('User.userLogin');
     }
 
     public function registration(){
-        return view('Admin.Auth.AddAdmin');
+        return view('User.userRegister');
     }
 
     public function newAdmin(){
