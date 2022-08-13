@@ -49,9 +49,7 @@ Route::get('shop', [ProductController::class, 'shop']);
 Route::get('shopSingle', [ProductController::class, 'shopSingle']);
 Route::get('about', [ProductController::class, 'about']);
 Route::get('contact', [ProductController::class, 'contact']);
-<<<<<<< HEAD
 Route::get('login', [ProductController::class, 'login']);
-=======
 
 //category routing
 Route::get('listCategory', [CategoryController::class, 'index']); //List category page
@@ -60,4 +58,3 @@ Route::post('saveCategory', [CategoryController::class, 'save']); //Save categor
 Route::get('editCategory/{id}', [CategoryController::class, 'edit']); //Edit category page
 Route::post('updateCategory', [CategoryController::class, 'update']); //Save category on update //!not a page.
 Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Delete category //!not a page.
->>>>>>> 65c2fc025511dfbb958bc8070ad5b509b741089b
