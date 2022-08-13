@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $data = Products::get();
-        //return $data;
+        $data->ImagesAll = explode("@@@",$data->Images);    //images are called using ImagesAll instead of $data->Images
         return view('Admin.Products.list', compact('data'));
     }
 
@@ -51,7 +51,7 @@ class ProductController extends Controller
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
-        $product->Images = implode(" ",$imgArr);
+        $product->Images = implode("@@@",$imgArr);
         $product->Size = $request->size;
         $product->Available = $request->available;
         $product->save();
@@ -92,13 +92,13 @@ class ProductController extends Controller
 
     public function delete($id)
     {
-        Products::where('Product_ID', '=', $id)->delete();
-        $data = Products::where('Product_ID', '=', $id);
-        $imgArr = explode(" ",$data->Images);
+        $data = Products::where('Product_ID', '=', $id)->first();
+        $imgArr = explode("@@@",$data->Images);
         foreach ($imgArr as $image) {
             $path = public_path('img/products/'.$image);
             File::delete($path);
         }
+        Products::where('Product_ID', '=', $id)->delete();  //Delete images before deleting the stored names of the images in DB
         return redirect()->back()->with('success','Product deleted successfully');
     }
 
