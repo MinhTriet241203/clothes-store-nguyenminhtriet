@@ -59,3 +59,6 @@ Route::post('saveCategory', [CategoryController::class, 'save']); //Save categor
 Route::get('editCategory/{id}', [CategoryController::class, 'edit']); //Edit category page
 Route::post('updateCategory', [CategoryController::class, 'update']); //Save category on update //!not a page.
 Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Delete category //!not a page.
+
+//user login routing
+Route::post('saveUser', [UserController::class, 'save']); //!not a page.

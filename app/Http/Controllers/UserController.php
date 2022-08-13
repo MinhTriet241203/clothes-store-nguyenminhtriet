@@ -13,7 +13,7 @@ class UserController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'userName' => 'required|unique:admins,Admin_Username',
+            'userName' => 'required|unique:Customers,Customer_Username',
             'name' => 'required',
             'password' => 'required_with:confirm_password|same:confirm_password',
             'confirmPassword' => 'required',
@@ -21,7 +21,7 @@ class UserController extends Controller
             'phone' => 'required',
             'address' => 'required',
             'gender' => 'required',
-            'DoB' => 'required',
+            'DoB' => 'required'
         ]);
 
         $customers = new Customers();

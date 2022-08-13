@@ -18,7 +18,7 @@
 	<div id="login-form">
 		<div class="row">
 			<div class="col-lg-7">
-				<form>
+				<form action="{{url('saveUser')}}" method="post">
 					<h3 class="login-header">Sign up</h3>
 					@if (Session::has('success'))
 						<div class="alert alert-success" role="alert">
@@ -112,6 +112,7 @@
                     @enderror
 
                     <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Sign up</span></button>
+				</form>	
 					<div class="row">
 						<div class="col text-center ">
                             <button class="custom-btn btn-1"><a href="{{url('userLogin')}}" class="home">Login now</a></button>
@@ -122,7 +123,7 @@
                             <button class="custom-btn btn-1"><a href="{{url('/')}}" class="home">To home page</a></button>
 						</div>
 					</div>
-				</form>
+				
 			</div>
 			<div class="col-lg-5">
 				<button class="btn btn-block social-login facebook">
