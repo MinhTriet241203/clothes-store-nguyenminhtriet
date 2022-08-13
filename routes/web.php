@@ -30,7 +30,6 @@ Route::get('deleteProduct/{id}', [ProductController::class, 'delete']); //!not a
 
 //Admin routing
 Route::get('listAdmin', [AdminController::class, 'index'])->middleware('isLoggedIn');
-Route::get('addAdmin', [AdminController::class, 'add']);
 Route::post('saveAdmin', [AdminController::class, 'save']); //!not a page.
 Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
 Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
