@@ -44,13 +44,12 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'id' => 'required',
-            'name' => 'required',
+            'name' => 'required'
         ]);
 
         $id = $request->id;
         Categories::where('Category_ID', '=', $id)->update([
-            'Category_Name' =>$request->name,
+            'Category_Name' =>$request->name
         ]);
         return redirect()->back()->with('success', 'Category updated successfully!');
     }

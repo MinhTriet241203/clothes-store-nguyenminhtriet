@@ -21,6 +21,7 @@
                       {{Session::get('success')}}
                     </div>
                 @endif
+                {{-- End notification --}}
 
                 {{-- Start Form --}}
                 <form action="{{url('saveCategory')}}" method="POST">
@@ -28,7 +29,7 @@
                   {{-- Enter category --}}
                   <div class="md-3">
                     <label for="name" class="form-label">Category Name</label>
-                    <input type="text" name="nname" class="form-control" 
+                    <input type="text" name="name" class="form-control" 
                            placeholder="Enter category name">
                   </div>
                   @error('name')
@@ -36,9 +37,10 @@
                     {{$message}}
                   </div>
                   @enderror
-
+                  
+                  <br>
                   <button type="submit" class="btn btn-primary">Submit</button>
-                  <a href="{{url('listProduct')}}" class="btn btn-danger">Back</a>
+                  <a href="{{url('listCategory')}}" class="btn btn-danger">Back</a>
                 </form>
                 {{-- End form --}}
             </div>

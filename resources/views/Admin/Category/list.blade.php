@@ -34,7 +34,7 @@
                 </div>
                 @else
                 <div style="margin-right: 1%; float:right;">
-                    <a href="{{url('addProduct')}}" class="btn btn-success">Add new</a>
+                    <a href="{{url('addCategory')}}" class="btn btn-success">Add new</a>
                 </div>
                 
                 <div style="margin-right: 1%; float:right;">
@@ -63,17 +63,18 @@
                         {{-- Fetch category data --}}
                         @foreach ($data as $row)
                             <tr>
-                                <td>{{$row->Category_ID}}</td>
-                                <td>{{$row->Category_Name}}</td>                               
+                                <td style="text-align: center">{{$row->Category_ID}}</td>
+                                <td style="text-align: left">{{$row->Category_Name}}</td>                               
 
                                 @if (Session::has('LoginID'))                                    
-                                <td>
-                                    <a href="{{url('editProduct/'.$row->Category_ID)}}" class="btn btn-primary">Edit</a>
-                                    <a href="{{url('deleteProduct/'.$row->Category_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
+                                <td style="text-align: center">
+                                    <a href="{{url('editCategory/'.$row->Category_ID)}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{url('deleteCategory/'.$row->Category_ID)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
                                 </td>
                                 @endif
                             </tr>
                         @endforeach
+                        {{-- End fetching data --}}
                     </tbody>
                 </table>
             </div>
