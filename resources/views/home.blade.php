@@ -32,17 +32,19 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            {{-- Logo --}}
+            <a class="navbar-brand text-success logo h2 align-self-center" href="{{url('/')}}">
                 Male Fashion
+                <img src="img/logoWebsite.png" style="width: 50px; height: 50px;"/>
             </a>
-            <img src="img/logoWebsite.png" style="width: 70px; height: 70px;"/>
+            {{-- End logo --}}
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                {{-- Navigation buttons --}}
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
@@ -59,6 +61,7 @@ https://templatemo.com/tm-559-zay-shop
                         </li>
                     </ul>
                 </div>
+                {{-- End navigation buttons --}}
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                         <div class="input-group">
@@ -73,11 +76,9 @@ https://templatemo.com/tm-559-zay-shop
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="{{url('login')}}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                     </a>
                 </div>
             </div>
