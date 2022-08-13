@@ -127,10 +127,10 @@ class ProductController extends Controller
         $data = Products::get();
         return view('shopSingle', compact('data'));
     }
-    public function login()
+    public function userLogin()
     {
        
-        return view('login');
+        return view('userLogin');
     }
 
 }

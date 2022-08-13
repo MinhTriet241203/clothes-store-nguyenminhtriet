@@ -49,7 +49,7 @@ Route::get('shop', [ProductController::class, 'shop']);
 Route::get('shopSingle', [ProductController::class, 'shopSingle']);
 Route::get('about', [ProductController::class, 'about']);
 Route::get('contact', [ProductController::class, 'contact']);
-Route::get('login', [ProductController::class, 'login']);
+Route::get('userLogin', [ProductController::class, 'userLogin']);
 
 //category routing
 Route::get('listCategory', [CategoryController::class, 'index']); //List category page

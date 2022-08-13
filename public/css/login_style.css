@@ -44,7 +44,7 @@ input {
 
 .social-login {
 	width: 75%;
-	margin: 2rem auto;
+	margin: 4rem auto;
 	padding: 1rem;
 	border-radius: 10px;
 }
@@ -60,5 +60,13 @@ input {
 
 .google {
 	background-color: #DC4C39;
+	color: #fff;
+}
+.home{
+	text-decoration: none;
+	color: #fff;
+}
+.home:hover{
+	text-decoration: none;
 	color: #fff;
 }

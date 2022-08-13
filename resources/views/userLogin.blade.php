@@ -34,7 +34,7 @@
 						</div>
 						<div class="col text-center">
 							{{-- <a href="#" class="forgot-pass">Forgot password?</a> --}}
-                            <button class="custom-btn btn-1">Back to homepage</button>
+                            <button class="custom-btn btn-1"><a href="{{url('/')}}" class="home">To home page</a></button>
 						</div>
 					</div>
 				</form>
