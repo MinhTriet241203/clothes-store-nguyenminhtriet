@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-use App\Models\Products;
 use Dflydev\DotAccessData\Data;
+use Illuminate\Routing\Controller;
+use Symfony\Component\Console\Input\Input;
 use Illuminate\Database\DBAL\TimestampType;
+
 
 class ProductController extends Controller
 {
@@ -36,6 +39,10 @@ class ProductController extends Controller
         ]);
 
         $product = new Products();
+
+        foreach($request->images as $file){
+            $file->move(public_path('\img\products'), $file->getClientOriginalName());
+        }
 
         $product->Product_Name = $request->name;
         $product->Category_ID = $request->category;
