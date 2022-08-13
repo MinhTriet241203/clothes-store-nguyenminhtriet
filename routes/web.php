@@ -38,7 +38,7 @@ Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']);
 
 //login routing
 Route::get('loginAdmin',[AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn');
-Route::get('registrationAdmin',[AdminLoginController::class, 'registration']);
+Route::get('registrationAdmin',[AdminLoginController::class, 'registration'])->middleware('isLoggedIn');
 Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin');
 Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn');
 Route::get('adminLogOut',[AdminLoginController::class, 'logOut']);

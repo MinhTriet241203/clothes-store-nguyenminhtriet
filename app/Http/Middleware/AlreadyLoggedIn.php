@@ -19,5 +19,6 @@ class AlreadyLoggedIn
         if (Session()->has('LoginID') && (url('loginAdmin')==$request->url() || url('registrationAdmin')==$request->url())) {
             return back();
         }
+        return $next($request);
     }
 }

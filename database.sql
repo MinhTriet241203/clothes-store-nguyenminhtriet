@@ -59,3 +59,5 @@ ALTER TABLE `Orders` ADD FOREIGN KEY (`Customer_ID`) REFERENCES `Customers` (`Cu
 ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Order_ID`) REFERENCES `Orders` (`Order_ID`);
 
 ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Product_ID`) REFERENCES `Products` (`Product_ID`);
+
+INSERT INTO `admins` (`Admin_Username`, `Admin_Password`, `Admin_Name`) VALUES ('admin', 'admin', 'admin');

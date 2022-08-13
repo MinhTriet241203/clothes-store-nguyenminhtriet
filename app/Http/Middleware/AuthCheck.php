@@ -17,8 +17,7 @@ class AuthCheck
     public function handle(Request $request, Closure $next)
     {
         if (!Session()->has('LoginID')) {
-            return redirect('loginAdmin')->with('fail','You must be logged in to do that!');
-            
+            return redirect('loginAdmin')->with('fail','You must be logged in to do that!');            
         }
         return $next($request);
     }
