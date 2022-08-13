@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\AdminLoginController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\CustomerLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,8 +69,8 @@ Route::get('shop', [CustomerController::class, 'shop']);
 Route::get('shopSingle', [CustomerController::class, 'shopSingle']);
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('contact', [CustomerController::class, 'contact']);
-Route::get('customerLogin', [CustomerController::class, 'customerLogin']);
-Route::get('customerRegister', [CustomerController::class, 'customerRegister']);
-Route::post('saveUser', [CustomerController::class, 'save']); //!not a page.
+Route::get('customerLogin', [CustomerLoginController::class, 'login']);
+Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
+Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 
 //*user

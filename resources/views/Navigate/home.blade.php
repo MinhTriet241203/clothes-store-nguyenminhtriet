@@ -77,8 +77,21 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
+                    
+                    <div class="dropdown">
+                        <button class="nav-icon position-relative text-decoration-none dropdown-hover" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                      </div>
+
                     <a class="nav-icon position-relative text-decoration-none" href="{{url('customerLogin')}}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
+{{-- TODO: add dropdown --}}
                     </a>
                     <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
                         <p>Welcome : <?php echo(session()->get('Name'))?></p>
