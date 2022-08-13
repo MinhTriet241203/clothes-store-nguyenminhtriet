@@ -41,7 +41,7 @@
                     </div>
 
                     <div style="margin-right: 1%; float:right;">
-                        <p>Welcome <?php echo(session()->get('Name'))?></p> 
+                        <p class="btn border border-success" style="color: green">Welcome <?php echo(session()->get('Name'))?></p> 
                     </div>
                 @endif
                 {{-- End buttons --}}
