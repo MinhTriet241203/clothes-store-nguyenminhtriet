@@ -23,25 +23,25 @@ Route::get('/', function () {
 //Product routing
 Route::get('listProduct', [ProductController::class, 'index']);
 Route::get('addProduct', [ProductController::class, 'add']);
-Route::post('saveProduct', [ProductController::class, 'save']);
+Route::post('saveProduct', [ProductController::class, 'save']); //!not a page.
 Route::get('editProduct/{id}', [ProductController::class, 'edit']);
-Route::post('updateProduct', [ProductController::class, 'update']);
-Route::get('deleteProduct/{id}', [ProductController::class, 'delete']);
+Route::post('updateProduct', [ProductController::class, 'update']); //!not a page.
+Route::get('deleteProduct/{id}', [ProductController::class, 'delete']); //!not a page.
 
 //Admin routing
 Route::get('listAdmin', [AdminController::class, 'index'])->middleware('isLoggedIn');
 Route::get('addAdmin', [AdminController::class, 'add']);
-Route::post('saveAdmin', [AdminController::class, 'save']);
+Route::post('saveAdmin', [AdminController::class, 'save']); //!not a page.
 Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
-Route::post('updateAdmin', [AdminController::class, 'update']);
-Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']);
+Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
+Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
 
 //login routing
-Route::get('loginAdmin',[AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn');
-Route::get('registrationAdmin',[AdminLoginController::class, 'registration'])->middleware('isLoggedIn');
-Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin');
-Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn');
-Route::get('adminLogOut',[AdminLoginController::class, 'logOut']);
+Route::get('loginAdmin',[AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn'); //login page
+Route::get('registrationAdmin',[AdminLoginController::class, 'registration'])->middleware('isLoggedIn'); //add admin page
+Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin'); //push form to db //!not a page
+Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn'); //push form to db //!not a page
+Route::get('adminLogOut',[AdminLoginController::class, 'logOut']); //pull session to log out. //!not a page
 
 //user routing
 Route::get('/', [ProductController::class, 'home']);
