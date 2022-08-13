@@ -42,3 +42,10 @@ Route::get('registrationAdmin',[AdminLoginController::class, 'registration'])->m
 Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin');
 Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn');
 Route::get('adminLogOut',[AdminLoginController::class, 'logOut']);
+
+//user routing
+Route::get('/', [ProductController::class, 'home']);
+Route::get('shop', [ProductController::class, 'shop']);
+Route::get('shopSingle', [ProductController::class, 'shopSingle']);
+Route::get('about', [ProductController::class, 'about']);
+Route::get('contact', [ProductController::class, 'contact']);
