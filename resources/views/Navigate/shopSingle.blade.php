@@ -80,12 +80,12 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
                     <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span
-                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                            class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
                 </div>
             </div>
@@ -233,20 +233,12 @@ https://templatemo.com/tm-559-zay-shop
                         <div class="card-body">
                             <h1 class="h2">Active Wear</h1>
                             <p class="h3 py-2">$25.00</p>
-                            <p class="py-2">
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-warning"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <span class="list-inline-item text-dark">Rating 4.8 | 36 Comments</span>
-                            </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Brand:</h6>
+                                    <h6>Category</h6>
                                 </li>
                                 <li class="list-inline-item">
-                                    <p class="text-muted"><strong>Easy Wear</strong></p>
+                                    <p class="text-muted"><strong>Yoga</strong></p>
                                 </li>
                             </ul>
 
@@ -374,11 +366,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$20.00</p>
@@ -421,11 +408,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$25.00</p>
@@ -468,11 +450,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$45.00</p>
@@ -515,11 +492,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$60.00</p>
@@ -562,11 +534,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$80.00</p>
@@ -609,11 +576,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$110.00</p>
@@ -656,11 +618,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$125.00</p>
@@ -703,11 +660,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$160.00</p>
@@ -750,11 +702,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$180.00</p>
@@ -797,11 +744,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$220.00</p>
@@ -844,11 +786,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$250.00</p>
@@ -891,11 +828,6 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
                             <ul class="list-unstyled d-flex justify-content-center mb-1">
                                 <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
                                 </li>
                             </ul>
                             <p class="text-center mb-0">$300.00</p>
