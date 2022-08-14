@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\Customers;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Hash;
@@ -44,8 +45,9 @@ class CustomerController extends Controller
 
     public function homepage()
     {
-        $data = Products::get();
-        return view('Navigate.home', compact('data'));
+        $products = Products::inRandomOrder()->limit(3)->get();
+        $categories = Categories::inRandomOrder()->limit(6)->get(); //asking to get only 6 categories and 3 products randomly for featured
+        return view('Navigate.home', compact('products', 'categories'));
     }
     public function shop()
     {
