@@ -188,11 +188,11 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
@@ -234,17 +234,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -280,17 +280,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -326,17 +326,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -372,17 +372,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -418,17 +418,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -464,17 +464,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -510,17 +510,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -556,17 +556,17 @@ https://templatemo.com/tm-559-zay-shop
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle')}}"><i
                                                     class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
+                                        <li><a class="btn btn-success text-white mt-2" href="{{url('shopSingle')}}"><i
                                                     class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="shop-single.html" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{url('shopSingle')}}" class="h3 text-decoration-none">Oupidatat non</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
