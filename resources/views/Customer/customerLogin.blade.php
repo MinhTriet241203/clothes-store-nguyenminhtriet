@@ -21,8 +21,8 @@
     <div class="container">
         <div id="login-form">
             <a href="{{ url('/') }}" class="btn"
-                style="margin-top: -60px;margin-left: -45px; font-size:1.75rem; color:#59ab6e; border:none">
-                <i class="fa fa-angle-double-left"></i>
+                style="margin-top: -60px;margin-left: -45px; font-size:1.2rem; color:#59ab6e; border:none;">
+                <i class="fa fa-angle-double-left"></i> Back
             </a>
             <div class="row" style="align-items: center;">
                 <div class="col-lg-7">
