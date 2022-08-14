@@ -56,7 +56,7 @@ class AdminController extends Controller
         $admin = new Admins();
         if ($username !== 'admin') {
             $admin->Admin_Password = Hash::make($request->password);
-        }else{
+        } else {
             $admin->Admin_Password = $request->password;
         }
         $admin->Admin_Name = $request->name;
@@ -71,10 +71,10 @@ class AdminController extends Controller
     public function delete($id)
     {
         if ($id !== 'admin') {
-            Admins::where('Admin_Username', '=', $id)->delete(); 
+            Admins::where('Admin_Username', '=', $id)->delete();
             return redirect()->back()->with('success', 'Admin deleted successfully');
-        }else {
+        } else {
             return redirect()->back()->with('fail', 'cannot delete the default admin account');
-        }        
+        }
     }
 }
