@@ -78,6 +78,7 @@
                     <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Add</button>
                     <a href="{{ url('listAdmin') }}" class="btn btn-danger" style="margin-top: 10px">Back</a>
                 </form>
+                {{-- end form --}}
                 <br>
                 <a href="loginAdmin" class="btn btn-success">Login Admin</a>
             </div>

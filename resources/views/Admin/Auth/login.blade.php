@@ -17,6 +17,7 @@
             <div class="col-md-4 col-md-offset-4" style="margin-top: 20px">
                 <h4>Login</h4>
                 <hr>
+                {{-- check for session message --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
                         {{ Session::get('success') }}
@@ -27,8 +28,10 @@
                             {{ Session::get('fail') }}
                         </div>
                     @endif
-
                 @endif
+                {{-- end of session message --}}
+
+                {{-- admin signin form --}}
                 <form action="{{ url('adminSignIn') }}" method="POST">
                     @csrf
                     <div class="form-group">
@@ -54,6 +57,7 @@
                     @enderror
                     <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Login</button>
                 </form>
+                {{-- end of admin sign in form --}}
                 <br>
             </div>
         </div>

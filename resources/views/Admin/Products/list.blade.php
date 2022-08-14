@@ -77,7 +77,8 @@
                                     <?php
                                     $path = 'img/products/';
                                     $ImagesAll = explode('@@@', $row->Images);
-                                    foreach ($ImagesAll as $item) {
+                                    foreach ($ImagesAll as $item)
+                                    {
                                         $img = $path . $item;
                                         echo "<img src='$img' width='100px' height='100px' style='margin-left:5px'>";
                                     }
