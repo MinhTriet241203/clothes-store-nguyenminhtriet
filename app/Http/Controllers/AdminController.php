@@ -70,7 +70,11 @@ class AdminController extends Controller
 
     public function delete($id)
     {
-        Admins::where('Admin_Username', '=', $id)->delete();
-        return redirect()->back()->with('success', 'Admin deleted successfully');
+        if ($id !== 'admin') {
+            Admins::where('Admin_Username', '=', $id)->delete(); 
+            return redirect()->back()->with('success', 'Admin deleted successfully');
+        }else {
+            return redirect()->back()->with('fail', 'cannot delete the default admin account');
+        }        
     }
 }
