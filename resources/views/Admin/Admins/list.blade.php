@@ -60,12 +60,15 @@
                         <tbody>
                             {{-- Fetch table data --}}
                             @foreach ($data as $row)
+                                @if ({{$row->Admin_Username}} === 'admin')
                                 <tr>
                                     <td style="text-align: center">{{$row->Admin_Username}}</td>
                                     <td style="text-align: center">{{$row->Admin_Name}}</td>
                                     <td style="text-align: center">
                                         <a href="{{url('editAdmin/'.$row->Admin_Username)}}" class="btn btn-primary">Edit</a>
+                                @else
                                         <a href="{{url('deleteAdmin/'.$row->Admin_Username)}}" class="btn btn-danger" onclick="return confirm('Confirm delete?')">Delete</a>
+                                @endif
                                     </td>
                                 </tr>
                             @endforeach

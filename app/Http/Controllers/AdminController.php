@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $data = Admins::get()->where('Admin_Username', '!=', 'admin'); //get admin list excluding the default 'admin' account
+        $data = Admins::get();
         //return $data;
         return view('Admin.Admins.list', compact('data'));
     }
@@ -35,8 +35,8 @@ class AdminController extends Controller
         $admin->Admin_Name = $request->name;
         $admin->save();
 
-        return redirect()->back()->with('success','Admin added successfully!');
-    }   
+        return redirect()->back()->with('success', 'Admin added successfully!');
+    }
 
     public function edit($id)
     {
@@ -58,8 +58,8 @@ class AdminController extends Controller
         $admin->Admin_Name = $request->name;
 
         Admins::where('Admin_Username', '=', $username)->update([
-            'Admin_Password' =>$admin->Admin_Password,
-            'Admin_Name' =>$admin->Admin_Name,
+            'Admin_Password' => $admin->Admin_Password,
+            'Admin_Name' => $admin->Admin_Name,
         ]);
         return redirect()->back()->with('success', 'Admin updated successfully!');
     }
@@ -67,7 +67,6 @@ class AdminController extends Controller
     public function delete($id)
     {
         Admins::where('Admin_Username', '=', $id)->delete();
-        return redirect()->back()->with('success','Admin deleted successfully');
+        return redirect()->back()->with('success', 'Admin deleted successfully');
     }
-
 }
