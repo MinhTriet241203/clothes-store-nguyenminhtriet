@@ -40,7 +40,7 @@ class AdminLoginController extends Controller
                 $request->session()->put('Name', $user->Admin_Name);
                 return redirect('listAdmin');
             } else {
-                return back()->with('fail', 'Password do not match! (' . $user->password . ')');
+                return back()->with('fail', 'Password do not match!');
             }
         }
         if ($user) {
@@ -49,7 +49,7 @@ class AdminLoginController extends Controller
                 $request->session()->put('Name', $user->Admin_Name);
                 return redirect('listAdmin');
             } else {
-                return back()->with('fail', 'Password do not match! (' . $user->password . ')');
+                return back()->with('fail', 'Password do not match!');
             }
         } else {
             return back()->with('fail', 'This username is not registered!');
