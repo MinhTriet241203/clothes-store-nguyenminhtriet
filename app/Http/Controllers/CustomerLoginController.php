@@ -36,8 +36,8 @@ class CustomerLoginController extends Controller
 
         if ($user) {
             if (Hash::check($request->password, $user->Customer_Password)) {
-                $request->session()->put('LoginID', $user->Customer_ID);
-                $request->session()->put('Name', $user->Customer_Name);
+                $request->session()->put('customerLoginID', $user->Customer_ID);
+                $request->session()->put('customerName', $user->Customer_Name);
                 return redirect('');
             } else {
                 return back()->with('fail', 'Password do not match!');
@@ -50,8 +50,9 @@ class CustomerLoginController extends Controller
     public function logOut()
     {
         if (session()->has('LoginID')) {
-            session()->pull('LoginID');
-            return redirect('loginAdmin');
+            session()->pull('customerLoginID');
+            session()->pull('customerName');
+            return redirect('loginCustomer');
         }
     }
 }
