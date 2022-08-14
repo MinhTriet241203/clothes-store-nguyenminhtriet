@@ -30,15 +30,15 @@ class CategoryController extends Controller
 
         $category = new Categories();
 
-        $filename = Date('usiHd').$request->Category_Image->getClientOriginalName(); //move uploaded image to category folder then save the name
+        $filename = Date('usiHd') . $request->Category_Image->getClientOriginalName(); //move uploaded image to category folder then save the name
         $request->Category_Image->move(public_path('\img\categories'), $filename);
-        
+
         $category->Category_Name = $request->name;
         $category->Category_Image = $filename;
         $category->save();
 
-        return redirect()->back()->with('success','Category added successfully!');
-    }   
+        return redirect()->back()->with('success', 'Category added successfully!');
+    }
 
     public function edit($id)
     {
@@ -55,8 +55,8 @@ class CategoryController extends Controller
 
         $id = $request->id;
         Categories::where('Category_ID', '=', $id)->update([
-            'Category_Name' =>$request->name,
-            'Category_Image' =>$request->image
+            'Category_Name' => $request->name,
+            'Category_Image' => $request->image
         ]);
         return redirect()->back()->with('success', 'Category updated successfully!');
     }
@@ -64,10 +64,9 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $data = Categories::where('Category_ID', '=', $id)->first();
-        $path = public_path('img/categories/'.$data->Category_Image);
+        $path = public_path('img/categories/' . $data->Category_Image);
         File::delete($path);
         Categories::where('Category_ID', '=', $id)->delete();
-        return redirect()->back()->with('success','Category deleted successfully');
+        return redirect()->back()->with('success', 'Category deleted successfully');
     }
-
 }

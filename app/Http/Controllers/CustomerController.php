@@ -36,10 +36,10 @@ class CustomerController extends Controller
         $customers->Address = $request->address;
         $customers->Gender = $request->gender;
         $customers->Date_of_Birth = $request->DoB;
-        
+
         $customers->save();
 
-        return redirect()->back()->with('success','Customers added successfully!');
+        return redirect()->back()->with('success', 'Customers added successfully!');
     }
 
     public function homepage()
@@ -63,7 +63,7 @@ class CustomerController extends Controller
     }
     public function shopSingle($id)
     {
-        $data = Products::where('Product_ID','=',$id)->first();
+        $data = Products::where('Product_ID', '=', $id)->first();
         return view('Navigate.shopSingle', compact('data'));
     }
 }

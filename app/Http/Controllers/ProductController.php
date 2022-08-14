@@ -37,8 +37,8 @@ class ProductController extends Controller
         $product = new Products();
         $imgArr = [];
 
-        foreach($request->images as $file){
-            $filename = Date('usiHd').$file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
+        foreach ($request->images as $file) {
+            $filename = Date('usiHd') . $file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
             $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }
@@ -47,13 +47,13 @@ class ProductController extends Controller
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
-        $product->Images = implode("@@@",$imgArr);
+        $product->Images = implode("@@@", $imgArr);
         $product->Size = $request->size;
         $product->Available = $request->available;
         $product->save();
 
-        return redirect()->back()->with('success','Product added successfully!');
-    }   
+        return redirect()->back()->with('success', 'Product added successfully!');
+    }
 
     public function edit($id)
     {
@@ -75,13 +75,13 @@ class ProductController extends Controller
 
         $id = $request->id;
         Products::where('Product_ID', '=', $id)->update([
-            'Product_Name' =>$request->name,
-            'Category_ID' =>$request->category,
-            'Price' =>$request->price,
-            'Details' =>$request->details,
-            'Images' =>$request->images,
-            'Size' =>$request->size,
-            'Available' =>$request->available,
+            'Product_Name' => $request->name,
+            'Category_ID' => $request->category,
+            'Price' => $request->price,
+            'Details' => $request->details,
+            'Images' => $request->images,
+            'Size' => $request->size,
+            'Available' => $request->available,
         ]);
         return redirect()->back()->with('success', 'Product updated successfully!');
     }
@@ -89,13 +89,12 @@ class ProductController extends Controller
     public function delete($id)
     {
         $data = Products::where('Product_ID', '=', $id)->first();
-        $imgArr = explode("@@@",$data->Images);
+        $imgArr = explode("@@@", $data->Images);
         foreach ($imgArr as $image) {
-            $path = public_path('img/products/'.$image);
+            $path = public_path('img/products/' . $image);
             File::delete($path);
         }
         Products::where('Product_ID', '=', $id)->delete();  //Delete images before deleting the stored names of the images in DB
-        return redirect()->back()->with('success','Product deleted successfully');
+        return redirect()->back()->with('success', 'Product deleted successfully');
     }
-
 }

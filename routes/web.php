@@ -43,13 +43,13 @@ Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
 
 
-//*login routing
+//* Admin login routing
 
-Route::get('loginAdmin',[AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn'); //login page
-Route::get('registrationAdmin',[AdminLoginController::class, 'registration'])->middleware('isLoggedIn'); //add admin page
-Route::post('newAdmin',[AdminLoginController::class, 'newAdmin'])->name('newAdmin'); //push form to db //!not a page
-Route::post('adminSignIn',[AdminLoginController::class, 'signIn'])->name('adminSignIn'); //push form to db //!not a page
-Route::get('adminLogOut',[AdminLoginController::class, 'logOut']); //pull session to log out. //!not a page
+Route::get('loginAdmin', [AdminLoginController::class, 'login'])->middleware('alreadyLoggedIn'); //login page
+Route::get('registrationAdmin', [AdminLoginController::class, 'registration'])->middleware('isLoggedIn'); //add admin page
+Route::post('newAdmin', [AdminLoginController::class, 'newAdmin'])->name('newAdmin'); //push form to db //!not a page
+Route::post('adminSignIn', [AdminLoginController::class, 'signIn'])->name('adminSignIn'); //push form to db //!not a page
+Route::get('adminLogOut', [AdminLoginController::class, 'logOut']); //pull session to log out. //!not a page
 
 
 //*category routing
@@ -74,3 +74,9 @@ Route::get('customerRegister', [CustomerLoginController::class, 'registration'])
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 
 //*user
+
+Route::get('loginCustomer', [CustomerLoginController::class, 'login'])->middleware('alreadyLoggedIn'); //login page
+Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])->middleware('isLoggedIn'); //add Customer page
+Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
+Route::post('customerSignIn', [AdminLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
+Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page

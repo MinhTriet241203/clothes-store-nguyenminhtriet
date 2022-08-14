@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin authentication</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -17,33 +20,35 @@
                 {{-- Notification --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
-                        {{Session::get('success')}}
+                        {{ Session::get('success') }}
                     </div>
                 @endif
                 {{-- End notification --}}
                 {{-- Start form --}}
-                <form action="{{url('saveAdmin')}}" method="post">
+                <form action="{{ url('saveAdmin') }}" method="post">
                     @csrf
                     {{-- Enter name --}}
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" placeholder="Enter Name" name="name" value="{{old('name')}}">
+                        <input type="text" class="form-control" placeholder="Enter Name" name="name"
+                            value="{{ old('name') }}">
                     </div>
                     @error('name')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                     @enderror
 
                     {{-- Enter username --}}
                     <div class="form-group">
                         <label for="username">Admin username</label>
-                        <input type="text" class="form-control" placeholder="Enter admin username" name="username" value="{{old('username')}}">
+                        <input type="text" class="form-control" placeholder="Enter admin username" name="username"
+                            value="{{ old('username') }}">
                     </div>
                     @error('username')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                     @enderror
 
                     {{-- Enter password --}}
@@ -52,25 +57,26 @@
                         <input type="password" class="form-control" placeholder="Enter password" name="password">
                     </div>
                     @error('password')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                     @enderror
-                    
+
                     {{-- Confirm password --}}
                     <div class="form-group">
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="Confirm password" name="confirm_password">
+                        <input type="password" class="form-control" placeholder="Confirm password"
+                            name="confirm_password">
                     </div>
                     @error('password')
-                    <div class="alert alert-danger" role="alert">
-                      {{$message}}
-                    </div>
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
                     @enderror
 
                     <br>
                     <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Add</button>
-                    <a href="{{url('listAdmin')}}" class="btn btn-danger" style="margin-top: 10px">Back</a>
+                    <a href="{{ url('listAdmin') }}" class="btn btn-danger" style="margin-top: 10px">Back</a>
                 </form>
                 <br>
                 <a href="loginAdmin" class="btn btn-success">Login Admin</a>
@@ -79,6 +85,8 @@
     </div>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
 
 </html>
