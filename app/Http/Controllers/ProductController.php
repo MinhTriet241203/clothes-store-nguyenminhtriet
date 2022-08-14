@@ -31,7 +31,8 @@ class ProductController extends Controller
             'price' => 'required|integer',
             'details' => 'required',
             'images' => 'required',
-            'size' => 'required',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20',
+            'size' => 'required|in:S|in:M|in:L|in:XL|in:XXL',
             'available' => 'required',
         ]);
 
