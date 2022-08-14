@@ -36,19 +36,19 @@
                         </div>
                         <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Sign
                                 in</span></button>
-                        <div class="row">
-                            <div class="col text-center ">
-                                <p style="text-align: center">OR</p>
-                                <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><a
-                                        href="{{ url('customerRegister') }}" class="home"><span>Register
-                                            now</span></a></button>
-                                {{-- <a class="register" href="#">Register now</a> --}}
-                            </div>
-                            {{-- <div class="col text-center">
-							<a href="#" class="forgot-pass">Forgot password?</a>
-						</div> --}}
+                    </form> 
+                    <div class="row">
+                        <div class="col text-center ">
+                            <p style="text-align: center">OR</p>
+                            <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><a
+                                    href="{{ url('registerCustomer') }}" class="home"><span>Register
+                                        now</span></a></button>
+                            {{-- <a class="register" href="#">Register now</a> --}}
                         </div>
-                    </form>
+                        {{-- <div class="col text-center">
+                        <a href="#" class="forgot-pass">Forgot password?</a>
+                    </div> --}}
+                    </div>
                 </div>
                 <div class="col-lg-5">
                     <button class="btn btn-block social-login facebook">

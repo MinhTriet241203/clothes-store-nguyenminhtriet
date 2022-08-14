@@ -75,8 +75,8 @@ Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 
 //*user
 
-Route::get('loginCustomer', [CustomerLoginController::class, 'login'])->middleware('alreadyLoggedIn'); //login page
-Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])->middleware('isLoggedIn'); //add Customer page
+Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login page
+Route::get('registerCustomer', [CustomerLoginController::class, 'registration']);//add Customer page
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [AdminLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
