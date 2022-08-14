@@ -24,6 +24,7 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required',
             'category' => 'required',
@@ -36,6 +37,7 @@ class ProductController extends Controller
 
         $product = new Products();
         $imgArr = [];
+        $sizeArr = [];
 
         foreach ($request->images as $file) {
             $filename = Date('usiHd') . $file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
@@ -43,12 +45,16 @@ class ProductController extends Controller
             array_push($imgArr, $filename);
         }
 
+        foreach ($request->size as $size) {
+            array_push($sizeArr, $size);
+        }
+
         $product->Product_Name = $request->name;
         $product->Category_ID = $request->category;
         $product->Price = $request->price;
         $product->Details = $request->details;
         $product->Images = implode("@@@", $imgArr);
-        $product->Size = $request->size;
+        $product->Size = implode(" ", $sizeArr);
         $product->Available = $request->available;
         $product->save();
 

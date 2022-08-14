@@ -79,8 +79,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-{{-- 
-                    <div class="md-3">
+                    {{-- <div class="md-3">
                         <label for="size" class="form-label">Size</label>
                         <input type="text" name="size" class="form-control" placeholder="Enter size">
                     </div>
@@ -89,31 +88,31 @@
                             {{ $message }}
                         </div>
                     @enderror --}}
-
-                    <div class="form-check" style="display: inline-block">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          S
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          M
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          L
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          XL
-                        </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          XXL
-                        </label>
-                      </div>
-
                     <div class="md-3">
+                        <label>Sizes</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="S" name="size[]">
+                            <label class="form-check-label" for="inlineCheckbox1">S</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="M" name="size[]">
+                            <label class="form-check-label" for="inlineCheckbox2">M</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="L" name="size[]">
+                            <label class="form-check-label" for="inlineCheckbox3">L</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="XL" name="size[]">
+                            <label class="form-check-label" for="inlineCheckbox4">XL</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="XXL" name="size[]">
+                            <label class="form-check-label" for="inlineCheckbox5">XXL</label>
+                        </div>
+                    </div>
+
+                    <div class="md-3">  
                         <label for="available" class="form-label">Available</label>
                         <input type="number" name="available" class="form-control" placeholder="Enter available">
                     </div>
