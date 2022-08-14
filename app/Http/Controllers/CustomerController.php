@@ -61,9 +61,9 @@ class CustomerController extends Controller
     {
         return view('Navigate.contact');
     }
-    public function shopSingle($id)
+    public function shopSingle()
     {
-        $data = Products::where('Product_ID', '=', $id)->first();
+        $data = Products::get();
         return view('Navigate.shopSingle', compact('data'));
     }
 }
