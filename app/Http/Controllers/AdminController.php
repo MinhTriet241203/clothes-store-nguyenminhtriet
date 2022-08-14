@@ -54,7 +54,11 @@ class AdminController extends Controller
 
         $username = $request->username;
         $admin = new Admins();
-        $admin->Admin_Password = Hash::make($request->password);
+        if ($username !== 'admin') {
+            $admin->Admin_Password = Hash::make($request->password);
+        }else{
+            $admin->Admin_Password = $request->password;
+        }
         $admin->Admin_Name = $request->name;
 
         Admins::where('Admin_Username', '=', $username)->update([
