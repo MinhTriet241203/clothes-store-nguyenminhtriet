@@ -16,3 +16,5 @@ How to use this project:
 4. run 'php artisan serve' on file location in localhost.
 
 5. run default "localhost:#port" for homepage or "localhost:port/loginAdmin to login into the admin page.
+
+Default admin is 'admin' with pw is 'admin'. The password can be changed in the admin list page but cannot be deleted.
