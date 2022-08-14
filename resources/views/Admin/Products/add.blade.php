@@ -79,7 +79,7 @@
                             {{ $message }}
                         </div>
                     @enderror
-
+{{-- 
                     <div class="md-3">
                         <label for="size" class="form-label">Size</label>
                         <input type="text" name="size" class="form-control" placeholder="Enter size">
@@ -88,7 +88,30 @@
                         <div class="alert alert-danger" role="alert">
                             {{ $message }}
                         </div>
-                    @enderror
+                    @enderror --}}
+
+                    <div class="form-check" style="display: inline-block">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          S
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          M
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          L
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          XL
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          XXL
+                        </label>
+                      </div>
 
                     <div class="md-3">
                         <label for="available" class="form-label">Available</label>
