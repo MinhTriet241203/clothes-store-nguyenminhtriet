@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $request->image->move(public_path('\img\categories'), $filename);
 
         $category->Category_Name = $request->name;
-        $category->Category_Images = $filename;
+        $category->Category_Image = $filename;
         $category->save();
 
         return redirect()->back()->with('success', 'Category added successfully!');
