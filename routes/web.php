@@ -71,8 +71,7 @@ Route::get('contact', [CustomerController::class, 'contact']);
 Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run sign in page
 Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
-Route::get('cart', [CustomerController::class, 'cart']); 
-
+Route::get('listCustomer', [CustomerController::class, 'index']); //!List customer on ADMIN page
 
 //*user
 
