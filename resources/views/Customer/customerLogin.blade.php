@@ -46,7 +46,7 @@
                         {{-- end of session message --}}
 
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username or Email" name="username">
+                            <input type="text" class="form-control" placeholder="Username or Email" name="username">
                         </div>
                         @error('username')
                             <div class="alert alert-danger" role="alert">
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
-                        @error('username')
+                        @error('password')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
