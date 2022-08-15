@@ -1,6 +1,5 @@
-
 @include('Admin.Navigation_bar');
-
+<head><title>Product List</title></head>
 
 <div class="container" style="margin-top: 20px;">
     <div class="row">
