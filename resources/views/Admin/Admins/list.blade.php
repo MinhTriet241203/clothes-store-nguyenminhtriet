@@ -48,16 +48,25 @@
                 id="templatemo_main_nav">
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
+                    <nav id="primary_nav_wrap">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Accounts 
                                 <i class="fas fa-angle-down"></i>
                             </a>
+                            <ul>
+                                <li><a href="listAdmin">Admins</a></li>
+                                <li><a href="#">Customers</a></li> {{-- need edit here --}}
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('contact') }}">Products 
                                 <i class="fas fa-angle-down"></i>
                             </a>
+                            <ul>
+                                <li><a href="listCategory">Categories</a></li>
+                                <li><a href="listProduct">Products</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('contact') }}">Analytics
@@ -65,6 +74,7 @@
                             </a>
                         </li>
                     </ul>
+                    </nav>
                 </div>
                 {{-- End navigation buttons --}}
                 <div class="navbar align-self-center d-flex">

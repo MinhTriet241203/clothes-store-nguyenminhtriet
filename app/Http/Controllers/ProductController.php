@@ -12,9 +12,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Products::get();
-        $categories = Categories::get();
-        return view('Admin.Products.list', compact('products', 'categories'));
+        $data = Products::get();
+        return view('Admin.Products.list', compact('data'));
     }
 
     public function add()
