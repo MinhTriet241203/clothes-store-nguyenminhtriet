@@ -72,6 +72,7 @@ Route::get('contact', [CustomerController::class, 'contact']);
 Route::get('customerLogin', [CustomerLoginController::class, 'login']);
 Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
+Route::get('listCustomer', [CustomerController::class, 'index']); //VIew customer on admin page
 
 //*user
 

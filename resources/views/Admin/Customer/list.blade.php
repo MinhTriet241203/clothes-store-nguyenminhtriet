@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Admin list</title>
+    <title>Customer list</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -56,7 +56,7 @@
                             </a>
                             <ul>
                                 <li><a href="listAdmin">Admins</a></li>
-                                <li><a href="listCustomer">Customers</a></li>
+                                <li><a href="#">Customers</a></li> {{-- need edit here --}}
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -130,15 +130,8 @@
                     <a href="{{ url('listProduct') }}" class="btn btn-success">Products</a>
                 </div> --}}
                 
-                @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                    </div>
-                @endif
-                
                 <div style="margin-left: 5%; float:left;">
-                    <h2 >Admin List</h2>
+                    <h2 >Customer List</h2>
                 </div>
                     {{-- End buttons --}}
                     
@@ -147,44 +140,30 @@
                         <thead>
                             {{-- Table header --}}
                             <tr>
+                                <th style="text-align: center">ID</th>
                                 <th style="text-align: center">Username</th>
                                 <th style="text-align: center">Name</th>
-                                <th style="text-align: center">Actions</th>
+                                <th style="text-align: center">Email</th>
+                                <th style="text-align: center">Phone</th>
+                                <th style="text-align: center">Address</th>
+                                <th style="text-align: center">Gender</th>
+                                <th style="text-align: center">Date of Birth</th>
                             </tr>
                             {{-- End table header --}}
                         </thead>
                         <tbody>
                             {{-- Fetch table data --}}
                             @foreach ($data as $row)
-                            @if ($row->Admin_Username !== 'admin')
                             <tr>
-                                <td style="text-align: center">{{ $row->Admin_Username }}</td>
-                                <td style="text-align: center">{{ $row->Admin_Name }}</td>
-                                <td style="text-align: center">
-                                    <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                                class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="{{ url('deleteAdmin/' . $row->Admin_Username) }}"
-                                                class="btn btn-danger"
-                                                onclick="return confirm('Confirm delete?')">
-                                                <i class="fas fa-trash-alt"></i></a>
-                                            </td>
-                                    @else
-                                    <tr>
-                                        <td style="text-align: center">{{ $row->Admin_Username }}</td>
-                                        <td style="text-align: center">{{ $row->Admin_Name }}</td>
-                                        <td style="text-align: center">
-                                            <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                                class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger disabled">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        </td>
-                                @endif
-                                </tr>
+                                <td style="text-align: center">{{ $row->Customer_ID }}</td>
+                                <td style="text-align: center">{{ $row->Customer_Username }}</td>
+                                <td style="text-align: center">{{ $row->Customer_Name }}</td>
+                                <td style="text-align: center">{{ $row->Email }}</td>
+                                <td style="text-align: center">{{ $row->Phone }}</td>
+                                <td style="text-align: center">{{ $row->Address }}</td>
+                                <td style="text-align: center">{{ $row->Gender }}</td>
+                                <td style="text-align: center">{{ $row->Date_of_Birth }}</td>
+                            </tr>
                             @endforeach
                             {{-- End fetching table data --}}
                         </tbody>
