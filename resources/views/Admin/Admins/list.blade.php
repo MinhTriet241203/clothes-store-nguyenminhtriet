@@ -49,29 +49,33 @@
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
                     <nav id="primary_nav_wrap">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul class="nav navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Accounts 
+                            <p class="nav-link">Accounts 
                                 <i class="fas fa-angle-down"></i>
-                            </a>
+                            </p>
                             <ul>
                                 <li><a href="listAdmin">Admins</a></li>
                                 <li><a href="#">Customers</a></li> {{-- need edit here --}}
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('contact') }}">Products 
+                            <p class="nav-link">Products 
                                 <i class="fas fa-angle-down"></i>
-                            </a>
+                            </p>
                             <ul>
                                 <li><a href="listCategory">Categories</a></li>
                                 <li><a href="listProduct">Products</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('contact') }}">Analytics
+                            <p class="nav-link" href="{{ url('contact') }}">Analytics
                                 <i class="fas fa-angle-down"></i>
-                            </a>
+                            </p>
+                            <ul>
+                                <li><a href="">Orders</a></li>
+                                <li><a href="">Sales</a></li>
+                            </ul>
                         </li>
                     </ul>
                     </nav>
