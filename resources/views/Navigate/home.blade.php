@@ -79,7 +79,7 @@ https://templatemo.com/tm-559-zay-shop
                         data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{url('cart')}}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
 
@@ -409,11 +409,11 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="js/JSHomePage/jquery-1.11.0.min.js"></script>
+    <script src="js/JSHomePage/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/JSHomePage/bootstrap.bundle.min.js"></script>
+    <script src="js/JSHomePage/templatemo.js"></script>
+    <script src="js/JSHomePage/custom.js"></script>
     <!-- End Script -->
 </body>
 
