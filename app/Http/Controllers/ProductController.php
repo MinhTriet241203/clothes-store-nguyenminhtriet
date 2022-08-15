@@ -24,14 +24,12 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        dd($request);
         $request->validate([
             'name' => 'required',
             'category' => 'required',
             'price' => 'required|integer',
             'details' => 'required',
             'images' => 'required',
-            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20',
             'size' => 'required',
             'available' => 'required',
         ]);
