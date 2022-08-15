@@ -26,14 +26,42 @@
             </a>
             <div class="row" style="align-items: center;">
                 <div class="col-lg-7">
-                    <form>
+                    <form action="{{url('customerSignIn')}}" method="POST">
+                       
                         <h3 class="login-header">Sign in</h3>
+
+                        {{-- check for session message --}}
+                        @if (Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @else
+                            @if (Session::has('fail'))
+                                <div class="alert alert-danger" role="alert">
+                                    {{ Session::get('fail') }}
+                                </div>
+                            @endif
+                        @endif
+                        @csrf
+                        {{-- end of session message --}}
+
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username or Email">
+                            <input type="email" class="form-control" placeholder="Username or Email" name="username">
                         </div>
+                        @error('username')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
+
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
+                        @error('username')
+                            <div class="alert alert-danger" role="alert">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Sign
                                 in</span></button>
                     </form> 
