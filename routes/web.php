@@ -64,7 +64,7 @@ Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Dele
 
 Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
-Route::get('shopSingle/{id}', [CustomerController::class, 'shopSingle']);
+Route::get('shopSingle', [CustomerController::class, 'shopSingle']);
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('contact', [CustomerController::class, 'contact']);
 Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run sign in page
