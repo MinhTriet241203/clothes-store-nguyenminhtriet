@@ -7,43 +7,34 @@
 
         <link rel="apple-touch-icon" href="img/apple-icon.png" />
         <link rel="shortcut icon" type="image/x-icon" href="img/logoWebsite.ico" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
 
         <style>
-            @import "compass/css3";
-
-            /*
-I wanted to go with a mobile first approach, but it actually lead to more verbose CSS in this case, so I've gone web first. Can't always force things...
-
-Side note: I know that this style of nesting in SASS doesn't result in the most performance efficient CSS code... but on the OCD/organizational side, I like it. So for CodePen purposes, CSS selector performance be damned.
-*/
-
-            /* Global settings */
-            $color-border: #eee;
-            $color-label: #aaa;
-            $font-default: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-            $font-bold: "HelveticaNeue-Medium", "Helvetica Neue Medium";
-
-            /* Global "table" column settings */
             .product-image {
                 float: left;
                 width: 20%;
             }
+
             .product-details {
                 float: left;
                 width: 37%;
             }
+
             .product-price {
                 float: left;
                 width: 12%;
             }
+
             .product-quantity {
                 float: left;
                 width: 10%;
             }
+
             .product-removal {
                 float: left;
                 width: 9%;
             }
+
             .product-line-price {
                 float: left;
                 width: 12%;
@@ -52,25 +43,36 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
             /* This is used as the traditional .clearfix class */
             .group:before,
-            .group:after {
+            .shopping-cart:before,
+            .column-labels:before,
+            .product:before,
+            .totals-item:before,
+            .group:after,
+            .shopping-cart:after,
+            .column-labels:after,
+            .product:after,
+            .totals-item:after {
                 content: "";
                 display: table;
             }
-            .group:after {
+
+            .group:after,
+            .shopping-cart:after,
+            .column-labels:after,
+            .product:after,
+            .totals-item:after {
                 clear: both;
             }
-            .group {
-                zoom: 1;
-            }
 
-            /* Apply clearfix in a few places */
+            .group,
             .shopping-cart,
             .column-labels,
             .product,
             .totals-item {
-                @extend .group;
+                zoom: 1;
             }
 
+            /* Apply clearfix in a few places */
             /* Apply dollar signs */
             .product .product-price:before,
             .product .product-line-price:before,
@@ -81,7 +83,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
             /* Body/Header stuff */
             body {
                 padding: 0px 30px 30px 20px;
-                font-family: $font-default;
+                font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-weight: 100;
             }
 
@@ -90,7 +92,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
             }
 
             label {
-                color: $color-label;
+                color: #aaa;
             }
 
             .shopping-cart {
@@ -98,90 +100,73 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
             }
 
             /* Column headers */
-            .column-labels {
-                label {
-                    padding-bottom: 15px;
-                    margin-bottom: 15px;
-                    border-bottom: 1px solid $color-border;
-                }
-
-                .product-image,
-                .product-details,
-                .product-removal {
-                    text-indent: -9999px;
-                }
+            .column-labels label {
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+                border-bottom: 1px solid #eee;
+            }
+            .column-labels .product-image,
+            .column-labels .product-details,
+            .column-labels .product-removal {
+                text-indent: -9999px;
             }
 
             /* Product entries */
             .product {
                 margin-bottom: 20px;
                 padding-bottom: 10px;
-                border-bottom: 1px solid $color-border;
-
-                .product-image {
-                    text-align: center;
-                    img {
-                        width: 100px;
-                    }
-                }
-
-                .product-details {
-                    .product-title {
-                        margin-right: 20px;
-                        font-family: $font-bold;
-                    }
-                    .product-description {
-                        margin: 5px 20px 5px 0;
-                        line-height: 1.4em;
-                    }
-                }
-
-                .product-quantity {
-                    input {
-                        width: 40px;
-                    }
-                }
-
-                .remove-product {
-                    border: 0;
-                    padding: 4px 8px;
-                    background-color: #c66;
-                    color: #fff;
-                    font-family: $font-bold;
-                    font-size: 12px;
-                    border-radius: 3px;
-                }
-
-                .remove-product:hover {
-                    background-color: #a44;
-                }
+                border-bottom: 1px solid #eee;
+            }
+            .product .product-image {
+                text-align: center;
+            }
+            .product .product-image img {
+                width: 100px;
+            }
+            .product .product-details .product-title {
+                margin-right: 20px;
+                font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+            }
+            .product .product-details .product-description {
+                margin: 5px 20px 5px 0;
+                line-height: 1.4em;
+            }
+            .product .product-quantity input {
+                width: 40px;
+            }
+            .product .remove-product {
+                border: 0;
+                padding: 4px 8px;
+                background-color: #c66;
+                color: #fff;
+                font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+                font-size: 12px;
+                border-radius: 3px;
+            }
+            .product .remove-product:hover {
+                background-color: #a44;
             }
 
             /* Totals section */
-            .totals {
-                .totals-item {
-                    float: right;
-                    clear: both;
-                    width: 100%;
-                    margin-bottom: 10px;
-
-                    label {
-                        float: left;
-                        clear: both;
-                        width: 79%;
-                        text-align: right;
-                    }
-
-                    .totals-value {
-                        float: right;
-                        width: 21%;
-                        text-align: right;
-                    }
-                }
-
-                .totals-item-total {
-                    font-family: $font-bold;
-                }
+            .totals .totals-item {
+                float: right;
+                clear: both;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .totals .totals-item label {
+                float: left;
+                clear: both;
+                width: 79%;
+                text-align: right;
+            }
+            .totals .totals-item .totals-value {
+                float: right;
+                width: 21%;
+                text-align: right;
+            }
+            .totals .totals-item-total {
+                font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
             }
 
             .checkout {
@@ -204,7 +189,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
                 .shopping-cart {
                     margin: 0;
                     padding-top: 20px;
-                    border-top: 1px solid $color-border;
+                    border-top: 1px solid #eee;
                 }
 
                 .column-labels {
@@ -214,9 +199,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
                 .product-image {
                     float: right;
                     width: auto;
-                    img {
-                        margin: 0 0 10px 10px;
-                    }
+                }
+                .product-image img {
+                    margin: 0 0 10px 10px;
                 }
 
                 .product-details {
@@ -232,9 +217,9 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
                 .product-quantity {
                     width: 100px;
-                    input {
-                        margin-left: 20px;
-                    }
+                }
+                .product-quantity input {
+                    margin-left: 20px;
                 }
 
                 .product-quantity:before {
@@ -250,7 +235,6 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
                     width: 70px;
                 }
             }
-
             /* Make more adjustments for phone */
             @media screen and (max-width: 350px) {
                 .product-removal {
@@ -268,16 +252,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
                     content: "Item Total: $";
                 }
 
-                .totals {
-                    .totals-item {
-                        label {
-                            width: 60%;
-                        }
-
-                        .totals-value {
-                            width: 40%;
-                        }
-                    }
+                .totals .totals-item label {
+                    width: 60%;
+                }
+                .totals .totals-item .totals-value {
+                    width: 40%;
                 }
             }
         </style>
@@ -428,5 +407,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
                 });
             }
         </script>
+        <!-- partial -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </body>
 </html>
