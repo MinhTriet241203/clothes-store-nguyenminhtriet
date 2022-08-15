@@ -29,7 +29,7 @@
                     <form>
                         <h3 class="login-header">Sign in</h3>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username or Email">
+                            <input type="text" class="form-control" placeholder="Username or Email">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password">
