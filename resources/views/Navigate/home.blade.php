@@ -93,9 +93,9 @@ https://templatemo.com/tm-559-zay-shop
                             <p>Welcome : <?php echo session()->get('customerName'); ?></p>
                         </div>
                         <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
-                        href="{{ url('adminLogOut') }}">
+                        href="{{ url('customerLogOut') }}">
                         <i class="fas fa-sign-out-alt"></i>
-                    </a>
+                    </a>                    
                     @endif
                 </div>
             </div>
