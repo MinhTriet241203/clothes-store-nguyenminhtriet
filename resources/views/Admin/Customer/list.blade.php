@@ -1,4 +1,7 @@
-@include('Admin.Navigation_bar');
+@include('Navigation_bar');
+<head>
+    <title>Customer List</title>
+</head>
 
 <div class="container" style="margin-top: 20px;">
     <div class="row">

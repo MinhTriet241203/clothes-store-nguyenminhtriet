@@ -69,15 +69,20 @@ class CustomerController extends Controller
         return view('Navigate.shopSingle', compact('data'));
     }
 
-    //View customers on admin page
-    public function index()
-    {
-        $data = Customers::get();
-        return view('Admin.Customer.list', compact('data'));
-    }
+    
     public function cart()
     {
         $data = Products::get();
         return view('Navigate.cart', compact('data'));
+    }
+    
+    
+    
+    
+    //!View customers on admin page
+    public function index()
+    {
+        $data = Customers::get();
+        return view('Admin.Customer.list', compact('data'));
     }
 }
