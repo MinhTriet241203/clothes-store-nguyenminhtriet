@@ -66,6 +66,7 @@ Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
 Route::get('shopSingle', [CustomerController::class, 'shopSingle']); //!Add /{id} to shopSingle link
 Route::get('about', [CustomerController::class, 'about']);
+Route::get('cart', [CustomerController::class, 'cart']);
 Route::get('contact', [CustomerController::class, 'contact']);
 Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run sign in page
 Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
