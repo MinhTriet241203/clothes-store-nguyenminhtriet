@@ -49,7 +49,7 @@
                                 <tr>
                                     <td style="text-align: center">{{ $row->Category_ID }}</td>
                                     <td style="text-align: center">{{ $row->Category_Name }}</td>
-                                    <td style="text-align: center"><img src="img/categories/{{$row->Category_Image}}" alt="" height="100px" width="auto"></td>
+                                    <td style="text-align: center"><img src="img/categories/{{$row->Category_Images}}" alt="" height="100px" width="auto"></td>
 
                                     @if (Session::has('LoginID'))
                                         <td style="text-align: center">
