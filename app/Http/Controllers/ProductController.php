@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        // dd($request);
+        dd($request);
         $request->validate([
             'name' => 'required',
             'category' => 'required',
@@ -32,7 +32,7 @@ class ProductController extends Controller
             'details' => 'required',
             'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20',
-            'size' => 'required|in:S|in:M|in:L|in:XL|in:XXL',
+            'size' => 'required',
             'available' => 'required',
         ]);
 
@@ -41,7 +41,7 @@ class ProductController extends Controller
         $sizeArr = [];
 
         foreach ($request->images as $file) {
-            $filename = Date('usiHd') . $file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
+            $filename = Date('usiHd').$file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
             $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }
