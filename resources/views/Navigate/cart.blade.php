@@ -153,11 +153,18 @@ https://templatemo.com/tm-559-zay-shop
                                     </a>
                                 </div>
                             </div>
+                            <hr>
+                            <div class="row d-flex justify-content">    
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-10">
+                                    <h5 class="mb-0">Total: $499.00</h5>
+                                </div>
+                            </div>  
                         </div>
                     </div>
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-3">
-                            <a href="" class="btn btn-success" style="float: right">Purchase</a>
+                            <a href="" class="btn btn-success" 
+                                style="float: right">Purchase</a>
                             <a href="{{ url('/') }}" class="btn btn-danger"
                                 style="float: right; margin-right: 1%">Back</a>
                         </div>

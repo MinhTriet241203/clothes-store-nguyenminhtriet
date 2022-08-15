@@ -45,9 +45,8 @@ class CustomerController extends Controller
 
     public function homepage()
     {
-        $products = Products::inRandomOrder()->limit(3)->get();
-        $categories = Categories::inRandomOrder()->limit(6)->get(); //asking to get only 6 categories and 3 products randomly for featured
-        return view('Navigate.home', compact('products', 'categories'));
+        $categories = Categories::inRandomOrder()->limit(6)->get(); //asking to get only 6 categories randomly for featured
+        return view('Navigate.home', compact('categories'));
     }
     public function shop()
     {
