@@ -32,12 +32,12 @@ class CustomerLoginController extends Controller
             'password' => 'required',
         ]);
 
-        $user = Customers::where('Customer_Name', '=', $request->username)->first();
+        $user = Customers::where('Customer_Username', '=', $request->username)->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->Customer_Password)) {
                 $request->session()->put('customerLoginID', $user->Customer_ID);
-                $request->session()->put('customerName', $user->Customer_Name);
+                $request->session()->put('customerName', $user->Customer_Username);
                 return redirect('/');
             } else {
                 return back()->with('fail', 'Password do not match!');
