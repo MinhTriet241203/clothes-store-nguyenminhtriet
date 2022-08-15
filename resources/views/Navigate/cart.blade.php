@@ -332,7 +332,7 @@
                     <div class="totals-value" id="cart-total">90.57</div>
                 </div>
             </div>
-
+            <button class="checkout"><a href="{{url('/')}}">To home page</a></button>
             <button class="checkout">Checkout</button>
         </div>
         <script>
