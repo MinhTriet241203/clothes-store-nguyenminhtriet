@@ -22,7 +22,8 @@
         <div id="login-form">
             <div class="row" style="justify-content: center;">
                 <div class="col-lg-7">
-                    <form action="{{ url('saveUser') }}" method="post">
+                    <form action="{{ url('saveCustomer') }}" method="post">
+                        @csrf
                         <h3 class="login-header" style="text-align: center; font-size:40px">Create a new account</h3>
                         @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">

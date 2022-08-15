@@ -17,7 +17,7 @@ class CustomerController extends Controller
         $request->validate([
             'userName' => 'required|unique:Customers,Customer_Username',
             'name' => 'required',
-            'password' => 'required_with:confirm_password|same:confirm_password',
+            'password' => 'required_with:confirmPassword|same:confirmPassword',
             'confirmPassword' => 'required',
             'email' => 'required|unique:Customers',
             'phone' => 'required',
@@ -27,8 +27,8 @@ class CustomerController extends Controller
         ]);
 
         $customers = new Customers();
-
-        $customers->Customer_Username = $request->username;
+        
+        $customers->Customer_Username = $request->userName;
         $customers->Customer_Password = Hash::make($request->password);
         $customers->Customer_Name = $request->name;
         $customers->Email = $request->email;
