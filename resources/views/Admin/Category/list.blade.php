@@ -1,4 +1,4 @@
-@include('Navigation_bar');
+@include('Admin.Navigation_bar')
 
     <div class="container" style="margin-top: 20px;">
         <div class="row">

@@ -1,4 +1,4 @@
-@include('Navigation_bar');
+@include('Admin.Navigation_bar');
 
     <div class="container" style="margin-top: 20px;">
         <div class="row">
@@ -20,7 +20,7 @@
                 
                 @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('addCategory') }}" class="btn btn-success">
+                    <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     </div>
                 @endif
