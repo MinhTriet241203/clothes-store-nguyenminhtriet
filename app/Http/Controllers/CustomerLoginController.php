@@ -32,7 +32,12 @@ class CustomerLoginController extends Controller
             'password' => 'required',
         ]);
 
+<<<<<<< HEAD
         $user = Customers::where('Email', '=', $request->username)->first();
+=======
+        $user = Customers::where('User_Username', '=', $request->username)->first();
+        
+>>>>>>> c90790055ebcd88c744d225b5a28bddceeb11876
 
         if ($user) {
             if (Hash::check($request->password, $user->Customer_Password)) {
