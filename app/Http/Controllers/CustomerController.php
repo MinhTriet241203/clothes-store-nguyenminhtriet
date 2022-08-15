@@ -79,7 +79,7 @@ class CustomerController extends Controller
     
     
     
-    //View customers on admin page
+    //!View customers on admin page
     public function index()
     {
         $data = Customers::get();
