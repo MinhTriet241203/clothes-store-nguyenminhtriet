@@ -75,4 +75,9 @@ class CustomerController extends Controller
         $data = Customers::get();
         return view('Admin.Customer.list', compact('data'));
     }
+
+    public function cart(){
+        $data = Products::get();
+        return view('Navigate.cart', compact('data'));
+    }
 }

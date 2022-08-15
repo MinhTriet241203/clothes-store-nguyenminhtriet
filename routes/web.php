@@ -68,6 +68,7 @@ Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
 Route::get('shopSingle', [CustomerController::class, 'shopSingle']);
 Route::get('about', [CustomerController::class, 'about']);
+Route::get('cart', [CustomerController::class, 'cart']);
 Route::get('contact', [CustomerController::class, 'contact']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 Route::get('listCustomer', [CustomerController::class, 'index']); //VIew customer on admin page
