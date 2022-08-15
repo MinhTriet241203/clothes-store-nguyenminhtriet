@@ -1,54 +1,33 @@
-<!doctype html>
-<html lang="en">
+@include('Navigation_bar');
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Product List</title>
-</head>
-
-<body>
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Product List</h2>
-                @if (Session::has('success'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-
-                {{-- Start buttons --}}
-                <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('listAdmin') }}" class="btn btn-success">Admins</a>
+<div class="container" style="margin-top: 20px;">
+    <div class="row">
+        <div class="col-md-12">
+            @if (Session::has('success'))
+            <div class="alert alert-danger" role="alert">
+                {{ Session::get('success') }}
+            </div>
+            @endif
+            
+            {{-- Start buttons --}}
+            {{-- <div style="margin-right: 1%; float:right;">
+                <a href="{{ url('listCategory') }}" class="btn btn-success">Categories</a>
+            </div>
+            
+            <div style="margin-right: 1%; float:right;">
+                <a href="{{ url('listProduct') }}" class="btn btn-success">Products</a>
+            </div> --}}
+            @if (Session::has('LoginID'))
+            <div style="margin-right: 1%; float:right;">
+                <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Add</a>
                 </div>
-                <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('listCategory') }}" class="btn btn-success">Categories</a>
-                </div>
-                @if (!Session::has('LoginID'))
-                    <div style="margin-right: 1%; float:right;">
-                        <a href="{{ url('loginAdmin') }}" class="btn btn-success">Log in</a>
-                    </div>
-                @else
-                    <div style="margin-right: 1%; float:right;">
-                        <a href="{{ url('addProduct') }}" class="btn btn-success">Add new</a>
-                    </div>
+            @endif
 
-                    <div style="margin-right: 1%; float:right;">
-                        <a href="{{ url('adminLogOut') }}" class="btn btn-success">Log out</a>
-                    </div>
-
-                    <div style="margin-right: 1%; float:right;">
-                        <p>Welcome <?php echo session()->get('Name'); ?></p>
-                    </div>
-                    {{-- End buttons --}}
-                @endif
+            <div style="margin-left: 5%; float:left;">
+                <h2 >Product List</h2>
+            </div>
+                {{-- End buttons --}}
                 <table class="table table-hover">
                     <thead>
                         <tr style="text-align: center">
