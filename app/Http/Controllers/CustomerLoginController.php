@@ -33,6 +33,7 @@ class CustomerLoginController extends Controller
         ]);
 
         $user = Customers::where('User_Username', '=', $request->username)->first();
+        
 
         if ($user) {
             if (Hash::check($request->password, $user->Customer_Password)) {

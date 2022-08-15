@@ -31,7 +31,8 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" name="userName" value="{{old('userName')}}">
+                            <label for="username">Username:</label>
+                            <input id ="username" type="text" class="form-control" placeholder="Username" name="userName" value="{{old('userName')}}">
                         </div>
                         @error('userName')
                             <div class="alert alert-danger" role="alert">
@@ -40,7 +41,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" name="password">
+                            <label for="password">Password:</label>
+                            <input id="password" type="password" class="form-control" placeholder="Password" name="password">
                         </div>
                         @error('password')
                             <div class="alert alert-danger" role="alert">
@@ -49,7 +51,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Confirm Password"
+                            <label for="confPass">Confirm password:</label>
+                            <input id="confPass" type="password" class="form-control" placeholder="Confirm Password"
                                 name="confirmPassword">
                         </div>
                         @error('password')
@@ -59,7 +62,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
+                            <label for="name">Name:</label>
+                            <input id="name" type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -68,7 +72,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
+                            <label for="email">Email:</label>
+                            <input id="email" type="email" class="form-control" placeholder="Demo@gmail.com" name="email" value="{{old('email')}}">
                         </div>
                         @error('email')
                             <div class="alert alert-danger" role="alert">
@@ -77,7 +82,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{old('phone')}}">
+                            <label for="phone">Phone number:</label>
+                            <input id="phone" type="text" class="form-control" placeholder="0123456789" name="phone" value="{{old('phone')}}">
                         </div>
                         @error('phone')
                             <div class="alert alert-danger" role="alert">
@@ -86,7 +92,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Address" name="address" value="{{old('address')}}">
+                            <label for="address">Address:</label>
+                            <input id="address"type="text" class="form-control" placeholder="Address" name="address" value="{{old('address')}}">
                         </div>
                         @error('address')
                             <div class="alert alert-danger" role="alert">
@@ -109,7 +116,8 @@
                         @enderror
 
                         <div class="form-group">
-                            <input type="date" class="form-control" placeholder="Birth Day" name="DoB"  value="{{old('DoB')}}">
+                            <label for="dob">Date of birth:</label>
+                            <input id="dob" type="date" class="form-control" placeholder="Birth Day" name="DoB"  value="{{old('DoB')}}">
                         </div>
                         @error('DoB')
                             <div class="alert alert-danger" role="alert">
