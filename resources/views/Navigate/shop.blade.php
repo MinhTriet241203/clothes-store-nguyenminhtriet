@@ -121,7 +121,7 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Categories</h1>
                 <ul class="list-unstyled templatemo-accordion">
-                    @foreach ($data as $row)
+                    @foreach ($categories as $row)
                     <li class="pb-3">
                         <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
                             {{$row->Category_Name}}

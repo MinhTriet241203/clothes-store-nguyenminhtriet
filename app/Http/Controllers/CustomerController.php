@@ -58,8 +58,9 @@ class CustomerController extends Controller
 
     public function about()
     {
+        $categories = Categories::get();
         $data = Products::get();
-        return view('Navigate.about', compact('data'));
+        return view('Navigate.about', compact('data','categories'));
     }
 
     public function contact()
