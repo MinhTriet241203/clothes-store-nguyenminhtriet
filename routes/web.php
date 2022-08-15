@@ -19,9 +19,7 @@ use App\Http\Controllers\CustomerLoginController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 //*Product routing
@@ -66,18 +64,19 @@ Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Dele
 
 Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
-Route::get('shopSingle', [CustomerController::class, 'shopSingle']);
+Route::get('shopSingle/{id}', [CustomerController::class, 'shopSingle']);
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('contact', [CustomerController::class, 'contact']);
+Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run sign in page
+Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
-Route::get('listCustomer', [CustomerController::class, 'index']); //VIew customer on admin page
+Route::post('cart', [CustomerController::class, 'cart']); 
+
 
 //*user
 
-Route::get('customerLogin', [CustomerLoginController::class, 'login']);
-Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login page
-Route::get('registerCustomer', [CustomerLoginController::class, 'registration']); //add Customer page
+Route::get('registerCustomer', [CustomerLoginController::class, 'registration']);//add Customer page
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
-Route::get('customerLogOut', [CustomerLoginController::class, 'logOut'])->name('customerLogOut'); //pull session to log out. //!not a page
+Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
