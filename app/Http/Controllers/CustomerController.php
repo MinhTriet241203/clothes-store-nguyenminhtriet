@@ -18,7 +18,7 @@ class CustomerController extends Controller
         $request->validate([
             'userName' => 'required|unique:Customers,Customer_Username',
             'name' => 'required',
-            'password' => 'required_with:confirmPassword|same:confirmPassword',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'confirmPassword' => 'required',
             'email' => 'required|unique:Customers',
             'phone' => 'required',
