@@ -56,6 +56,7 @@
                             <tr style="text-align: center">
                                 <th>Category ID</th>
                                 <th>Category Name</th>
+                                <th>Image</th>
                                 @if (Session::has('LoginID'))
                                     <th>Actions</th>
                                 @endif
@@ -67,7 +68,8 @@
                             @foreach ($data as $row)
                                 <tr>
                                     <td style="text-align: center">{{ $row->Category_ID }}</td>
-                                    <td style="text-align: left">{{ $row->Category_Name }}</td>
+                                    <td style="text-align: center">{{ $row->Category_Name }}</td>
+                                    <td style="text-align: center"><img src="img/categories/{{$row->Category_Image}}" alt="" height="100px" width="auto"></td>
 
                                     @if (Session::has('LoginID'))
                                         <td style="text-align: center">

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Categories;
+use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
-use Illuminate\Database\DBAL\TimestampType;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\DBAL\TimestampType;
 
 class CategoryController extends Controller
 {
@@ -27,11 +27,10 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required'
         ]);
-
         $category = new Categories();
 
-        $filename = Date('usiHd') . $request->Category_Image->getClientOriginalName(); //move uploaded image to category folder then save the name
-        $request->Category_Image->move(public_path('\img\categories'), $filename);
+        $filename = Date('usiHd').$request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
+        $request->image->move(public_path('\img\categories'), $filename);
 
         $category->Category_Name = $request->name;
         $category->Category_Image = $filename;
@@ -52,11 +51,21 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required',
         ]);
-
         $id = $request->id;
+
+        $data = Categories::where('Category_ID', '=', $id)->first();
+        $file = $data->Category_Image;
+        $path = public_path('img/categories/' . $file);
+        if (File::exists($path) && $path !== 'img/categories/') {
+            File::delete($path);
+        }
+
+        $filename = Date('usiHd') . $request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
+        $request->image->move(public_path('\img\categories'), $filename);
+
         Categories::where('Category_ID', '=', $id)->update([
             'Category_Name' => $request->name,
-            'Category_Image' => $request->image
+            'Category_Image' => $filename
         ]);
         return redirect()->back()->with('success', 'Category updated successfully!');
     }
@@ -64,7 +73,7 @@ class CategoryController extends Controller
     public function delete($id)
     {
         $data = Categories::where('Category_ID', '=', $id)->first();
-        $path = public_path('img/categories/' . $data->Category_Image);
+        $path = public_path('img/categories/'.$data->Category_Image);
         File::delete($path);
         Categories::where('Category_ID', '=', $id)->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
