@@ -219,7 +219,7 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
         <div class="row" style="justify-content: center">
-            @foreach ($categories as $cat)
+            @foreach ($categoriesF as $cat)
                 <div class="col-12 col-md-4 p-5 mt-3">
                     <a href="#"><img
                             style="
@@ -227,7 +227,7 @@ https://templatemo.com/tm-559-zay-shop
                         margin-left: auto;
                         margin-right: auto;
                         width: 70%;"
-                            src="img/categories/{{ $cat->Category_Image }}" class="rounded-circle img-fluid border">
+                            src="img/categories/{{ $cat->Category_Image}}" class="rounded-circle img-fluid border">
                     </a>
                     <h5 class="text-center mt-3 mb-3">{{ $cat->Category_Name }}</h5>
                     <p class="text-center"><a class="btn btn-success" href="">Go Shop</a></p>

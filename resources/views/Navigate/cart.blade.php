@@ -173,6 +173,7 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
             </div>
     </section>
+    @include('Footer')
 </body>
 
 </html>
