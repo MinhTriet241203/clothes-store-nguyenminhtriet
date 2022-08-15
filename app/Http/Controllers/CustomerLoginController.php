@@ -31,7 +31,7 @@ class CustomerLoginController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
-        dd ($request);
+        dd($request);
 
         $user = Customers::where('Customer_Username', '=', $request->username)->first();
 
