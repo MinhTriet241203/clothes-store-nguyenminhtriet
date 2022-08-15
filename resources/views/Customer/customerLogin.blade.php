@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="Password" name="password">
                         </div>
-                        @error('username')
+                        @error('password')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
