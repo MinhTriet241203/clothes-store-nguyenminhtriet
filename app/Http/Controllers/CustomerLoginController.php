@@ -49,10 +49,10 @@ class CustomerLoginController extends Controller
 
     public function logOut()
     {
-        if (session()->has('LoginID')) {
+        if (session()->has('customerLoginID')) {
             session()->pull('customerLoginID');
             session()->pull('customerName');
-            return redirect('loginCustomer');
+            return redirect('/');
         }
     }
 }

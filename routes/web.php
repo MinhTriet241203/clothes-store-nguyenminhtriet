@@ -79,4 +79,4 @@ Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login 
 Route::get('registerCustomer', [CustomerLoginController::class, 'registration']); //add Customer page
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
-Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
+Route::get('customerLogOut', [CustomerLoginController::class, 'logOut'])->name('customerLogOut'); //pull session to log out. //!not a page
