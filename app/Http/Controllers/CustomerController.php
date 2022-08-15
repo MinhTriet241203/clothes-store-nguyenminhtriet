@@ -28,7 +28,7 @@ class CustomerController extends Controller
         ]);
 
         $customers = new Customers();
-        
+
         $customers->Customer_Username = $request->userName;
         $customers->Customer_Password = Hash::make($request->password);
         $customers->Customer_Name = $request->name;
@@ -45,40 +45,42 @@ class CustomerController extends Controller
 
     public function homepage()
     {
-        $data = Categories::get();
-        $categories = Categories::inRandomOrder()->limit(6)->get(); //asking to get only 6 categories randomly for featured
-        return view('Navigate.home', compact('categories','data'));
+        $categories = Categories::get();
+        $categoriesF = Categories::inRandomOrder()->limit(6)->get(); //asking to get only 6 categories randomly for featured
+        return view('Navigate.home', compact('categoriesF', 'categories'));
     }
+
     public function shop()
     {
-        $data = Products::get();
-        return view('Navigate.shop', compact('data'));
+        $categories = Categories::get();
+        return view('Navigate.shop', compact('categories'));
     }
+
     public function about()
     {
         $data = Products::get();
         return view('Navigate.about', compact('data'));
     }
+
     public function contact()
     {
-        return view('Navigate.contact');
+        $categories = Categories::get();
+        return view('Navigate.contact', compact('categories'));
     }
+
     public function shopSingle()
     {
         $data = Products::get();
         return view('Navigate.shopSingle', compact('data'));
     }
 
-    
     public function cart()
     {
+        $categories = Categories::get();
         $data = Products::get();
-        return view('Navigate.cart', compact('data'));
+        return view('Navigate.cart', compact('data','categories'));
     }
-    
-    
-    
-    
+
     //!View customers on admin page
     public function index()
     {

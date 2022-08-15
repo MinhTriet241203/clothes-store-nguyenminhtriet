@@ -219,7 +219,7 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
         <div class="row" style="justify-content: center">
-            @foreach ($categories as $cat)
+            @foreach ($categoriesF as $cat)
                 <div class="col-12 col-md-4 p-5 mt-3">
                     <a href="#"><img
                             style="
