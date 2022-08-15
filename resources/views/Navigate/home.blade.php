@@ -87,9 +87,9 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         {{-- TODO: add dropdown --}}
                     </a>
-                    @if (Session()->has('UserLogID'))
+                    @if (Session()->has('customerLoginID'))
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
-                            <p>Welcome : <?php echo session()->get('Name'); ?></p>
+                            <p>Welcome : <?php echo session()->get('customerName'); ?></p>
                         </div>
                     @endif
                 </div>
