@@ -85,17 +85,19 @@ https://templatemo.com/tm-559-zay-shop
 
                     
                     @if (Session()->has('customerLoginID'))
-                        <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
-                            <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            {{-- TODO: add dropdown --}}
-                        </a>
+                        
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
                             <p>Welcome : <?php echo session()->get('customerName'); ?></p>
                         </div>
                         <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
                         href="{{ url('customerLogOut') }}">
                         <i class="fas fa-sign-out-alt"></i>
-                    </a>                    
+                    </a> 
+                    @else
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        {{-- TODO: add dropdown --}}
+                    </a>
                     @endif
                 </div>
             </div>
