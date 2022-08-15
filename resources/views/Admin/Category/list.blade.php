@@ -19,7 +19,7 @@
                 </div> --}}
                 @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
+                    <a href="{{ url('addCategory') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     </div>
                 @endif
