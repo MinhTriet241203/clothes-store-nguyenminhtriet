@@ -43,6 +43,16 @@ class CustomerController extends Controller
         return redirect()->back()->with('success', 'Customers added successfully!');
     }
 
+    public function delete($id)
+    {
+        if ($id) {
+            Customers::where('Customer_Username', '=', $id)->delete();
+            return redirect()->back()->with('success', 'Customer deleted successfully');
+        }else{
+            return redirect()->back()->with('fail', 'Failed to delete customer, maybe because none was selected?');
+        }
+    }
+
     public function homepage()
     {
         $categories = Categories::get();
