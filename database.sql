@@ -50,7 +50,8 @@ CREATE TABLE `Order_Details` (
 CREATE TABLE `Admins` (
   `Admin_Username` varchar(100) PRIMARY KEY NOT NULL,
   `Admin_Password` text NOT NULL,
-  `Admin_Name` varchar(50) NOT NULL
+  `Admin_Name` varchar(50) NOT NULL,
+  `Admin_Class` varchar(15) NOT NULL,
 );
 
 ALTER TABLE `Products` ADD FOREIGN KEY (`Category_ID`) REFERENCES `Categories` (`Category_ID`);
@@ -61,4 +62,4 @@ ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Order_ID`) REFERENCES `Orders` (`O
 
 ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Product_ID`) REFERENCES `Products` (`Product_ID`);
 
-INSERT INTO `admins` (`Admin_Username`, `Admin_Password`, `Admin_Name`) VALUES ('admin', 'admin', 'admin');
+INSERT INTO `admins` (`Admin_Username`, `Admin_Password`, `Admin_Name`, `Admin_Class` ) VALUES ('admin', 'admin', 'admin', 'FullControl');
