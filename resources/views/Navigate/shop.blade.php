@@ -149,7 +149,14 @@ https://templatemo.com/tm-559-zay-shop
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
-                                <img class="card-img rounded-0 img-fluid" src="img/shop_01.jpg">
+                                <?php
+                                    $path = 'img/products/';
+                                    $ImagesAll = explode('@@@', $showProducts->Images);
+                                    $item = reset($ImagesAll);                                    
+                                    $img = $path . $item;
+                                    echo "<img class='card-img rounded-0 img-fluid' src='$img'>";
+                                    
+                                ?>
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
