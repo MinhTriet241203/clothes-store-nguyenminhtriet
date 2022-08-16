@@ -145,6 +145,7 @@ https://templatemo.com/tm-559-zay-shop
                     </div>
                 </div>
                 <div class="row">
+                    @foreach ($products as $showProducts)
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
@@ -163,7 +164,7 @@ https://templatemo.com/tm-559-zay-shop
                                 </div>
                             </div>
                             <div class="card-body">
-                                <a href="{{ url('shopSingle') }}" class="h3 text-decoration-none">Oupidatat non</a>
+                                <a href="{{ url('shopSingle') }}" class="h3 text-decoration-none">{{ $showProducts->Product_Name }}</a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                     <li>M/L/X/XL</li>
                                     <li class="pt-2">
@@ -183,10 +184,11 @@ https://templatemo.com/tm-559-zay-shop
                                     <li>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">$250.00</p>
+                                <p class="text-center mb-0">{{ $showProducts->Price }}</p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
