@@ -1,4 +1,5 @@
 @include('Admin.Navigation_bar');
+
 <head>
     <title>Customer List</title>
 </head>
@@ -27,6 +28,7 @@
                             <th style="text-align: center">Address</th>
                             <th style="text-align: center">Gender</th>
                             <th style="text-align: center">Date of Birth</th>
+                            <th style="text-align: center">Actions</th>
                         </tr>
                         {{-- End table header --}}
                     </thead>
@@ -42,6 +44,11 @@
                                 <td style="text-align: center">{{ $row->Address }}</td>
                                 <td style="text-align: center">{{ $row->Gender }}</td>
                                 <td style="text-align: center">{{ $row->Date_of_Birth }}</td>
+                                <td style="text-align: center">
+                                    <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm delete?')">
+                                        <i class="fas fa-trash-alt"></i></a>
+                                </td>
                             </tr>
                         @endforeach
                         {{-- End fetching table data --}}

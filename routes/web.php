@@ -72,6 +72,7 @@ Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run si
 Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 Route::get('listCustomer', [CustomerController::class, 'index']); //!List customer on ADMIN page
+Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete']); //!not a page.
 
 //*user
 
