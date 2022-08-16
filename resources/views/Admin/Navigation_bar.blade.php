@@ -93,7 +93,7 @@
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     @else
-                        <a class="nav-icon position-relative text-decoration-none" href="{{ url('adminLogin') }}">
+                        <a class="nav-icon position-relative text-decoration-none" href="{{ url('loginAdmin') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         </a>
                     @endif
