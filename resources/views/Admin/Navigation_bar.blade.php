@@ -54,8 +54,8 @@
                                 <i class="fas fa-angle-down"></i>
                             </p>
                             <ul>
-                                <li><a href="listAdmin">Admins</a></li>
-                                <li><a href="listCustomer">Customers</a></li>
+                                <li><a href="listAdmin"><p class="nav-link">Admins</p></a></li>
+                                <li><a href="listCustomer"><p class="nav-link">Customers</p></a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -75,8 +75,8 @@
                                 <i class="fas fa-angle-down"></i>
                             </p>
                             <ul>
-                                <li><a href="">Orders</a></li>
-                                <li><a href="">Sales</a></li>
+                                <li><a href=""><p class="nav-link">Orders</p></a></li>
+                                <li><a href=""><p class="nav-link">Sales</p></a></li>
                             </ul>
                         </li>
                     </ul>
