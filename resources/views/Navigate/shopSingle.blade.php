@@ -207,14 +207,8 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-    </section>
-    <!-- Close Content -->
-=======
-    </div>
 </section>
 <!-- Close Content -->
->>>>>>> a04d2e0ff011d34d34992972459c6a26bb8ec7dc
 
 <!-- Start Article -->
 <section class="py-5">
@@ -262,28 +256,22 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
 
     </div>
 </section>
 <!-- End Article -->
-    @include('Footer')
-            <div class="row pt-2">
-                <div class="col-12">
-                    <p class="text-left text-light">
-                        Copyright &copy; 2021 Company Name
-                        | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+
+@include('Footer')
+<div class="row pt-2">
+    <div class="col-12">
+        <p class="text-left text-light">
+            Copyright &copy; 2021 Company Name
+            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+        </p>
     </div>
-
-</footer>
-<!-- End Footer -->
-
+</div>
 <!-- Start Script -->
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
