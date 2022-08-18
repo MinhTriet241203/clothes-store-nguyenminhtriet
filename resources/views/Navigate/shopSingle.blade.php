@@ -1,6 +1,5 @@
 @include('Header')
 
-<<<<<<< HEAD
     <!-- Open Content -->
     <section class="bg-light">
         <div class="container pb-5">
@@ -24,11 +23,9 @@
                             data-bs-ride="carousel">
                             <!--Start Slides-->
                             <div class="carousel-inner product-links-wap" role="listbox">
-=======
 <head>
     <title>Product</title>
 </head>
->>>>>>> a04d2e0ff011d34d34992972459c6a26bb8ec7dc
 
 <!-- Open Content -->
 <section class="bg-light">
@@ -1311,7 +1308,6 @@
 
 
     @include('Footer')
-=======
             <div class="row pt-2">
                 <div class="col-12">
                     <p class="text-left text-light">
@@ -1333,8 +1329,6 @@
 <script src="js/templatemo.js"></script>
 <script src="js/custom.js"></script>
 <!-- End Script -->
->>>>>>> a04d2e0ff011d34d34992972459c6a26bb8ec7dc
-
 <!-- Start Slider Script -->
 <script src="js/slick.min.js"></script>
 <script>
