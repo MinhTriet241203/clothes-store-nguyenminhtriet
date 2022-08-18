@@ -14,7 +14,7 @@ CREATE TABLE `Products` (
   `Price` int(4) NOT NULL,
   `Details` text,
   `Images` text NOT NULL,
-  `Size` varchar(10) NOT NULL,
+  `Size` text NOT NULL,
   `Available` int(4) NOT NULL
 );
 

@@ -24,7 +24,7 @@ use App\Http\Controllers\CustomerLoginController;
 
 //*Product routing
 
-Route::get('listProduct', [ProductController::class, 'index']);
+Route::get('listProduct', [ProductController::class, 'index'])->middleware('isLoggedIn');
 Route::get('addProduct', [ProductController::class, 'add'])->middleware('isLoggedIn');
 Route::post('saveProduct', [ProductController::class, 'save'])->middleware('isLoggedIn'); //!not a page.
 Route::get('editProduct/{id}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
