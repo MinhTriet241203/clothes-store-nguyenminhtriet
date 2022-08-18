@@ -64,7 +64,7 @@ Route::get('deleteCategory/{id}', [CategoryController::class, 'delete'])->middle
 
 Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
-Route::get('shopSingle', [CustomerController::class, 'shopSingle']); //!Add /{id} to shopSingle link
+Route::get('shopSingle/{id}', [CustomerController::class, 'shopSingle']); //!Add /{id} to shopSingle link
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('cart', [CustomerController::class, 'cart']);
 Route::get('contact', [CustomerController::class, 'contact']);
