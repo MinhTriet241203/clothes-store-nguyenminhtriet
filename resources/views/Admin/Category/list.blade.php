@@ -1,4 +1,4 @@
-@include('Admin.Navigation_bar');
+@include('Admin.Navigation_bar')
 <head><title>Category List</title></head>
 
     <div class="container" style="margin-top: 20px;">
