@@ -121,7 +121,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h2">{{ $data->Product_Name }}</h1>
-                        <p class="h3 py-2">${{ $data->Price }}/p>
+                        <p class="h3 py-2">${{ $data->Price }}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <h6>Category</h6>
