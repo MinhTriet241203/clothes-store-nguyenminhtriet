@@ -45,16 +45,24 @@
                     {{-- Enter class --}}
                     <div class="md-3">
                         <label for="class" class="form-label">Admin class</label>
-                        <select name="class" class="form-control form-select" value="{{ old('class') }}"
-                            style="width: 200px">
+                        @if ( $data->Admin_Name !== "admin" )
+                            <select name="class" class="form-control form-select" value="{{ old('class') }}"
+                                style="width: 200px">
                             @if ( $data->Admin_Class == "Read Only" )
-                            <option value="Read Only" selected>Read only</option>
-                            <option value="Full Control">Full control</option>
+                                <option value="Read Only" selected>Read Only</option>
+                                <option value="Full Control">Full Control</option>
+                            @else
+                                <option value="Read Only">Read Only</option>
+                                <option value="Full Control" selected>Full Control</option>
+                            @endif
+                            </select>
                         @else
-                            <option value="Read Only">Read only</option>
-                            <option value="Full Control" selected>Full control</option>
-                        @endif
-                        </select>
+                            <select name="class" class="form-control form-select"
+                                style="width: 200px" disabled>
+                                <option value="Read Only">Read Only</option>
+                                <option value="Full Control" selected>Full Control</option>
+                            </select>
+                        @endif 
                     </div>
                     @error('name')
                         <div class="alert alert-danger" role="alert">
@@ -79,7 +87,7 @@
                         <input type="password" class="form-control" placeholder="Confirm password"
                             name="confirm_password">
                     </div>
-                    @error('password')
+                    @error('password_confirmation')
                         <div class="alert alert-danger" role="alert">
                             {{ $message }}
                         </div>
