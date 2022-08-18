@@ -84,7 +84,7 @@
                 </form>
                 {{-- end form --}}
                 <br>
-                <a href="loginAdmin" class="btn btn-success">Login Admin</a>
+                <a href="{{ url('loginAdmin') }}" class="btn btn-success">Login Admin</a>
             </div>
         </div>
     </div>
