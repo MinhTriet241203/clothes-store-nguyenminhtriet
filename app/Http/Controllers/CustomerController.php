@@ -82,9 +82,10 @@ class CustomerController extends Controller
 
     public function shopSingle($id)
     {
+        $categories = Categories::get();
         $data = Products::where('Product_ID', '=' ,$id)->first();
         //session()->put('ProductID', $user->Customer_ID);
-        return view('Navigate.shopSingle', compact('data'));
+        return view('Navigate.shopSingle', compact('data','categories'));
     }
 
     public function cart()
