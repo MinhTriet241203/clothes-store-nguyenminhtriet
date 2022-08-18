@@ -1,6 +1,7 @@
 #primary_nav_wrap
 {
-	margin-top:15px
+	margin-top:15px;
+	color: #69bb7e !important;
 }
 
 #primary_nav_wrap ul
@@ -19,26 +20,26 @@
 	text-decoration:none;
 	font-weight:700;
 	font-size:12px;
-	line-height:20px;
+	height: 100%;
 	padding:0 15px;
-	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif
+	font-family:"HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 #primary_nav_wrap ul li
 {
 	position:relative;
 	margin:0;
-	padding:0
+	padding:0;
 }
 
 #primary_nav_wrap ul li.current-menu-item
 {
-	background:#ddd
+	background:#ddd;
 }
 
 #primary_nav_wrap ul li:hover
 {
-	background:#f6f6f6
+	background:#f6f6f6;
 }
 
 #primary_nav_wrap ul ul
@@ -61,18 +62,18 @@
 #primary_nav_wrap ul ul a
 {
 	line-height:100%;
-	padding:10px 10px
+	padding:10px 10px;
 }
 
 #primary_nav_wrap ul ul ul
 {
 	top:0;
-	left:100%
+	left:100%;
 }
 
 #primary_nav_wrap ul li:hover > ul
 {
-	display:block
+	display:block;
 }
 
 .nav-link
