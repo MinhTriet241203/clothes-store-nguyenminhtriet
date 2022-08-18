@@ -83,8 +83,8 @@ class CustomerController extends Controller
     public function shopSingle($id)
     {
         $categories = Categories::get();
-        $data = Products::where('Product_ID', '=' ,$id)->first();
-        //session()->put('ProductID', $user->Customer_ID);
+        $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+                        ->where('Product_ID', '=' ,$id)->first();
         return view('Navigate.shopSingle', compact('data','categories'));
     }
 
@@ -100,6 +100,12 @@ class CustomerController extends Controller
     {
         $data = Customers::get();
         return view('Admin.Customer.list', compact('data'));
+    }
+
+    public function shopCategory($id){
+        $categories = Categories::get();//take database Categories into $categories
+        $products = Products::where('Category_ID','=',$id);
+        return view('Navigate.shop', compact('categories','products'));
     }
    
 }

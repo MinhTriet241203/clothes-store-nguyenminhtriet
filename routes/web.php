@@ -74,6 +74,7 @@ Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('isLoggedIn'); //!List customer on ADMIN page
 Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 Route::get('customerAddCart', [CustomerController::class, 'addCart']); //create session to add card. //!not a page
+Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //create session to add card. //!not a page
 
 //*user
 
@@ -82,4 +83,5 @@ Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
+
 

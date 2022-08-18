@@ -51,7 +51,7 @@ https://templatemo.com/tm-559-zay-shop
                 id="templatemo_main_nav">
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul class="nav navbar-nav d-flex justify-content-between">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>

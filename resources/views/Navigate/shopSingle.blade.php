@@ -127,31 +127,12 @@
                                 <h6>Category</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>Yoga</strong></p>
+                                <p class="text-muted"><strong>{{$data->Category_Name}}</strong></p>
                             </li>
                         </ul>
 
                         <h6>Description:</h6>
                         <p>{{ $data->Details }}</p>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <h6>Avaliable Color :</h6>
-                            </li>
-                            <li class="list-inline-item">
-                                <p class="text-muted"><strong>White / Black</strong></p>
-                            </li>
-                        </ul>
-
-                        <h6>Specification:</h6>
-                        <ul class="list-unstyled pb-3">
-                            <li>Lorem ipsum dolor sit</li>
-                            <li>Amet, consectetur</li>
-                            <li>Adipiscing elit,set</li>
-                            <li>Duis aute irure</li>
-                            <li>Ut enim ad minim</li>
-                            <li>Dolore magna aliqua</li>
-                            <li>Excepteur sint</li>
-                        </ul>
 
                         <form action="" method="GET">
                             <input type="hidden" name="product-title" value="Activewear">
