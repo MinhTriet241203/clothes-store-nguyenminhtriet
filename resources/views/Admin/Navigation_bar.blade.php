@@ -54,27 +54,29 @@
                                 <i class="fas fa-angle-down"></i>
                             </p>
                             <ul>
-                                <li><a href="listAdmin">Admins</a></li>
-                                <li><a href="listCustomer">Customers</a></li>
+                                <li><a href="listAdmin"><p class="nav-link">Admins</p></a></li>
+                                <li><a href="listCustomer"><p class="nav-link">Customers</p></a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="listProduct">
                             <p class="nav-link">
-                                <a href="listProduct">Products</a>
-                            </p>
+                                Products
+                            </p></a>
                         </li>
                         <li class="nav-item">
+                            <a href="listCategory">
                             <p class="nav-link">
-                                <a href="listCategory">Categories</a>
-                            </p>
+                                Categories
+                            </p></a>
                         </li>
                         <li class="nav-item">
                             <p class="nav-link" href="{{ url('contact') }}">Analytics
                                 <i class="fas fa-angle-down"></i>
                             </p>
                             <ul>
-                                <li><a href="">Orders</a></li>
-                                <li><a href="">Sales</a></li>
+                                <li><a href=""><p class="nav-link">Orders</p></a></li>
+                                <li><a href=""><p class="nav-link">Sales</p></a></li>
                             </ul>
                         </li>
                     </ul>
