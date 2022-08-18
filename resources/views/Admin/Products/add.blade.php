@@ -1,4 +1,4 @@
-@include('Admin.Navigation_bar');
+@include('Admin.Navigation_bar')
 
 <head>
     <title>Add product</title>
@@ -18,7 +18,8 @@
                 @csrf
                 <div class="md-3">
                     <label for="name" class="form-label">Product Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Enter product name" value="{{old('name')}}">
+                    <textarea type="number" name="name" class="form-control" placeholder="Enter product name"
+                        style="width: 500px; height:75px">{{ old('name') }}</textarea>
                 </div>
                 @error('name')
                     <div class="alert alert-danger" role="alert">
@@ -28,7 +29,8 @@
 
                 <div class="md-3">
                     <label for="category" class="form-label">Category</label>
-                    <select name="category" class="form-control" value="{{old('category')}}">
+                    <select name="category" class="form-control form-select" value="{{ old('category') }}"
+                        style="width: 200px">
                         @foreach ($data as $row)
                             <option value="{{ $row->Category_ID }}">{{ $row->Category_Name }}</option>
                         @endforeach
@@ -42,7 +44,8 @@
 
                 <div class="md-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="number" name="price" class="form-control" placeholder="Enter product price" value="{{old('price')}}">
+                    <input type="number" name="price" class="form-control" placeholder="Product price"
+                        value="{{ old('price') }}" style="width: 150px">
                 </div>
                 @error('price')
                     <div class="alert alert-danger" role="alert">
@@ -52,7 +55,8 @@
 
                 <div class="md-3">
                     <label for="details" class="form-label">Details</label>
-                    <textarea type="number" name="details" class="form-control" placeholder="Enter product details">{{old('details')}}</textarea>
+                    <textarea type="number" name="details" class="form-control" placeholder="Enter product details"
+                        style="width: 500px; height:150px">{{ old('details') }}</textarea>
                 </div>
                 @error('details')
                     <div class="alert alert-danger" role="alert">
@@ -62,7 +66,8 @@
 
                 <div class="md-3">
                     <label for="images" class="form-label">Images</label>
-                    <input type="file" name="images[]" class="form-control" multiple value="{{old('images[]')}}">
+                    <input type="file" name="images[]" class="form-control" multiple value="{{ old('images[]') }}"
+                        style="width: 350px">
                 </div>
                 @error('images')
                     <div class="alert alert-danger" role="alert">
@@ -109,7 +114,8 @@
 
                 <div class="md-3">
                     <label for="available" class="form-label">Available</label>
-                    <input type="number" name="available" class="form-control" placeholder="Enter available" value="{{old('available')}}">
+                    <input type="number" name="available" class="form-control" placeholder="Enter available"
+                        value="{{ old('available') }}" style="width: 160px">
                 </div>
                 @error('available')
                     <div class="alert alert-danger" role="alert">
@@ -117,9 +123,9 @@
                     </div>
                 @enderror
                 <br>
-
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="{{ url('listProduct') }}" class="btn btn-danger">Back</a>
+                <br><br><br><br><br><br>
             </form>
         </div>
     </div>
