@@ -39,6 +39,7 @@
                     @enderror
 
                     {{-- Enter class --}}
+                    <br>
                     <div class="form-group">
                         <label for="class">Admin class</label>
                         <select name="class">
@@ -46,7 +47,9 @@
                             <option value="Full Control">Full control</option>
                         </select>
                     </div>
-                    @error('username')
+                    <br>
+
+                    @error('class')
                         <div class="alert alert-danger" role="alert">
                             {{ $message }}
                         </div>
