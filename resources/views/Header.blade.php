@@ -18,13 +18,6 @@
     <link rel="stylesheet" href="../css/fontawesome.min.css">
     <link rel="stylesheet" type="text/css" href="../css/slick.min.css">
     <link rel="stylesheet" type="text/css" href="../css/slick-theme.css">
-    <!--
-    
-TemplateMo 559 Zay Shop
-
-https://templatemo.com/tm-559-zay-shop
-
--->
 </head>
 
 <body>
