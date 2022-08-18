@@ -47,12 +47,10 @@
                                 <div
                                     class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i
-                                                    class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
                                                 href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
-                                                href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i class="fas fa-cart-plus"></i></a>
+                                                href="{{url('addCart/' . $showProducts->Product_ID)}}"><i class="fas fa-cart-plus"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -78,7 +76,7 @@
                                     <li>
                                     </li>
                                 </ul>
-                                <p class="text-center mb-0">{{ $showProducts->Price }}</p>
+                                <p class="text-center mb-0" style="color: #59ab6e; font-size: 25px !important;">${{ $showProducts->Price }}</p>
                             </div>
                         </div>
                     </div>
