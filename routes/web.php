@@ -54,7 +54,7 @@ Route::get('adminLogOut', [AdminLoginController::class, 'logOut']); //pull sessi
 
 //*category routing
 
-Route::get('listCategory', [CategoryController::class, 'index']); //List category page
+Route::get('listCategory', [CategoryController::class, 'index'])->middleware('isLoggedIn'); //List category page
 Route::get('addCategory', [CategoryController::class, 'add'])->middleware('isLoggedIn'); //Add new category page
 Route::post('saveCategory', [CategoryController::class, 'save'])->middleware('isLoggedIn'); //Save category on add new //!not a page
 Route::get('editCategory/{id}', [CategoryController::class, 'edit'])->middleware('isLoggedIn'); //Edit category page
