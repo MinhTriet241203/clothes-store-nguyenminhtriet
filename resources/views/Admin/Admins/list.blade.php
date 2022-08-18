@@ -68,6 +68,7 @@
                                 <tr>
                                     <td style="text-align: center">{{ $row->Admin_Username }}</td>
                                     <td style="text-align: center">{{ $row->Admin_Name }}</td>
+                                    <td style="text-align: center">{{ $row->Admin_Class }}</td>
                                     <td style="text-align: center">
                                         <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                             class="btn btn-primary">

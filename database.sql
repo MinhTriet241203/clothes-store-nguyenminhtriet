@@ -62,4 +62,4 @@ ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Order_ID`) REFERENCES `Orders` (`O
 
 ALTER TABLE `Order_Details` ADD FOREIGN KEY (`Product_ID`) REFERENCES `Products` (`Product_ID`);
 
-INSERT INTO `admins` (`Admin_Username`, `Admin_Password`, `Admin_Name`, `Admin_Class` ) VALUES ('admin', 'admin', 'admin', 'FullControl');
+INSERT INTO `admins` (`Admin_Username`, `Admin_Password`, `Admin_Name`, `Admin_Class` ) VALUES ('admin', 'admin', 'admin', 'Full Control');
