@@ -43,17 +43,17 @@
                     @enderror
                     
                     {{-- Enter class --}}
-                    <br>
                     <div class="md-3">
-                        <label for="class" class="form-label">Admin Class</label>
-                        <select name="class">
+                        <label for="class" class="form-label">Admin class</label>
+                        <select name="class" class="form-control form-select" value="{{ old('class') }}"
+                            style="width: 200px">
                             @if ( $data->Admin_Class == "Read Only" )
-                                <option value="Read Only" selected>Read only</option>
-                                <option value="Full Control">Full control</option>
-                            @else
-                                <option value="Read Only">Read only</option>
-                                <option value="Full Control" selected>Full control</option>
-                            @endif
+                            <option value="Read Only" selected>Read only</option>
+                            <option value="Full Control">Full control</option>
+                        @else
+                            <option value="Read Only">Read only</option>
+                            <option value="Full Control" selected>Full control</option>
+                        @endif
                         </select>
                     </div>
                     @error('name')

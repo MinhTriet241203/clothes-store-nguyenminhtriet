@@ -3,6 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Add a new category</h2>
+                <hr style="width: 500px;">
                 {{-- Notification --}}
                 @if (Session::has('success'))
                     <div class="alert alert-success" role="alert">
