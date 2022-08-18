@@ -1,4 +1,4 @@
-@include('Admin.Navigation_bar');
+@include('Admin.Navigation_bar')
 
 <head>
     <title>Admin List</title>
