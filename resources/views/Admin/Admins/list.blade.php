@@ -22,11 +22,19 @@
                     <a href="{{ url('listProduct') }}" class="btn btn-success">Products</a>
                 </div> --}}
 
+            {{-- Add button --}}
             @if (Session::has('LoginID'))
+                @if (session()->get('Class') == "Full Control")
                 <div style="margin-right: 1%; float:right;">
                     <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                 </div>
+                @else
+                <div style="margin-right: 1%; float:right;">
+                    <a class="btn btn-success disabled">
+                        <i class="fas fa-plus-circle"></i> Add</a>
+                </div>
+                @endif
             @endif
 
             <div style="margin-left: 5%; float:left;">
@@ -47,8 +55,29 @@
                         {{-- End table header --}}
                     </thead>
                     <tbody>
-                        {{-- Fetch table data --}}
-                        @foreach ($data as $row)
+                        
+                        {{-- Fetch table data if class is read only --}}
+                        {{-- If class is read only then disable action buttons --}}
+                        @if ( session()->get('Class') == "Read Only" )
+                            @foreach ($data as $row)
+                            <tr style="text-align: center; vertical-align:middle">
+                                <td>{{ $row->Admin_Username }}</td>
+                                <td>{{ $row->Admin_Name }}</td>
+                                <td>{{ $row->Admin_Class }}</td>
+                                <td>
+                                    <a class="btn btn-primary disabled">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-danger disabled">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        {{-- Fetch table data if class is full control --}}
+                        {{-- If class is full control then enable action buttons --}}
+                        @else
+                            @foreach ($data as $row)
                             @if ($row->Admin_Username !== 'admin')
                                 <tr style="text-align: center; vertical-align:middle">
                                     <td>{{ $row->Admin_Username }}</td>
@@ -68,6 +97,7 @@
                                 <tr style="text-align: center; vertical-align:middle">
                                     <td>{{ $row->Admin_Username }}</td>
                                     <td>{{ $row->Admin_Name }}</td>
+                                    <td>{{ $row->Admin_Class }}</td>
                                     <td>
                                         <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                             class="btn btn-primary">
@@ -79,8 +109,8 @@
                                     </td>
                                 </tr>
                             @endif
-                        @endforeach
-                        {{-- End fetching table data --}}
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             @else

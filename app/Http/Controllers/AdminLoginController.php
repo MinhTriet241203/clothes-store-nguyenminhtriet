@@ -29,7 +29,7 @@ class AdminLoginController extends Controller
 
         $request->validate([
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
         $user = Admins::where('Admin_Username', '=', $request->username)->first();
@@ -38,6 +38,7 @@ class AdminLoginController extends Controller
             if ($request->password === $user->Admin_Password) {
                 $request->session()->put('LoginID', $user->Admin_Username);
                 $request->session()->put('Name', $user->Admin_Name);
+                $request->session()->put('Class', $user->Admin_Class);
                 return redirect('listAdmin');
             } else {
                 return back()->with('fail', 'Password do not match!');
@@ -47,6 +48,7 @@ class AdminLoginController extends Controller
             if (Hash::check($request->password, $user->Admin_Password)) {
                 $request->session()->put('LoginID', $user->Admin_Username);
                 $request->session()->put('Name', $user->Admin_Name);
+                $request->session()->put('Class', $user->Admin_Class);
                 return redirect('listAdmin');
             } else {
                 return back()->with('fail', 'Password do not match!');
