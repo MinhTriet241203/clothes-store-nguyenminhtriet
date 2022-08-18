@@ -51,7 +51,7 @@ CREATE TABLE `Admins` (
   `Admin_Username` varchar(100) PRIMARY KEY NOT NULL,
   `Admin_Password` text NOT NULL,
   `Admin_Name` varchar(50) NOT NULL,
-  `Admin_Class` varchar(15) NOT NULL,
+  `Admin_Class` varchar(15) NOT NULL
 );
 
 ALTER TABLE `Products` ADD FOREIGN KEY (`Category_ID`) REFERENCES `Categories` (`Category_ID`);
