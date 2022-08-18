@@ -13,7 +13,7 @@
 
                 {{-- Start Form --}}
                 <form action="{{ url('saveCategory') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    
                     {{-- Enter category --}}
                     <div class="md-3">
                         <label for="name" class="form-label">Category Name</label>
