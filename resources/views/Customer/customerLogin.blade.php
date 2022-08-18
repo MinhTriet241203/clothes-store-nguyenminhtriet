@@ -69,7 +69,7 @@
                         <div class="col text-center ">
                             <p style="text-align: center">OR</p>
                             <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><a
-                                    href="{{ url('registerCustomer') }}" class="home"><span>Register
+                                    href="{{ url('registerCustomer') }}" class="home" style="text-decoration: none"><span>Register
                                         now</span></a></button>
                             {{-- <a class="register" href="#">Register now</a> --}}
                         </div>
