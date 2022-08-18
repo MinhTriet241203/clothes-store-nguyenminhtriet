@@ -25,11 +25,11 @@ use App\Http\Controllers\CustomerLoginController;
 //*Product routing
 
 Route::get('listProduct', [ProductController::class, 'index']);
-Route::get('addProduct', [ProductController::class, 'add']);
-Route::post('saveProduct', [ProductController::class, 'save']); //!not a page.
-Route::get('editProduct/{id}', [ProductController::class, 'edit']);
-Route::post('updateProduct', [ProductController::class, 'update']); //!not a page.
-Route::get('deleteProduct/{id}', [ProductController::class, 'delete']); //!not a page.
+Route::get('addProduct', [ProductController::class, 'add'])->middleware('isLoggedIn');
+Route::post('saveProduct', [ProductController::class, 'save'])->middleware('isLoggedIn'); //!not a page.
+Route::get('editProduct/{id}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
+Route::post('updateProduct', [ProductController::class, 'update'])->middleware('isLoggedIn'); //!not a page.
+Route::get('deleteProduct/{id}', [ProductController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 
 
 //*Admin routing
@@ -53,11 +53,11 @@ Route::get('adminLogOut', [AdminLoginController::class, 'logOut']); //pull sessi
 //*category routing
 
 Route::get('listCategory', [CategoryController::class, 'index']); //List category page
-Route::get('addCategory', [CategoryController::class, 'add']); //Add new category page
-Route::post('saveCategory', [CategoryController::class, 'save']); //Save category on add new //!not a page
-Route::get('editCategory/{id}', [CategoryController::class, 'edit']); //Edit category page
-Route::post('updateCategory', [CategoryController::class, 'update']); //Save category on update //!not a page.
-Route::get('deleteCategory/{id}', [CategoryController::class, 'delete']); //Delete category //!not a page.
+Route::get('addCategory', [CategoryController::class, 'add'])->middleware('isLoggedIn'); //Add new category page
+Route::post('saveCategory', [CategoryController::class, 'save'])->middleware('isLoggedIn'); //Save category on add new //!not a page
+Route::get('editCategory/{id}', [CategoryController::class, 'edit'])->middleware('isLoggedIn'); //Edit category page
+Route::post('updateCategory', [CategoryController::class, 'update'])->middleware('isLoggedIn'); //Save category on update //!not a page.
+Route::get('deleteCategory/{id}', [CategoryController::class, 'delete'])->middleware('isLoggedIn'); //Delete category //!not a page.
 
 
 //*user routing
@@ -71,8 +71,8 @@ Route::get('contact', [CustomerController::class, 'contact']);
 Route::get('customerLogin', [CustomerLoginController::class, 'login']); //run sign in page
 Route::get('customerRegister', [CustomerLoginController::class, 'registration']);
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
-Route::get('listCustomer', [CustomerController::class, 'index']); //!List customer on ADMIN page
-Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete']); //!not a page.
+Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('isLoggedIn'); //!List customer on ADMIN page
+Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 
 //*user
 
