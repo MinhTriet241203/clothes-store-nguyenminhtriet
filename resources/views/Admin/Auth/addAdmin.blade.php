@@ -39,15 +39,19 @@
                     @enderror
 
                     {{-- Enter class --}}
-                    <br>
-                    <div class="form-group">
-                        <label for="class">Admin class</label>
-                        <select name="class">
-                            <option value="Read Only">Read only</option>
+                    <div class="md-3">
+                        <label for="class" class="form-label">Admin class</label>
+                        <select name="class" class="form-control form-select" value="{{ old('class') }}"
+                            style="width: 200px">
+                            <option value="Read Only" selected>Read only</option>
                             <option value="Full Control">Full control</option>
                         </select>
                     </div>
-                    <br>
+                    @error('name')
+                        <div class="alert alert-danger" role="alert">
+                            {{ $message }}
+                        </div>
+                    @enderror
 
                     @error('class')
                         <div class="alert alert-danger" role="alert">
