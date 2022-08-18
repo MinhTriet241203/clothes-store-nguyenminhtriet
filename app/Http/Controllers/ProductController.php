@@ -41,9 +41,9 @@ class ProductController extends Controller
 
         foreach ($request->images as $file) {
             $filename = Date('usiHd').$file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
-            $file->move(public_path('\img\products'), $filename); //move to path with filename, took absolutely forever
-            $resize = Image::make($filename);
+            $resize = Image::make($file->getRealPath());
             $resize->resize(210,210);
+            $resize->save('img/products/'.$filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }
 
