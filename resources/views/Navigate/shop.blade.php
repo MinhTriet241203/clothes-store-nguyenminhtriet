@@ -50,7 +50,7 @@
                                         <li><a class="btn btn-success text-white" href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i
                                                     class="far fa-heart"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
-                                                href="{{url('shopSingle/' . $showProducts->Product_ID)}}><i class="far fa-eye"></i></a></li>
+                                                href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2"
                                                 href="{{url('shopSingle/' . $showProducts->Product_ID)}}"><i class="fas fa-cart-plus"></i></a>
                                         </li>
