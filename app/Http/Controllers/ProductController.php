@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\Categories;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\File;
@@ -40,10 +41,10 @@ class ProductController extends Controller
         $sizeArr = [];
 
         foreach ($request->images as $file) {
-            $filename = Date('usiHd').$file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
+            $filename = Date('usiHd') . $file->getClientOriginalName(); //change the .temp name to its original name. Avoiding collision upto microsecond
             $resize = Image::make($file->getRealPath());
-            $resize->resize(210,210);
-            $resize->save('img/products/'.$filename); //move to path with filename, took absolutely forever
+            $resize->resize(210, 210);
+            $resize->save('img/products/' . $filename); //move to path with filename, took absolutely forever
             array_push($imgArr, $filename);
         }
 
@@ -104,5 +105,25 @@ class ProductController extends Controller
         }
         Products::where('Product_ID', '=', $id)->delete();  //Delete images before deleting the stored names of the images in DB
         return redirect()->back()->with('success', 'Product deleted successfully');
+    }
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        if ($search === "") {
+            $data = Products::get();
+            return view('Admin.Products.list', compact('data'));
+        } else {
+            $data = Products::where('Product_Name', 'LIKE', '%' . $search . '%')->get();
+            if ($data->count() !== 0) {
+                return view('Admin.Products.list')
+                    ->with('data', $data)
+                    ->with('notify', 'Showing search results for "' . $search . '".');
+            } else {
+                $data = Products::get();
+                return view('Admin.Products.list')->with('data', $data)
+                    ->with('fail', 'No result found for "' . $search . '".');
+            }
+        }
     }
 }

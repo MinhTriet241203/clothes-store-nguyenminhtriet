@@ -24,12 +24,13 @@ use App\Http\Controllers\CustomerLoginController;
 
 //*Product routing
 
-Route::get('listProduct', [ProductController::class, 'index'])->middleware('isLoggedIn');
+Route::get('listProduct', [ProductController::class, 'index'])->name('listProduct')->middleware('isLoggedIn');
 Route::get('addProduct', [ProductController::class, 'add'])->middleware('isLoggedIn');
 Route::post('saveProduct', [ProductController::class, 'save'])->middleware('isLoggedIn'); //!not a page.
 Route::get('editProduct/{id}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
 Route::post('updateProduct', [ProductController::class, 'update'])->middleware('isLoggedIn'); //!not a page.
 Route::get('deleteProduct/{id}', [ProductController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
+Route::get('searchProduct', [ProductController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
 
 
 //*Admin routing
@@ -39,6 +40,7 @@ Route::post('saveAdmin', [AdminController::class, 'save']); //!not a page.
 Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
 Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
+
 
 
 //* Admin login routing
