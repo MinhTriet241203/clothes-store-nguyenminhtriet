@@ -21,7 +21,7 @@ class CustomerController extends Controller
             'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'confirmPassword' => 'required',
             'email' => 'required|unique:Customers',
-            'phone' => 'required',
+            'phone' => 'required|min:10',
             'address' => 'required',
             'gender' => 'required',
             'DoB' => 'required'

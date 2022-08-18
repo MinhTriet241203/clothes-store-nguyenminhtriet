@@ -130,14 +130,17 @@
                     </form>
                     <div class="row">
                         <div class="col text-center ">
-                            <button class="custom-btn btn-1"><a href="{{ url('customerLogin') }}"
-                                    class="home">Login now</a></button>
+                            <a href="{{ url('customerLogin') }}" class="home">
+                                <button class="custom-btn btn-1" style="text-decoration: none">Login now</button>
+                            </a>
                             {{-- <a class="register" href="#">Register now</a> --}}
                         </div>
                         <div class="col text-center">
                             {{-- <a href="#" class="forgot-pass">Forgot password?</a> --}}
-                            <button class="custom-btn btn-1"><a href="{{ url('/') }}" class="home">To home
-                                    page</a></button>
+                            <a href="{{ url('/') }}" class="home" style="text-decoration: none">
+                                <button class="custom-btn btn-1">To home
+                                    page</button>
+                                </a>
                         </div>
                     </div>
 
