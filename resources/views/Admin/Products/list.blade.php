@@ -13,29 +13,29 @@
                 </div>
             @endif
 
-            @if(!empty($notify))
+            @if (!empty($notify))
                 <div class="alert alert-primary" role="alert">
-                    {{$notify}}
+                    {{ $notify }}
                 </div>
             @endif
-            @if(!empty($fail))
+            @if (!empty($fail))
                 <div class="alert alert-danger" role="alert">
-                    {{$fail}}
+                    {{ $fail }}
                 </div>
             @endif
 
             @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;">
+                <div style="margin-right: 1%; float:right;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     <a href="{{ url('addProduct') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                 </div>
 
                 <div style="margin-right: 1%; float:right;">
-                    <form action="{{url('searchProduct')}}" method="GET">
+                    <form action="{{ url('searchProduct') }}" method="GET">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search products" name="search">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" style="height:100%"><i
+                                <button class="btn btn-primary" type="submit" style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
                                         class="fa fa-search" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                 <h2>Product List</h2>
             </div>
             {{-- End buttons --}}
-            <table class="table table-hover">
+            <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                 <thead>
                     <tr style="text-align: center">
                         <th>ID</th>
@@ -65,7 +65,7 @@
                 </thead>
                 <tbody>
                     @foreach ($data as $row)
-                        <tr>
+                        <tr style="text-align: center; vertical-align:middle">
                             <td>{{ $row->Product_ID }}</td>
                             <td>{{ $row->Product_Name }}</td>
                             <td>{{ $row->Category_ID }}</td>
@@ -86,10 +86,12 @@
 
                             @if (Session::has('LoginID'))
                                 <td>
-                                    <a href="{{ url('editProduct/' . $row->Product_ID) }}"
-                                        class="btn btn-primary">Edit</a>
-                                    <a href="{{ url('deleteProduct/' . $row->Product_ID) }}" class="btn btn-danger"
-                                        onclick="return confirm('Confirm delete?')">Delete</a>
+                                    <a href="{{ url('editAdmin/' . $row->Product_ID) }}" class="btn btn-primary">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="{{ url('deleteAdmin/' . $row->Product_ID) }}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm delete?')">
+                                        <i class="fas fa-trash-alt"></i></a>
                                 </td>
                             @endif
                         </tr>

@@ -16,35 +16,35 @@
                 <h2>Customer List</h2>
             </div>
             @if ($data->isNotEmpty())
-                <table class="table table-hover">
+                <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     <thead>
                         {{-- Table header --}}
-                        <tr>
-                            <th style="text-align: center">ID</th>
-                            <th style="text-align: center">Username</th>
-                            <th style="text-align: center">Name</th>
-                            <th style="text-align: center">Email</th>
-                            <th style="text-align: center">Phone</th>
-                            <th style="text-align: center">Address</th>
-                            <th style="text-align: center">Gender</th>
-                            <th style="text-align: center">Date of Birth</th>
-                            <th style="text-align: center">Actions</th>
+                        <tr style="text-align: center; vertical-align:middle">
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Date of Birth</th>
+                            <th>Actions</th>
                         </tr>
                         {{-- End table header --}}
                     </thead>
                     <tbody>
                         {{-- Fetch table data --}}
                         @foreach ($data as $row)
-                            <tr>
-                                <td style="text-align: center">{{ $row->Customer_ID }}</td>
-                                <td style="text-align: center">{{ $row->Customer_Username }}</td>
-                                <td style="text-align: center">{{ $row->Customer_Name }}</td>
-                                <td style="text-align: center">{{ $row->Email }}</td>
-                                <td style="text-align: center">{{ $row->Phone }}</td>
-                                <td style="text-align: center">{{ $row->Address }}</td>
-                                <td style="text-align: center">{{ $row->Gender }}</td>
-                                <td style="text-align: center">{{ $row->Date_of_Birth }}</td>
-                                <td style="text-align: center">
+                            <tr style="text-align: center; vertical-align:middle">
+                                <td>{{ $row->Customer_ID }}</td>
+                                <td>{{ $row->Customer_Username }}</td>
+                                <td>{{ $row->Customer_Name }}</td>
+                                <td>{{ $row->Email }}</td>
+                                <td>{{ $row->Phone }}</td>
+                                <td>{{ $row->Address }}</td>
+                                <td>{{ $row->Gender }}</td>
+                                <td>{{ $row->Date_of_Birth }}</td>
+                                <td>
                                     <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}" class="btn btn-danger"
                                         onclick="return confirm('Confirm delete?')">
                                         <i class="fas fa-trash-alt"></i></a>

@@ -110,19 +110,19 @@ class ProductController extends Controller
     public function search()
     {
         $search = $_GET['search'];
-        if ($search === "") {
-            $data = Products::get();
-            return view('Admin.Products.list', compact('data'));
+        if ($search === "") {                                       //
+            $data = Products::get();                                //return with message if search field is empty
+            return view('Admin.Products.list', compact('data'));    //
         } else {
-            $data = Products::where('Product_Name', 'LIKE', '%' . $search . '%')->get();
+            $data = Products::where('Product_Name', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the product_name column
             if ($data->count() !== 0) {
-                return view('Admin.Products.list')
-                    ->with('data', $data)
-                    ->with('notify', 'Showing search results for "' . $search . '".');
+                return view('Admin.Products.list')                                          //
+                    ->with('data', $data)                                                   // return successful search data
+                    ->with('notify', 'Showing search results for "' . $search . '".');      //
             } else {
-                $data = Products::get();
-                return view('Admin.Products.list')->with('data', $data)
-                    ->with('fail', 'No result found for "' . $search . '".');
+                $data = Products::get();                                                    //
+                return view('Admin.Products.list')->with('data', $data)                     //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');               //
             }
         }
     }
