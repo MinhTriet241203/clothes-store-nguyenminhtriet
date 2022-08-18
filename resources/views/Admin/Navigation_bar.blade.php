@@ -59,14 +59,16 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="listProduct">
                             <p class="nav-link">
-                                <a href="listProduct">Products</a>
-                            </p>
+                                Products
+                            </p></a>
                         </li>
                         <li class="nav-item">
+                            <a href="listCategory">
                             <p class="nav-link">
-                                <a href="listCategory">Categories</a>
-                            </p>
+                                Categories
+                            </p></a>
                         </li>
                         <li class="nav-item">
                             <p class="nav-link" href="{{ url('contact') }}">Analytics
