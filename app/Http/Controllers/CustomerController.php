@@ -80,9 +80,10 @@ class CustomerController extends Controller
         return view('Navigate.contact', compact('categories'));
     }
 
-    public function shopSingle()
+    public function shopSingle($id)
     {
-        $data = Products::get();
+        $data = Products::where('Product_ID', '=' ,$id)->first();
+        //session()->put('ProductID', $user->Customer_ID);
         return view('Navigate.shopSingle', compact('data'));
     }
 
@@ -99,4 +100,5 @@ class CustomerController extends Controller
         $data = Customers::get();
         return view('Admin.Customer.list', compact('data'));
     }
+   
 }
