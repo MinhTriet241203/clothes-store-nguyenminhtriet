@@ -200,14 +200,7 @@
 <!-- End Article -->
 
 @include('Footer')
-<div class="row pt-2">
-    <div class="col-12">
-        <p class="text-left text-light">
-            Copyright &copy; 2021 Company Name
-            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-        </p>
-    </div>
-</div>
+
 <!-- Start Script -->
 <script src="../js/jquery-1.11.0.min.js"></script>
 <script src="../js/jquery-migrate-1.2.1.min.js"></script>
