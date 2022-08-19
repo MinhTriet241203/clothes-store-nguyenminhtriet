@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            {{-- Add button --}}
+            {{-- Add button and search --}}
             @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
                     @if ( session()->get('Class') == 'Full Control' )
