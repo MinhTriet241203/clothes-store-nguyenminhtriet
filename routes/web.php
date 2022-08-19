@@ -78,6 +78,7 @@ Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('is
 Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 Route::get('customerAddCart/{id}', [CustomerController::class, 'addCart']); //create session to add card. //!not a page
 Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop by category //!not a page
+Route::get('removeItem/{id}', [CustomerController::class, 'removeItem']); //shop by category //!not a page
 
 //*user
 

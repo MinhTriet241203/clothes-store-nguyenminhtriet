@@ -83,7 +83,6 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1" style="font-size: 18px !important"></i>
                     </a>
 
-
                     @if (Session()->has('customerLoginID'))
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
                             <p style="font-size: 18px !important">Welcome : <?php echo session()->get('customerName'); ?></p>
