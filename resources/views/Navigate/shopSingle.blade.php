@@ -88,7 +88,7 @@
                         <h6>Description:</h6>
                         <p>{{ $data->Details }}</p>
 
-                        <form action="{{ url(''customerAddCart/'. $data->Product_ID') }}" method="POST">
+                        <form action="{{ url('customerAddCart/'. $data->Product_ID) }}" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
