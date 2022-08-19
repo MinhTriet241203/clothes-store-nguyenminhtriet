@@ -30,7 +30,7 @@ Route::post('saveProduct', [ProductController::class, 'save'])->middleware('isLo
 Route::get('editProduct/{id}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
 Route::post('updateProduct', [ProductController::class, 'update'])->middleware('isLoggedIn'); //!not a page.
 Route::get('deleteProduct/{id}', [ProductController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
-Route::get('searchProduct', [ProductController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
+Route::get('searchProduct', [ProductController::class, 'search'])->middleware('isLoggedIn'); //query likeness from get to table Products//!not a page.
 
 
 //*Admin routing
@@ -40,6 +40,7 @@ Route::post('saveAdmin', [AdminController::class, 'save']); //!not a page.
 Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
 Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
+Route::get('searchAdmin', [AdminController::class, 'search'])->middleware('isLoggedIn'); //query likeness from get to table Admins//!not a page.
 
 
 

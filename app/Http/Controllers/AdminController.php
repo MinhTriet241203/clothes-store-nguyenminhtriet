@@ -79,4 +79,26 @@ class AdminController extends Controller
             return redirect()->back()->with('fail', 'cannot delete the default admin account');
         }
     }
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        if ($search === "") {                                       //
+            $data = Admins::get();                                  //return with message if search field is empty
+            return view('Admin.Admins.list', compact('data'));      //
+        } else {
+            $name = Admins::where('Admin_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the admin_name column
+            $username = Admins::where('Admin_Username', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the admin_username column
+            $data = $username->union($name);                                                    //combine results
+            if ($data->count() !== 0) {
+                return view('Admin.Admins.list')                                            //
+                    ->with('data', $data)                                                   // return successful search data
+                    ->with('notify', 'Showing search results for "' . $search . '".');      //
+            } else {
+                $data = Admins::get();                                                      //
+                return view('Admin.Admins.list')->with('data', $data)                       //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');               //
+            }
+        }
+    }
 }

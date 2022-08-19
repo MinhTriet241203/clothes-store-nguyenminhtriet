@@ -13,6 +13,17 @@
                 </div>
             @endif
 
+            @if (!empty($notify))
+                <div class="alert alert-primary" role="alert">
+                    {{ $notify }}
+                </div>
+            @endif
+            @if (!empty($fail))
+                <div class="alert alert-danger" role="alert">
+                    {{ $fail }}
+                </div>
+            @endif
+
             {{-- Start buttons --}}
             {{-- <div style="margin-right: 1%; float:right;">
                     <a href="{{ url('listCategory') }}" class="btn btn-success">Categories</a>
@@ -24,17 +35,30 @@
 
             {{-- Add button --}}
             @if (Session::has('LoginID'))
-                @if (session()->get('Class') == "Full Control")
-                <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                </div>
+                @if (session()->get('Class') == 'Full Control')
+                    <div style="margin-right: 1%; float:right;">
+                        <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
+                            <i class="fas fa-plus-circle"></i> Add</a>
+                    </div>
                 @else
-                <div style="margin-right: 1%; float:right;">
-                    <a class="btn btn-success disabled">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                </div>
+                    <div style="margin-right: 1%; float:right;">
+                        <a class="btn btn-success disabled">
+                            <i class="fas fa-plus-circle"></i> Add</a>
+                    </div>
                 @endif
+
+                <div style="margin-right: 1%; float:right;">
+                    <form action="{{ url('searchAdmin') }}" method="GET">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search admins" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"
+                                    style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
+                                        class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             @endif
 
             <div style="margin-left: 5%; float:left;">
@@ -55,52 +79,17 @@
                         {{-- End table header --}}
                     </thead>
                     <tbody>
-                        
+
                         {{-- Fetch table data if class is read only --}}
                         {{-- If class is read only then disable action buttons --}}
-                        @if ( session()->get('Class') == "Read Only" )
+                        @if (session()->get('Class') == 'Read Only')
                             @foreach ($data as $row)
-                            <tr style="text-align: center; vertical-align:middle">
-                                <td>{{ $row->Admin_Username }}</td>
-                                <td>{{ $row->Admin_Name }}</td>
-                                <td>{{ $row->Admin_Class }}</td>
-                                <td>
-                                    <a class="btn btn-primary disabled">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a class="btn btn-danger disabled">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        {{-- Fetch table data if class is full control --}}
-                        {{-- If class is full control then enable action buttons --}}
-                        @else
-                            @foreach ($data as $row)
-                            @if ($row->Admin_Username !== 'admin')
                                 <tr style="text-align: center; vertical-align:middle">
                                     <td>{{ $row->Admin_Username }}</td>
                                     <td>{{ $row->Admin_Name }}</td>
                                     <td>{{ $row->Admin_Class }}</td>
                                     <td>
-                                        <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                            class="btn btn-primary">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <a href="{{ url('deleteAdmin/' . $row->Admin_Username) }}"
-                                            class="btn btn-danger" onclick="return confirm('Confirm delete?')">
-                                            <i class="fas fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                            @else
-                                <tr style="text-align: center; vertical-align:middle">
-                                    <td>{{ $row->Admin_Username }}</td>
-                                    <td>{{ $row->Admin_Name }}</td>
-                                    <td>{{ $row->Admin_Class }}</td>
-                                    <td>
-                                        <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                            class="btn btn-primary">
+                                        <a class="btn btn-primary disabled">
                                             <i class="fas fa-edit"></i>
                                         </a>
                                         <a class="btn btn-danger disabled">
@@ -108,7 +97,42 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endif
+                            @endforeach
+                            {{-- Fetch table data if class is full control --}}
+                            {{-- If class is full control then enable action buttons --}}
+                        @else
+                            @foreach ($data as $row)
+                                @if ($row->Admin_Username !== 'admin')
+                                    <tr style="text-align: center; vertical-align:middle">
+                                        <td>{{ $row->Admin_Username }}</td>
+                                        <td>{{ $row->Admin_Name }}</td>
+                                        <td>{{ $row->Admin_Class }}</td>
+                                        <td>
+                                            <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
+                                                class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="{{ url('deleteAdmin/' . $row->Admin_Username) }}"
+                                                class="btn btn-danger" onclick="return confirm('Confirm delete?')">
+                                                <i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                @else
+                                    <tr style="text-align: center; vertical-align:middle">
+                                        <td>{{ $row->Admin_Username }}</td>
+                                        <td>{{ $row->Admin_Name }}</td>
+                                        <td>{{ $row->Admin_Class }}</td>
+                                        <td>
+                                            <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
+                                                class="btn btn-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="btn btn-danger disabled">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                         @endif
                     </tbody>
