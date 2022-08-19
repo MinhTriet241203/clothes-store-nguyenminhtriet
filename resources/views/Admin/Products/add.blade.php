@@ -69,14 +69,17 @@
                     <label for="images" class="form-label">Images</label>
                     <input type="file" name="images[]" class="form-control" multiple value="{{ old('images[]') }}"
                         style="width: 350px" id="file-input">
-                    <div id="preview"></div> {{--preview area--}}
-
+                    <br>
+                    <label for="preview">Previews</label>
+                    <div id="preview" style="width:220px;height:220px" class="form-control" ></div> {{--preview area--}}
+                    <br>
                     {{-- Script to preview multiple uploaded images --}}
 
                     <script>
                         function previewImages() {
                             var preview = document.querySelector('#preview');
                             preview.innerHTML = '';     //clear previous previews
+                            preview.style = "width:fit-content";    //change the preview <div> style to fit the new childs (images in this case)
                             if (this.files) {
                                 [].forEach.call(this.files, readAndPreview);
                             }
@@ -91,6 +94,7 @@
                                     image.height = 210;
                                     image.width = 210;
                                     image.title = file.name;
+                                    image.style = "border-radius: 10px; margin: 5px"    //image attributes
                                     image.src = this.result;
                                     preview.appendChild(image);
                                 });
