@@ -22,10 +22,17 @@
                     <a href="{{ url('listProduct') }}" class="btn btn-success">Products</a>
                 </div> --}}
             @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;">
-                    <a href="{{ url('addCategory') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                </div>
+                @if (session()->get('Class') == 'Full Control')
+                    <div style="margin-right: 1%; float:right;">
+                        <a href="{{ url('addCategory') }}" class="btn btn-success">
+                            <i class="fas fa-plus-circle"></i> Add</a>
+                    </div>
+                @else
+                    <div style="margin-right: 1%; float:right;">
+                        <a class="btn btn-success disabled">
+                            <i class="fas fa-plus-circle"></i> Add</a>
+                    </div>
+                @endif
             @endif
 
             <div style="margin-left: 5%; float:left;">
@@ -47,8 +54,26 @@
                         {{-- End table header --}}
                     </thead>
                     <tbody>
-                        {{-- Fetch category data --}}
-                        @foreach ($data as $row)
+                        @if ( session()->get('Class') == 'Read Only' )
+                            {{-- Fetch data but cannot edit --}}
+                            @foreach ($data as $row)
+                            <tr style="text-align: center; vertical-align:middle">
+                                <td>{{ $row->Category_ID }}</td>
+                                <td>{{ $row->Category_Name }}</td>
+                                <td><img src="img/categories/{{ $row->Category_Image }}" alt="" height="100px"
+                                        width="auto"></td>
+
+                                @if (Session::has('LoginID'))
+                                    <td style="text-align: center">
+                                        <a class="btn btn-primary disabled"><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-danger disabled"><i class="fas fa-trash-alt"></i></a>
+                                    </td>
+                                @endif
+                            </tr>
+                            @endforeach
+                        @else
+                            {{-- Fetch data and can edit --}}
+                            @foreach ($data as $row)
                             <tr style="text-align: center; vertical-align:middle">
                                 <td>{{ $row->Category_ID }}</td>
                                 <td>{{ $row->Category_Name }}</td>
@@ -65,8 +90,8 @@
                                     </td>
                                 @endif
                             </tr>
-                        @endforeach
-                        {{-- End fetching data --}}
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             @else

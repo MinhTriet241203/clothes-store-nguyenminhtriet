@@ -5,20 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="{{asset('img/apple-icon.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('img/logoWebsite.ico')}}">
+    <link rel="apple-touch-icon" href="{{ asset('img/apple-icon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/logoWebsite.ico') }}">
 
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/templatemo.css')}}">
-    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/templatemo.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
 
-    <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}} ">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/slick.min.css')}} ">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.min.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/slick-theme.css') }}">
 
 </head>
 
@@ -46,7 +46,9 @@
                 id="templatemo_main_nav">
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between">
+                    <ul class="nav navbar-nav d-flex justify-content-between"
+                        style="margin-left: 130px;
+                              margin-right: 130px; font-size: 22px">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
@@ -81,7 +83,7 @@
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                     </a>
 
-                    
+
                     @if (Session()->has('customerLoginID'))
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
                             <p>Welcome : <?php echo session()->get('customerName'); ?></p>

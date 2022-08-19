@@ -106,7 +106,7 @@ class CustomerController extends Controller
 
     public function shopCategory($id){
         $categories = Categories::get();//take database Categories into $categories
-        $products = Products::where('Category_ID','=',$id);
+        $products = Products::where('Category_ID','=',$id)->get();
         return view('Navigate.shop', compact('categories','products'));
     }
    
