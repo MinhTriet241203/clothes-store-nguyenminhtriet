@@ -48,7 +48,7 @@ class CustomerController extends Controller
         if ($id) {
             Customers::where('Customer_Username', '=', $id)->delete();
             return redirect()->back()->with('success', 'Customer deleted successfully');
-        }else{
+        } else {
             return redirect()->back()->with('fail', 'Failed to delete customer, maybe because none was selected?');
         }
     }
@@ -62,7 +62,7 @@ class CustomerController extends Controller
 
     public function shop()
     {
-        $categories = Categories::get();//take database Categories into $categories
+        $categories = Categories::get(); //take database Categories into $categories
         $products = Products::get();
         return view('Navigate.shop', compact('categories'), compact('products'));
     }
@@ -71,7 +71,7 @@ class CustomerController extends Controller
     {
         $categories = Categories::get();
         $data = Products::get();
-        return view('Navigate.about', compact('data','categories'));
+        return view('Navigate.about', compact('data', 'categories'));
     }
 
     public function contact()
@@ -84,17 +84,17 @@ class CustomerController extends Controller
     {
         $categories = Categories::get();
         $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                        ->where('Product_ID', '=' ,$id)->first();
-        
-        $image = Products::where('Product_ID','=',$id)->first();
-        return view('Navigate.shopSingle', compact('data','categories','image'));
+            ->where('Product_ID', '=', $id)->first();
+
+        $image = Products::where('Product_ID', '=', $id)->first();
+        return view('Navigate.shopSingle', compact('data', 'categories', 'image'));
     }
 
     public function cart()
     {
         $categories = Categories::get();
         $data = Products::get();
-        return view('Navigate.cart', compact('data','categories'));
+        return view('Navigate.cart', compact('data', 'categories'));
     }
 
     //!View customers on admin page
@@ -104,36 +104,39 @@ class CustomerController extends Controller
         return view('Admin.Customer.list', compact('data'));
     }
 
-    public function shopCategory($id){
-        $categories = Categories::get();//take database Categories into $categories
-        $products = Products::where('Category_ID','=',$id)->get();
-        return view('Navigate.shop', compact('categories','products'));
+    public function shopCategory($id)
+    {
+        $categories = Categories::get(); //take database Categories into $categories
+        $products = Products::where('Category_ID', '=', $id)->get();
+        return view('Navigate.shop', compact('categories', 'products'));
     }
 
     //hanlde when customer addCard
-    public function addCart($id)
+    public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
-        dd($_GET['size']);
-        $product = Products::where('Product_ID', '=', $id)->first();
-        $Product_ID = $product->Product_ID;
-        $Size = $_GET['size'];
-        $Quanity = $_GET['quanity'];
-        $Price = ($product->Price) * $Quanity;
+        if (isset($_GET['size'])) {
+            $product = Products::where('Product_ID', '=', $id)->first();
+            $Product_ID = $product->Product_ID;
+            $name = $product->Product_Name;
+            $size = $_GET['size'];
+            $quanity = $_GET['quanity'];
+            $price = $product->Price;           //getting the neccessary information
+            
+            $_SESSION['cart'] = array();
 
-        $item = [
-            'id' => $id,
-            'price' => $Price,
-            'quantity' => $Quanity,
-            'size' => $Size,
-          ];
-          
-          session()->push('cart', $item);
-          
-          $items = session()->get('cart');
+            $item = collect([
+                "name" => $name,
+                "id" => $id,
+                "size" => $size,
+                "quantity" => $quanity,         //putting them in a collection.
+                "price" =>$price,
+            ]);
 
+            session()->push('cart', $item);     //push new collection to session('cart)
 
-        $data = Products::get();
-        return view('Navigate.cart', compact('data','categories'));
+            $categories = Categories::get();
+            $products = Products::get();        //dependent product and categories data
+            return view('Navigate.shop', compact('products', 'categories'));
+        }
     }
-   
 }

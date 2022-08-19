@@ -50,8 +50,7 @@ class CustomerLoginController extends Controller
     public function logOut()
     {
         if (session()->has('customerLoginID')) {
-            session()->pull('customerLoginID');
-            session()->pull('customerName');
+            session()->flush();
             return redirect('/');
         }
     }

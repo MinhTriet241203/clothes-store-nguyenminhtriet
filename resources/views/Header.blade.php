@@ -14,7 +14,7 @@
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;180;300;400;500;700;900&display=swap">
 
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.min.css') }} ">
@@ -48,7 +48,7 @@
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between"
                         style="margin-left: 130px;
-                              margin-right: 130px; font-size: 22px">
+                              margin-right: 130px; font-size: 18px">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
@@ -76,21 +76,21 @@
                     </div>
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal"
                         data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
+                        <i class="fa fa-fw fa-search text-dark mr-2" style="font-size: 18px !important"></i>
                     </a>
                     {{-- Cart button --}}
                     <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1" style="font-size: 18px !important"></i>
                     </a>
 
 
                     @if (Session()->has('customerLoginID'))
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
-                            <p>Welcome : <?php echo session()->get('customerName'); ?></p>
+                            <p style="font-size: 18px !important">Welcome : <?php echo session()->get('customerName'); ?></p>
                         </div>
                         <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
                             href="{{ url('customerLogOut') }}">
-                            <i class="fas fa-sign-out-alt"></i>
+                            <i class="fas fa-sign-out-alt" style="font-size: 18px !important"></i>
                         </a>
                     @else
                         <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
