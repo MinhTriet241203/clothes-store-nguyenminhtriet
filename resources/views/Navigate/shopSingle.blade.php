@@ -129,7 +129,7 @@
                                         value="buy">Buy</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <a href="{{ url('customerAddCart') }}">
+                                    <a href="{{ url('customerAddCart/'. $data->Product_ID) }}">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit"
                                             value="addtocard">Add To Cart</button>
                                     </a>
