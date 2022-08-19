@@ -96,16 +96,16 @@
         <div class="row" style="justify-content: center">
             @foreach ($categoriesF as $cat)
                 <div class="col-12 col-md-4 p-5 mt-3">
-                    <a href="#"><img
+                    <a href="{{url('category/'.$cat->Category_ID)}}"><img
                             style="
                         display: block;
                         margin-left: auto;
                         margin-right: auto;
                         width: 70%;"
-                            src="img/categories/{{ $cat->Category_Image}}" class="rounded-circle img-fluid border">
+                            src="img/categories/{{ $cat->Category_Image}}" class="rounded-circle img-fluid border" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     </a>
                     <h5 class="text-center mt-3 mb-3">{{ $cat->Category_Name }}</h5>
-                    <p class="text-center"><a class="btn btn-success" href="">Go Shop</a></p>
+                    <p class="text-center"><a class="btn btn-success" href="{{url('category/'.$cat->Category_ID)}}" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">Go Shop</a></p>
                 </div>
             @endforeach
         </div>
