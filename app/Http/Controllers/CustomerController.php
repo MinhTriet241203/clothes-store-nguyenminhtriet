@@ -113,12 +113,25 @@ class CustomerController extends Controller
     //hanlde when customer addCard
     public function addCart($id)
     {
+        dd($_GET['size']);
         $product = Products::where('Product_ID', '=', $id)->first();
-        $Product_Name = $product->Product_Name;
-        $Price = $product->Price;
-        $Size = $_POST['size'];
-        $Quanity = $_POST['quanity'];
-        session()->put('Product', $Product_Name);
+        $Product_ID = $product->Product_ID;
+        $Size = $_GET['size'];
+        $Quanity = $_GET['quanity'];
+        $Price = ($product->Price) * $Quanity;
+
+        $item = [
+            'id' => $id,
+            'price' => $Price,
+            'quantity' => $Quanity,
+            'size' => $Size,
+          ];
+          
+          session()->push('cart', $item);
+          
+          $items = session()->get('cart');
+
+
         $data = Products::get();
         return view('Navigate.cart', compact('data','categories'));
     }
