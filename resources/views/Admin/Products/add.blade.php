@@ -68,7 +68,35 @@
                 <div class="md-3">
                     <label for="images" class="form-label">Images</label>
                     <input type="file" name="images[]" class="form-control" multiple value="{{ old('images[]') }}"
-                        style="width: 350px">
+                        style="width: 350px" id="file-input">
+                    <div id="preview"></div>
+                    <script>
+                        function previewImages() {
+                            var preview = document.querySelector('#preview');
+                            preview.innerHTML = '';     //clear previous previews
+                            if (this.files) {
+                                [].forEach.call(this.files, readAndPreview);
+                            }
+                            function readAndPreview(file) {
+                                // Make sure `file.name` matches our extensions criteria
+                                if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                                    return alert(file.name + " is not an image");
+                                }
+                                var reader = new FileReader();
+                                reader.addEventListener("load", function() {
+                                    var image = new Image();
+                                    image.height = 210;
+                                    image.width = 210;
+                                    image.title = file.name;
+                                    image.src = this.result;
+                                    preview.appendChild(image);
+                                });
+                                reader.readAsDataURL(file);
+                            }
+                        }
+                        document.querySelector('#file-input').addEventListener("change", previewImages);
+                    </script>
+
                 </div>
                 @error('images')
                     <div class="alert alert-danger" role="alert">
