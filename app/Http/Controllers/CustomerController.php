@@ -121,7 +121,8 @@ class CustomerController extends Controller
             $size = $_GET['size'];
             $quanity = $_GET['quanity'];
             $price = $product->Price;           //getting the neccessary information
-            
+            $img[] = $product->Images;
+
             $_SESSION['cart'] = array();
 
             $item = collect([
@@ -130,6 +131,7 @@ class CustomerController extends Controller
                 "size" => $size,
                 "quantity" => $quanity,         //putting them in a collection.
                 "price" =>$price,
+                "img" => $img[0],
             ]);
 
             session()->push('cart', $item);     //push new collection to session('cart)
