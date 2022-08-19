@@ -87,4 +87,3 @@ Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->nam
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
 
-
