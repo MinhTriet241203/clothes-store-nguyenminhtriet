@@ -69,7 +69,10 @@
                     <label for="images" class="form-label">Images</label>
                     <input type="file" name="images[]" class="form-control" multiple value="{{ old('images[]') }}"
                         style="width: 350px" id="file-input">
-                    <div id="preview"></div>
+                    <div id="preview"></div> {{--preview area--}}
+
+                    {{-- Script to preview multiple uploaded images --}}
+
                     <script>
                         function previewImages() {
                             var preview = document.querySelector('#preview');
@@ -96,6 +99,8 @@
                         }
                         document.querySelector('#file-input').addEventListener("change", previewImages);
                     </script>
+
+                    {{--End script--}}
 
                 </div>
                 @error('images')
