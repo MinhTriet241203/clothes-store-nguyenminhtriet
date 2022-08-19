@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
 
-                
+
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="../img/products/<?php 
-                        
-                                $ImagesFirst = explode('@@@', $image->Images);
-                                $item = reset($ImagesFirst);
-                                 echo $item?>" alt="Card image cap"
+                    <img class="card-img img-fluid" src="../img/products/<?php
+                    
+                    $ImagesFirst = explode('@@@', $image->Images);
+                    $item = reset($ImagesFirst);
+                    echo $item; ?>" alt="Card image cap"
                         id="product-detail">
                 </div>
 
@@ -36,7 +36,7 @@
                         <div class="carousel-inner product-links-wap" role="listbox">
 
                             <!--First slide-->
-                            
+
                             <div class="carousel-item active">
                                 <div class="row">
                                     <?php
@@ -45,17 +45,17 @@
                                         foreach ($ImagesAll as $item) {
                                             $img = $path . $item;
                                     ?>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="<?php echo $img;?>"
-                                                    alt="Product Image 1">
-                                            </a>
-                                        </div>
+                                    <div class="col-4">
+                                        <a href="#">
+                                            <img class="card-img img-fluid" src="<?php echo $img; ?>"
+                                                alt="Product Image 1">
+                                        </a>
+                                    </div>
                                     <?php                                           
                                         }
-                                    ?>                                        
+                                    ?>
                                 </div>
-                            </div>                                                                                                      
+                            </div>
                         </div>
                         <!--End Slides-->
                     </div>
@@ -78,10 +78,10 @@
                         <p class="h3 py-2">${{ $data->Price }}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <h6>Category</h6>
+                                <h6>Category:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>{{$data->Category_Name}}</strong></p>
+                                <p class="text-muted"><strong>{{ $data->Category_Name }}</strong></p>
                             </li>
                         </ul>
 
@@ -93,24 +93,28 @@
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
-                                        <li class="list-inline-item">Size :
-                                            <input type="hidden" name="product-size" id="product-size"
-                                                value="S">
+                                        <li class="list-inline-item">Size:
+                                            <input type="hidden" name="product-size" id="product-size" value="S">
+                                            <?php $sizes = explode(' ', $data->Size); ?>
                                         </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">S</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">M</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">L</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span>
-                                        </li>
+                                        @if ($data->available !== 0)
+
+                                            @foreach ($sizes as $item)
+                                                <li class="list-inline-item"><span
+                                                        class="btn btn-success btn-size">{{ $item }}</span>
+                                            @endforeach
+                                        @else
+                                            @foreach ($sizes as $item)
+                                                <li class="list-inline-item" disabled><span
+                                                        class="btn btn-success btn-size" disabled>{{ $item }}</span>
+                                            @endforeach
+                                        @endif
                                     </ul>
                                 </div>
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item text-right">
-                                            Quantity
+                                            Quantity:
                                             <input type="hidden" name="product-quanity" id="product-quanity"
                                                 value="1">
                                         </li>
