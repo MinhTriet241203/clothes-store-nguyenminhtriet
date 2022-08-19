@@ -43,8 +43,8 @@
                         <label for="class" class="form-label">Admin class</label>
                         <select name="class" class="form-control form-select" value="{{ old('class') }}"
                             style="width: 200px">
-                            <option value="Read Only" selected>Read only</option>
-                            <option value="Full Control">Full control</option>
+                            <option value="Read Only" selected>Read Only</option>
+                            <option value="Full Control">Full Control</option>
                         </select>
                     </div>
                     @error('name')
