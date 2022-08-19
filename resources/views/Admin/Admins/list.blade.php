@@ -12,7 +12,6 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
-
             @if (!empty($notify))
                 <div class="alert alert-primary" role="alert">
                     {{ $notify }}
@@ -68,7 +67,10 @@
                             <th>Username</th>
                             <th>Name</th>
                             <th>Class</th>
-                            <th>Actions</th>
+                            @if (Session::has('LoginID'))
+                            {{-- If admin is logged in then they can see the action buttons --}}
+                                <th>Actions</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -107,7 +109,8 @@
                                             </a>
                                             <a href="{{ url('deleteAdmin/' . $row->Admin_Username) }}"
                                                 class="btn btn-danger" onclick="return confirm('Confirm delete?')">
-                                                <i class="fas fa-trash-alt"></i></a>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                 @else
