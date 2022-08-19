@@ -15,7 +15,6 @@ class AdminController extends Controller
     public function index()
     {
         $data = Admins::get();
-        //return $data;
         return view('Admin.Admins.list', compact('data'));
     }
 
@@ -61,10 +60,12 @@ class AdminController extends Controller
             $admin->Admin_Password = $request->password;
         }
         $admin->Admin_Name = $request->name;
+        $admin->Admin_Class = $request->class;
 
         Admins::where('Admin_Username', '=', $username)->update([
             'Admin_Password' => $admin->Admin_Password,
             'Admin_Name' => $admin->Admin_Name,
+            'Admin_Class' => $admin->Admin_Class
         ]);
         return redirect()->back()->with('success', 'Admin updated successfully!');
     }
