@@ -9,10 +9,17 @@
     <div class="container pb-5">
         <div class="row">
             <div class="col-lg-5 mt-5">
+
+                
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="img/product_single_10.jpg" alt="Card image cap"
+                    <img class="card-img img-fluid" src="../img/products/<?php 
+                        
+                                $ImagesFirst = explode('@@@', $image->Images);
+                                $item = reset($ImagesFirst);
+                                 echo $item?>" alt="Card image cap"
                         id="product-detail">
                 </div>
+
                 <div class="row">
                     <!--Start Controls-->
                     <div class="col-1 align-self-center">
@@ -29,79 +36,26 @@
                         <div class="carousel-inner product-links-wap" role="listbox">
 
                             <!--First slide-->
+                            
                             <div class="carousel-item active">
                                 <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_01.jpg"
-                                                alt="Product Image 1">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_02.jpg"
-                                                alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_03.jpg"
-                                                alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                    <?php
+                                        $path = '../img/products/';
+                                        $ImagesAll = explode('@@@', $image->Images);
+                                        foreach ($ImagesAll as $item) {
+                                            $img = $path . $item;
+                                    ?>
+                                        <div class="col-4">
+                                            <a href="#">
+                                                <img class="card-img img-fluid" src="<?php echo $img;?>"
+                                                    alt="Product Image 1">
+                                            </a>
+                                        </div>
+                                    <?php                                           
+                                        }
+                                    ?>                                        
                                 </div>
-                            </div>
-                            <!--/.First slide-->
-
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_04.jpg"
-                                                alt="Product Image 4">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_05.jpg"
-                                                alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_06.jpg"
-                                                alt="Product Image 6">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Second slide-->
-
-                            <!--Third slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_07.jpg"
-                                                alt="Product Image 7">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_08.jpg"
-                                                alt="Product Image 8">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_09.jpg"
-                                                alt="Product Image 9">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Third slide-->
+                            </div>                                                                                                      
                         </div>
                         <!--End Slides-->
                     </div>
@@ -254,11 +208,11 @@
     </div>
 </div>
 <!-- Start Script -->
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/templatemo.js"></script>
-<script src="js/custom.js"></script>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/templatemo.js"></script>
+<script src="../js/custom.js"></script>
 <!-- End Script -->
 <!-- Start Slider Script -->
 <script src="js/slick.min.js"></script>

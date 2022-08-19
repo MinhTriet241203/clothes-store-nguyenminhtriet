@@ -85,7 +85,9 @@ class CustomerController extends Controller
         $categories = Categories::get();
         $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
                         ->where('Product_ID', '=' ,$id)->first();
-        return view('Navigate.shopSingle', compact('data','categories'));
+
+        $image = Products::where('Product_ID','=',$id)->first();
+        return view('Navigate.shopSingle', compact('data','categories','image'));
     }
 
     public function cart()
