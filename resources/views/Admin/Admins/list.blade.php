@@ -35,14 +35,14 @@
             {{-- End buttons --}}
 
             @if ($data->isNotEmpty())
-                <table class="table table-hover">
+                <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     <thead>
                         {{-- Table header --}}
-                        <tr>
-                            <th style="text-align: center">Username</th>
-                            <th style="text-align: center">Name</th>
-                            <th style="text-align: center">Class</th>
-                            <th style="text-align: center">Actions</th>
+                        <tr style="text-align: center; vertical-align:middle">
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Actions</th>
                         </tr>
                         {{-- End table header --}}
                     </thead>
@@ -50,11 +50,11 @@
                         {{-- Fetch table data --}}
                         @foreach ($data as $row)
                             @if ($row->Admin_Username !== 'admin')
-                                <tr>
-                                    <td style="text-align: center">{{ $row->Admin_Username }}</td>
-                                    <td style="text-align: center">{{ $row->Admin_Name }}</td>
-                                    <td style="text-align: center">{{ $row->Admin_Class }}</td>
-                                    <td style="text-align: center">
+                                <tr style="text-align: center; vertical-align:middle">
+                                    <td>{{ $row->Admin_Username }}</td>
+                                    <td>{{ $row->Admin_Name }}</td>
+                                    <td>{{ $row->Admin_Class }}</td>
+                                    <td>
                                         <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                             class="btn btn-primary">
                                             <i class="fas fa-edit"></i>
@@ -65,10 +65,10 @@
                                     </td>
                                 </tr>
                             @else
-                                <tr>
-                                    <td style="text-align: center">{{ $row->Admin_Username }}</td>
-                                    <td style="text-align: center">{{ $row->Admin_Name }}</td>
-                                    <td style="text-align: center">
+                                <tr style="text-align: center; vertical-align:middle">
+                                    <td>{{ $row->Admin_Username }}</td>
+                                    <td>{{ $row->Admin_Name }}</td>
+                                    <td>
                                         <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                             class="btn btn-primary">
                                             <i class="fas fa-edit"></i>

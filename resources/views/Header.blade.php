@@ -15,9 +15,22 @@
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}} ">
     <link rel="stylesheet" type="text/css" href="{{asset('css/slick.min.css')}} ">
     <link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}">
+=======
+{{-- <<<<<<< Updated upstream --}}
+    <link rel="stylesheet" href="{{asset('css/fontawesome.min.css')}} ">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/slick.min.css')}} ">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/slick-theme.css')}}">
+{{-- =======
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css">
+>>>>>>> Stashed changes --}}
+>>>>>>> ef3826f8ab78f4e6a8cd29b6ae1ba9a688cc4667
     <!--
     
 TemplateMo 559 Zay Shop

@@ -9,7 +9,7 @@
 	position:relative;
 	float:left;
 	margin:0;
-	padding:0
+	padding:0;
 }
 
 #primary_nav_wrap ul a
@@ -48,19 +48,20 @@
 	top:100%;
 	left:0;
 	background:#fff;
-	padding:0
+	padding:0;
 }
 
 #primary_nav_wrap ul ul li
 {
 	float:none;
-	width:200px
+	width:185px;
+	text-align:left;
 }
 
 #primary_nav_wrap ul ul a
 {
-	line-height:250%;
-	padding:10px 15px
+	line-height:100%;
+	padding:10px 10px
 }
 
 #primary_nav_wrap ul ul ul

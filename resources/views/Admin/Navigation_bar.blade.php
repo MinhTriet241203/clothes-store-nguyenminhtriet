@@ -48,38 +48,48 @@
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
                     <nav id="primary_nav_wrap">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                            <p class="nav-link">Accounts 
-                                <i class="fas fa-angle-down"></i>
-                            </p>
-                            <ul>
-                                <li><a href="listAdmin"><p class="nav-link">Admins</p></a></li>
-                                <li><a href="listCustomer"><p class="nav-link">Customers</p></a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="listProduct">
-                            <p class="nav-link">
-                                Products
-                            </p></a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="listCategory">
-                            <p class="nav-link">
-                                Categories
-                            </p></a>
-                        </li>
-                        <li class="nav-item">
-                            <p class="nav-link" href="{{ url('contact') }}">Analytics
-                                <i class="fas fa-angle-down"></i>
-                            </p>
-                            <ul>
-                                <li><a href=""><p class="nav-link">Orders</p></a></li>
-                                <li><a href=""><p class="nav-link">Sales</p></a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <p class="nav-link">Accounts
+                                    <i class="fas fa-angle-down"></i>
+                                </p>
+                                <ul style='box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;z-index: 10'>
+                                    <li><a href="listAdmin">
+                                            <p class="nav-link">Admins</p>
+                                        </a></li>
+                                    <li><a href="listCustomer">
+                                            <p class="nav-link">Customers</p>
+                                        </a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="listProduct">
+                                    <p class="nav-link">
+                                        Products
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="listCategory">
+                                    <p class="nav-link">
+                                        Categories
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <p class="nav-link" href="{{ url('contact') }}">Analytics
+                                    <i class="fas fa-angle-down"></i>
+                                </p>
+                                <ul style='box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;z-index: 10'>
+                                    <li><a href="">
+                                            <p class="nav-link">Orders</p>
+                                        </a></li>
+                                    <li><a href="">
+                                            <p class="nav-link">Sales</p>
+                                        </a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
                 {{-- End navigation buttons --}}
@@ -88,7 +98,7 @@
                     @if (Session()->has('LoginID'))
                         <div class="welcome"
                             style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90); display:inline-block">
-                            <p style="margin-top:10%; margin-right: 1px">Welcome : <?php echo session()->get('Name'); ?></p> 
+                            <p style="margin-top:10%; margin-right: 1px">Welcome: <?php echo session()->get('Name'); ?></p>
                             {{-- username --}}
                         </div>
                         <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
