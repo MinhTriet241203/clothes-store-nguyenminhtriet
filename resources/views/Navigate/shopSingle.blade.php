@@ -88,32 +88,27 @@
                         <h6>Description:</h6>
                         <p>{{ $data->Details }}</p>
 
-                        <form action="{{ url('customerAddCart/'. $data->Product_ID) }}" method="POST">
-                            <input type="hidden" name="product-title" value="Activewear">
+                        <form action="{{ url('customerAddCart/' . $data->Product_ID) }}" method="GET">
+                            <input type="hidden" name="productID" value="{{ $data->Product_ID }}" id="">
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item">Size:
-                                            <input type="hidden" name="product-size" id="product-size" value="S">
                                             <?php $sizes = explode(' ', $data->Size); ?>
+                                        @foreach ($sizes as $item)
+                                            <li class="list-inline-item">
+                                                <input name="size" type="radio" class="btn-check" id="{{$item}}" autocomplete="off" value="{{$item}}">
+                                                <label class="btn btn-outline-success" for="{{$item}}">{{$item}}</label><br>
+                                            </li>
+                                        @endforeach
                                         </li>
-                                        
-
-                                            @foreach ($sizes as $item)
-                                                <li class="list-inline-item">
-                                                    <span class="btn btn-success btn-size">
-                                                        <input  type="checkbox" id="size" value="{{ $item }}" style="display: none;"
-                                                        name="size">{{ $item }}</span>
-                                            @endforeach
-                                        
                                     </ul>
                                 </div>
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item text-right">
                                             Quantity:
-                                            <input type="hidden" name="quanity" id="product-quanity"
-                                                value="1">
+                                            <input type="hidden" name="quanity" id="product-quanity" value="1">
                                         </li>
                                         <li class="list-inline-item"><span class="btn btn-success"
                                                 id="btn-minus">-</span></li>
@@ -130,7 +125,7 @@
                                         value="buy">Buy</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <a href="{{ url('customerAddCart/'. $data->Product_ID) }}">
+                                    <a href="{{ url('customerAddCart/' . $data->Product_ID) }}">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit"
                                             value="addtocard">Add To Cart</button>
                                     </a>
