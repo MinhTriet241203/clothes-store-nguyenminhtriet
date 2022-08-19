@@ -116,8 +116,9 @@ class CustomerController extends Controller
         $product = Products::where('Product_ID', '=', $id)->first();
         $Product_Name = $product->Product_Name;
         $Price = $product->Price;
-        
-        session()->put('customerLoginID', $user->Customer_ID);
+        $Size = $_POST['size'];
+        $Quanity = $_POST['quanity'];
+        session()->put('Product', $Product_Name);
         $data = Products::get();
         return view('Navigate.cart', compact('data','categories'));
     }

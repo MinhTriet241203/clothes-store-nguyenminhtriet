@@ -88,7 +88,7 @@
                         <h6>Description:</h6>
                         <p>{{ $data->Details }}</p>
 
-                        <form action="" method="GET">
+                        <form action="{{ url(''customerAddCart/'. $data->Product_ID') }}" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
@@ -97,25 +97,22 @@
                                             <input type="hidden" name="product-size" id="product-size" value="S">
                                             <?php $sizes = explode(' ', $data->Size); ?>
                                         </li>
-                                        @if ($data->available !== 0)
+                                        
 
                                             @foreach ($sizes as $item)
-                                                <li class="list-inline-item"><span
-                                                        class="btn btn-success btn-size">{{ $item }}</span>
+                                                <li class="list-inline-item">
+                                                    <span class="btn btn-success btn-size">
+                                                        <input  type="checkbox" id="size" value="{{ $item }}" style="display: none;"
+                                                        name="size">{{ $item }}</span>
                                             @endforeach
-                                        @else
-                                            @foreach ($sizes as $item)
-                                                <li class="list-inline-item" disabled><span
-                                                        class="btn btn-success btn-size" disabled>{{ $item }}</span>
-                                            @endforeach
-                                        @endif
+                                        
                                     </ul>
                                 </div>
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item text-right">
                                             Quantity:
-                                            <input type="hidden" name="product-quanity" id="product-quanity"
+                                            <input type="hidden" name="quanity" id="product-quanity"
                                                 value="1">
                                         </li>
                                         <li class="list-inline-item"><span class="btn btn-success"
