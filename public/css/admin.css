@@ -16,9 +16,8 @@
 	color: #333;
 	text-decoration: none;
 	font-weight: 700;
-	font-size: 12px;
+	font-size: 15px;
 	height: 100%;
-	padding: 0 15px;
 	font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -47,7 +46,7 @@
 
 #primary_nav_wrap ul ul li {
 	float: none;
-	width: 185px;
+	width: 175px;
 	text-align: left;
 }
 

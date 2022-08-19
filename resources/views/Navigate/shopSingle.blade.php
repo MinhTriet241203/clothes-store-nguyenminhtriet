@@ -9,10 +9,17 @@
     <div class="container pb-5">
         <div class="row">
             <div class="col-lg-5 mt-5">
+
+
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="img/product_single_10.jpg" alt="Card image cap"
+                    <img class="card-img img-fluid" src="../img/products/<?php
+                    
+                    $ImagesFirst = explode('@@@', $image->Images);
+                    $item = reset($ImagesFirst);
+                    echo $item; ?>" alt="Card image cap"
                         id="product-detail">
                 </div>
+
                 <div class="row">
                     <!--Start Controls-->
                     <div class="col-1 align-self-center">
@@ -29,79 +36,26 @@
                         <div class="carousel-inner product-links-wap" role="listbox">
 
                             <!--First slide-->
+
                             <div class="carousel-item active">
                                 <div class="row">
+                                    <?php
+                                        $path = '../img/products/';
+                                        $ImagesAll = explode('@@@', $image->Images);
+                                        foreach ($ImagesAll as $item) {
+                                            $img = $path . $item;
+                                    ?>
                                     <div class="col-4">
                                         <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_01.jpg"
+                                            <img class="card-img img-fluid" src="<?php echo $img; ?>"
                                                 alt="Product Image 1">
                                         </a>
                                     </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_02.jpg"
-                                                alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_03.jpg"
-                                                alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                    <?php                                           
+                                        }
+                                    ?>
                                 </div>
                             </div>
-                            <!--/.First slide-->
-
-                            <!--Second slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_04.jpg"
-                                                alt="Product Image 4">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_05.jpg"
-                                                alt="Product Image 5">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_06.jpg"
-                                                alt="Product Image 6">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Second slide-->
-
-                            <!--Third slide-->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_07.jpg"
-                                                alt="Product Image 7">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_08.jpg"
-                                                alt="Product Image 8">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="#">
-                                            <img class="card-img img-fluid" src="img/product_single_09.jpg"
-                                                alt="Product Image 9">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--/.Third slide-->
                         </div>
                         <!--End Slides-->
                     </div>
@@ -124,40 +78,41 @@
                         <p class="h3 py-2">${{ $data->Price }}</p>
                         <ul class="list-inline">
                             <li class="list-inline-item">
-                                <h6>Category</h6>
+                                <h6>Category:</h6>
                             </li>
                             <li class="list-inline-item">
-                                <p class="text-muted"><strong>{{$data->Category_Name}}</strong></p>
+                                <p class="text-muted"><strong>{{ $data->Category_Name }}</strong></p>
                             </li>
                         </ul>
 
                         <h6>Description:</h6>
                         <p>{{ $data->Details }}</p>
 
-                        <form action="" method="GET">
+                        <form action="{{ url('customerAddCart/'. $data->Product_ID) }}" method="POST">
                             <input type="hidden" name="product-title" value="Activewear">
                             <div class="row">
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
-                                        <li class="list-inline-item">Size :
-                                            <input type="hidden" name="product-size" id="product-size"
-                                                value="S">
+                                        <li class="list-inline-item">Size:
+                                            <input type="hidden" name="product-size" id="product-size" value="S">
+                                            <?php $sizes = explode(' ', $data->Size); ?>
                                         </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">S</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">M</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">L</span>
-                                        </li>
-                                        <li class="list-inline-item"><span class="btn btn-success btn-size">XL</span>
-                                        </li>
+                                        
+
+                                            @foreach ($sizes as $item)
+                                                <li class="list-inline-item">
+                                                    <span class="btn btn-success btn-size">
+                                                        <input  type="checkbox" id="size" value="{{ $item }}" style="display: none;"
+                                                        name="size">{{ $item }}</span>
+                                            @endforeach
+                                        
                                     </ul>
                                 </div>
                                 <div class="col-auto">
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item text-right">
-                                            Quantity
-                                            <input type="hidden" name="product-quanity" id="product-quanity"
+                                            Quantity:
+                                            <input type="hidden" name="quanity" id="product-quanity"
                                                 value="1">
                                         </li>
                                         <li class="list-inline-item"><span class="btn btn-success"
@@ -175,7 +130,7 @@
                                         value="buy">Buy</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <a href="{{ url('customerAddCart') }}">
+                                    <a href="{{ url('customerAddCart/'. $data->Product_ID) }}">
                                         <button type="submit" class="btn btn-success btn-lg" name="submit"
                                             value="addtocard">Add To Cart</button>
                                     </a>
@@ -245,20 +200,13 @@
 <!-- End Article -->
 
 @include('Footer')
-<div class="row pt-2">
-    <div class="col-12">
-        <p class="text-left text-light">
-            Copyright &copy; 2021 Company Name
-            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
-        </p>
-    </div>
-</div>
+
 <!-- Start Script -->
-<script src="js/jquery-1.11.0.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/templatemo.js"></script>
-<script src="js/custom.js"></script>
+<script src="../js/jquery-1.11.0.min.js"></script>
+<script src="../js/jquery-migrate-1.2.1.min.js"></script>
+<script src="../js/bootstrap.bundle.min.js"></script>
+<script src="../js/templatemo.js"></script>
+<script src="../js/custom.js"></script>
 <!-- End Script -->
 <!-- Start Slider Script -->
 <script src="js/slick.min.js"></script>
