@@ -130,7 +130,7 @@ class CustomerController extends Controller
                 "id" => $id,
                 "size" => $size,
                 "quantity" => $quanity,         //putting them in a collection.
-                "price" =>$price,
+                "price" => $price,
                 "img" => $img[0],
             ]);
 
@@ -140,5 +140,13 @@ class CustomerController extends Controller
             $products = Products::get();        //dependent product and categories data
             return view('Navigate.shop', compact('products', 'categories'));
         }
+    }
+
+    public function removeItem($id)
+    {
+        $cart = session()->get('cart');
+        unset($cart[$id]);
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Removed the selected item from the cart.');
     }
 }
