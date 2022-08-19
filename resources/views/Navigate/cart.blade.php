@@ -17,7 +17,6 @@
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('success') }}
                     </div>
-                    <br>
                 @endif
                 <div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
