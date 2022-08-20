@@ -91,7 +91,7 @@
                                         $ImagesAll = explode('@@@', $row->Images);
                                         foreach ($ImagesAll as $item) {
                                             $img = $path . $item;
-                                            echo "<img src='$img' width='100px' height='100px' style='margin-left:5px; border-radius: 5px;'>";
+                                            echo "<img src='$img' width='100px' height='100px' style='margin-left:5px;border-radius: 10px;border: 1px solid #ced4da;'>";
                                         }
                                         ?>
                                     </td>
