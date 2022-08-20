@@ -14,10 +14,20 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+            @if (!empty($notify))
+                <div class="alert alert-primary" role="alert">
+                    {{ $notify }}
+                </div>
+            @endif
+            @if (!empty($fail))
+                <div class="alert alert-danger" role="alert">
+                    {{ $fail }}
+                </div>
+            @endif
 
             {{-- Add button --}}
             @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;">
+                <div style="margin-right: 1%; float:right;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     @if (session()->get('Class') == 'Full Control')
                         {{-- If admin class is full control then enable add button --}}
                         <a href="{{ url('addCategory') }}" class="btn btn-success">
@@ -27,6 +37,18 @@
                         <a class="btn btn-success disabled">
                             <i class="fas fa-plus-circle"></i> Add</a>
                     @endif
+                </div>
+                <div style="margin-right: 1%; float:right;">
+                    <form action="{{ url('searchCategory') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search categories" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"
+                                    style="height:100%;"><i
+                                        class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             @endif
 

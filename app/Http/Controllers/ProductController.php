@@ -145,9 +145,10 @@ class ProductController extends Controller
     public function search()
     {
         $search = $_GET['search'];
-        if ($search === "") {                                       //
-            $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();                                //return with message if search field is empty
-            return view('Admin.Products.list', compact('data'));    //
+        if ($search === "") {
+            $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
+            //return with message if search field is empty
+            return view('Admin.Products.list', compact('data'));
         } else {
             $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
             ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    //query search for likeliness in the product_name column

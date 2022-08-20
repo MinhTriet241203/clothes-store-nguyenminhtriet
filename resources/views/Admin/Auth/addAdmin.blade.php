@@ -88,7 +88,6 @@
                 </form>
                 {{-- end form --}}
                 <br>
-                <a href="{{ url('adminLogout') }}" class="btn btn-success">Login Admin</a>
             </div>
         </div>
     </div>

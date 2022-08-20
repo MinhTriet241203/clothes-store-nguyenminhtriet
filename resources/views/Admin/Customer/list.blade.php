@@ -1,5 +1,6 @@
 @include('Admin.Navigation_bar')
 {{-- Tab title --}}
+
 <head>
     <title>Customer List</title>
 </head>
@@ -13,6 +14,16 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+            @if (!empty($notify))
+                <div class="alert alert-primary" role="alert">
+                    {{ $notify }}
+                </div>
+            @endif
+            @if (!empty($fail))
+                <div class="alert alert-danger" role="alert">
+                    {{ $fail }}
+                </div>
+            @endif
 
             {{-- Page title --}}
             <div style="margin-left: 5%; float:left;">
@@ -20,9 +31,21 @@
             </div>
 
             @if (Session::has('LoginID'))
-            {{-- If admin is logged in then show table --}}
+                <div style="margin-right: 1%; float:right;">
+                    <form action="{{ url('searchCustomer') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search customers" name="search">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit"
+                                    style="height:100%;"><i
+                                        class="fa fa-search" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                {{-- If admin is logged in then show table --}}
                 @if ($data->isNotEmpty())
-                {{-- If $data is not empty then fetch data --}}
+                    {{-- If $data is not empty then fetch data --}}
                     <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <thead>
                             {{-- Table header --}}
@@ -51,17 +74,17 @@
                                     <td>{{ $row->Gender }}</td>
                                     <td>{{ $row->Date_of_Birth }}</td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable delete button --}}
+                                        @if (session()->get('Class') == 'Read Only')
+                                            {{-- If admin class is read only then disable delete button --}}
                                             <a class="btn btn-danger disabled"
                                                 onclick="return confirm('Confirm delete?')">
-                                            <i class="fas fa-trash-alt"></i>
+                                                <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @else
-                                        {{-- If admin class is full control then enable delete button --}}
-                                            <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}" class="btn btn-danger"
-                                                onclick="return confirm('Confirm delete?')">
-                                            <i class="fas fa-trash-alt"></i>
+                                            {{-- If admin class is full control then enable delete button --}}
+                                            <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}"
+                                                class="btn btn-danger" onclick="return confirm('Confirm delete?')">
+                                                <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @endif
                                     </td>
@@ -70,7 +93,7 @@
                         </tbody>
                     </table>
                 @else
-                {{-- If $data is empty then show error message --}}
+                    {{-- If $data is empty then show error message --}}
                     <br><br>
                     <hr>
                     <div class="text-danger">Error ! No data found !</div>

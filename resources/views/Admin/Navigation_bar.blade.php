@@ -31,7 +31,7 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
             {{-- Logo --}}
-            <a class="navbar-brand text-success logo h2 align-self-center" href="{{ url('listAdmin') }}">
+            <a class="navbar-brand text-success logo h2 align-self-center" href="{{ url('dashboard') }}">
                 MF manager
                 <img src="../img/logoWebsite.png" style="width: 50px; height: 50px;" />
             </a>
@@ -93,12 +93,12 @@
                     </nav>
                 </div>
                 {{-- End navigation buttons --}}
-                <div class="navbar align-self-center d-flex align-items-baseline">
+                <div class="navbar align-self-center d-flex">
 
                     @if (Session()->has('LoginID'))
                         <div class="welcome"
                             style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90); display:inline-block">
-                            <p style="margin-top:10%; margin-right: 1px">Welcome: <?php echo session()->get('Name'); ?></p>
+                            <p style="margin-right: 1px"><i class="fas fa-user-tie"></i> | <?php echo session()->get('Name'); ?></p>
                             {{-- username --}}
                         </div>
                         <a style="margin-left: 10px;" class="nav-icon position-relative text-decoration-none"

@@ -26,7 +26,7 @@
 
             {{-- Add button and search --}}
             @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;">
+                <div style="margin-right: 1%; float:right;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                     @if ( session()->get('Class') == 'Full Control' )
                     {{-- If admin class is full control then enable add button --}}
                         <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
@@ -40,12 +40,12 @@
 
                 {{-- Search function if admin is logged in --}}
                 <div style="margin-right: 1%; float:right;">
-                    <form action="{{ url('searchAdmin') }}" method="GET">
+                    <form action="{{ url('searchAdmin') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search admins" name="search">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit"
-                                    style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
+                                    style="height:100%;"><i
                                         class="fa fa-search" aria-hidden="true"></i></button>
                             </div>
                         </div>

@@ -53,6 +53,30 @@ class CustomerController extends Controller
         }
     }
 
+    public function search()
+    {
+        $search = $_GET['search'];
+        if ($search === "") {                                       //
+            $data = Customers::get();                                  //return with message if search field is empty
+            return view('Admin.Customer.list', compact('data'));      //
+        } else {
+            $name = Customers::where('Customer_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the admin_name column
+            $username = Customers::where('Customer_Username', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the admin_username column
+            $data = $username->union($name);                                                    //combine results
+            if ($data->count() !== 0) {
+                return view('Admin.Customer.list')                                            //
+                    ->with('data', $data)                                                   // return successful search data
+                    ->with('notify', 'Showing search results for "' . $search . '".');      //
+            } else {
+                $data = Customers::get();                                                      //
+                return view('Admin.Customer.list')->with('data', $data)                       //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');               //
+            }
+        }
+    }
+
+    //!customer navigation controllers from this point on
+    
     public function homepage()
     {
         $categories = Categories::get();

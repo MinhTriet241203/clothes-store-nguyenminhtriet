@@ -40,11 +40,11 @@
 
                 {{-- Search function if admin is logged in --}}
                 <div style="margin-right: 1%; float:right;">
-                    <form action="{{ url('searchProduct') }}" method="GET">
+                    <form action="{{ url('searchProduct') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search products" name="search">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
+                                <button class="btn btn-primary" type="submit"><i
                                         class="fa fa-search" aria-hidden="true"></i></button>
                             </div>
                         </div>
