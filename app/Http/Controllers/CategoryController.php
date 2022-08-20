@@ -78,4 +78,25 @@ class CategoryController extends Controller
         Categories::where('Category_ID', '=', $id)->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
     }
+
+    public function search()
+    {
+        $search = $_GET['search'];
+        if ($search === "") {                                           //
+            $data = Categories::get();                                  //return with message if search field is empty
+            return view('Admin.Category.list', compact('data'));        //
+        } else {
+            $name = Categories::where('Category_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the category_name column
+            $data = $name;                           
+            if ($data->count() !== 0) {
+                return view('Admin.Category.list')                                          //
+                    ->with('data', $data)                                                   // return successful search data
+                    ->with('notify', 'Showing search results for "' . $search . '".');      //
+            } else {
+                $data = Categories::get();                                                  //
+                return view('Admin.Category.list')->with('data', $data)                     //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');               //
+            }
+        }
+    }
 }

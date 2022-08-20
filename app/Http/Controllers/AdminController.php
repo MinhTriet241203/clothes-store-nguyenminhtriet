@@ -12,6 +12,10 @@ use Illuminate\Database\DBAL\TimestampType;
 
 class AdminController extends Controller
 {
+    public function dashboard(){
+        return view('Admin.Dashboard');
+    }
+
     public function index()
     {
         $data = Admins::get();

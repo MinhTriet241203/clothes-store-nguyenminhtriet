@@ -20,9 +20,9 @@
             </div>
 
             @if (Session::has('LoginID'))
-            {{-- If admin is logged in then show table --}}
+                {{-- If admin is logged in then show table --}}
                 @if ($data->isNotEmpty())
-                {{-- If $data is not empty then fetch data --}}
+                    {{-- If $data is not empty then fetch data --}}
                     <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <thead>
                             {{-- Table header --}}
@@ -61,7 +61,7 @@
                         </tbody>
                     </table>
                 @else
-                {{-- If $data is empty then show error message --}}
+                    {{-- If $data is empty then show error message --}}
                     <br><br>
                     <hr>
                     <div class="text-danger">Error ! No data found !</div>

@@ -53,6 +53,30 @@ class CustomerController extends Controller
         }
     }
 
+    public function search()
+    {
+        $search = $_GET['search'];
+        if ($search === "") {                                       //
+            $data = Customers::get();                                  //return with message if search field is empty
+            return view('Admin.Customer.list', compact('data'));      //
+        } else {
+            $name = Customers::where('Customer_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the admin_name column
+            $username = Customers::where('Customer_Username', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the admin_username column
+            $data = $username->union($name);                                                    //combine results
+            if ($data->count() !== 0) {
+                return view('Admin.Customer.list')                                            //
+                    ->with('data', $data)                                                   // return successful search data
+                    ->with('notify', 'Showing search results for "' . $search . '".');      //
+            } else {
+                $data = Customers::get();                                                      //
+                return view('Admin.Customer.list')->with('data', $data)                       //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');               //
+            }
+        }
+    }
+
+    //!customer navigation controllers from this point on
+    
     public function homepage()
     {
         $categories = Categories::get();
@@ -111,42 +135,4 @@ class CustomerController extends Controller
         return view('Navigate.shop', compact('categories', 'products'));
     }
 
-    //hanlde when customer addCard
-    public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
-    {
-        if (isset($_GET['size'])) {
-            $product = Products::where('Product_ID', '=', $id)->first();
-            $Product_ID = $product->Product_ID;
-            $name = $product->Product_Name;
-            $size = $_GET['size'];
-            $quanity = $_GET['quanity'];
-            $price = $product->Price;           //getting the neccessary information
-            $img[] = $product->Images;
-
-            $_SESSION['cart'] = array();
-
-            $item = collect([
-                "name" => $name,
-                "id" => $id,
-                "size" => $size,
-                "quantity" => $quanity,         //putting them in a collection.
-                "price" => $price,
-                "img" => $img[0],
-            ]);
-
-            session()->push('cart', $item);     //push new collection to session('cart)
-
-            $categories = Categories::get();
-            $products = Products::get();        //dependent product and categories data
-            return view('Navigate.shop', compact('products', 'categories'));
-        }
-    }
-
-    public function removeItem($id)
-    {
-        $cart = session()->get('cart');
-        unset($cart[$id]);
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Removed the selected item from the cart.');
-    }
 }

@@ -26,7 +26,7 @@
                 <ul class="list-unstyled text-light footer-link-list">
                     @if ($categories)
                         @foreach ($categories as $row)
-                            <li><a class="text-decoration-none" href="#">{{ $row->Category_Name }}</a></li>
+                            <li><a class="text-decoration-none" href="{{url('category/'.$row->Category_ID)}}">{{ $row->Category_Name }}</a></li>
                         @endforeach
                     @endif
                 </ul>

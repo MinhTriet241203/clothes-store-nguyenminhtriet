@@ -56,7 +56,9 @@
                         @endif
                         <div class="row d-flex justify-content">
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-10">
+                                @if (session('cart') !== null)
                                 <h5 class="mb-0">Total: ${{ $total }}</h5>
+                                @endif
                             </div>
                         </div>
                     </div>

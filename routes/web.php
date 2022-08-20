@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -41,6 +42,7 @@ Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
 Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
 Route::get('searchAdmin', [AdminController::class, 'search'])->middleware('isLoggedIn'); //query likeness from get to table Admins//!not a page.
+Route::get('dashboard', [AdminController::class, 'dashboard']);
 
 
 
@@ -61,9 +63,10 @@ Route::post('saveCategory', [CategoryController::class, 'save'])->middleware('is
 Route::get('editCategory/{id}', [CategoryController::class, 'edit'])->middleware('isLoggedIn'); //Edit category page
 Route::post('updateCategory', [CategoryController::class, 'update'])->middleware('isLoggedIn'); //Save category on update //!not a page.
 Route::get('deleteCategory/{id}', [CategoryController::class, 'delete'])->middleware('isLoggedIn'); //Delete category //!not a page.
+Route::get('searchCategory', [CategoryController::class, 'search'])->middleware('isLoggedIn'); //Delete category //!not a page.
 
 
-//*user routing
+//*Customer routing
 
 Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop']);
@@ -76,11 +79,15 @@ Route::get('customerRegister', [CustomerLoginController::class, 'registration'])
 Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('isLoggedIn'); //!List customer on ADMIN page
 Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
-Route::get('customerAddCart/{id}', [CustomerController::class, 'addCart']); //create session to add card. //!not a page
+Route::get('searchCustomer', [CustomerController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
 Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop by category //!not a page
-Route::get('removeItem/{id}', [CustomerController::class, 'removeItem']); //shop by category //!not a page
 
-//*user
+//*Cart routing
+
+Route::get('customerAddCart/{id}', [CartController::class, 'addCart']); //create session to add card. //!not a page
+Route::get('removeItem/{id}', [CartController::class, 'removeItem']); //shop by category //!not a page
+
+//*Customer login routing
 
 Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login page
 Route::get('registerCustomer', [CustomerLoginController::class, 'registration']);//add Customer page
