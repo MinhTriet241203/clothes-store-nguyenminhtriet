@@ -1,5 +1,6 @@
 @include('Admin.Navigation_bar')
 {{-- Tab title --}}
+
 <head>
     <title>Category List</title>
 </head>
@@ -17,14 +18,14 @@
             {{-- Add button --}}
             @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
-                    @if ( session()->get('Class') == 'Full Control' )
-                    {{-- If admin class is full control then enable add button --}}
+                    @if (session()->get('Class') == 'Full Control')
+                        {{-- If admin class is full control then enable add button --}}
                         <a href="{{ url('addCategory') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
+                            <i class="fas fa-plus-circle"></i> Add</a>
                     @else
-                    {{-- If admin class is read only then disable add button --}}
+                        {{-- If admin class is read only then disable add button --}}
                         <a class="btn btn-success disabled">
-                        <i class="fas fa-plus-circle"></i> Add</a>
+                            <i class="fas fa-plus-circle"></i> Add</a>
                     @endif
                 </div>
             @endif
@@ -35,9 +36,9 @@
             </div>
 
             @if (Session::has('LoginID'))
-            {{-- If admin is logged in then show table --}}
+                {{-- If admin is logged in then show table --}}
                 @if ($data->isNotEmpty())
-                {{-- If $data is not empty then fetch data --}}
+                    {{-- If $data is not empty then fetch data --}}
                     <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <thead>
                             {{-- Table header --}}
@@ -55,12 +56,12 @@
                                     <td>{{ $row->Category_ID }}</td>
                                     <td>{{ $row->Category_Name }}</td>
                                     <td>
-                                        <img src="img/categories/{{ $row->Category_Image }}"
-                                        alt="" height="100px" width="auto">
+                                        <img src="img/categories/{{ $row->Category_Image }}" height="100px"
+                                            width="auto" style="border-radius: 10px;border: 1px solid #ced4da;">
                                     </td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable update, delete button --}}
+                                        @if (session()->get('Class') == 'Read Only')
+                                            {{-- If admin class is read only then disable update, delete button --}}
                                             <a class="btn btn-primary disabled">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -68,7 +69,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @else
-                                        {{-- If admin class is full control then enable update, delete button --}}
+                                            {{-- If admin class is full control then enable update, delete button --}}
                                             <a href="{{ url('editCategory/' . $row->Category_ID) }}"
                                                 class="btn btn-primary">
                                                 <i class="fas fa-edit"></i>
@@ -84,7 +85,7 @@
                         </tbody>
                     </table>
                 @else
-                {{-- If $data is empty then show error message --}}
+                    {{-- If $data is empty then show error message --}}
                     <br><br>
                     <hr>
                     <div class="text-danger">Error ! No data found !</div>

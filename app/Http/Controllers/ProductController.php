@@ -95,7 +95,7 @@ class ProductController extends Controller
                 if (File::exists($path) && $path !== 'img/products/') {       //
                     File::delete($path);                                      //
                 }                                                             //
-            }                                                                 
+            }
             $imgArr = [];                                                     //
             foreach ($request->images as $file) {                             //
                 $filename = Date('usiHd') . $file->getClientOriginalName();   //
@@ -146,18 +146,19 @@ class ProductController extends Controller
     {
         $search = $_GET['search'];
         if ($search === "") {                                       //
-            $data = Products::get();                                //return with message if search field is empty
+            $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();                                //return with message if search field is empty
             return view('Admin.Products.list', compact('data'));    //
         } else {
-            $data = Products::where('Product_Name', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the product_name column
+            $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+            ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    //query search for likeliness in the product_name column
             if ($data->count() !== 0) {
                 return view('Admin.Products.list')                                          //
                     ->with('data', $data)                                                   // return successful search data
                     ->with('notify', 'Showing search results for "' . $search . '".');      //
             } else {
-                $data = Products::get();                                                    //
-                return view('Admin.Products.list')->with('data', $data)                     //return with empty search data.
-                    ->with('fail', 'No result found for "' . $search . '".');               //
+                $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();     //
+                return view('Admin.Products.list', compact('data'))                                                  //return with empty search data.
+                    ->with('fail', 'No result found for "' . $search . '".');                                           //
             }
         }
     }
