@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -79,11 +80,14 @@ Route::post('saveCustomer', [CustomerController::class, 'save']); //!not a page.
 Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('isLoggedIn'); //!List customer on ADMIN page
 Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 Route::get('searchCustomer', [CustomerController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
-Route::get('customerAddCart/{id}', [CustomerController::class, 'addCart']); //create session to add card. //!not a page
 Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop by category //!not a page
-Route::get('removeItem/{id}', [CustomerController::class, 'removeItem']); //shop by category //!not a page
 
-//*Customer
+//*Cart routing
+
+Route::get('customerAddCart/{id}', [CartController::class, 'addCart']); //create session to add card. //!not a page
+Route::get('removeItem/{id}', [CartController::class, 'removeItem']); //shop by category //!not a page
+
+//*Customer login routing
 
 Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login page
 Route::get('registerCustomer', [CustomerLoginController::class, 'registration']);//add Customer page
