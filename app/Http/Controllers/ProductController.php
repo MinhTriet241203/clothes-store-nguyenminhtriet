@@ -118,14 +118,14 @@ class ProductController extends Controller
         $sizes = implode(" ", $sizeArr);
         //
 
-        Products::where('Product_ID', '=', $id)->update([
-            'Product_Name' => $request->name,
-            'Category_ID' => $request->category,
-            'Price' => $request->price,
-            'Details' => $request->details,
-            'Images' => $images,
-            'Size' => $sizes,
-            'Available' => $request->available,
+        Products::where('Product_ID', '=', $id)->update([   //
+            'Product_Name' => $request->name,               //
+            'Category_ID' => $request->category,            //
+            'Price' => $request->price,                     //
+            'Details' => $request->details,                 //Updating information on database              
+            'Images' => $images,                            //
+            'Size' => $sizes,                               //
+            'Available' => $request->available,             //
         ]);
         return redirect()->back()->with('success', 'Product updated successfully!');
     }

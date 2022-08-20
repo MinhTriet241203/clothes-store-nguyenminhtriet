@@ -17,7 +17,7 @@
                 </div>
             @endif
 
-            <form action="{{ url('editProduct/'.$data->Product_ID) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('updateProduct') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{ $data->Product_ID }}">
 
