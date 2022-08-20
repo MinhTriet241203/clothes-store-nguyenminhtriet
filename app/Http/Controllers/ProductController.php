@@ -150,8 +150,11 @@ class ProductController extends Controller
             //return with message if search field is empty
             return view('Admin.Products.list', compact('data'));
         } else {
-            $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+            $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
             ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    //query search for likeliness in the product_name column
+            $price = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+            ->where('Price', '=',$search)->get();    //query search for likeliness in the admin_username column
+            $data = $price->union($product);   
             if ($data->count() !== 0) {
                 return view('Admin.Products.list')                                          //
                     ->with('data', $data)                                                   // return successful search data
