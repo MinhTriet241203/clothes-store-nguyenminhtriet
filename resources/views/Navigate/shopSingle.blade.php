@@ -95,11 +95,13 @@
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item">Size:
                                             <?php $sizes = explode(' ', $data->Size); ?>
-                                        @foreach ($sizes as $item)
-                                            <li class="list-inline-item">
-                                                <input name="size" type="radio" class="btn-check" id="{{$item}}" autocomplete="off" value="{{$item}}">
-                                                <label class="btn btn-outline-success" for="{{$item}}">{{$item}}</label><br>
-                                            </li>
+                                            @foreach ($sizes as $item)
+                                        <li class="list-inline-item">
+                                            <input name="size" type="radio" class="btn-check"
+                                                id="{{ $item }}" autocomplete="off" value="{{ $item }}">
+                                            <label class="btn btn-outline-success"
+                                                for="{{ $item }}">{{ $item }}</label><br>
+                                        </li>
                                         @endforeach
                                         </li>
                                     </ul>

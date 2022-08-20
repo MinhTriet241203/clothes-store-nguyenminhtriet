@@ -12,9 +12,9 @@
             <h1 class="h2 pb-4">Categories</h1>
             <ul class="list-unstyled templatemo-accordion">
                 @foreach ($categories as $row)
-                <a class="d-flex justify-content-between h3" style="text-decoration:none"
-                    href="{{url('category/'.$row->Category_ID)}}">
-                    <li class="pb-3">
+                    <a class="d-flex justify-content-between h3" style="text-decoration:none"
+                        href="{{ url('category/' . $row->Category_ID) }}">
+                        <li class="pb-3">
                             {{ $row->Category_Name }}
                             <i class="fa fa-fw fa-chevron-circle-right mt-1"></i>
                         </li>
@@ -60,7 +60,8 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                        <li>{{ $size = implode( ' / ',$sizes = explode( " ",$showProducts->Size))}}</li>    {{--Re-implode values for better display--}}
+                                        <li>{{ $size = implode(' / ', $sizes = explode(' ', $showProducts->Size)) }}
+                                        </li> {{-- Re-implode values for better display --}}
                                     </ul>
                                     <ul class="list-unstyled d-flex justify-content-center mb-1">
                                         <li>

@@ -1,5 +1,6 @@
 @include('Admin.Navigation_bar')
 {{-- Tab title --}}
+
 <head>
     <title>Admin List</title>
 </head>
@@ -27,16 +28,16 @@
             {{-- Add button and search --}}
             @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
-                    @if ( session()->get('Class') == 'Product Operator' )
-                    {{-- If admin class is product operator then disable add button --}}
+                    @if (session()->get('Class') == 'Product Operator')
+                        {{-- If admin class is product operator then disable add button --}}
                         <a class="btn btn-success disabled">
-                        <i class="fas fa-plus-circle"></i> Add</a>
+                            <i class="fas fa-plus-circle"></i> Add</a>
                     @else
-                    {{-- If admin class is full control or manager then enable add button --}}
+                        {{-- If admin class is full control or manager then enable add button --}}
                         <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
+                            <i class="fas fa-plus-circle"></i> Add</a>
                     @endif
-                </div> 
+                </div>
 
                 {{-- Search function if admin is logged in --}}
                 <div style="margin-right: 1%; float:right;">
@@ -59,9 +60,9 @@
             </div>
 
             @if (Session::has('LoginID'))
-            {{-- If admin is logged in then show table --}}
+                {{-- If admin is logged in then show table --}}
                 @if ($data->isNotEmpty())
-                {{-- If $data is not empty then fetch data --}}
+                    {{-- If $data is not empty then fetch data --}}
                     <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                         <thead>
                             {{-- Table header --}}
@@ -80,8 +81,8 @@
                                     <td>{{ $row->Admin_Name }}</td>
                                     <td>{{ $row->Admin_Class }}</td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Product Operator' )
-                                        {{-- If admin class is product operator then disable update, delete button on admin list page --}}
+                                        @if (session()->get('Class') == 'Product Operator')
+                                            {{-- If admin class is product operator then disable update, delete button on admin list page --}}
                                             <a class="btn btn-primary disabled">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -89,9 +90,9 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @else
-                                        {{-- If admin class is full control or manager then enable update, delete button --}}
+                                            {{-- If admin class is full control or manager then enable update, delete button --}}
                                             @if ($row->Admin_Username == 'admin')
-                                            {{-- If admin username is admin then disable delete button --}}
+                                                {{-- If admin username is admin then disable delete button --}}
                                                 <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                                     class="btn btn-primary">
                                                     <i class="fas fa-edit"></i>
@@ -100,7 +101,7 @@
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             @else
-                                            {{-- If admin username is not admin then enable update, delete button --}}
+                                                {{-- If admin username is not admin then enable update, delete button --}}
                                                 <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
                                                     class="btn btn-primary">
                                                     <i class="fas fa-edit"></i>
@@ -117,7 +118,7 @@
                         </tbody>
                     </table>
                 @else
-                {{-- If $data is empty then show error message --}}
+                    {{-- If $data is empty then show error message --}}
                     <br><br>
                     <hr>
                     <div class="text-danger">Error ! No data found !</div>

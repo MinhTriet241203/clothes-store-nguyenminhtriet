@@ -26,7 +26,8 @@
                 <ul class="list-unstyled text-light footer-link-list">
                     @if ($categories)
                         @foreach ($categories as $row)
-                            <li><a class="text-decoration-none" href="{{url('category/'.$row->Category_ID)}}">{{ $row->Category_Name }}</a></li>
+                            <li><a class="text-decoration-none"
+                                    href="{{ url('category/' . $row->Category_ID) }}">{{ $row->Category_Name }}</a></li>
                         @endforeach
                     @endif
                 </ul>
@@ -35,9 +36,9 @@
             <div class="col-md-4 pt-5">
                 <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                 <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="{{url('/')}}">Home</a></li>
-                    <li><a class="text-decoration-none" href="{{url('about')}}">About Us</a></li>
-                    <li><a class="text-decoration-none" href="{{url('contact')}}">Contact</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/') }}">Home</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('about') }}">About Us</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('contact') }}">Contact</a></li>
                 </ul>
             </div>
 

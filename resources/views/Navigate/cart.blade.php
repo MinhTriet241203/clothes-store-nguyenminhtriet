@@ -54,7 +54,8 @@
                                 $i++; ?>
                             @endforeach
                         @else
-                            <p>Looks like your cart is empty! You can get some items <a href="{{'shop'}}" style="color: #23B35A">Here</a></p>
+                            <p>Looks like your cart is empty! You can get some items <a href="{{ 'shop' }}"
+                                    style="color: #23B35A">Here</a></p>
                         @endif
                         <div class="row d-flex justify-content">
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-10">
