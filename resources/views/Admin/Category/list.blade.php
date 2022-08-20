@@ -82,25 +82,14 @@
                                             width="auto" style="border-radius: 10px;border: 1px solid #ced4da;">
                                     </td>
                                     <td>
-                                        @if (session()->get('Class') == 'Read Only')
-                                            {{-- If admin class is read only then disable update, delete button --}}
-                                            <a class="btn btn-primary disabled">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger disabled">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @else
-                                            {{-- If admin class is full control then enable update, delete button --}}
-                                            <a href="{{ url('editCategory/' . $row->Category_ID) }}"
-                                                class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="{{ url('deleteCategory/' . $row->Category_ID) }}"
-                                                class="btn btn-danger" onclick="return confirm('Confirm delete?')">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @endif
+                                        <a href="{{ url('editCategory/' . $row->Category_ID) }}"
+                                            class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url('deleteCategory/' . $row->Category_ID) }}"
+                                            class="btn btn-danger" onclick="return confirm('Confirm delete?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

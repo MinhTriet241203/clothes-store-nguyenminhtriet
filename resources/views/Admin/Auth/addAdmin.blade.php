@@ -38,13 +38,14 @@
                         </div>
                     @enderror
 
-                    {{-- Enter class --}}
+                    {{-- Choose class --}}
                     <div class="md-3">
                         <label for="class" class="form-label">Admin class</label>
                         <select name="class" class="form-control form-select" value="{{ old('class') }}"
                             style="width: 200px">
-                            <option value="Read Only" selected>Read Only</option>
+                            <option value="Product Operator" selected>Product Operator</option>
                             <option value="Full Control">Full Control</option>
+                            <option value="Manager">Manager</option>
                         </select>
                     </div>
                     @error('name')
@@ -88,6 +89,7 @@
                 </form>
                 {{-- end form --}}
                 <br>
+                <a href="{{ url('adminLogOut') }}" class="btn btn-success">Login Admin</a>
             </div>
         </div>
     </div>

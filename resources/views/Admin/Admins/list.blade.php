@@ -26,26 +26,26 @@
 
             {{-- Add button and search --}}
             @if (Session::has('LoginID'))
-                <div style="margin-right: 1%; float:right;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
-                    @if ( session()->get('Class') == 'Full Control' )
-                    {{-- If admin class is full control then enable add button --}}
-                        <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
+                <div style="margin-right: 1%; float:right;">
+                    @if ( session()->get('Class') == 'Product Operator' )
+                    {{-- If admin class is product operator then disable add button --}}
+                        <a class="btn btn-success disabled">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     @else
-                    {{-- If admin class is read only then disable add button --}}
-                        <a class="btn btn-success disabled">
+                    {{-- If admin class is full control or manager then enable add button --}}
+                        <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     @endif
                 </div> 
 
                 {{-- Search function if admin is logged in --}}
                 <div style="margin-right: 1%; float:right;">
-                    <form action="{{ url('searchAdmin') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
+                    <form action="{{ url('searchAdmin') }}" method="GET">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search admins" name="search">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit"
-                                    style="height:100%;"><i
+                                    style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
                                         class="fa fa-search" aria-hidden="true"></i></button>
                             </div>
                         </div>
@@ -80,8 +80,8 @@
                                     <td>{{ $row->Admin_Name }}</td>
                                     <td>{{ $row->Admin_Class }}</td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable update, delete button --}}
+                                        @if ( session()->get('Class') == 'Product Operator' )
+                                        {{-- If admin class is product operator then disable update, delete button on admin list page --}}
                                             <a class="btn btn-primary disabled">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -89,7 +89,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @else
-                                        {{-- If admin class is full control then enable update, delete button --}}
+                                        {{-- If admin class is full control or manager then enable update, delete button --}}
                                             @if ($row->Admin_Username == 'admin')
                                             {{-- If admin username is admin then disable delete button --}}
                                                 <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
