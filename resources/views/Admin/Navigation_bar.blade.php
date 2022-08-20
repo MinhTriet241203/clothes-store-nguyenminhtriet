@@ -54,37 +54,37 @@
                                     <i class="fas fa-angle-down"></i>
                                 </p>
                                 <ul style='box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;z-index: 10'>
-                                    <li><a href="listAdmin">
+                                    <li><a href="{{ url('listAdmin') }}">
                                             <p class="nav-link">Admins</p>
                                         </a></li>
-                                    <li><a href="listCustomer">
+                                    <li><a href="{{ url('listCustomer') }}">
                                             <p class="nav-link">Customers</p>
                                         </a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a href="listProduct">
+                                <a href="{{ url('listProduct') }}">
                                     <p class="nav-link">
                                         Products
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="listCategory">
+                                <a href="{{ url('listCategory') }}">
                                     <p class="nav-link">
                                         Categories
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <p class="nav-link" href="{{ url('contact') }}">Analytics
+                                <p class="nav-link" href="{{ url('') }}">Analytics {{-- Need edit here --}}
                                     <i class="fas fa-angle-down"></i>
                                 </p>
                                 <ul style='box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;z-index: 10'>
-                                    <li><a href="">
+                                    <li><a href="{{ url('') }}"> {{-- Need edit here --}}
                                             <p class="nav-link">Orders</p>
                                         </a></li>
-                                    <li><a href="">
+                                    <li><a href="{{ url('') }}"> {{-- Need edit here --}}
                                             <p class="nav-link">Sales</p>
                                         </a></li>
                                 </ul>
