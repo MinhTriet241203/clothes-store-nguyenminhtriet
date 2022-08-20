@@ -78,19 +78,53 @@ class ProductController extends Controller
             'category' => 'required',
             'price' => 'required|integer',
             'details' => 'required',
-            'images' => 'required',
             'size' => 'required',
             'available' => 'required',
         ]);
 
         $id = $request->id;
+
+        $data = Products::where('Product_ID', '=', $id)->first();
+
+        //image processing
+        if (!empty($request->images)) {
+            $oldImages = [];                                                  //
+            $oldImages = explode("@@@", $data->Images);                       //
+            foreach ($oldImages as $file) {                                   //
+                $path = public_path('img/products/' . $file);                 //Remove old images
+                if (File::exists($path) && $path !== 'img/products/') {       //
+                    File::delete($path);                                      //
+                }                                                             //
+            }                                                                 
+            $imgArr = [];                                                     //
+            foreach ($request->images as $file) {                             //
+                $filename = Date('usiHd') . $file->getClientOriginalName();   //
+                $resize = Image::make($file->getRealPath());                  //Add new
+                $resize->resize(210, 210);                                    //
+                $resize->save('img/products/' . $filename);                   //
+                array_push($imgArr, $filename);                               //
+            }
+            $images = implode("@@@", $imgArr);
+        } else {
+            $images = $data->Images;    //uses old data if request for images is empty(user didn't add anything)
+        }
+        //
+
+        //size processing
+        $sizeArr = [];
+        foreach ($request->size as $size) {
+            array_push($sizeArr, $size);
+        }
+        $sizes = implode(" ", $sizeArr);
+        //
+
         Products::where('Product_ID', '=', $id)->update([
             'Product_Name' => $request->name,
             'Category_ID' => $request->category,
             'Price' => $request->price,
             'Details' => $request->details,
-            'Images' => $request->images,
-            'Size' => $request->size,
+            'Images' => $images,
+            'Size' => $sizes,
             'Available' => $request->available,
         ]);
         return redirect()->back()->with('success', 'Product updated successfully!');

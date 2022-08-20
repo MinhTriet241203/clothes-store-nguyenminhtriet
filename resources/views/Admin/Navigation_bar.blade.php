@@ -93,7 +93,7 @@
                     </nav>
                 </div>
                 {{-- End navigation buttons --}}
-                <div class="navbar align-self-center d-flex">
+                <div class="navbar align-self-center d-flex align-items-baseline">
 
                     @if (Session()->has('LoginID'))
                         <div class="welcome"
@@ -101,9 +101,9 @@
                             <p style="margin-top:10%; margin-right: 1px">Welcome: <?php echo session()->get('Name'); ?></p>
                             {{-- username --}}
                         </div>
-                        <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
+                        <a style="margin-left: 10px;" class="nav-icon position-relative text-decoration-none"
                             href="{{ url('adminLogOut') }}">
-                            <i class="fas fa-sign-out-alt"></i>
+                            <i class="fas fa-sign-out-alt fa-lg"></i>
                         </a>
                     @else
                         <a class="nav-icon position-relative text-decoration-none" href="{{ url('loginAdmin') }}">

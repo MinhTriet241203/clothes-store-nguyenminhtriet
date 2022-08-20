@@ -69,11 +69,11 @@
                                 <th>Product Name</th>
                                 <th>Category</th>
                                 <th>Price</th>
-                                <th>Details</th>
+                                <th style="width: 15%">Details</th>
                                 <th>Images</th>
                                 <th>Size</th>
                                 <th>Available</th>
-                                <th>Actions</th>
+                                <th style="width: 9%">Actions</th> {{--magic number for the 2 buttons to stay on the same line on <=80% zoom--}}
                             </tr>
                         </thead>
                         <tbody>
@@ -82,7 +82,7 @@
                                 <tr style="text-align: center; vertical-align:middle">
                                     <td>{{ $row->Product_ID }}</td>
                                     <td>{{ $row->Product_Name }}</td>
-                                    <td>{{ $row->Category_ID }}</td>
+                                    <td>{{ $row->Category_Name }}</td>
                                     <td>${{ $row->Price }}</td>
                                     <td>{{ $row->Details }}</td>
                                     <td>
@@ -91,7 +91,7 @@
                                         $ImagesAll = explode('@@@', $row->Images);
                                         foreach ($ImagesAll as $item) {
                                             $img = $path . $item;
-                                            echo "<img src='$img' width='100px' height='100px' style='margin-left:5px'>";
+                                            echo "<img src='$img' width='100px' height='100px' style='margin-left:5px; border-radius: 5px;'>";
                                         }
                                         ?>
                                     </td>

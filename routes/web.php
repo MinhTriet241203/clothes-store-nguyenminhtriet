@@ -27,7 +27,7 @@ use App\Http\Controllers\CustomerLoginController;
 Route::get('listProduct', [ProductController::class, 'index'])->name('listProduct')->middleware('isLoggedIn');
 Route::get('addProduct', [ProductController::class, 'add'])->middleware('isLoggedIn');
 Route::post('saveProduct', [ProductController::class, 'save'])->middleware('isLoggedIn'); //!not a page.
-Route::get('editProduct/{id?}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
+Route::get('editProduct/{id}', [ProductController::class, 'edit'])->middleware('isLoggedIn');
 Route::post('updateProduct', [ProductController::class, 'update'])->middleware('isLoggedIn'); //!not a page.
 Route::get('deleteProduct/{id}', [ProductController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 Route::get('searchProduct', [ProductController::class, 'search'])->middleware('isLoggedIn'); //query likeness from get to table Products//!not a page.
