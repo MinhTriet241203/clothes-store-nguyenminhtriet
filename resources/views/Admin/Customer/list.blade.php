@@ -51,19 +51,10 @@
                                     <td>{{ $row->Gender }}</td>
                                     <td>{{ $row->Date_of_Birth }}</td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable delete button --}}
-                                            <a class="btn btn-danger disabled"
-                                                onclick="return confirm('Confirm delete?')">
-                                            <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @else
-                                        {{-- If admin class is full control then enable delete button --}}
-                                            <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}" class="btn btn-danger"
-                                                onclick="return confirm('Confirm delete?')">
-                                            <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @endif
+                                        <a href="{{ url('deleteCustomer/' . $row->Customer_Username) }}" class="btn btn-danger"
+                                            onclick="return confirm('Confirm delete?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

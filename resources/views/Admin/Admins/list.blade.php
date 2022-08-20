@@ -27,13 +27,13 @@
             {{-- Add button and search --}}
             @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;">
-                    @if ( session()->get('Class') == 'Full Control' )
-                    {{-- If admin class is full control then enable add button --}}
-                        <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
+                    @if ( session()->get('Class') == 'Product Operator' )
+                    {{-- If admin class is product operator then disable add button --}}
+                        <a class="btn btn-success disabled">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     @else
-                    {{-- If admin class is read only then disable add button --}}
-                        <a class="btn btn-success disabled">
+                    {{-- If admin class is full control or manager then enable add button --}}
+                        <a href="{{ url('registrationAdmin') }}" class="btn btn-success">
                         <i class="fas fa-plus-circle"></i> Add</a>
                     @endif
                 </div> 
@@ -80,8 +80,8 @@
                                     <td>{{ $row->Admin_Name }}</td>
                                     <td>{{ $row->Admin_Class }}</td>
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable update, delete button --}}
+                                        @if ( session()->get('Class') == 'Product Operator' )
+                                        {{-- If admin class is product operator then disable update, delete button on admin list page --}}
                                             <a class="btn btn-primary disabled">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -89,7 +89,7 @@
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         @else
-                                        {{-- If admin class is full control then enable update, delete button --}}
+                                        {{-- If admin class is full control or manager then enable update, delete button --}}
                                             @if ($row->Admin_Username == 'admin')
                                             {{-- If admin username is admin then disable delete button --}}
                                                 <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"

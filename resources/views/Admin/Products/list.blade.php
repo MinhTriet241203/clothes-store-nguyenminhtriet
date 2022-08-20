@@ -27,15 +27,8 @@
             {{-- Add button and search --}}
             @if (Session::has('LoginID'))
                 <div style="margin-right: 1%; float:right;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
-                    @if ( session()->get('Class') == 'Full Control' )
-                    {{-- If admin class is full control then enable add button --}}
-                        <a href="{{ url('addProduct') }}" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                    @else
-                    {{-- If admin class is read only then disable add button --}}
-                        <a class="btn btn-success disabled">
-                        <i class="fas fa-plus-circle"></i> Add</a>
-                    @endif
+                    <a href="{{ url('addProduct') }}" class="btn btn-success">
+                    <i class="fas fa-plus-circle"></i> Add</a>
                 </div>
 
                 {{-- Search function if admin is logged in --}}
@@ -98,24 +91,13 @@
                                     <td>{{ $row->Size }}</td>
                                     <td>{{ $row->Available }}</td> <img src="" alt="">
                                     <td>
-                                        @if ( session()->get('Class') == 'Read Only' )
-                                        {{-- If admin class is read only then disable update, delete button --}}
-                                            <a class="btn btn-primary disabled">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a class="btn btn-danger disabled">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @else
-                                        {{-- If admin class is full control then enable update, delete button --}}
-                                            <a href="{{ url('editProduct/' . $row->Product_ID) }}" class="btn btn-primary">
-                                                <i class="fas fa-edit"></i>
-                                            </a>
-                                            <a href="{{ url('deleteProduct/' . $row->Product_ID) }}" class="btn btn-danger"
-                                                onclick="return confirm('Confirm delete?')">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </a>
-                                        @endif
+                                        <a href="{{ url('editProduct/' . $row->Product_ID) }}" class="btn btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url('deleteProduct/' . $row->Product_ID) }}" class="btn btn-danger"
+                                            onclick="return confirm('Confirm delete?')">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
