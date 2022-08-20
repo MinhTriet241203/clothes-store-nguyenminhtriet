@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $data = Products::get();
+        $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
         return view('Admin.Products.list', compact('data'));
     }
 

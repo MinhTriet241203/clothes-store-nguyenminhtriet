@@ -191,7 +191,7 @@
                 @enderror
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="{{ url('listProduct') }}" class="btn btn-danger">Back</a>
+                <a href="{{ url('listProduct')}}" class="btn btn-danger">Back</a>
                 <br><br><br><br><br><br>
             </form>
         </div>
