@@ -32,7 +32,9 @@ class CustomerLoginController extends Controller
             'password' => 'required',
         ]);
 
-        $user = Customers::where('Customer_Username', '=', $request->username)->first();
+        $user = Customers::where('Customer_Username', '=', $request->username)
+            ->orWhere('Email', '=', $request->username)
+            ->first();
 
         if ($user) {
             if (Hash::check($request->password, $user->Customer_Password)) {
@@ -43,7 +45,7 @@ class CustomerLoginController extends Controller
                 return back()->with('fail', 'Password do not match!');
             }
         } else {
-            return back()->with('fail', 'This username is not registered!');
+            return back()->with('fail', 'The username/email is not registered!');
         }
     }
 

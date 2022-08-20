@@ -47,8 +47,8 @@
                 {{-- Navigation buttons --}}
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between"
-                        style="margin-left: 130px;
-                              margin-right: 130px; font-size: 18px">
+                        style="margin-left: 15%;
+                              margin-right: 15%; font-size: 18px">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
@@ -85,7 +85,7 @@
 
                     @if (Session()->has('customerLoginID'))
                         <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
-                            <p style="font-size: 18px !important">Welcome : <?php echo session()->get('customerName'); ?></p>
+                            <p style="font-size: 18px !important"><i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?></p>
                         </div>
                         <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
                             href="{{ url('customerLogOut') }}">

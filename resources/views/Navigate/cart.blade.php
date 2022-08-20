@@ -53,24 +53,27 @@
                                 <?php $total += $row['price'] * $row['quantity'];
                                 $i++; ?>
                             @endforeach
+                        @else
+                            <p>Looks like your cart is empty! You can get some items <a href="{{'shop'}}" style="color: #23B35A">Here</a></p>
                         @endif
                         <div class="row d-flex justify-content">
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-10">
                                 @if (session('cart') !== null)
-                                <h5 class="mb-0">Total: ${{ $total }}</h5>
+                                    <h5 class="mb-0">Total: ${{ $total }}</h5>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card rounded-3 mb-4">
-                    <div class="card-body p-3">
-                        <a href="" class="btn btn-success" style="float: right">Purchase</a>
-                        <a href="{{ url()->previous() }}" class="btn btn-outline-danger"
-                            style="float: right; margin-right: 1%">Back</a>
+                @if (session('cart') !== null)
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-3">
+                            <a href="" class="btn btn-success" style="float: right">Purchase</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-outline-danger"
+                                style="float: right; margin-right: 1%">Back</a>
+                        </div>
                     </div>
-
-                </div>
+                @endif
             </div>
         </div>
 </section>
