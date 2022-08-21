@@ -10,7 +10,7 @@
         <div class="col-md-5 align-content-between">
 
             <div class="card rounded-3 mb-4">
-                <img src="img/PlaceholderPFP.jpg" alt="" height="250" width="250"
+                <img src="img/ProfilePics/PlaceholderPFP.jpg" alt="" height="250" width="250"
                     style="border-radius: 25%; align-self:center">
             </div>
 
