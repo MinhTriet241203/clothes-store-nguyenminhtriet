@@ -148,12 +148,11 @@
     <div class="container">
         <div class="row text-left p-2 pb-3">
             <h4>Related Products</h4>
-        </div>
-        @foreach($ProductRelate as $row)
-        
+        </div>    
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
 
+            @foreach($ProductRelate as $row)
             <div class="p-2 pb-3">
                 <div class="product-wap card rounded-0">
                     <div class="card rounded-0">
@@ -190,8 +189,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
+        
 
 
     </div>
