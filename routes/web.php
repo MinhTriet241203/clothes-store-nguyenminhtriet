@@ -81,6 +81,7 @@ Route::get('listCustomer', [CustomerController::class, 'index'])->middleware('is
 Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middleware('isLoggedIn'); //!not a page.
 Route::get('searchCustomer', [CustomerController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
 Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop by category //!not a page
+Route::get('customerProfile', [CustomerController::class, 'profile']); //customer profile page for viewing and editing.
 
 //*Cart routing
 
@@ -94,3 +95,4 @@ Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
+

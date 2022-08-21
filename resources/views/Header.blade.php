@@ -103,7 +103,7 @@
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset"
                             style="margin-top:-15px;width:fit-content">
-                            <li><a class="dropdown-item" href="#">
+                            <li><a class="dropdown-item" href="{{url('customerProfile')}}">
                                     Profile
                                 </a>
                             </li>

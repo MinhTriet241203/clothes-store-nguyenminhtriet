@@ -13,6 +13,23 @@ use Illuminate\Database\DBAL\TimestampType;
 
 class CustomerController extends Controller
 {
+
+    //!View customers on admin page
+    public function index()
+    {
+        $data = Customers::get();
+        return view('Admin.Customer.list', compact('data'));
+    }
+    //!
+
+    public function profile()
+    {
+        $customer = session()->get('customerLoginID');
+        $data = Customers::where('Customer_ID', '=', $customer)->first();
+        $categories = Categories::get();
+        return view('Customer.profile', compact('data', 'categories'));
+    }
+
     public function save(Request $request)
     {
         $request->validate([
@@ -21,7 +38,7 @@ class CustomerController extends Controller
             'password' => 'required|required_with:confirmPassword|same:confirmPassword',
             'confirmPassword' => 'required',
             'email' => 'required|unique:Customers',
-            'phone' => 'required|min:10',
+            'phone' => 'required|digits:10',
             'address' => 'required',
             'gender' => 'required',
             'DoB' => 'required'
@@ -54,7 +71,7 @@ class CustomerController extends Controller
     }
 
     public function update(){
-        
+        //TODO Create an update feature for customer
     }
 
     public function search()
@@ -125,12 +142,6 @@ class CustomerController extends Controller
         return view('Navigate.cart', compact('data', 'categories'));
     }
 
-    //!View customers on admin page
-    public function index()
-    {
-        $data = Customers::get();
-        return view('Admin.Customer.list', compact('data'));
-    }
 
     public function shopCategory($id)
     {
