@@ -9,6 +9,7 @@
     <div class="col-md-6 m-auto text-center" style="display: inline-block">
         <div class="col-md-5">
             <div class="card rounded-3">
+                @if (Session::has('customerLoginID'))                    
                 <img src="img/ProfilePics/PlaceholderPFP.jpg" alt="" height="250" width="250"
                     style="border-radius: 25%; align-self:center">
                 <h1>{{ $data->Customer_Name }}</h1>
@@ -20,6 +21,9 @@
                 <p><i class="fas fa-user"></i> Gender: {{ $data->Gender }}</p>
                 <p><i class="fas fa-birthday-cake"></i> Birthday: {{ date('d/m/Y', strtotime($data->Date_of_Birth)) }}
                 </p>
+                @else
+                <p>Oops! Looks like you have not logged in yet! <a href="">Login here</a> or <a href="">Sign up here</a>.</p>
+                @endif
             </div>
         </div>
     </div>
