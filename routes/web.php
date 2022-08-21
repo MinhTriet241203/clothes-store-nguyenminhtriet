@@ -69,7 +69,7 @@ Route::get('searchCategory', [CategoryController::class, 'search'])->middleware(
 //*Customer routing
 
 Route::get('/', [CustomerController::class, 'homepage']);
-Route::get('shop', [CustomerController::class, 'shop']);
+Route::get('shop', [CustomerController::class, 'shop'])->name('shop');
 Route::get('shopSingle/{id}', [CustomerController::class, 'shopSingle']); //!Add /{id} to shopSingle link
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('cart', [CustomerController::class, 'cart']);

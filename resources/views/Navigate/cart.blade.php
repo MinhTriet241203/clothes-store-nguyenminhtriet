@@ -5,8 +5,8 @@
 </head>
 
 <!-- Open Content -->
-<section class="bg-light h-100" style="background-color: #eee;">
-    <div class="container h-100 py-5">
+<section class="bg-light" style="background-color: #eee;">
+    <div class="container py-5">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-10">
 
@@ -20,7 +20,7 @@
                 @endif
                 <div class="card rounded-3 mb-4">
                     <div class="card-body p-4">
-                        @if (session('cart') !== null)
+                        @if (!empty(session('cart')))
                             <?php $total = 0;
                             $i = 0; ?>
                             @foreach (session('cart') as $row)
@@ -59,14 +59,14 @@
                         @endif
                         <div class="row d-flex justify-content">
                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-10">
-                                @if (session('cart') !== null)
+                                @if (!empty(session('cart')))
                                     <h5 class="mb-0">Total: ${{ $total }}</h5>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                @if (session('cart') !== null)
+                @if (!empty(session('cart')))
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-3">
                             <a href="" class="btn btn-success" style="float: right">Purchase</a>

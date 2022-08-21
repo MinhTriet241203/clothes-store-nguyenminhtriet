@@ -79,12 +79,19 @@
                         <i class="fa fa-fw fa-search text-dark mr-2" style="font-size: 18px !important"></i>
                     </a>
                     {{-- Cart button --}}
-                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}" style="margin: 0">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}"
+                        style="margin: 0">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        @if (count(Session('cart')) > 0)
+                        @if (!empty(session('cart')))
                             <span
                                 class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
-                                style="position: static !important">{{ count(Session('cart')) }}</span>
+                                style="position: static !important">{{ count(Session('cart')) }}
+                            </span>
+                        @else
+                            <span
+                                class="position-absolute top-0 left-100 translate-middle badge rounded-pill"
+                                style="position: static !important;">
+                            </span>
                         @endif
                     </a>
 
@@ -94,12 +101,20 @@
                             style="font-size: 18px;color:rgb(35, 179, 90); padding:0">
                             <i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?>
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset" style="margin-top:-15px;">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset"
+                            style="margin-top:-15px;width:fit-content">
+                            <li><a class="dropdown-item" href="#">
+                                    Profile
+                                </a>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
+                                    Sign out
+                                </a>
+                            </li>
                         </ul>
                     @else
-                        <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
+                        <a class="nav-icon position-relative text-decoration-none"
+                            href="{{ url('customerLogin') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
                             {{-- TODO: add dropdown --}}
                         </a>

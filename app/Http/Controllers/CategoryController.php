@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
+use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\DBAL\TimestampType;
 
@@ -74,10 +75,14 @@ class CategoryController extends Controller
     {
         $data = Categories::where('Category_ID', '=', $id)->first();
         $path = public_path('img/categories/'.$data->Category_Image);
+        try{
         File::delete($path);
         Categories::where('Category_ID', '=', $id)->delete();
         return redirect()->back()->with('success', 'Category deleted successfully');
+    }catch (Exception $e){
+        return redirect()->back()->with('fail', 'Cannot delete category, maybe try and delete all related products first.');
     }
+}
 
     public function search()
     {

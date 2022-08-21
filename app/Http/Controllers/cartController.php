@@ -44,6 +44,7 @@ class CartController extends Controller
     {
         $cart = session()->get('cart');
         unset($cart[$id]);
+        $cart = array_values($cart);
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Removed the selected item from the cart.');
     }

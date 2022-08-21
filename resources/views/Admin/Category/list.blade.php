@@ -14,6 +14,11 @@
                     {{ Session::get('success') }}
                 </div>
             @endif
+            @if (Session::has('fail'))
+                <div class="alert alert-danger" role="alert">
+                    {{ Session::get('fail') }}
+                </div>
+            @endif
             @if (!empty($notify))
                 <div class="alert alert-primary" role="alert">
                     {{ $notify }}
