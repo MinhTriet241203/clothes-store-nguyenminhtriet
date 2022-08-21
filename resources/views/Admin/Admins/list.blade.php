@@ -114,7 +114,21 @@ Tab title --}}
           </div>
 
           <div class="app-brand-1 demo-1">
-            Welcome: <?php echo session()->get('Name'); ?>
+            @if (Session()->has('LoginID'))
+                <div class="welcome"
+                    style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90); display:inline-block">
+                    <p style="margin-right: 1px"><i class="fas fa-user-tie"></i> | <?php echo session()->get('Name'); ?></p>
+                    {{-- username --}}
+                </div>
+                <a style="margin-left: 10px;" class="nav-icon position-relative text-decoration-none"
+                    href="{{ url('adminLogOut') }}">
+                    <i class="fas fa-sign-out-alt fa-lg"></i>
+                </a>
+            @else
+                <a class="nav-icon position-relative text-decoration-none" href="{{ url('loginAdmin') }}">
+                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                </a>
+            @endif
           </div>
 
           <div class="menu-inner-shadow"></div>
