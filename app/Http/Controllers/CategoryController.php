@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categories;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Exception;
@@ -30,7 +31,7 @@ class CategoryController extends Controller
         ]);
         $category = new Categories();
 
-        $filename = Date('usiHd').$request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
+        $filename = Date('usiHd') . $request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
         $request->image->move(public_path('\img\categories'), $filename);
 
         $category->Category_Name = $request->name;
@@ -73,16 +74,17 @@ class CategoryController extends Controller
 
     public function delete($id)
     {
-        $data = Categories::where('Category_ID', '=', $id)->first();
-        $path = public_path('img/categories/'.$data->Category_Image);
-        try{
-        File::delete($path);
-        Categories::where('Category_ID', '=', $id)->delete();
-        return redirect()->back()->with('success', 'Category deleted successfully');
-    }catch (Exception $e){
-        return redirect()->back()->with('fail', 'Cannot delete category, maybe try and delete all related products first.');
+        $check = Products::where('Category_ID', '=', $id)->first();
+        if (!$check) {
+            $data = Categories::where('Category_ID', '=', $id)->first();
+            $path = public_path('img/categories/' . $data->Category_Image);
+            File::delete($path);
+            Categories::where('Category_ID', '=', $id)->delete();
+            return redirect()->back()->with('success', 'Category deleted successfully');
+        } else {
+            return redirect()->back()->with('fail', 'Cannot delete category, maybe try and delete all related products first.');
+        }
     }
-}
 
     public function search()
     {
@@ -92,7 +94,7 @@ class CategoryController extends Controller
             return view('Admin.Category.list', compact('data'));        //
         } else {
             $name = Categories::where('Category_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the category_name column
-            $data = $name;                           
+            $data = $name;
             if ($data->count() !== 0) {
                 return view('Admin.Category.list')                                          //
                     ->with('data', $data)                                                   // return successful search data
