@@ -146,54 +146,49 @@
 <!-- Start Article -->
 <section class="py-5">
     <div class="container">
-        <div class="row text-left p-2 pb-3">
+        <div class="text-left p-2 pb-3">
             <h4>Related Products</h4>
         </div>
-        @foreach($ProductRelate as $row)
-        
-        <!--Start Carousel Wrapper-->
-        <div id="carousel-related-product">
-
-            <div class="p-2 pb-3">
-                <div class="product-wap card rounded-0">
-                    <div class="card rounded-0">
-                        <img class="card-img rounded-0 img-fluid" src="../img/products/<?php $ImagesFirst = explode('@@@', $row->Images); $item = reset($ImagesFirst);echo $item; ?>">
-                        <div
-                            class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                            <ul class="list-unstyled">
-                                <li><a class="btn btn-success text-white" href="shop-single.html"><i
-                                            class="far fa-heart"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                            class="far fa-eye"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                            class="fas fa-cart-plus"></i></a></li>
-                            </ul>
+        <div class="d-flex justify-content-around">
+            @foreach ($ProductRelate as $row)
+                <!--Start Carousel Wrapper-->
+                <div id="carousel-related-product" style="width: 30%; height:auto; display:inline-block">
+                    <a href="{{ url('shopSingle/' . $row->Product_ID) }}" style="text-decoration: none;color:black;">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <?php
+                                $path = '../img/products/';
+                                $ImagesAll = explode('@@@', $row->Images);
+                                $item = reset($ImagesAll);
+                                $img = $path . $item;
+                                echo "<img class='card-img rounded-0 img-fluid' src='$img'>";
+                                ?>
+                                <div
+                                    class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                    <li style="font-size: 20px !important">
+                                        {{ $size = implode(' / ', $sizes = explode(' ', $row->Size)) }}
+                                    </li> {{-- Re-implode values for better display --}}
+                                </ul>
+                                <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                    <li>
+                                    </li>
+                                </ul>
+                                <p class="text-center mb-0" style="color: #59ab6e; font-size: 25px !important;">
+                                    ${{ $row->Price }}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <a href="shop-single.html" class="h3 text-decoration-none">{{$row->Product_Name}}</a>
-                        <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                            <li>{{$row->Size}}</li>
-                            <li class="pt-2">
-                                <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                            </li>
-                        </ul>
-                        <ul class="list-unstyled d-flex justify-content-center mb-1">
-                            <li>
-                            </li>
-                        </ul>
-                        <p class="text-center mb-0">$20.00</p>
-                    </div>
+                    </a>
                 </div>
-            </div>
+            @endforeach
         </div>
-        @endforeach
-
-
     </div>
 </section>
 <!-- End Article -->
