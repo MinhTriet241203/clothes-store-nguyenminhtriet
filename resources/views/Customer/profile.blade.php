@@ -7,14 +7,10 @@
 <!-- Start Content Page -->
 <div class="container-fluid bg-light py-5">
     <div class="col-md-6 m-auto text-center" style="display: inline-block">
-        <div class="col-md-5 align-content-between">
-
-            <div class="card rounded-3 mb-4">
+        <div class="col-md-5">
+            <div class="card rounded-3">
                 <img src="img/ProfilePics/PlaceholderPFP.jpg" alt="" height="250" width="250"
                     style="border-radius: 25%; align-self:center">
-            </div>
-
-            <div class="card rounded-3 mb-4">
                 <h1>{{ $data->Customer_Name }}</h1>
                 <p><i class="far fa-user-circle"></i> Username: {{ $data->Customer_Username }}</p>
                 <p><i class="fas fa-address-card"></i> Name: {{ $data->Customer_Name }}</p>

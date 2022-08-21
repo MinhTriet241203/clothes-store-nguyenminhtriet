@@ -78,6 +78,7 @@
             </div>
         </div>
 </section>
+
 @include('Footer')
 </body>
 

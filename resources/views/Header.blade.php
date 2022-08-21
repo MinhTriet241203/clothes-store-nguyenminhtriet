@@ -116,7 +116,6 @@
                         <a class="nav-icon position-relative text-decoration-none"
                             href="{{ url('customerLogin') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                            {{-- TODO: add dropdown --}}
                         </a>
                     @endif
                 </div>
