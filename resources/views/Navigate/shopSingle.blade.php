@@ -186,7 +186,7 @@
                             <li>
                             </li>
                         </ul>
-                        <p class="text-center mb-0">$20.00</p>
+                        <p class="text-center mb-0">${{$row->Price}}</p>
                     </div>
                 </div>
             </div>
