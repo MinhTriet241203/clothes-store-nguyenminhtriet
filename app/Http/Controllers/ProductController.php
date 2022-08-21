@@ -151,9 +151,13 @@ class ProductController extends Controller
             return view('Admin.Products.list', compact('data'));
         } else {
             $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-            ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    //query search for likeliness in the product_name column
+            ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    
+            //query search for likeliness in the product_name column
+            
             $price = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-            ->where('Price', '=',$search)->get();    //query search for likeliness in the admin_username column
+            ->where('Price', '=',$search)->get();
+            //query search for likeliness in the admin_username column
+            
             $data = $price->union($product);   
             if ($data->count() !== 0) {
                 return view('Admin.Products.list')                                          //
@@ -161,7 +165,7 @@ class ProductController extends Controller
                     ->with('notify', 'Showing search results for "' . $search . '".');      //
             } else {
                 $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();     //
-                return view('Admin.Products.list', compact('data'))                                                  //return with empty search data.
+                return view('Admin.Products.list', compact('data'))                                                     //return with empty search data.
                     ->with('fail', 'No result found for "' . $search . '".');                                           //
             }
         }

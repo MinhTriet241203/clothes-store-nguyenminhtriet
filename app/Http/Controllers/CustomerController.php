@@ -70,7 +70,8 @@ class CustomerController extends Controller
         }
     }
 
-    public function update(){
+    public function update()
+    {
         //TODO Create an update feature for customer
     }
 
@@ -132,9 +133,24 @@ class CustomerController extends Controller
             ->where('Product_ID', '=', $id)->first();
 
         $CategoryRelateID = $data->Category_ID;
-        $ProductRelate = Products::where('Category_ID', '=', $CategoryRelateID )->take(3)->get(); //take a few data
+        $ProductRelate = Products::where('Category_ID', '=', $CategoryRelateID)
+            ->Where('Product_ID', '!=', $id)
+            ->limit(3)
+            ->get(); //take a few data    
+        if (count($ProductRelate) < 3) {  //add filler for nicer page
+            $fillerCount = 3 - count($ProductRelate);
+            $filler = Products::where('Product_ID', '!=', $id)
+                ->Where('Category_ID', '!=', $data->Category_ID)
+                ->inRandomOrder()
+                ->limit($fillerCount)
+                ->get();
+            $new = $ProductRelate->toBase()->merge($filler); //toBase is not mentioned once anywhere in the merging of two query results, thus taking much more time that it should have, i do regret doing these additional QoL function at times.
+
+            $ProductRelate = $new;
+        }
+
         $image = Products::where('Product_ID', '=', $id)->first();
-        return view('Navigate.shopSingle', compact('data', 'categories', 'image','CategoryRelateID','ProductRelate'));
+        return view('Navigate.shopSingle', compact('data', 'categories', 'image', 'CategoryRelateID', 'ProductRelate'));
     }
 
     public function cart()
