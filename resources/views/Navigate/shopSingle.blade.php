@@ -9,15 +9,14 @@
     <div class="container pb-5">
         <div class="row">
             <div class="col-lg-5 mt-5">
-
-
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="../img/products/<?php
-                    
-                    $ImagesFirst = explode('@@@', $image->Images);
-                    $item = reset($ImagesFirst);
-                    echo $item; ?>" alt="Card image cap"
-                        id="product-detail">
+                    <img    class="card-img img-fluid" 
+                            src="../img/products/<?php
+                                $ImagesFirst = explode('@@@', $image->Images);
+                                $item = reset($ImagesFirst);
+                                echo $item; ?>" 
+                            alt="Card image cap"
+                            id="product-detail">
                 </div>
 
                 <div class="row">
@@ -160,12 +159,9 @@
                         <div
                             class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                             <ul class="list-unstyled">
-                                <li><a class="btn btn-success text-white" href="shop-single.html"><i
-                                            class="far fa-heart"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                            class="far fa-eye"></i></a></li>
-                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i
-                                            class="fas fa-cart-plus"></i></a></li>
+                                <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
+                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                                <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
