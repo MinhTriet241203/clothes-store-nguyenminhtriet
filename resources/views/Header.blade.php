@@ -79,18 +79,25 @@
                         <i class="fa fa-fw fa-search text-dark mr-2" style="font-size: 18px !important"></i>
                     </a>
                     {{-- Cart button --}}
-                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}">
-                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1" style="font-size: 18px !important"></i>
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}" style="margin: 0">
+                        <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
+                        @if (count(Session('cart')) > 0)
+                            <span
+                                class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"
+                                style="position: static !important">{{ count(Session('cart')) }}</span>
+                        @endif
                     </a>
 
                     @if (Session()->has('customerLoginID'))
-                        <div class="welcome" style="magin-top: 12px; background-color: white; color:rgb(35, 179, 90)">
-                            <p style="font-size: 18px !important"><i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?></p>
-                        </div>
-                        <a style="margin-left: 10px" class="nav-icon position-relative text-decoration-none"
-                            href="{{ url('customerLogOut') }}">
-                            <i class="fas fa-sign-out-alt" style="font-size: 18px !important"></i>
-                        </a>
+                        <button type="button" class="btn dropdown-toggle" id="dropdownMenuOffset"
+                            data-bs-toggle="dropdown" aria-expanded="false"
+                            style="font-size: 18px;color:rgb(35, 179, 90); padding:0">
+                            <i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset" style="margin-top:-15px;">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
                     @else
                         <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>

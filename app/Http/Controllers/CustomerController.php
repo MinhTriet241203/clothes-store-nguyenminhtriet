@@ -53,6 +53,10 @@ class CustomerController extends Controller
         }
     }
 
+    public function update(){
+        
+    }
+
     public function search()
     {
         $search = $_GET['search'];
