@@ -132,7 +132,7 @@ class CustomerController extends Controller
             ->where('Product_ID', '=', $id)->first();
 
         $CategoryRelateID = $data->Category_ID;
-        $ProductRelate = Products::get(); //take a few data
+        $ProductRelate = Products::where('Category_ID', '=', $CategoryRelateID )->take(3)->get(); //take a few data
         $image = Products::where('Product_ID', '=', $id)->first();
         return view('Navigate.shopSingle', compact('data', 'categories', 'image','CategoryRelateID','ProductRelate'));
     }
