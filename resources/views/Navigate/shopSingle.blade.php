@@ -9,15 +9,14 @@
     <div class="container pb-5">
         <div class="row">
             <div class="col-lg-5 mt-5">
-
-
                 <div class="card mb-3">
-                    <img class="card-img img-fluid" src="../img/products/<?php
-                    
-                    $ImagesFirst = explode('@@@', $image->Images);
-                    $item = reset($ImagesFirst);
-                    echo $item; ?>" alt="Card image cap"
-                        id="product-detail">
+                    <img    class="card-img img-fluid" 
+                            src="../img/products/<?php
+                                $ImagesFirst = explode('@@@', $image->Images);
+                                $item = reset($ImagesFirst);
+                                echo $item; ?>" 
+                            alt="Card image cap"
+                            id="product-detail">
                 </div>
 
                 <div class="row">

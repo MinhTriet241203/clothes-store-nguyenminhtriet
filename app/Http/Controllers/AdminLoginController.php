@@ -49,7 +49,12 @@ class AdminLoginController extends Controller
                 $request->session()->put('LoginID', $user->Admin_Username);
                 $request->session()->put('Name', $user->Admin_Name);
                 $request->session()->put('Class', $user->Admin_Class);
-                return redirect('listAdmin');
+                if($user->Admin_Class == 'Manager')
+                    return redirect('dashboard');
+                else if($user->Admin_Class == 'Product Operator')
+                    return redirect('listProduct');
+                else
+                    return redirect('listAdmin');
             } else {
                 return back()->with('fail', 'Password do not match!');
             }
