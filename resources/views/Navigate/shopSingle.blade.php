@@ -148,15 +148,15 @@
     <div class="container">
         <div class="row text-left p-2 pb-3">
             <h4>Related Products</h4>
-        </div>
-
+        </div>    
         <!--Start Carousel Wrapper-->
         <div id="carousel-related-product">
 
+            @foreach($ProductRelate as $row)
             <div class="p-2 pb-3">
                 <div class="product-wap card rounded-0">
                     <div class="card rounded-0">
-                        <img class="card-img rounded-0 img-fluid" src="img/shop_08.jpg">
+                        <img class="card-img rounded-0 img-fluid" src="../img/products/<?php $ImagesFirst = explode('@@@', $row->Images); $item = reset($ImagesFirst);echo $item; ?>">
                         <div
                             class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                             <ul class="list-unstyled">
@@ -170,9 +170,9 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <a href="shop-single.html" class="h3 text-decoration-none">Red Clothing</a>
+                        <a href="shop-single.html" class="h3 text-decoration-none">{{$row->Product_Name}}</a>
                         <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                            <li>M/L/X/XL</li>
+                            <li>{{$row->Size}}</li>
                             <li class="pt-2">
                                 <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
                                 <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
@@ -185,11 +185,13 @@
                             <li>
                             </li>
                         </ul>
-                        <p class="text-center mb-0">$20.00</p>
+                        <p class="text-center mb-0">${{$row->Price}}</p>
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
+        
 
 
     </div>
