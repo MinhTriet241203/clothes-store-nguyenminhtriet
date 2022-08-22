@@ -11,8 +11,8 @@
         integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous">
     </script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
-    <link rel="stylesheet" href="css/login_style.css">
-    <link rel="stylesheet" href="css/button_style.css">
+    <link rel="stylesheet" href={{asset('css/login_style.css')}}>
+    <link rel="stylesheet" href={{asset('css/button_style.css')}}>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 
@@ -30,9 +30,16 @@
                                 {{ Session::get('success') }}
                             </div>
                         @endif
+                        @if (!empty($social))
+                            <div class="alert alert-primary" role="alert">
+                                {{ $social }}
+                            </div>
+                        @endif
                         <div class="form-group">
                             <label for="username">Username:</label>
-                            <input id ="username" type="text" class="form-control" placeholder="Username" name="userName" value="{{old('userName')}}">
+                            <input id="username" type="text" class="form-control" placeholder="Username"
+                                name="userName"
+                                value="{{isset($data) ? $data->username : old('userName')}}">
                         </div>
                         @error('userName')
                             <div class="alert alert-danger" role="alert">
@@ -42,7 +49,8 @@
 
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input id="password" type="password" class="form-control" placeholder="Password" name="password">
+                            <input id="password" type="password" class="form-control" placeholder="Password"
+                                name="password">
                         </div>
                         @error('password')
                             <div class="alert alert-danger" role="alert">
@@ -63,7 +71,8 @@
 
                         <div class="form-group">
                             <label for="name">Name:</label>
-                            <input id="name" type="text" class="form-control" placeholder="Name" name="name" value="{{old('name')}}">
+                            <input id="name" type="text" class="form-control" placeholder="Name" name="name"
+                                value="{{isset($data) ? $data->name : old('name')}}">
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -73,7 +82,8 @@
 
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input id="email" type="email" class="form-control" placeholder="Demo@gmail.com" name="email" value="{{old('email')}}">
+                            <input id="email" type="email" class="form-control" placeholder="Demo@gmail.com"
+                                name="email" value="{{isset($data) ? $data->email : old('email')}}">
                         </div>
                         @error('email')
                             <div class="alert alert-danger" role="alert">
@@ -83,7 +93,8 @@
 
                         <div class="form-group">
                             <label for="phone">Phone number:</label>
-                            <input id="phone" type="text" class="form-control" placeholder="0123456789" name="phone" value="{{old('phone')}}">
+                            <input id="phone" type="text" class="form-control" placeholder="0123456789"
+                                name="phone" value="{{ old('phone') }}">
                         </div>
                         @error('phone')
                             <div class="alert alert-danger" role="alert">
@@ -93,7 +104,8 @@
 
                         <div class="form-group">
                             <label for="address">Address:</label>
-                            <input id="address"type="text" class="form-control" placeholder="Address" name="address" value="{{old('address')}}">
+                            <input id="address"type="text" class="form-control" placeholder="Address"
+                                name="address" value="{{ old('address') }}">
                         </div>
                         @error('address')
                             <div class="alert alert-danger" role="alert">
@@ -117,7 +129,8 @@
 
                         <div class="form-group">
                             <label for="dob">Date of birth:</label>
-                            <input id="dob" type="date" class="form-control" placeholder="Birth Day" name="DoB"  value="{{old('DoB')}}">
+                            <input id="dob" type="date" class="form-control" placeholder="Birth Day"
+                                name="DoB" value="{{ old('DoB') }}">
                         </div>
                         @error('DoB')
                             <div class="alert alert-danger" role="alert">
@@ -140,7 +153,7 @@
                             <a href="{{ url('/') }}" class="home" style="text-decoration: none">
                                 <button class="custom-btn btn-1">To home
                                     page</button>
-                                </a>
+                            </a>
                         </div>
                     </div>
 

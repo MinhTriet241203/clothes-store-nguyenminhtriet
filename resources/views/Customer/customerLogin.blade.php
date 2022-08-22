@@ -79,13 +79,6 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <a class="btn btn-block social-login facebook" href="{{route('facebookRedirect')}}">
-                        <span class="social-icons">
-                            <i class="fab fa-facebook-square fa-lg">
-                            </i>
-                        </span>
-                        <span class="align-middle">Login with Facebook</span>
-                    </a>
                     <a class="btn btn-block social-login google" href="{{route('googleRedirect')}}">
                         <span class="social-icons">
                             <i class="fab fa-google fa-lg">

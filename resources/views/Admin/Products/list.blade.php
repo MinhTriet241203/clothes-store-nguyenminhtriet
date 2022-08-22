@@ -225,7 +225,7 @@
                                         <th>Images</th>
                                         <th>Size</th>
                                         <th>Available</th>
-                                        <th style="width: 9%">Actions</th> {{--magic number for the 2 buttons to stay on the same line on <=80% zoom--}}
+                                        <th style="width: 9%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
