@@ -55,31 +55,34 @@ class CartController extends Controller
 
     public function purchase(Request $request){
 
-        foreach (session('cart') as $row){
+        // foreach (session('cart') as $row){
 
-            $productsAddedCart = collect([
-                "productID" => $row['id'],
-                "size" => $row['size'],
-                "quantity" => $row['quantity'],
-            ]);
-        }
+        //     $productsAddedCart = collect([
+        //         "productID" => $row['id'],
+        //         "size" => $row['size'],
+        //         "quantity" => $row['quantity'],
+        //     ]);
+        // }
         $Orders = new Orders();
+
         $request->validate([
             'address' => 'required',
             'phone' => 'required',
         ]);
+
         $Orders->Receive_Address = $request->address;
         $Orders->Receive_Phone = $request->phone;
+        $Orders->Customer_ID = session()->get('customerLoginID');
+        $Orders->save();
 
-        $Order_details = new Order_details();
-        $Order_details->Product_ID = $productsAddedCart;
-
-        $Order_details->Receive_Address = $request->address;
-        $Order_details->Receive_Phone = $request->phone;
-        $Order_details->Order_ID = session()->get('customerLoginID');
-        $Order_details->save();
+        // $Order_details = new Order_details();
+        // $Order_details->Product_ID = $productsAddedCart;
+;
+        
+        
 
         $categories = Categories::get();
-        return view('Navigate.purchase' , compact('categories'));
+        //return redirect()->back()->with('success', 'Product added successfully!');
+        return view('Navigate.purchase' , compact('categories'))->with('success', 'Removed the selected item from the cart.');
     }
 }
