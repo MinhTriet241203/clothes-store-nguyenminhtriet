@@ -13,21 +13,36 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
+                @if (Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
                 <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="container py-5">
                         <div class="row py-5">                          
                             <div class="row">
-                                <div class="form-group col-md-6 mb-3">
+                                <div class="mb-3">
                                     <label for="inputname">Recieve Address</label>
                                     <input type="text" class="form-control mt-1" name="address"
                                         placeholder="Address">
                                 </div>
-                                <div class="form-group col-md-6 mb-3">
+                                @error('address')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <div class="mb-3">
                                     <label for="inputemail">Recieve Phone</label>
                                     <input type="text" class="form-control mt-1" name="phone"
                                         placeholder="Phone">
                                 </div>
+                                @error('phone')
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 <div class="mb-3">
                                     <label for="inputmessage">Note</label>
                                     <textarea class="form-control mt-1" id="message" name="note" placeholder="Note" rows="8"></textarea>
@@ -35,11 +50,7 @@
                             </div>          
                         </div>
                     </div>
-                    @if (Session::has('success'))
-                        <div class="alert alert-danger" role="alert">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
+
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">
                             @if (!empty(session('cart')))

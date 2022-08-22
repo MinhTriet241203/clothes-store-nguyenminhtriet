@@ -55,9 +55,6 @@ class CartController extends Controller
     }
 
     public function purchase(Request $request){
-
-
-
         $orders = new Orders();
 
         $request->validate([
@@ -95,11 +92,9 @@ class CartController extends Controller
 
             $order_details->save();
         }
-        
-        
 
         $categories = Categories::get();
         // return redirect()->back()->with('success', 'Product added successfully!');
-        return view('Navigate.cart' , compact('categories'))->with('success', 'Removed the selected item from the cart.');
+        return redirect()->back()->with('success', 'You purchased successfully!');
     }
 }
