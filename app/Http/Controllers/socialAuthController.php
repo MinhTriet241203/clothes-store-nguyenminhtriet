@@ -35,10 +35,11 @@ class socialAuthController extends Controller
                 $data->name === $Customer->Customer_Name &&         //check for all fields being the same
                 $data->email === $Customer->Email
             ) {
-                session()->put('customerLoginID', $data->Customer_ID);
-                redirect('/');
+                session()->put('customerLoginID', $Customer->Customer_ID);
+                session()->put('customerName', $Customer->Customer_Name);
+                return redirect('/');
             } else {
-                redirect()->view('Customer.customerLogin')->with('fail', 'There is an registered with the same Email or Username');
+                return redirect()->view('Customer.customerLogin')->with('fail', 'There is an registered with the same Email or Username');
             }
         }
     }

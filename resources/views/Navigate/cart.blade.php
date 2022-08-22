@@ -20,6 +20,7 @@
                 @endif
                 <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if (!empty(session('cart')))
                     <div class="container py-5">
                         <div class="row py-5">                          
                             <div class="row">
@@ -49,7 +50,8 @@
                                 </div>
                             </div>          
                         </div>
-                    </div>
+                    </div>                        
+                    @endif
 
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">
