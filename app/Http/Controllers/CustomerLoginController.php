@@ -24,6 +24,33 @@ class CustomerLoginController extends Controller
         route('saveCustomer');
     }
 
+    public function editPassword()
+    {
+        return view('Customer.customerEditPassword');
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'oldPassword' => 'required',
+            'password' => 'required|required_with:confirmPassword|same:confirmPassword',
+            'confirmPassword' => 'required',
+        ]);
+
+        $id = session()->get('customerLoginID');
+        $customer = Customers::where('Customer_ID','=',$id)->first();
+        $updatedCustomer = new Customers();
+        if (Hash::check($request->oldPassword, $customer->Customer_Password)) {
+            $updatedCustomer->Customer_Password = Hash::make($request->password);
+            Customers::where('Customer_ID', '=', $id)->update([
+                'Customer_Password' => $updatedCustomer->Customer_Password,
+            ]);
+            return back()->with('success', 'Password changed successfully!');
+        }else{
+            return back()->with('fail', 'Password do not match!');
+        }
+    }
+
     public function signIn(Request $request)
     {
 

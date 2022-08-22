@@ -79,20 +79,20 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <button class="btn btn-block social-login facebook">
+                    <a class="btn btn-block social-login facebook" href="{{route('facebookRedirect')}}">
                         <span class="social-icons">
                             <i class="fab fa-facebook-square fa-lg">
                             </i>
                         </span>
                         <span class="align-middle">Login with Facebook</span>
-                    </button>
-                    <button class="btn btn-block social-login google">
+                    </a>
+                    <a class="btn btn-block social-login google" href="{{route('googleRedirect')}}">
                         <span class="social-icons">
                             <i class="fab fa-google fa-lg">
                             </i>
                         </span>
                         <span class="align-middle">Login with Google</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
