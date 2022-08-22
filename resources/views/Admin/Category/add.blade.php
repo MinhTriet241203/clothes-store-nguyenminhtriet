@@ -197,7 +197,6 @@
                             <label for="image_preview" class="form-label">Image Preview</label>
                             <div id="preview" style="width:220px;height:220px" class="form-control" ></div> {{--preview area--}}
                             {{-- Script to preview multiple uploaded images --}}
-
                             <script>
                                 function previewImages() {
                                     var preview = document.querySelector('#preview');
@@ -226,7 +225,6 @@
                                 }
                                 document.querySelector('#file-input').addEventListener("change", previewImages);
                             </script>
-
                             {{--End script--}}
                         </div>
                         @error('image')
