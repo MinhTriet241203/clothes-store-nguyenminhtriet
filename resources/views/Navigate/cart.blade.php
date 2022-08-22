@@ -13,14 +13,14 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
-                @if (Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
+
                 <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if (!empty(session('cart')))
+                    @if (Session::has('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
                     <div class="container py-5">
                         <div class="row py-5">                          
                             <div class="row">
@@ -51,7 +51,7 @@
                             </div>          
                         </div>
                     </div>                        
-                    @endif
+                    
 
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">

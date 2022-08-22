@@ -38,7 +38,7 @@ class CustomerLoginController extends Controller
         ]);
 
         $id = session()->get('customerLoginID');
-        $customer = Customers::where('Customer_ID','=',$id)->first();
+        $customer = Customers::where('Customer_ID', '=', $id)->first();
         $updatedCustomer = new Customers();
         if (Hash::check($request->oldPassword, $customer->Customer_Password)) {
             $updatedCustomer->Customer_Password = Hash::make($request->password);
@@ -46,7 +46,7 @@ class CustomerLoginController extends Controller
                 'Customer_Password' => $updatedCustomer->Customer_Password,
             ]);
             return back()->with('success', 'Password changed successfully!');
-        }else{
+        } else {
             return back()->with('fail', 'Password do not match!');
         }
     }

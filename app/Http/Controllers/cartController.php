@@ -16,7 +16,7 @@ class CartController extends Controller
     public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
         if (isset($_GET['size'])) {
-            
+
             $product = Products::where('Product_ID', '=', $id)->first();
             $Product_ID = $product->Product_ID;
             $name = $product->Product_Name;
@@ -55,6 +55,9 @@ class CartController extends Controller
     }
 
     public function purchase(Request $request){
+
+        
+
         $orders = new Orders();
 
         $request->validate([
@@ -67,32 +70,23 @@ class CartController extends Controller
         $orders->Customer_ID = session()->get('customerLoginID');
         $orders->Note = $_POST['note'];
 
-        $currentTime = Carbon::now();//get current time 
+        $currentTime = Carbon::now(); //get current time 
         $orders->Date = $currentTime;
 
         $orders->save();
 
-        $OrderID = session()->get('customerLoginID'); 
-        // $order_details->Product_ID = $productsAddedCart;
+
+
+        $OrderID = Orders::orderBy('Order_ID', 'desc')->first();
+        $OrderIDCurrent = $OrderID->Order_ID;
+
         foreach (session('cart') as $row){
 
-            // $productsAddedCart = collect([
-            //     "productID" => $row['id'],
-            //     "size" => $row['size'],
-            //     "quantity" => $row['quantity'],
-            // ]);
-            //$Order_ID = Orders::where('Customer_ID', '=', session()->get('customerLoginID'));
-            $order_details = new Order_details();
-            $order_details->Order_ID = $OrderID;
-            $order_details->Product_ID = $row['id'];
-            $order_details->Size = $row['size'];
-            $order_details->Quantity = $row['quantity'];
+            Order_details::insert([['Order_ID' => $OrderIDCurrent, 'Product_ID' => $row['id'],'Size' => $row['size'],'Quantity' => $row['quantity']]]); // add to database
 
-            $order_details->save();
         }
-
         $categories = Categories::get();
-        // return redirect()->back()->with('success', 'Product added successfully!');
-        return redirect()->back()->with('success', 'You purchased successfully!');
+
+        return redirect()->back()->with('success', 'You purchase successfully!');
     }
 }
