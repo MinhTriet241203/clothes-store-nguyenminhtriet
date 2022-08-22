@@ -289,3 +289,32 @@
         </div>
       </div>
     </div>
+
+
+{{--! Just some backend shit cause I'm stupid at frontend --}}
+<?php
+// Tổng sản phẩm = tổng Available của tất cả sản phẩm
+$totalProduct = 0;
+foreach ($products as $product) {
+  $totalProduct += $product->Available;
+}
+echo "Total products: $totalProduct\n";
+
+// Tổng sản phẩm của từng category
+foreach ($categories as $category) {
+  $number = 0;
+  foreach ($products as $product) {
+    if ($product->Category_ID == $category->Category_ID) {
+      $number += $product->Available;
+    }
+  }
+  echo "$category->Category_Name has $number products\n";
+}
+
+// Tổng lợi nhuận Này chưa test nha
+foreach ($order_details as $order_detail) {
+  $smallIncome = $order_detail->Price * $order_detail->Quantity;
+  $bigIncome += $smallIncome;
+}
+echo $bigIncome;
+?>
