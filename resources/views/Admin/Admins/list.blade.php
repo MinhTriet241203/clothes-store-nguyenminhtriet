@@ -201,6 +201,12 @@
                         <div style="margin-right: 1%; float:right;">
                             <form action="{{ url('searchAdmin') }}" method="GET">
                                 <div class="input-group mb-3">
+                                    <select name="searchType" class="form-control form-select">
+                                        <option value="none">Search by...</option>
+                                        <option value="username">Username</option>
+                                        <option value="name">Name</option>
+                                        <option value="class">Class</option>
+                                    </select>
                                     <input type="text" class="form-control" placeholder="Search admins" name="search">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit"
