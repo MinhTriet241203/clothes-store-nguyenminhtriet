@@ -14,17 +14,18 @@
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
                 <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="container py-5">
                         <div class="row py-5">                          
                             <div class="row">
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="inputname">Recieve Address</label>
-                                    <input type="text" class="form-control mt-1" id="adress" name="address"
+                                    <input type="text" class="form-control mt-1" name="address"
                                         placeholder="Address">
                                 </div>
                                 <div class="form-group col-md-6 mb-3">
                                     <label for="inputemail">Recieve Phone</label>
-                                    <input type="text" class="form-control mt-1" id="phone" name="phone"
+                                    <input type="text" class="form-control mt-1" name="phone"
                                         placeholder="Phone">
                                 </div>
                             </div>          
@@ -86,7 +87,8 @@
                     @if (!empty(session('cart')))
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-3">
-                                <a href="" class="btn btn-success" style="float: right">Purchase</a>
+                                {{-- <a href="" class="btn btn-success" style="float: right" type="submit">Purchase</a> --}}
+                                <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Purchase</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-outline-danger"
                                     style="float: right; margin-right: 1%">Back</a>
                             </div>

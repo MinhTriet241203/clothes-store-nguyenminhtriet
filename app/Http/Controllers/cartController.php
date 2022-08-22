@@ -63,17 +63,17 @@ class CartController extends Controller
         //         "quantity" => $row['quantity'],
         //     ]);
         // }
-        $Orders = new Orders();
+        $orders = new Orders();
 
         $request->validate([
             'address' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|max:10'
         ]);
 
-        $Orders->Receive_Address = $request->address;
-        $Orders->Receive_Phone = $request->phone;
-        $Orders->Customer_ID = session()->get('customerLoginID');
-        $Orders->save();
+        $orders->Receive_Address = $request->address;
+        $orders->Receive_Phone = $request->phone;
+        $orders->Customer_ID = session()->get('customerLoginID');
+        $orders->save();
 
         // $Order_details = new Order_details();
         // $Order_details->Product_ID = $productsAddedCart;
@@ -82,7 +82,7 @@ class CartController extends Controller
         
 
         $categories = Categories::get();
-        //return redirect()->back()->with('success', 'Product added successfully!');
+        // return redirect()->back()->with('success', 'Product added successfully!');
         return view('Navigate.purchase' , compact('categories'))->with('success', 'Removed the selected item from the cart.');
     }
 }
