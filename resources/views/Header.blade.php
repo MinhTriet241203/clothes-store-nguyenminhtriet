@@ -32,7 +32,7 @@
             {{-- Logo --}}
             <a class="navbar-brand text-success logo h2 align-self-center" href="{{ url('/') }}">
                 Male Fashion
-                <img src="../img/logoWebsite.png" style="width: 50px; height: 50px;" />
+                <img src="../img/logoWebsite.png" style="width: 40px; height: 40px;" />
             </a>
             {{-- End logo --}}
 

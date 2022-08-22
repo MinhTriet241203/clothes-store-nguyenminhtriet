@@ -91,6 +91,7 @@ Route::Post('updateProfile', [CustomerController::class, 'update']); //update cu
 
 Route::get('customerAddCart/{id}', [CartController::class, 'addCart']); //create session to add card. //!not a page
 Route::get('removeItem/{id}', [CartController::class, 'removeItem']); //shop by category //!not a page
+Route::post('purchase', [CartController::class, 'purchase']); //not a page
 
 //*Customer login routing
 
