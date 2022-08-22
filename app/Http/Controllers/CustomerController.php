@@ -89,7 +89,7 @@ class CustomerController extends Controller
             'gender' => 'required',
             'DoB' => 'required'
         ]);
-        
+
         if (Hash::check($request->password, $data->Customer_Password)) {
             $customers = new Customers();
 
@@ -107,8 +107,8 @@ class CustomerController extends Controller
                 'Date_of_Birth' => $customers->Date_of_Birth,
             ]);
             return redirect()->back()->with('success', 'Customer updated successfully!');
-        }else{
-            return redirect()->back()->with('fail','The password do not match!');
+        } else {
+            return redirect()->back()->with('fail', 'The password do not match!');
         }
     }
 
@@ -119,12 +119,12 @@ class CustomerController extends Controller
         $searchMethod = $_GET['searchType'];
 
         // If search keyword is empty then return to default page
-        if($search === ""){
+        if ($search === "") {
             $data = Customers::get();
             return view('Admin.Customer.list', compact('data'));
-        }else{
+        } else {
             // If search method is not chosen then implement simple search
-            if($searchMethod == "none"){
+            if ($searchMethod == "none") {
                 $name = Customers::where('Customer_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the admin_name column
                 $username = Customers::where('Customer_Username', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the admin_username column
                 $data = $username->union($name);                                                          //combine results
@@ -137,86 +137,86 @@ class CustomerController extends Controller
                     return view('Admin.Customer.list')->with('data', $data)                     //return with empty search data.
                         ->with('fail', 'No result found for "' . $search . '".');               //
                 }
-            // Search by username
-            } else if($searchMethod == "username"){
+                // Search by username
+            } else if ($searchMethod == "username") {
                 $username = Customers::where('Customers_Username', 'LIKE', '%' . $search . '%')->get();
-                if ($username->count() !== 0){
+                if ($username->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $username)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by name
-            } else if($searchMethod == "name"){
+                // Search by name
+            } else if ($searchMethod == "name") {
                 $name = Customers::where('Customers_Name', 'LIKE', '%' . $search . '%')->get();
-                if ($name->count() !== 0){
+                if ($name->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $name)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by email
-            } else if($searchMethod == "email"){
+                // Search by email
+            } else if ($searchMethod == "email") {
                 $email = Customers::where('Email', 'LIKE', '%' . $search . '%')->get();
-                if ($email->count() !== 0){
+                if ($email->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $email)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by phone
-            } else if($searchMethod == "phone"){
+                // Search by phone
+            } else if ($searchMethod == "phone") {
                 $phone = Customers::where('Phone', 'LIKE', '%' . $search . '%')->get();
-                if ($phone->count() !== 0){
+                if ($phone->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $phone)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by address
-            } else if($searchMethod == "address"){
+                // Search by address
+            } else if ($searchMethod == "address") {
                 $address = Customers::where('Address', 'LIKE', '%' . $search . '%')->get();
-                if ($address->count() !== 0){
+                if ($address->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $address)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by gender
-            } else if($searchMethod == "gender"){
+                // Search by gender
+            } else if ($searchMethod == "gender") {
                 $gender = Customers::where('Gender', '=', $search)->get();
-                if ($gender->count() !== 0){
+                if ($gender->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $gender)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by date of birth
+                // Search by date of birth
             } else {
                 $dob = Customers::where('Date_of_Birth', 'LIKE', '%' . $search . '%')->get();
-                if ($dob->count() !== 0){
+                if ($dob->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $dob)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Customers::get();
                     return view('Admin.Customer.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
@@ -295,8 +295,25 @@ class CustomerController extends Controller
         return view('Navigate.shop', compact('categories', 'products'));
     }
 
-    public function shopSearch(){
-        
+    public function shopSearch()
+    {
+        $categories = Categories::get();
+        $search = $_GET['search'];
+        if ($search === "") {
+            return redirect()->back();
+        } else {
+            $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+                ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
+            //query search for likeliness in the product_name column
+            $price = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+                ->where('Price', '=', $search)->get();
+            //query search for likeliness in the price column
+            $products = $price->union($product);
+            if ($products->count() !== 0) {
+                return view('Navigate.shop', compact('categories'), compact('products'));
+            } else {
+                return redirect()->back();
+            }
+        }
     }
-
 }

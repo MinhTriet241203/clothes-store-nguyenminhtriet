@@ -151,14 +151,14 @@ class ProductController extends Controller
             return view('Admin.Products.list', compact('data'));
         } else {
             $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-            ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    
+                ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
             //query search for likeliness in the product_name column
-            
+
             $price = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-            ->where('Price', '=',$search)->get();
-            //query search for likeliness in the admin_username column
-            
-            $data = $price->union($product);   
+                ->where('Price', '=', $search)->get();
+            //query search for match in the price column
+
+            $data = $price->union($product);
             if ($data->count() !== 0) {
                 return view('Admin.Products.list')                                          //
                     ->with('data', $data)                                                   // return successful search data
