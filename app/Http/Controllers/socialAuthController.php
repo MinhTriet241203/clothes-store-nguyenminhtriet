@@ -25,8 +25,10 @@ class socialAuthController extends Controller
         $name = explode('@', $data->email);
         $data->username = $name[0]; //split email before '@' into username
         $Customer = Customers::where('Email', '=', $data->email)->where('Customer_Username', '=', $data->username)->first();
+        //query customer for matching email or username with the google account
+
         if (!$Customer) {
-            return redirect('registerCustomer')->with('data', $data);  //check for existing email to redirect to register
+            return redirect('registerCustomer')->with('data', $data);  //check for existing email/username to redirect to register with username, name and email filled with 
         } else {
             $name = explode('@', $data->email);
             $data->username = $name[0];
@@ -36,7 +38,8 @@ class socialAuthController extends Controller
                 $data->email === $Customer->Email
             ) {
                 session()->put('customerLoginID', $Customer->Customer_ID);
-                session()->put('customerName', $Customer->Customer_Name);
+                session()->put('customerName', $Customer->Customer_Name);   //putting user into session - Log in user
+                session()->put('loggedWith', 'google');
                 return redirect('/');
             } else {
                 return redirect()->view('Customer.customerLogin')->with('fail', 'There is an registered with the same Email or Username');
