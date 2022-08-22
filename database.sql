@@ -40,7 +40,7 @@ CREATE TABLE `Orders` (
 );
 
 CREATE TABLE `Order_Details` (
-  `Order_Details_ID` int(5) PRIMARY KEY NOT NULL,
+  `Order_Details_ID` int(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `Order_ID` int(5) NOT NULL,
   `Product_ID` int(5) NOT NULL,
   `Quantity` int(4) NOT NULL,
