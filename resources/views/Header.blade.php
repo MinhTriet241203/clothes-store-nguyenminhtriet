@@ -79,6 +79,8 @@
                         <i class="fa fa-fw fa-search text-dark mr-2" style="font-size: 18px !important"></i>
                     </a>
                     {{-- Cart button --}}
+                    @if (Session()->has('customerLoginID'))
+                    
                     <a class="nav-icon position-relative text-decoration-none" href="{{ url('cart') }}"
                         style="margin: 0">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
@@ -94,7 +96,7 @@
                         @endif
                     </a>
 
-                    @if (Session()->has('customerLoginID'))
+                    
                         <div class="btn-group">
                             <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                                 aria-expanded="false" style="font-size: 18px;color:rgb(35, 179, 90); padding:0">
