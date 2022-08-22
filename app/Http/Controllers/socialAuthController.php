@@ -22,16 +22,24 @@ class socialAuthController extends Controller
 
     public function createOrUpdateUser($data)
     {
-        $Customer = Customers::where('Email', '=', $data->email)->first();
+        $name = explode('@', $data->email);
+        $data->username = $name[0]; //split email before '@' into username
+        $Customer = Customers::where('Email', '=', $data->email)->where('Customer_Username', '=', $data->username)->first();
         if (!$Customer) {
-            $name = explode('@', $data->email);
-            $data->username = $name[0]; //split email before '@' into username
-            return view('Customer.customerRegister')->with('data', $data)
-                ->with('social', 'You seem to have a new account, please add in your details first!');  //check for existing email to redirect to register
+            return redirect('registerCustomer')->with('data', $data);  //check for existing email to redirect to register
         } else {
             $name = explode('@', $data->email);
             $data->username = $name[0];
-            if ($data->username === $Customer->Customer_Name && $data->name === $Customer->Customer_Name) {
+            if (
+                $data->username === $Customer->Customer_Username &&
+                $data->name === $Customer->Customer_Name &&         //check for all fields being the same
+                $data->email === $Customer->Email
+            ) {
+                session()->put('customerLoginID', $Customer->Customer_ID);
+                session()->put('customerName', $Customer->Customer_Name);
+                return redirect('/');
+            } else {
+                return redirect()->view('Customer.customerLogin')->with('fail', 'There is an registered with the same Email or Username');
             }
         }
     }

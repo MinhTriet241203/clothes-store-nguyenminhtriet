@@ -10,13 +10,11 @@
         <div class="row">
             <div class="col-lg-5 mt-5">
                 <div class="card mb-3">
-                    <img    class="card-img img-fluid" 
-                            src="../img/products/<?php
-                                $ImagesFirst = explode('@@@', $image->Images);
-                                $item = reset($ImagesFirst);
-                                echo $item; ?>" 
-                            alt="Card image cap"
-                            id="product-detail">
+                    <img class="card-img img-fluid" src="../img/products/<?php
+                    $ImagesFirst = explode('@@@', $image->Images);
+                    $item = reset($ImagesFirst);
+                    echo $item; ?>" alt="Card image cap"
+                        id="product-detail">
                 </div>
 
                 <div class="row">
@@ -97,7 +95,7 @@
                                             @foreach ($sizes as $item)
                                         <li class="list-inline-item">
                                             <input name="size" type="radio" class="btn-check"
-                                                id="{{ $item }}" autocomplete="off" value="{{ $item }}">
+                                                id="{{ $item }}" autocomplete="off" value="{{ $item }}" required>
                                             <label class="btn btn-outline-success"
                                                 for="{{ $item }}">{{ $item }}</label><br>
                                         </li>
@@ -130,7 +128,11 @@
                                         <button type="submit" class="btn btn-success btn-lg" name="submit"
                                             value="addtocard">Add To Cart</button>
                                     </a>
-
+                                    @if (Session::has('fail'))
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ Session::get('fail') }}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </form>

@@ -11,8 +11,8 @@
         integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous">
     </script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
-    <link rel="stylesheet" href={{asset('css/login_style.css')}}>
-    <link rel="stylesheet" href={{asset('css/button_style.css')}}>
+    <link rel="stylesheet" href={{ asset('css/login_style.css') }}>
+    <link rel="stylesheet" href={{ asset('css/button_style.css') }}>
     <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 
@@ -24,6 +24,10 @@
                 <div class="col-lg-7">
                     <form action="{{ url('saveCustomer') }}" method="post">
                         @csrf
+                        <?php if (Session::has('data')) {
+                            $data = Session::get('data');
+                            $_SESSION['social'] = 'You seem to have a new account, please add in your details first!';
+                        } ?>
                         <h3 class="login-header" style="text-align: center; font-size:40px">Create a new account</h3>
                         @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">
@@ -38,8 +42,7 @@
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input id="username" type="text" class="form-control" placeholder="Username"
-                                name="userName"
-                                value="{{isset($data) ? $data->username : old('userName')}}">
+                                name="userName" value="{{ isset($data) ? $data->username : old('userName') }}">
                         </div>
                         @error('userName')
                             <div class="alert alert-danger" role="alert">
@@ -72,7 +75,7 @@
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input id="name" type="text" class="form-control" placeholder="Name" name="name"
-                                value="{{isset($data) ? $data->name : old('name')}}">
+                                value="{{ isset($data) ? $data->name : old('name') }}">
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -83,7 +86,7 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input id="email" type="email" class="form-control" placeholder="Demo@gmail.com"
-                                name="email" value="{{isset($data) ? $data->email : old('email')}}">
+                                name="email" value="{{ isset($data) ? $data->email : old('email') }}">
                         </div>
                         @error('email')
                             <div class="alert alert-danger" role="alert">
