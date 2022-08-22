@@ -155,14 +155,14 @@ class ProductController extends Controller
             return view('Admin.Products.list', compact('data'));
         } else {
             // If search method is not chosen then implement simple search
-            if($searchMethod == "none"){
+            if ($searchMethod == "none") {
                 $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();                    
+                    ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
                 //query search for likeliness in the product name column
                 $category = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                ->where('Category_Name', '=',$search)->get();
+                    ->where('Category_Name', '=', $search)->get();
                 //query search for likeliness in the category name column
-                $data = $category->union($product);   
+                $data = $category->union($product);
                 if ($data->count() !== 0) {
                     return view('Admin.Products.list')                                          //
                         ->with('data', $data)                                                   // return successful search data
@@ -172,28 +172,28 @@ class ProductController extends Controller
                     return view('Admin.Products.list', compact('data'))                                                     //return with empty search data.
                         ->with('fail', 'No result found for "' . $search . '".');                                           //
                 }
-            // Search by product name
-            } else if($searchMethod == "product"){
+                // Search by product name
+            } else if ($searchMethod == "product") {
                 $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
-                if ($product->count() !== 0){
+                    ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
+                if ($product->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $product)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
                     return view('Admin.Products.list', compact('data'))
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by category name
-            } else if($searchMethod == "category"){
+                // Search by category name
+            } else if ($searchMethod == "category") {
                 $category = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                ->where('Category_Name', 'LIKE', '%' . $search . '%')->get();
-                if ($category->count() !== 0){
+                    ->where('Category_Name', 'LIKE', '%' . $search . '%')->get();
+                if ($category->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $category)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
                     return view('Admin.Products.list', compact('data'))
                         ->with('fail', 'No result found for "' . $search . '".');

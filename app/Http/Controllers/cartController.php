@@ -16,7 +16,7 @@ class CartController extends Controller
     public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
         if (isset($_GET['size'])) {
-            
+
             $product = Products::where('Product_ID', '=', $id)->first();
             $Product_ID = $product->Product_ID;
             $name = $product->Product_Name;
@@ -54,7 +54,8 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Removed the selected item from the cart.');
     }
 
-    public function purchase(Request $request){
+    public function purchase(Request $request)
+    {
         $orders = new Orders();
 
         $request->validate([
@@ -67,14 +68,14 @@ class CartController extends Controller
         $orders->Customer_ID = session()->get('customerLoginID');
         $orders->Note = $_POST['note'];
 
-        $currentTime = Carbon::now();//get current time 
+        $currentTime = Carbon::now(); //get current time 
         $orders->Date = $currentTime;
 
         $orders->save();
 
-        $OrderID = session()->get('customerLoginID'); 
+        $OrderID = session()->get('customerLoginID');
         // $order_details->Product_ID = $productsAddedCart;
-        foreach (session('cart') as $row){
+        foreach (session('cart') as $row) {
 
             // $productsAddedCart = collect([
             //     "productID" => $row['id'],

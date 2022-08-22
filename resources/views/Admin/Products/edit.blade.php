@@ -127,7 +127,7 @@
                 <span class="menu-header-text">Accounts</span>
             </li>
             {{-- Admins --}}
-            <li class="menu-item active">
+            <li class="menu-item">
                 <a href="{{ url('listAdmin') }}" class="menu-link">
                     <i class="menu-icon tf-icons fa-solid fa-user"></i>
                     <div data-i18n="Admins">Admins</div>
@@ -153,7 +153,7 @@
                 </a>
             </li>
             <!-- Products -->
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="{{ url('listProduct') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-shirt"></i>
                 <div data-i18n="Products">Products</div>
@@ -239,7 +239,7 @@
                             <div id="current" style="width:fit-content; " class="form-control">
                                 @foreach ($imgArr as $img)
                                     <img src={{ '../img/products/' . $img }} width="210" height="210"
-                                        style="border-radius: 10px;border: 1px solid #ced4da; margin: 2px;">
+                                        style="border-radius: 10px;border: 1px solid #ced4da;">
                                 @endforeach
                             </div>
                             <label for="preview">New images: </label>
@@ -269,7 +269,7 @@
                                             image.height = 210;
                                             image.width = 210;
                                             image.title = file.name;
-                                            image.style = "border-radius: 10px; margin: 2px; border: 1px solid #ced4da" //image attributes
+                                            image.style = "border-radius: 10px;border: 1px solid #ced4da" //image attributes
                                             image.src = this.result;
                                             preview.appendChild(image);
                                         });
