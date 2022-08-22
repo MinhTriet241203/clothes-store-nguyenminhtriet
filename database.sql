@@ -36,7 +36,7 @@ CREATE TABLE `Orders` (
   `Receive_Phone` varchar(10) NOT NULL,
   `Receive_Address` varchar(100) NOT NULL,
   `Date` Date NOT NULL,
-  `Status` varchar(10) NOT NULL
+  `Note` text
 );
 
 CREATE TABLE `Order_Details` (

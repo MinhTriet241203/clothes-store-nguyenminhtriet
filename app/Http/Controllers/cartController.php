@@ -8,6 +8,7 @@ use App\Models\Customers;
 use App\Models\Order_details;
 use App\Models\Orders;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -55,14 +56,8 @@ class CartController extends Controller
 
     public function purchase(Request $request){
 
-        // foreach (session('cart') as $row){
 
-        //     $productsAddedCart = collect([
-        //         "productID" => $row['id'],
-        //         "size" => $row['size'],
-        //         "quantity" => $row['quantity'],
-        //     ]);
-        // }
+
         $orders = new Orders();
 
         $request->validate([
@@ -73,16 +68,38 @@ class CartController extends Controller
         $orders->Receive_Address = $request->address;
         $orders->Receive_Phone = $request->phone;
         $orders->Customer_ID = session()->get('customerLoginID');
+        $orders->Note = $_POST['note'];
+
+        $currentTime = Carbon::now();//get current time 
+        $orders->Date = $currentTime;
+
         $orders->save();
 
-        // $Order_details = new Order_details();
-        // $Order_details->Product_ID = $productsAddedCart;
-;
+        $OrderID = session()->get('customerLoginID');
+
+        
+        // $order_details->Product_ID = $productsAddedCart;
+        foreach (session('cart') as $row){
+
+            // $productsAddedCart = collect([
+            //     "productID" => $row['id'],
+            //     "size" => $row['size'],
+            //     "quantity" => $row['quantity'],
+            // ]);
+            //$Order_ID = Orders::where('Customer_ID', '=', session()->get('customerLoginID'));
+            $order_details = new Order_details();
+            $order_details->Order_ID = $OrderID;
+            $order_details->Product_ID = $row['id'];
+            $order_details->Size = $row['size'];
+            $order_details->Quantity = $row['quantity'];
+
+            $order_details->save();
+        }
         
         
 
         $categories = Categories::get();
         // return redirect()->back()->with('success', 'Product added successfully!');
-        return view('Navigate.purchase' , compact('categories'))->with('success', 'Removed the selected item from the cart.');
+        return view('Navigate.cart' , compact('categories'))->with('success', 'Removed the selected item from the cart.');
     }
 }

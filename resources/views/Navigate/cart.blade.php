@@ -28,6 +28,10 @@
                                     <input type="text" class="form-control mt-1" name="phone"
                                         placeholder="Phone">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="inputmessage">Note</label>
+                                    <textarea class="form-control mt-1" id="message" name="note" placeholder="Note" rows="8"></textarea>
+                                </div>
                             </div>          
                         </div>
                     </div>
