@@ -294,4 +294,9 @@ class CustomerController extends Controller
         $products = Products::where('Category_ID', '=', $id)->get();
         return view('Navigate.shop', compact('categories', 'products'));
     }
+
+    public function shopSearch(){
+        
+    }
+
 }

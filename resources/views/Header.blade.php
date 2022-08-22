@@ -88,33 +88,29 @@
                                 style="position: static !important">{{ count(Session('cart')) }}
                             </span>
                         @else
-                            <span
-                                class="position-absolute top-0 left-100 translate-middle badge rounded-pill"
+                            <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill"
                                 style="position: static !important;">
                             </span>
                         @endif
                     </a>
 
                     @if (Session()->has('customerLoginID'))
-                        <button type="button" class="btn dropdown-toggle" id="dropdownMenuOffset"
-                            data-bs-toggle="dropdown" aria-expanded="false"
-                            style="font-size: 18px;color:rgb(35, 179, 90); padding:0">
-                            <i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset"
-                            style="margin-top:-15px;width:fit-content">
-                            <li><a class="dropdown-item" href="{{url('customerProfile')}}">
-                                    Profile
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
-                                    Sign out
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="font-size: 18px;color:rgb(35, 179, 90); padding:0">
+                                <i class="fas fa-user"></i> | <?php echo session()->get('customerName'); ?>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="{{ url('customerProfile') }}">
+                                        Profile
+                                    </a>
+                                <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
+                                        Sign out
+                                    </a></li>
+                            </ul>
+                        </div>
                     @else
-                        <a class="nav-icon position-relative text-decoration-none"
-                            href="{{ url('customerLogin') }}">
+                        <a class="nav-icon position-relative text-decoration-none" href="{{ url('customerLogin') }}">
                             <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         </a>
                     @endif
