@@ -13,6 +13,24 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
+                <div class="container py-5">
+                    <div class="row py-5">
+                        <form class="col-md-9 m-auto" method="post" role="form">
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="inputname">Recieve Address</label>
+                                    <input type="text" class="form-control mt-1" id="adress" name="address"
+                                        placeholder="Address">
+                                </div>
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="inputemail">Recieve Phone</label>
+                                    <input type="text" class="form-control mt-1" id="phone" name="phone"
+                                        placeholder="Phone">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 @if (Session::has('success'))
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('success') }}
@@ -69,7 +87,7 @@
                 @if (!empty(session('cart')))
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-3">
-                            <a href="" class="btn btn-success" style="float: right">Purchase</a>
+                            <a href="{{url('purchase')}}" class="btn btn-success" style="float: right">Purchase</a>
                             <a href="{{ url()->previous() }}" class="btn btn-outline-danger"
                                 style="float: right; margin-right: 1%">Back</a>
                         </div>

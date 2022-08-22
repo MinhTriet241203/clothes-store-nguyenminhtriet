@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\Customers;
+use App\Models\Order_details;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,6 +15,7 @@ class CartController extends Controller
     public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
         if (isset($_GET['size'])) {
+            
             $product = Products::where('Product_ID', '=', $id)->first();
             $Product_ID = $product->Product_ID;
             $name = $product->Product_Name;
@@ -47,5 +51,32 @@ class CartController extends Controller
         $cart = array_values($cart);
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Removed the selected item from the cart.');
+    }
+
+    public function purchase(Request $request){
+
+        foreach (session('cart') as $row){
+
+            $productsAddedCart = collect([
+                "productID" => $row['id'],
+                "size" => $row['size'],
+                "quantity" => $row['quantity'],
+            ]);
+        }
+        $Orders = new Orders();
+        $request->validate([
+            'address' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $Order_details = new Order_details();
+
+        $Order_details->Receive_Address = $request->address;
+        $Order_details->Receive_Phone = $request->phone;
+        $Order_details->Order_ID = session()->get('customerLoginID');
+        $Order_details->save();
+
+        $categories = Categories::get();
+        return view('Navigate.purchase' , compact('categories'));
     }
 }
