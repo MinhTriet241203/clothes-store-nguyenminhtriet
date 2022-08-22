@@ -68,8 +68,11 @@ class CartController extends Controller
             'address' => 'required',
             'phone' => 'required',
         ]);
+        $Orders->Receive_Address = $request->address;
+        $Orders->Receive_Phone = $request->phone;
 
         $Order_details = new Order_details();
+        $Order_details->Product_ID = $productsAddedCart;
 
         $Order_details->Receive_Address = $request->address;
         $Order_details->Receive_Phone = $request->phone;
