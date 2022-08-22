@@ -135,7 +135,7 @@ class AdminController extends Controller
                 }
             // Search by class
             } else {
-                $class = Admins::where('Admin_Class', 'LIKE', '%' . $search . '%')->get();
+                $class = Admins::where('Admin_Class', '=', $search)->get();
                 if ($class->count() !== 0){
                     return view('Admin.Admins.list')
                         ->with('data', $class)

@@ -13,7 +13,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Category List</title>
+    <title>Customers List</title>
 
     <meta name="description" content="" />
 
@@ -172,12 +172,32 @@
                             {{ Session::get('success') }}
                         </div>
                     @endif
+                    @if (!empty($notify))
+                        <div class="alert alert-primary" role="alert">
+                            {{ $notify }}
+                        </div>
+                    @endif
+                    @if (!empty($fail))
+                        <div class="alert alert-danger" role="alert">
+                            {{ $fail }}
+                        </div>
+                    @endif
 
                     @if (Session::has('LoginID'))
                         {{-- Search function if admin is logged in --}}
                         <div style="margin-right: 1%; float:right;">
                             <form action="{{ url('searchCustomer') }}" method="GET">
                                 <div class="input-group mb-3">
+                                    <select name="searchType" class="form-control form-select">
+                                        <option value="none">Search by...</option>
+                                        <option value="username">Username</option>
+                                        <option value="name">Name</option>
+                                        <option value="email">Email</option>
+                                        <option value="phone">Phone</option>
+                                        <option value="address">Address</option>
+                                        <option value="gender">Gender</option>
+                                        <option value="dob">Date of Birth</option>
+                                    </select>
                                     <input type="text" class="form-control" placeholder="Search customers" name="search">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit"

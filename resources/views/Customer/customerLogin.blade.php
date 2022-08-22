@@ -26,8 +26,8 @@
             </a>
             <div class="row" style="align-items: center;">
                 <div class="col-lg-7">
-                    <form action="{{url('customerSignIn')}}" method="POST">
-                       
+                    <form action="{{ url('customerSignIn') }}" method="POST">
+
                         <h3 class="login-header">Sign in</h3>
 
                         {{-- check for session message --}}
@@ -64,12 +64,13 @@
                         @enderror
                         <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Sign
                                 in</span></button>
-                    </form> 
+                    </form>
                     <div class="row">
                         <div class="col text-center ">
                             <p style="text-align: center">OR</p>
                             <button class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><a
-                                    href="{{ url('registerCustomer') }}" class="home" style="text-decoration: none"><span>Register
+                                    href="{{ url('registerCustomer') }}" class="home"
+                                    style="text-decoration: none"><span>Register
                                         now</span></a></button>
                             {{-- <a class="register" href="#">Register now</a> --}}
                         </div>
@@ -79,14 +80,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <a class="btn btn-block social-login facebook" href="{{route('facebookRedirect')}}">
-                        <span class="social-icons">
-                            <i class="fab fa-facebook-square fa-lg">
-                            </i>
-                        </span>
-                        <span class="align-middle">Login with Facebook</span>
-                    </a>
-                    <a class="btn btn-block social-login google" href="{{route('googleRedirect')}}">
+                    <a class="btn btn-block social-login google" href="{{ route('googleRedirect') }}">
                         <span class="social-icons">
                             <i class="fab fa-google fa-lg">
                             </i>

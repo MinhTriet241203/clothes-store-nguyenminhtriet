@@ -28,14 +28,15 @@
                         </h3>
                         @if (Session::has('success'))
                             <div class="alert alert-success" role="alert">
-                                {{ Session::get('success') }}    
+                                {{ Session::get('success') }}
                             </div>
                         @endif
 
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input id="name" type="text" class="form-control" placeholder="Name" name="name"
-                                value="{{ $data->Customer_Name }}">
+                                value="{{ $data->Customer_Name }}"
+                                @if (session()->get('loggedWith') === 'google') @disabled(true) @endif>
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -92,7 +93,7 @@
 
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input id="password" type="password" class="form-control" placeholder="Password"
+                            <input id="password" type="password" class="form-control" placeholder="Password to confirm changes"
                                 name="password">
                         </div>
                         @error('password')

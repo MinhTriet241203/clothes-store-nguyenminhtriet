@@ -72,6 +72,7 @@ Route::get('searchCategory', [CategoryController::class, 'search'])->middleware(
 
 Route::get('/', [CustomerController::class, 'homepage']);
 Route::get('shop', [CustomerController::class, 'shop'])->name('shop');
+Route::get('searchShop', [CustomerController::class, 'shopSearch']); //search the shop
 Route::get('shopSingle/{id}', [CustomerController::class, 'shopSingle']); //!Add /{id} to shopSingle link
 Route::get('about', [CustomerController::class, 'about']);
 Route::get('cart', [CustomerController::class, 'cart']);
@@ -96,7 +97,7 @@ Route::post('purchase', [CartController::class, 'purchase']); //not a page
 //*Customer login routing
 
 Route::get('loginCustomer', [CustomerLoginController::class, 'login']); //login page
-Route::get('registerCustomer', [CustomerLoginController::class, 'registration']); //add Customer page
+Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])->name('registerCustomer'); //add Customer page
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
@@ -106,6 +107,4 @@ Route::post('customerChangePassword', [CustomerLoginController::class, 'changePa
 //*social media login routing
 
 Route::get('/google/redirect', [socialAuthController::class, 'googleRedirect'])->name('googleRedirect');
-Route::get('/facebook/redirect', [socialAuthController::class, 'facebookRedirect'])->name('facebookRedirect');
 Route::get('/google/callback', [socialAuthController::class, 'googleCallback'])->name('googleCallback');
-Route::get('/facebook/callback', [socialAuthController::class, 'facebookCallback'])->name('facebookCallback');

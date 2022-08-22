@@ -16,11 +16,15 @@
 
                 <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+<<<<<<< HEAD
                     @if (Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
                     @endif
+=======
+                    @if (!empty(session('cart')))
+>>>>>>> f292bb95fbaba321da3af935f431b17a8a770cc8
                     <div class="container py-5">
                         <div class="row py-5">                          
                             <div class="row">
@@ -50,7 +54,8 @@
                                 </div>
                             </div>          
                         </div>
-                    </div>
+                    </div>                        
+                    @endif
 
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">

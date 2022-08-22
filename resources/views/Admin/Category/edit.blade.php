@@ -193,8 +193,46 @@
                         @enderror
 
                         <div class="md-3">
-                            <label for="image" class="form-label">Category Image</label>
-                            <input type="file" name="image" class="form-control">
+                            <label for="image" class="form-label">Current Category Image</label>
+                            <br>
+                            <img src={{ '../img/categories/' . $data->Category_Image }} width="210" height="210"
+                                style="border-radius: 10px;border: 1px solid #ced4da; margin: 2px;">
+                            <br>
+                            <label for="image" class="form-label">New Category Image</label>
+                            <input type="file" name="image" class="form-control" id="file-input">
+                            <br>
+                            <label for="image_preview" class="form-label">Image Preview</label>
+                            <div id="preview" style="width:220px;height:220px" class="form-control" ></div> {{--preview area--}}
+                            {{-- Script to preview multiple uploaded images --}}
+                            <script>
+                                function previewImages() {
+                                    var preview = document.querySelector('#preview');
+                                    preview.innerHTML = '';     //clear previous previews
+                                    preview.style = "width:fit-content";    //change the preview <div> style to fit the new childs (images in this case)
+                                    if (this.files) {
+                                        [].forEach.call(this.files, readAndPreview);
+                                    }
+                                    function readAndPreview(file) {
+                                        // Make sure `file.name` matches our extensions criteria
+                                        if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                                            return alert(file.name + " is not an image");
+                                        }
+                                        var reader = new FileReader();
+                                        reader.addEventListener("load", function() {
+                                            var image = new Image();
+                                            image.height = 210;
+                                            image.width = 210;
+                                            image.title = file.name;
+                                            image.style = "border-radius: 10px; margin: 5px"    //image attributes
+                                            image.src = this.result;
+                                            preview.appendChild(image);
+                                        });
+                                        reader.readAsDataURL(file);
+                                    }
+                                }
+                                document.querySelector('#file-input').addEventListener("change", previewImages);
+                            </script>
+                            {{--End script--}}
                         </div>
                         @error('image')
                             <div class="alert alert-danger" role="alert">
