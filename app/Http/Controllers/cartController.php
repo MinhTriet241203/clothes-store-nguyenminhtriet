@@ -54,8 +54,10 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Removed the selected item from the cart.');
     }
 
-    public function purchase(Request $request)
-    {
+    public function purchase(Request $request){
+
+        
+
         $orders = new Orders();
 
         $request->validate([
@@ -73,27 +75,18 @@ class CartController extends Controller
 
         $orders->save();
 
-        $OrderID = session()->get('customerLoginID');
-        // $order_details->Product_ID = $productsAddedCart;
-        foreach (session('cart') as $row) {
 
-            // $productsAddedCart = collect([
-            //     "productID" => $row['id'],
-            //     "size" => $row['size'],
-            //     "quantity" => $row['quantity'],
-            // ]);
-            //$Order_ID = Orders::where('Customer_ID', '=', session()->get('customerLoginID'));
-            $order_details = new Order_details();
-            $order_details->Order_ID = $OrderID;
-            $order_details->Product_ID = $row['id'];
-            $order_details->Size = $row['size'];
-            $order_details->Quantity = $row['quantity'];
 
-            $order_details->save();
+        $OrderID = Orders::orderBy('Order_ID', 'desc')->first();
+        $OrderIDCurrent = $OrderID->Order_ID;
+
+        foreach (session('cart') as $row){
+
+            Order_details::insert([['Order_ID' => $OrderIDCurrent, 'Product_ID' => $row['id'],'Size' => $row['size'],'Quantity' => $row['quantity']]]); // add to database
+
         }
-
         $categories = Categories::get();
-        // return redirect()->back()->with('success', 'Product added successfully!');
-        return redirect()->back()->with('success', 'You purchased successfully!');
+
+        return redirect()->back()->with('success', 'You purchase successfully!');
     }
 }
