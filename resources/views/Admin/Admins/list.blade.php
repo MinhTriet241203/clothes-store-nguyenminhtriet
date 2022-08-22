@@ -201,7 +201,7 @@
                         <div style="margin-right: 1%; float:right;">
                             <form action="{{ url('searchAdmin') }}" method="GET">
                                 <div class="input-group mb-3">
-                                    <select name="searchType" class="form-control form-select" value="{{ old('searchType') }}">
+                                    <select name="searchType" class="form-control form-select">
                                         <option value="none">Search by...</option>
                                         <option value="username">Username</option>
                                         <option value="name">Name</option>
