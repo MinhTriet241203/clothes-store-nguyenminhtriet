@@ -87,6 +87,7 @@ Route::get('customerProfile', [CustomerController::class, 'profile']); //custome
 
 Route::get('customerAddCart/{id}', [CartController::class, 'addCart']); //create session to add card. //!not a page
 Route::get('removeItem/{id}', [CartController::class, 'removeItem']); //shop by category //!not a page
+Route::get('purchase', [CartController::class, 'purchase']); //not a page
 
 //*Customer login routing
 
