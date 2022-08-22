@@ -108,8 +108,3 @@ Route::post('customerChangePassword', [CustomerLoginController::class, 'changePa
 
 Route::get('/google/redirect', [socialAuthController::class, 'googleRedirect'])->name('googleRedirect');
 Route::get('/google/callback', [socialAuthController::class, 'googleCallback'])->name('googleCallback');
-
-
-
-//Test
-Route::get('statistics', [AdminController::class, 'statistics']);

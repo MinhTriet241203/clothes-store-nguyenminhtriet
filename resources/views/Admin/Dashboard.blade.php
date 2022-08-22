@@ -171,7 +171,6 @@
         <div class="row">
           <div class="col-lg-6 mb-4 order-0" id="container">
             <script>
-
               anychart.onDocumentReady(function () {
                 
                 // add data
