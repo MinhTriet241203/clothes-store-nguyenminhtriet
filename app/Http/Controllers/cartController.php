@@ -16,7 +16,7 @@ class CartController extends Controller
     public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
         if (isset($_GET['size'])) {
-            
+
             $product = Products::where('Product_ID', '=', $id)->first();
             $Product_ID = $product->Product_ID;
             $name = $product->Product_Name;
@@ -70,7 +70,7 @@ class CartController extends Controller
         $orders->Customer_ID = session()->get('customerLoginID');
         $orders->Note = $_POST['note'];
 
-        $currentTime = Carbon::now();//get current time 
+        $currentTime = Carbon::now(); //get current time 
         $orders->Date = $currentTime;
 
         $orders->save();

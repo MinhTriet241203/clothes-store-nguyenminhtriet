@@ -49,9 +49,9 @@ class AdminLoginController extends Controller
                 $request->session()->put('LoginID', $user->Admin_Username);
                 $request->session()->put('Name', $user->Admin_Name);
                 $request->session()->put('Class', $user->Admin_Class);
-                if($user->Admin_Class == 'Manager')
+                if ($user->Admin_Class == 'Manager')
                     return redirect('dashboard');
-                else if($user->Admin_Class == 'Product Operator')
+                else if ($user->Admin_Class == 'Product Operator')
                     return redirect('listProduct');
                 else
                     return redirect('listAdmin');
@@ -59,7 +59,7 @@ class AdminLoginController extends Controller
                 return back()->with('fail', 'Password do not match!');
             }
         } else {
-            return back()->with('fail', 'This username is not registered!');
+            return back()->with('fail', 'This admin username is not registered!');
         }
     }
 
