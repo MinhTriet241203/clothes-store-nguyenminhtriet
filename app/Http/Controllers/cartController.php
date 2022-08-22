@@ -72,9 +72,7 @@ class CartController extends Controller
 
         $orders->save();
 
-        $OrderID = session()->get('customerLoginID');
-
-        
+        $OrderID = session()->get('customerLoginID'); 
         // $order_details->Product_ID = $productsAddedCart;
         foreach (session('cart') as $row){
 
