@@ -194,6 +194,11 @@
                         <div style="margin-right: 1%; float:right;">
                             <form action="{{ url('searchProduct') }}" method="GET" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
                                 <div class="input-group mb-3">
+                                    <select name="searchType" class="form-control form-select">
+                                        <option value="none">Search by...</option>
+                                        <option value="product">Product Name</option>
+                                        <option value="category">Category Name</option>
+                                    </select>
                                     <input type="text" class="form-control" placeholder="Search products" name="search">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="submit"><i
@@ -225,7 +230,7 @@
                                         <th>Images</th>
                                         <th>Size</th>
                                         <th>Available</th>
-                                        <th style="width: 9%">Actions</th>
+                                        <th style="width: 10%">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
