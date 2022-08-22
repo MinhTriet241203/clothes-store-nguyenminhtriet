@@ -40,11 +40,11 @@ CREATE TABLE `Orders` (
 );
 
 CREATE TABLE `Order_Details` (
+  `Order_Details_ID` int(5) PRIMARY KEY NOT NULL,
   `Order_ID` int(5) NOT NULL,
   `Product_ID` int(5) NOT NULL,
   `Quantity` int(4) NOT NULL,
-  `Size` varchar(10) NOT NULL,
-  PRIMARY KEY (`Order_ID`, `Product_ID`)
+  `Size` text NOT NULL
 );
 
 CREATE TABLE `Admins` (
