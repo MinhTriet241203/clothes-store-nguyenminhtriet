@@ -115,7 +115,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item">
+            <li class="menu-item active">
                 <a href="{{ url('dashboard') }}" class="menu-link">
                     <i class="menu-icon tf-icons fa-solid fa-house"></i>
                     <div data-i18n="Dashboard">Dashboard</div>
@@ -153,7 +153,7 @@
                 </a>
             </li>
             <!-- Products -->
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="{{ url('listProduct') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-shirt"></i>
                 <div data-i18n="Products">Products</div>

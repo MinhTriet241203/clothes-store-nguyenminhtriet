@@ -70,9 +70,46 @@ class CustomerController extends Controller
         }
     }
 
-    public function update()
+    public function edit()
     {
-        //TODO Create an update feature for customer
+        $id = session()->get('customerLoginID');
+        $data = Customers::where('Customer_ID', '=', $id)->first();
+        return view('Customer.customerEditInfo', compact('data'));
+    }
+
+    public function update(Request $request)
+    {
+        $id = session()->get('customerLoginID');
+        $data = Customers::where('Customer_ID', '=', $id)->first();
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'phone' => 'required|digits:10',
+            'address' => 'required',
+            'gender' => 'required',
+            'DoB' => 'required'
+        ]);
+        
+        if (Hash::check($request->password, $data->Customer_Password)) {
+            $customers = new Customers();
+
+            $customers->Customer_Name = $request->name;
+            $customers->Phone = $request->phone;
+            $customers->Address = $request->address;
+            $customers->Gender = $request->gender;
+            $customers->Date_of_Birth = $request->DoB;
+
+            Customers::where('Customer_ID', '=', $id)->update([
+                'Customer_Name' => $customers->Customer_Name,
+                'Phone' => $customers->Phone,
+                'Address' => $customers->Address,
+                'Gender' => $customers->Gender,
+                'Date_of_Birth' => $customers->Date_of_Birth,
+            ]);
+            return redirect()->back()->with('success', 'Customer updated successfully!');
+        }else{
+            return redirect()->back()->with('fail','The password do not match!');
+        }
     }
 
     public function search()
@@ -159,7 +196,6 @@ class CustomerController extends Controller
         $data = Products::get();
         return view('Navigate.cart', compact('data', 'categories'));
     }
-
 
     public function shopCategory($id)
     {

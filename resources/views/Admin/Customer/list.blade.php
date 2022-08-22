@@ -173,6 +173,22 @@
                         </div>
                     @endif
 
+                    @if (Session::has('LoginID'))
+                        {{-- Search function if admin is logged in --}}
+                        <div style="margin-right: 1%; float:right;">
+                            <form action="{{ url('searchCustomer') }}" method="GET">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Search customers" name="search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit"
+                                            style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
+                                            <i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endif
+
                     {{-- Page title --}}
                     <div style="margin-left: 5%; float:left;">
                         <h2>Customer List</h2>

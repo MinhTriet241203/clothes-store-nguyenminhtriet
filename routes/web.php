@@ -8,6 +8,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\CustomerLoginController;
+use App\Http\Controllers\socialAuthController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +84,8 @@ Route::get('deleteCustomer/{id}', [CustomerController::class, 'delete'])->middle
 Route::get('searchCustomer', [CustomerController::class, 'search'])->middleware('isLoggedIn'); //!not a page.
 Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop by category //!not a page
 Route::get('customerProfile', [CustomerController::class, 'profile']); //customer profile page for viewing and editing.
+Route::get('editProfile', [CustomerController::class, 'edit']); //customer editing page.
+Route::Post('updateProfile', [CustomerController::class, 'update']); //update customer's information.
 
 //*Cart routing
 
@@ -96,4 +100,12 @@ Route::get('registerCustomer', [CustomerLoginController::class, 'registration'])
 Route::post('newCustomer', [CustomerLoginController::class, 'newCustomer'])->name('newCustomer'); //push form to db //!not a page
 Route::post('customerSignIn', [CustomerLoginController::class, 'signIn'])->name('customerSignIn'); //push form to db //!not a page
 Route::get('customerLogOut', [CustomerLoginController::class, 'logOut']); //pull session to log out. //!not a page
+Route::get('customerEditPassword', [CustomerLoginController::class, 'editPassword']); //edit password page
+Route::post('customerChangePassword', [CustomerLoginController::class, 'changePassword']); //update password //!not a page
 
+//*social media login routing
+
+Route::get('/google/redirect', [socialAuthController::class, 'googleRedirect'])->name('googleRedirect');
+Route::get('/facebook/redirect', [socialAuthController::class, 'facebookRedirect'])->name('facebookRedirect');
+Route::get('/google/callback', [socialAuthController::class, 'googleCallback'])->name('googleCallback');
+Route::get('/facebook/callback', [socialAuthController::class, 'facebookCallback'])->name('facebookCallback');

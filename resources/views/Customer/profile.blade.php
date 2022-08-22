@@ -34,12 +34,18 @@
                             <h3 class="text-muted mb-1">{{ $data->Customer_Username }}</h3>
                         </div>
                     </div>
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <a class="btn btn-primary" href="{{url('editProfile')}}">Update information</a>
+                            <a class="btn btn-primary" href="{{url('customerEditPassword')}}">Change password</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body"  style="font-size:20px;">
                             <div class="row">
-                                <div class="col-sm-3" style="font-weight: 900 !important;">
+                                <div class="col-sm-3">
                                     <p class="mb-0"><i class="fas fa-address-card"></i> | Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
@@ -50,7 +56,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0"><i class="fas fa-envelope"></i> Email</p>
+                                    <p class="mb-0"><i class="fas fa-envelope"></i> | Email</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $data->Email }}</p>
@@ -60,7 +66,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0"><i class="fas fa-phone"></i> Phone</p>
+                                    <p class="mb-0"><i class="fas fa-phone"></i> | Phone</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $data->Phone }}</p>
@@ -70,7 +76,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0"><i class="fas fa-home"></i> Address</p>
+                                    <p class="mb-0"><i class="fas fa-home"></i> | Address</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $data->Address }}</p>
@@ -80,7 +86,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0"><i class="fas fa-user"></i> Gender</p>
+                                    <p class="mb-0"><i class="fas fa-user"></i> | Gender</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ $data->Gender }}</p>
@@ -90,7 +96,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0"><i class="fas fa-birthday-cake"></i> Birthday</p>
+                                    <p class="mb-0"><i class="fas fa-birthday-cake"></i> | Birthday</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <p class="text-muted mb-0">{{ date('d/m/Y', strtotime($data->Date_of_Birth)) }}</p>
@@ -99,7 +105,6 @@
                         </div>
                     </div>
                 </div>
-                <hr>
     </section>
 @else
     <p>Looks like you have not logged in yet! To see your own profile you need to
