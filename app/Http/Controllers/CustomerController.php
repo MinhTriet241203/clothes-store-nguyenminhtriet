@@ -33,7 +33,7 @@ class CustomerController extends Controller
     public function orderCart()
     {
         $customer = session()->get('customerLoginID');
-        $data = Order_details::where('Customer_ID', '=', $customer)->get();
+        $data = Order_details::where('Customer_ID', '=', $customer)->first();
  
         return view('Navigate.orderCart', compact('data'));
     }

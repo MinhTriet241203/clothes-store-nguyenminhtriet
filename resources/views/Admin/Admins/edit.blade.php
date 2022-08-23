@@ -197,14 +197,10 @@
                             <label for="class" class="form-label">Admin class</label>
                             @if ( $data->Admin_Name !== "admin" )
                                 <select name="class" class="form-control form-select" value="{{ old('class') }}"
-                                    style="width: 200px">
-                                @if ( $data->Admin_Class == "Read Only" )
-                                    <option value="Read Only" selected>Read Only</option>
+                                    style="width: 200px">                                
+                                    <option value="Manager" selected>Manger</option>
+                                    <option value="Product Operation" selected>Product operation</option>
                                     <option value="Full Control">Full Control</option>
-                                @else
-                                    <option value="Read Only">Read Only</option>
-                                    <option value="Full Control" selected>Full Control</option>
-                                @endif
                                 </select>
                             @else
                                 <select name="class" class="form-control form-select"
