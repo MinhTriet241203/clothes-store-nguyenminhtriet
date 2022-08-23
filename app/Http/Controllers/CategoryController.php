@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,Category_Name',
+            'name' => 'required|unique:categories,Category_Name|max:50',
             'image' => 'required'
         ]);
 
@@ -54,7 +54,7 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories,Category_Name'
+            'name' => 'required|unique:categories,Category_Name|max:50'
         ]);
         $id = $request->id;
         $data = Categories::where('Category_ID', '=', $id)->first();
