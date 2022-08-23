@@ -106,12 +106,16 @@
                                 <li><a class="dropdown-item" href="{{ url('customerProfile') }}">
                                         Profile
                                     </a>
-                                <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
-                                        Sign out
-                                    </a></li>
+                                </li>
                                 <li><a class="dropdown-item" href="{{ url('orderCart') }}">
                                     Order cart
-                                </a></li>
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
+                                        Sign out
+                                    </a>
+                                </li>
+                                
                             </ul>
                         </div>
                     @else
