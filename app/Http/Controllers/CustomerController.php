@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Customers;
 use App\Models\Categories;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Hash;
@@ -30,12 +31,49 @@ class CustomerController extends Controller
         $categories = Categories::get();
         return view('Customer.profile', compact('data', 'categories'));
     }
+
     public function orderCart()
     {
-        $customer = session()->get('customerLoginID');
-        $data = Order_details::where('Customer_ID', '=', $customer)->first();
- 
-        return view('Navigate.orderCart', compact('data'));
+        $CustomerID = session()->get('customerLoginID');
+
+        $OrderID = Orders::where('Customer_ID', '=', $CustomerID)->get();
+
+        foreach ($OrderID as $Order) {
+
+            $OrderDetails = Order_details::where('order_id', $Order->Order_ID)->get();
+
+            foreach ($OrderDetails as $OrderDetaisRow){
+
+                $Product = Products::where('Product_ID', '=' , $OrderDetaisRow['Product_ID']);
+
+            //     foreach($Product as $ProductRow){
+            //         $image = $Product['Images'];
+            //     }
+                
+
+            //     $OrderIDArray= collect([
+            //         "OrderID" => $rowItem['Product_ID'],
+            //         "Quantity" => $rowItem['Quantity'],
+            //         "Size" => $rowItem['Size'],
+            //    ]);
+               
+            }
+        }
+
+        // Foreach($OrderID as $row){
+        //     $OrderIDArray= collect([
+        //         "OrderID" => $row['Order_ID'],
+        //     ]);
+        // }
+
+        // $_SESSION['OrderID'] = array(); 
+        // session()->push('OrderID', $OrderIDArray); 
+
+        // $OrderDetails = Order_details::where('Order_ID', '=', $OrderID)->get();
+        // $ProductID = $OrderDetails->Product_ID;
+        // $Product = Products::where('Product_ID', '=', $ProductID );
+        
+        return view('Navigate.orderCart', compact('OrdeDetails','Product'));
     }
 
     public function save(Request $request)
