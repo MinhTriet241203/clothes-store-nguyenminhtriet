@@ -100,8 +100,9 @@ class CartController extends Controller
             ]);
 
         }
-        $categories = Categories::get();
 
-        return redirect()->back()->with('success', 'You purchase successfully!');
+        session()->forget('cart');
+
+        return redirect()->back()->with('success', 'You have successfully purchased those items!');
     }
 }
