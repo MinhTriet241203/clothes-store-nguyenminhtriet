@@ -165,93 +165,101 @@
             </aside>
             <!-- / Menu -->
             <div class="layout-page">
-                <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="row" style="display: block;">
-                        <div class="col-lg-6 mb-4 order-0" id="container" style="background-color: #fff;">
-                            <canvas id="myChart" style="width:300%;max-width:600px"></canvas>
-                            <script>
-                                function color() {
-                                    var r = () => Math.random() * 256 >> 0;
-                                    var color = `rgb(${r()}, ${r()}, ${r()})`;
-                                    return color;
-                                }
-                                var xValues = ["<?php echo 'a'; ?>", "France", "Spain", "USA", "Argentina"];
-                                var yValues = [55, 49, 44, 24, 15];
-                                var barColors = [
-                                    color(),
-                                    color(),
-                                    color(),
-                                    color(),
-                                    color()
-                                ];
+                <div class="content-wrapper">
+                    <!-- Content -->
+        
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                      <div class="row">
+                        @foreach ( as )
+                            
+                        @endforeach
+                        <canvas id="myChart" style="width:300%;max-width:600px"></canvas>
+                        <script>
+                            function color() {
+                                var r = () => Math.random() * 256 >> 0;
+                                var color = `rgb(${r()}, ${r()}, ${r()})`;
+                                return color;
+                            }
+                            var xValues = ["<?php echo $category->Category_Name; ?>"];
+                            var yValues = [55, 49, 44, 24, 15];
+                            var barColors = [
+                                color(),
+                                color(),
+                                color(),
+                                color(),
+                                color()
+                            ];
 
-                                new Chart("myChart", {
-                                    type: "doughnut",
-                                    data: {
-                                        labels: xValues,
-                                        datasets: [{
-                                            backgroundColor: barColors,
-                                            data: yValues
-                                        }]
-                                    },
-                                    options: {
-                                        title: {
-                                            display: true,
-                                            text: "Precentage of products in category"
-                                        }
+                            new Chart("myChart", {
+                                type: "doughnut",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                        backgroundColor: barColors,
+                                        data: yValues
+                                    }]
+                                },
+                                options: {
+                                    title: {
+                                        display: true,
+                                        text: "Precentage of products in category"
                                     }
-                                });
-                            </script>
-                        </div>
-                        <div class="col-lg-6 mb-4 order-0" style="background-color: #fff;">
-                            <table class="graph">
-                                <caption>Bar Chart HTML From HTML Table</caption>
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Item</th>
-                                        <th scope="col">Percent</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="height:85%">
-                                        <th scope="row">Your Blog</th>
-                                        <td><span>85%</span></td>
-                                    </tr>
-                                    <tr style="height:23%">
-                                        <th scope="row">Medium</th>
-                                        <td><span>23%</span></td>
-                                    </tr>
-                                    <tr style="height:7%">
-                                        <th scope="row">Tumblr</th>
-                                        <td><span>7%</span></td>
-                                    </tr>
-                                    <tr style="height:38%">
-                                        <th scope="row">Facebook</th>
-                                        <td><span>38%</span></td>
-                                    </tr>
-                                    <tr style="height:35%">
-                                        <th scope="row">Youtube</th>
-                                        <td><span>35%</span></td>
-                                    </tr>
-                                    <tr style="height:30%">
-                                        <th scope="row">LinkedIn</th>
-                                        <td><span>30%</span></td>
-                                    </tr>
-                                    <tr style="height:5%">
-                                        <th scope="row">Twitter</th>
-                                        <td><span>5%</span></td>
-                                    </tr>
-                                    <tr style="height:20%">
-                                        <th scope="row">Other</th>
-                                        <td><span>20%</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                }
+                            });
+                        </script>
+                      </div>
                     </div>
                 </div>
             </div>
 
+
+
+            </div>
+                
+
+                {{-- <table class="graph">
+                    <caption>Bar Chart HTML From HTML Table</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="height:85%">
+                            <th scope="row">Your Blog</th>
+                            <td><span>85%</span></td>
+                        </tr>
+                        <tr style="height:23%">
+                            <th scope="row">Medium</th>
+                            <td><span>23%</span></td>
+                        </tr>
+                        <tr style="height:7%">
+                            <th scope="row">Tumblr</th>
+                            <td><span>7%</span></td>
+                        </tr>
+                        <tr style="height:38%">
+                            <th scope="row">Facebook</th>
+                            <td><span>38%</span></td>
+                        </tr>
+                        <tr style="height:35%">
+                            <th scope="row">Youtube</th>
+                            <td><span>35%</span></td>
+                        </tr>
+                        <tr style="height:30%">
+                            <th scope="row">LinkedIn</th>
+                            <td><span>30%</span></td>
+                        </tr>
+                        <tr style="height:5%">
+                            <th scope="row">Twitter</th>
+                            <td><span>5%</span></td>
+                        </tr>
+                        <tr style="height:20%">
+                            <th scope="row">Other</th>
+                            <td><span>20%</span></td>
+                        </tr>
+                    </tbody>
+                </table> --}}
 
             {{-- ! Just some backend shit cause I'm stupid at frontend --}}
             <?php
