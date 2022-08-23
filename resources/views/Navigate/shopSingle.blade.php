@@ -95,7 +95,8 @@
                                             @foreach ($sizes as $item)
                                         <li class="list-inline-item">
                                             <input name="size" type="radio" class="btn-check"
-                                                id="{{ $item }}" autocomplete="off" value="{{ $item }}" required>
+                                                id="{{ $item }}" autocomplete="off" value="{{ $item }}"
+                                                required>
                                             <label class="btn btn-outline-success"
                                                 for="{{ $item }}">{{ $item }}</label><br>
                                         </li>
@@ -107,7 +108,7 @@
                                     <ul class="list-inline pb-3">
                                         <li class="list-inline-item text-right">
                                             Quantity:
-                                            <input type="hidden" name="quanity" id="product-quanity" value="1">
+                                            <input type="hidden" name="quanity" id="product-quanity" value="1" max="{{$data->Available}}">
                                         </li>
                                         <li class="list-inline-item"><span class="btn btn-success"
                                                 id="btn-minus">-</span></li>

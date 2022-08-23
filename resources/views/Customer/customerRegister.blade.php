@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label for="username">Username:</label>
                             <input id="username" type="text" class="form-control" placeholder="Username"
-                                name="userName" value="{{ isset($data) ? $data->username : old('userName') }}" <?php echo isset($data) !== null ? 'disabled' : ''?>>
+                                name="userName" value="{{ isset($data) ? $data->username : old('userName') }}" <?php echo isset($data) ? 'readonly' : ''?>>
                         </div>
                         @error('userName')
                             <div class="alert alert-danger" role="alert">
@@ -75,7 +75,7 @@
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input id="name" type="text" class="form-control" placeholder="Name" name="name"
-                                value="{{ isset($data) ? $data->name : old('name') }}" <?php echo isset($data) !== null ? 'disabled' : ''?>>
+                                value="{{ isset($data) ? $data->name : old('name') }}" <?php echo isset($data) ? 'readonly' : ''?>>
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label for="email">Email:</label>
                             <input id="email" type="email" class="form-control" placeholder="Demo@gmail.com"
-                                name="email" value="{{ isset($data) ? $data->email : old('email') }}" <?php echo isset($data) !== null ? 'disabled' : ''?>>
+                                name="email" value="{{ isset($data) ? $data->email : old('email') }}" <?php echo isset($data) ? 'readonly' : ''?>>
                         </div>
                         @error('email')
                             <div class="alert alert-danger" role="alert">

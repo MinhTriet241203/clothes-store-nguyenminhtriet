@@ -74,9 +74,10 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <!-- JS for charts -->
+    <!-- JS and CSS for charts -->
     <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/css/chart.css') }}" />
   </head>
 
   <body>
@@ -239,12 +240,82 @@
                 chart.draw();
               
               });
-              
             </script>
           </div>
-          <div class="col-lg-6 mb-4 order-0">
-
+          <div class="col-lg-6 mb-4 order-0" style="background-color: #fff">
+            <table class="graph">
+              <caption>Bar Chart HTML From HTML Table</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Percent</th>
+                </tr>
+              </thead><tbody>
+                <tr style="height:85%">
+                  <th scope="row">Your Blog</th>
+                  <td><span>85%</span></td>
+                </tr>
+                <tr style="height:23%">
+                  <th scope="row">Medium</th>
+                  <td><span>23%</span></td>
+                </tr>
+                <tr style="height:7%">
+                  <th scope="row">Tumblr</th>
+                  <td><span>7%</span></td>
+                </tr>
+                <tr style="height:38%">
+                  <th scope="row">Facebook</th>
+                  <td><span>38%</span></td>
+                </tr>
+                <tr style="height:35%">
+                  <th scope="row">Youtube</th>
+                  <td><span>35%</span></td>
+                </tr>
+                <tr style="height:30%">
+                  <th scope="row">LinkedIn</th>
+                  <td><span>30%</span></td>
+                </tr>
+                <tr style="height:5%">
+                  <th scope="row">Twitter</th>
+                  <td><span>5%</span></td>
+                </tr>
+                <tr style="height:20%">
+                  <th scope="row">Other</th>
+                  <td><span>20%</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
+
+
+{{--! Just some backend shit cause I'm stupid at frontend --}}
+<?php
+// Tổng sản phẩm = tổng Available của tất cả sản phẩm
+$totalProduct = 0;
+foreach ($products as $product) {
+  $totalProduct += $product->Available;
+}
+echo "Total products: $totalProduct\n";
+
+// Tổng sản phẩm của từng category
+foreach ($categories as $category) {
+  $number = 0;
+  foreach ($products as $product) {
+    if ($product->Category_ID == $category->Category_ID) {
+      $number += $product->Available;
+    }
+  }
+  echo "$category->Category_Name has $number products\n";
+}
+
+// Tổng lợi nhuận Này chưa test nha
+$bigIncome = 0;
+foreach ($order_details as $order_detail) {
+  $smallIncome = $order_detail->Price * $order_detail->Quantity;
+  $bigIncome += $smallIncome;
+}
+echo $bigIncome;
+?>

@@ -15,9 +15,11 @@ class CartController extends Controller
     //hanlde when customer addCard
     public function addCart($id)    //This has been an excruciatingly painful experience due to my inexperience in coding as well as my laziness.
     {
-        if (isset($_GET['size'])) {
+        $product = Products::where('Product_ID', '=', $id)->first();
+        $available = $product->Available;
 
-            $product = Products::where('Product_ID', '=', $id)->first();
+        if (isset($_GET['size']) && $_GET['quanity'] <= $available) {
+
             $Product_ID = $product->Product_ID;
             $name = $product->Product_Name;
             $size = $_GET['size'];
@@ -42,6 +44,8 @@ class CartController extends Controller
             $categories = Categories::get();
             $products = Products::get();        //dependent product and categories data
             return view('Navigate.shop', compact('products', 'categories'));
+        }else{
+            return redirect()->back();
         }
     }
 

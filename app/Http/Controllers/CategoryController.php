@@ -7,8 +7,9 @@ use App\Models\Products;
 use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Exception;
-use Illuminate\Support\Facades\File;
 use Illuminate\Database\DBAL\TimestampType;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class CategoryController extends Controller
 {
@@ -29,10 +30,13 @@ class CategoryController extends Controller
             'name' => 'required',
             'image' => 'required'
         ]);
+
         $category = new Categories();
 
         $filename = Date('usiHd') . $request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
-        $request->image->move(public_path('\img\categories'), $filename);
+        $resize = Image::make($request->image->getRealPath());
+        $resize->resize(210, 210);
+        $resize->save('img/categories/' . $filename);   //save resized image
 
         $category->Category_Name = $request->name;
         $category->Category_Image = $filename;

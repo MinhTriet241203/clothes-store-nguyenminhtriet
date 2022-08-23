@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Admins;
+use App\Models\Products;
+use App\Models\Categories;
+use App\Models\Order_details;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Database\DBAL\TimestampType;
 
@@ -13,7 +16,10 @@ use Illuminate\Database\DBAL\TimestampType;
 class AdminController extends Controller
 {
     public function dashboard(){
-        return view('Admin.Dashboard');
+        $categories = Categories::get();
+        $products = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
+        $order_details = Order_details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')->get();
+        return view('Admin.Dashboard', compact('products', 'categories', 'order_details'));
     }
 
     public function index()
