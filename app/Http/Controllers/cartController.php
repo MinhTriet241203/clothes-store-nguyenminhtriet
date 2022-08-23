@@ -44,7 +44,7 @@ class CartController extends Controller
             $categories = Categories::get();
             $products = Products::get();        //dependent product and categories data
             return view('Navigate.shop', compact('products', 'categories'));
-        }else{
+        } else {
             return redirect()->back();
         }
     }
@@ -58,7 +58,8 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Removed the selected item from the cart.');
     }
 
-    public function purchase(Request $request){
+    public function purchase(Request $request)
+    {
 
         $orders = new Orders();
 
@@ -81,27 +82,22 @@ class CartController extends Controller
         $OrderID = Orders::orderBy('Order_ID', 'desc')->first();
         $OrderIDCurrent = $OrderID->Order_ID;
 
+        foreach (session('cart') as $row) {
 
+            Order_details::insert([['Order_ID' => $OrderIDCurrent, 'Product_ID' => $row['id'], 'Size' => $row['size'], 'Quantity' => $row['quantity']]]); // add to database
 
-        foreach (session('cart') as $row){
-
-
-
-            Order_details::insert([['Order_ID' => $OrderIDCurrent, 'Product_ID' => $row['id'],'Size' => $row['size'],'Quantity' => $row['quantity']]]); // add to database
-            
-            $Product = Products::Where('Product_ID', '=',$row["id"])->first();
+            $Product = Products::Where('Product_ID', '=', $row["id"])->first();
             //dd($Product);
-            $Available = $Product->Available;//get available of product
-            $remainingAmount = $Available - $row['quantity'];//set Remaining amount of product
+            $Available = $Product->Available; //get available of product
+            $remainingAmount = $Available - $row['quantity']; //set Remaining amount of product
 
             //update remaining Amount into database 
-            Products::Where('Product_ID', '=',$row['id'])->update([   
-                'Available' => $remainingAmount,               
+            Products::Where('Product_ID', '=', $row['id'])->update([
+                'Available' => $remainingAmount,
             ]);
-
         }
 
-        session()->forget('cart');
+        session()->forge('cart');
 
         return redirect()->back()->with('success', 'You have successfully purchased those items!');
     }
