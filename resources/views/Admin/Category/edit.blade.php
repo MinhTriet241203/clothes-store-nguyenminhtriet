@@ -234,11 +234,6 @@
                             </script>
                             {{--End script--}}
                         </div>
-                        @error('image')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                        @enderror
 
                         <br>
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -23,7 +23,8 @@ class socialAuthController extends Controller
     public function createOrUpdateUser($data)
     {
         $name = explode('@', $data->email);
-        $data->username = $name[0]; //split email before '@' into username
+        $data->username = $name[0];
+        //split email before '@' into username
         $Customer = Customers::where('Email', '=', $data->email)->where('Customer_Username', '=', $data->username)->first();
         //query customer for matching email or username with the google account
 

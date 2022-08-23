@@ -185,7 +185,7 @@ class CustomerController extends Controller
                 }
                 // Search by username
             } else if ($searchMethod == "username") {
-                $username = Customers::where('Customers_Username', 'LIKE', '%' . $search . '%')->get();
+                $username = Customers::where('Customer_Username', 'LIKE', '%' . $search . '%')->get();
                 if ($username->count() !== 0) {
                     return view('Admin.Customer.list')
                         ->with('data', $username)
