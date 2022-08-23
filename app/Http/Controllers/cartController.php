@@ -97,7 +97,7 @@ class CartController extends Controller
             ]);
         }
 
-        session()->forge('cart');
+        session()->forget('cart');
 
         return redirect()->back()->with('success', 'You have successfully purchased those items!');
     }
