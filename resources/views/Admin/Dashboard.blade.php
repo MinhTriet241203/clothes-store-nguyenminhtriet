@@ -166,16 +166,9 @@
             <!-- / Menu -->
             <div class="layout-page">
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="row">
+                    <div class="row" style="display: block;">
                         <div class="col-lg-6 mb-4 order-0" id="container" style="background-color: #fff;">
-                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
-
-                            <?php
-
-                            
-
-                            ?>
-
+                            <canvas id="myChart" style="width:300%;max-width:600px"></canvas>
                             <script>
                                 function color() {
                                     var r = () => Math.random() * 256 >> 0;
@@ -267,7 +260,6 @@
             foreach ($products as $product) {
                 $totalProduct += $product->Available;
             }
-            echo "Total products: $totalProduct\n";
             
             // Tổng sản phẩm của từng category
             foreach ($categories as $category) {
@@ -277,7 +269,6 @@
                         $number += $product->Available;
                     }
                 }
-                echo "<br>$category->Category_Name has $number products";
             }
             
             echo '<br>';
@@ -286,8 +277,7 @@
             $bigIncome = 0;
             $smallIncome = 0;
             foreach ($order_details as $orderDetail) {
-                $smallIncome = $orderDetail->Price * $order_detail->Quantity;
+                $smallIncome = $orderDetail->Price * $orderDetail->Quantity;
                 $bigIncome += $smallIncome;
             }
-            echo $bigIncome;
             ?>
