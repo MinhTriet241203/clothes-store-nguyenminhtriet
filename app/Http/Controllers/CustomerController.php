@@ -237,7 +237,7 @@ class CustomerController extends Controller
     public function shop()
     {
         $categories = Categories::get(); //take database Categories into $categories
-        $products = Products::get();
+        $products = Products::where('Available', '>', 0)->get();
         return view('Navigate.shop', compact('categories'), compact('products'));
     }
 
@@ -303,7 +303,7 @@ class CustomerController extends Controller
             return redirect()->back();
         } else {
             $product = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
-                ->where('Product_Name', 'LIKE', '%' . $search . '%')->get();
+                ->where('Product_Name', 'LIKE', '%' . $search . '%')->where('Available', '>', 0)->get();
             //query search for likeliness in the product_name column
             $price = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
                 ->where('Price', '=', $search)->get();
