@@ -56,8 +56,6 @@ class CartController extends Controller
 
     public function purchase(Request $request){
 
-        
-
         $orders = new Orders();
 
         $request->validate([
@@ -75,14 +73,27 @@ class CartController extends Controller
 
         $orders->save();
 
-
-
+        //get Order ID just saved 
         $OrderID = Orders::orderBy('Order_ID', 'desc')->first();
         $OrderIDCurrent = $OrderID->Order_ID;
 
+
+
         foreach (session('cart') as $row){
 
+
+
             Order_details::insert([['Order_ID' => $OrderIDCurrent, 'Product_ID' => $row['id'],'Size' => $row['size'],'Quantity' => $row['quantity']]]); // add to database
+            
+            $Product = Products::Where('Product_ID', '=',$row["id"])->first();
+            //dd($Product);
+            $Available = $Product->Available;//get available of product
+            $remainingAmount = $Available - $row['quantity'];//set Remaining amount of product
+
+            //update remaining Amount into database 
+            Products::Where('Product_ID', '=',$row['id'])->update([   
+                'Available' => $remainingAmount,               
+            ]);
 
         }
         $categories = Categories::get();
