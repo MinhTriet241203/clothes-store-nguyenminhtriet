@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ProductController;
+use App\Models\Order_details;
 use Illuminate\Database\DBAL\TimestampType;
 
 class CustomerController extends Controller
@@ -28,6 +29,13 @@ class CustomerController extends Controller
         $data = Customers::where('Customer_ID', '=', $customer)->first();
         $categories = Categories::get();
         return view('Customer.profile', compact('data', 'categories'));
+    }
+    public function orderCart()
+    {
+        $customer = session()->get('customerLoginID');
+        $data = Order_details::where('Customer_ID', '=', $customer)->get();
+ 
+        return view('Navigate.orderCart', compact('data'));
     }
 
     public function save(Request $request)

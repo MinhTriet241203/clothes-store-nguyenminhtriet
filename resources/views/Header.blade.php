@@ -109,6 +109,9 @@
                                 <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">
                                         Sign out
                                     </a></li>
+                                <li><a class="dropdown-item" href="{{ url('orderCart') }}">
+                                    Order cart
+                                </a></li>
                             </ul>
                         </div>
                     @else

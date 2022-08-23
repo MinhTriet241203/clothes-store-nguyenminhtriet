@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use App\Models\Admins;
 use App\Models\Products;
 use App\Models\Categories;
+use Illuminate\Http\Request;
 use App\Models\Order_details;
 use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\DBAL\TimestampType;
 
 //Another test
 
 class AdminController extends Controller
 {
-    public function dashboard(){
-        $categories = Categories::get();
+    public function dashboard()
+    {
+        /* $categoryCount = Products::select("count (Category_ID) as categoryCount")->get(); */
+        $categories = Categories::get()/* ->union($categoryCount)->get() */;
         $products = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
         $order_details = Order_details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')->get();
         return view('Admin.Dashboard', compact('products', 'categories', 'order_details'));
@@ -97,12 +100,12 @@ class AdminController extends Controller
         $searchMethod = $_GET['searchType'];
 
         // If search keyword is empty then return to default page
-        if($search === ""){
+        if ($search === "") {
             $data = Admins::get();
             return view('Admin.Admins.list', compact('data'));
-        }else{
+        } else {
             // If search method is not chosen then implement simple search
-            if ($searchMethod == "none"){
+            if ($searchMethod == "none") {
                 $name = Admins::where('Admin_Name', 'LIKE', '%' . $search . '%')->get();            //query search for likeliness in the admin_name column
                 $username = Admins::where('Admin_Username', 'LIKE', '%' . $search . '%')->get();    //query search for likeliness in the admin_username column
                 $data = $username->union($name);                                                    //combine results
@@ -115,38 +118,38 @@ class AdminController extends Controller
                     return view('Admin.Admins.list')->with('data', $data)                       //return with empty search data.
                         ->with('fail', 'No result found for "' . $search . '".');               //
                 }
-            // Search by username
-            } else if($searchMethod == "username"){
+                // Search by username
+            } else if ($searchMethod == "username") {
                 $username = Admins::where('Admin_Username', 'LIKE', '%' . $search . '%')->get();
-                if ($username->count() !== 0){
+                if ($username->count() !== 0) {
                     return view('Admin.Admins.list')
                         ->with('data', $username)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Admins::get();
                     return view('Admin.Admins.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by name
-            } else if($searchMethod == "name"){
+                // Search by name
+            } else if ($searchMethod == "name") {
                 $name = Admins::where('Admin_Name', 'LIKE', '%' . $search . '%')->get();
-                if ($name->count() !== 0){
+                if ($name->count() !== 0) {
                     return view('Admin.Admins.list')
                         ->with('data', $name)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Admins::get();
                     return view('Admin.Admins.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');
                 }
-            // Search by class
+                // Search by class
             } else {
                 $class = Admins::where('Admin_Class', '=', $search)->get();
-                if ($class->count() !== 0){
+                if ($class->count() !== 0) {
                     return view('Admin.Admins.list')
                         ->with('data', $class)
                         ->with('notify', 'Showing search results for "' . $search . '".');
-                } else{
+                } else {
                     $data = Admins::get();
                     return view('Admin.Admins.list')->with('data', $data)
                         ->with('fail', 'No result found for "' . $search . '".');

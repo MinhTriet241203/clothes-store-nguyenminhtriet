@@ -87,12 +87,14 @@ Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop
 Route::get('customerProfile', [CustomerController::class, 'profile']); //customer profile page for viewing and editing.
 Route::get('editProfile', [CustomerController::class, 'edit']); //customer editing page.
 Route::Post('updateProfile', [CustomerController::class, 'update']); //update customer's information.
+Route::get('orderCart', [CustomerController::class, 'orderCart']); // a page
 
 //*Cart routing
 
 Route::get('customerAddCart/{id}', [CartController::class, 'addCart']); //create session to add card. //!not a page
 Route::get('removeItem/{id}', [CartController::class, 'removeItem']); //shop by category //!not a page
 Route::post('purchase', [CartController::class, 'purchase']); //not a page
+
 
 //*Customer login routing
 
