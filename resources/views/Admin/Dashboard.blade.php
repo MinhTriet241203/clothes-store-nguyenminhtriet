@@ -166,7 +166,7 @@
             <!-- / Menu -->
             <div class="layout-page">
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <div class="row">
+                    <div class="row" style="display: block;">
                         <div class="col-lg-6 mb-4 order-0" id="container" style="background-color: #fff;">
                             <canvas id="myChart" style="width:300%;max-width:600px"></canvas>
                             <script>
