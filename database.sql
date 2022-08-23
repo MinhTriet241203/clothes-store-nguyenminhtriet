@@ -1,3 +1,5 @@
+CREATE abc_clothing
+use abc_clothing
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
