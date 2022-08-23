@@ -312,6 +312,7 @@ foreach ($categories as $category) {
 }
 
 // Tổng lợi nhuận Này chưa test nha
+$bigIncome = 0;
 foreach ($order_details as $order_detail) {
   $smallIncome = $order_detail->Price * $order_detail->Quantity;
   $bigIncome += $smallIncome;
