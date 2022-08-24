@@ -205,7 +205,7 @@ foreach ($order_details as $orderDetail) {
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-10 mb-4 order-0" style="background-color: #FFF">
+                            <div class="col-lg-12 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
                                 <canvas id="myChart"></canvas>
                                 <script>
                                     function color() {
@@ -245,43 +245,35 @@ foreach ($order_details as $orderDetail) {
                                             datasets: [{
                                                 backgroundColor: barColors,
                                                 data: yValues,
+                                                label: "There are yValues"
                                             }],
                                         },
                                         options: {
                                             title: {
                                                 display: true,
-                                                text: "Precentage of products in category",
+                                                text: "Product number by categories",
                                                 fontSize: 40        //font-size of the title
                                             },
                                             legend: {
                                                 display: true,
+                                                position: 'bottom',
                                                 labels: {
                                                     fontSize: 20,   //font-size of the label above the donut
+                                                    textAlign: 'left'
                                                 }
                                             },
+                                            animation: {
+                                                animation: true,
+                                                easing: "easeOutSine",
+                                                percentageInnerCutout: 60,
+                                                segmentShowStroke : false
+                                            }
                                         }
                                     });
-
-                                    myChart.label.format('{%x} — {%y}%').fontSize(20);
-
-                                    // // create a standalone label
-                                    // var label = myChart.standalones.label();
-
-                                    // // configure the label settings
-                                    // label
-                                    //     .useHtml(true)
-                                    //     .text(
-                                    //         '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
-                                    //         '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
-                                    //     )
-                                    //     .position('center')
-                                    //     .anchor('center')
-                                    //     .hAlign('center')
-                                    //     .vAlign('middle');
                                 </script>
                             </div>
-                            <div class="col-lg-10 mb-4 order-0" style="background-color: #FFF">
-                                <canvas id="bar-chart" width="800" height="450"></canvas>
+                            <div class="col-lg-12 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
+                                <canvas id="bar-chart"></canvas>
                                 <script>
                                     new Chart(document.getElementById("bar-chart"), {
                                         type: 'bar',
@@ -310,12 +302,17 @@ foreach ($order_details as $orderDetail) {
                                                 text: 'Top 5 best selling products',
                                                 fontSize: 40
                                             }
+                                            scales: {
+                                                y:{
+                                                    min: 0
+                                                }
+                                            }
                                         }
                                     });
                                 </script>
                             </div>
                             <div class="col-lg-3 mb-4 order-0"
-                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
+                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px">
                                 <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i> $
                                     {{ $totalIncome }}</div>
 
