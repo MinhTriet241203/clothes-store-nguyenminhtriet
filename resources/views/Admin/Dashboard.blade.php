@@ -252,8 +252,8 @@ foreach ($order_details as $orderDetail) {
                                 </script>
                             </div>
                             <div class="col-lg-3 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
-                                <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i>  </div>
-                                
+                                <img src="{{ asset('img/chart-success.png') }}" style="margin: 10px" class="rounded">
+                                <span class="fw-semibold d-block mb-1">Total income</span>
                             </div>
                         </div>
                     </div>
