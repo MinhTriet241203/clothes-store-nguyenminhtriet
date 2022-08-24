@@ -71,6 +71,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script src="{{ asset('vendor/js/chart.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('vendor/css/chart.css') }}" />
 </head>
 
@@ -165,25 +168,30 @@
             </aside>
             <!-- / Menu -->
             <div class="layout-page">
-                <div class="content-wrapper">
+                <div class="content-wrapper" style="align-content: center">
                     <!-- Content -->
-        
                     <div class="container-xxl flex-grow-1 container-p-y">
                       <div class="row">
-                        @foreach ( as )
-                            
-                        @endforeach
-                        <canvas id="myChart" style="width:300%;max-width:600px"></canvas>
+                        <canvas id="myChart"></canvas>
                         <script>
                             function color() {
                                 var r = () => Math.random() * 256 >> 0;
                                 var color = `rgb(${r()}, ${r()}, ${r()})`;
                                 return color;
                             }
-                            var xValues = ["<?php echo $category->Category_Name; ?>"];
-                            var yValues = [55, 49, 44, 24, 15];
+                            var xValues = [<?php foreach($categories as $category){
+                                echo '"' . $category->Category_Name . '",';                                
+                            } ?>];
+                            var yValues = [<?php foreach($categories as $category){
+                                $number = 0;
+                                foreach ($products as $product) {
+                                    if ($product->Category_ID == $category->Category_ID) {
+                                        $number += $product->Available;
+                                    }
+                                }
+                                echo $number . ',';                             
+                            } ?>];
                             var barColors = [
-                                color(),
                                 color(),
                                 color(),
                                 color(),
@@ -202,10 +210,28 @@
                                 options: {
                                     title: {
                                         display: true,
-                                        text: "Precentage of products in category"
+                                        text: "Precentage of products in category",
+                                        fontSize: 18
                                     }
                                 }
                             });
+
+                            myChart.label.format('{%x} — {%y}%').fontSize(16);
+
+                            // create a standalone label
+                            var label = myChart.standalones.label();
+                    
+                            // configure the label settings
+                            label
+                            .useHtml(true)
+                            .text(
+                                '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
+                                '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
+                            )
+                            .position('center')
+                            .anchor('center')
+                            .hAlign('center')
+                            .vAlign('middle');
                         </script>
                       </div>
                     </div>
@@ -260,6 +286,80 @@
                         </tr>
                     </tbody>
                 </table> --}}
+
+
+                <script>
+
+                    anychart.onDocumentReady(function () {
+                      
+                      // add data
+                      var data = anychart.data.set([
+                        ['Spotify', 34],
+                        ['Apple Music', 21],
+                        ['Amazon Music', 15],
+                        ['Tencent apps', 11],
+                        ['YouTube Music', 6],
+                        ['Others', 13]
+                      ]);
+                      
+                      // create a pie chart with the data
+                      var chart = anychart.pie(data);
+                      
+                      // set the chart radius making a donut chart
+                      chart.innerRadius('55%')
+                    
+                      // create a color palette
+                      var palette = anychart.palettes.distinctColors();
+                     
+                      // set the colors according to the brands
+                      palette.items([
+                        { color: '#1dd05d' },
+                        { color: '#000000' },
+                        { color: '#00a3da' },
+                        { color: '#156ef2' },
+                        { color: '#f60000' },
+                        { color: '#96a6a6' }
+                      ]);
+                    
+                      // apply the donut chart color palette
+                      chart.palette(palette);
+                      
+                      // set the position of labels
+                      chart.labels().format('{%x} — {%y}%').fontSize(16);
+                      
+                      // disable the legend
+                      chart.legend(false);
+                      
+                      // format the donut chart tooltip
+                      chart.tooltip().format('Market share: {%PercentValue}%');
+                    
+                      // create a standalone label
+                      var label = anychart.standalones.label();
+                    
+                      // configure the label settings
+                      label
+                        .useHtml(true)
+                        .text(
+                          '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
+                          '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
+                        )
+                        .position('center')
+                        .anchor('center')
+                        .hAlign('center')
+                        .vAlign('middle');
+                      
+                      // set the label as the center content
+                      chart.center().content(label);
+                      
+                      // set container id for the chart
+                      chart.container('container');
+                      
+                      // initiate chart drawing
+                      chart.draw();
+                    
+                    });
+                    
+                        </script>
 
             {{-- ! Just some backend shit cause I'm stupid at frontend --}}
             <?php
