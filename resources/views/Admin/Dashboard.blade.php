@@ -199,7 +199,7 @@ foreach ($order_details as $orderDetail) {
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-10 mb-4 order-0" style="background-color: #FFF">
+                            <div class="col-lg-8 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
                                 <canvas id="myChart"></canvas>
                                 <script>
                                     function color() {
@@ -233,7 +233,7 @@ foreach ($order_details as $orderDetail) {
                                     ];
 
                                     new Chart("myChart", {
-                                        type: "doughnut",
+                                        type: "pie",
                                         data: {
                                             labels: xValues,
                                             datasets: [{
@@ -244,29 +244,16 @@ foreach ($order_details as $orderDetail) {
                                         options: {
                                             title: {
                                                 display: true,
-                                                text: "Precentage of products in category",
-                                                fontSize: 40
+                                                text: "Number of products by category",
+                                                fontSize: 35
                                             }
                                         }
                                     });
-
-                                    myChart.label.format('{%x} — {%y}%').fontSize(20);
-
-                                    // // create a standalone label
-                                    // var label = myChart.standalones.label();
-
-                                    // // configure the label settings
-                                    // label
-                                    //     .useHtml(true)
-                                    //     .text(
-                                    //         '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
-                                    //         '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
-                                    //     )
-                                    //     .position('center')
-                                    //     .anchor('center')
-                                    //     .hAlign('center')
-                                    //     .vAlign('middle');
                                 </script>
+                            </div>
+                            <div class="col-lg-3 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
+                                <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i>  </div>
+                                
                             </div>
                         </div>
                     </div>
