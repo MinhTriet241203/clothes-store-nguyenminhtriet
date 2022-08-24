@@ -84,8 +84,8 @@
                     @endforeach
                                                             
                 @else   
-                <p>Looks like your cart is empty! You can get some items <a href="{{ 'shop' }}"
-                    style="color: #23B35A">Here</a></p>
+                <p>Looks like your order history is empty! Go <a href="{{ 'shop' }}"
+                    style="color: #23B35A">buy some</a> before checking this page ! </p>
                 @endif
                 
                 {{-- </form> --}}
@@ -95,5 +95,11 @@
 
 @include('Footer')
 </body>
-
+    <!-- Start Script -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/templatemo.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- End Script -->
 </html>

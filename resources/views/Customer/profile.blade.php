@@ -37,7 +37,7 @@
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <a class="btn btn-primary" href="{{ url('editProfile') }}">Update information</a>
-                            @if (session()->get('loggedWith' !== 'google'))
+                            @if (session()->get('loggedWith') !== 'google')
                                 <a class="btn btn-primary" href="{{ url('customerEditPassword') }}">Change password</a>
                             @endif
                         </div>
