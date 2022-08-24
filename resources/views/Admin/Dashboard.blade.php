@@ -245,14 +245,20 @@ foreach ($order_details as $orderDetail) {
                                             datasets: [{
                                                 backgroundColor: barColors,
                                                 data: yValues,
-                                            }]
+                                            }],
                                         },
                                         options: {
                                             title: {
                                                 display: true,
                                                 text: "Precentage of products in category",
-                                                fontSize: 40
-                                            }
+                                                fontSize: 40        //font-size of the title
+                                            },
+                                            legend: {
+                                                display: true,
+                                                labels: {
+                                                    fontSize: 20,   //font-size of the label above the donut
+                                                }
+                                            },
                                         }
                                     });
 
@@ -281,17 +287,17 @@ foreach ($order_details as $orderDetail) {
                                         type: 'bar',
                                         data: {
                                             labels: [<?php
-                                                    foreach($top5Prod as $name){
-                                                        echo '"'.$name->Product_Name.'"'.",";
-                                                    }
-                                                ?>],
+                                            foreach ($top5Prod as $name) {
+                                                echo '"' . $name->Product_Name . '"' . ',';
+                                            }
+                                            ?>],
                                             datasets: [{
                                                 label: "Total sales (products)",
                                                 backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
                                                 data: [<?php
-                                                    foreach($top5Prod as $sum){
-                                                        echo $sum->sum.',';
-                                                    }
+                                                foreach ($top5Prod as $sum) {
+                                                    echo $sum->sum . ',';
+                                                }
                                                 ?>]
                                             }]
                                         },

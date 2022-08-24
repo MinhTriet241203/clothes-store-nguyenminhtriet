@@ -87,7 +87,7 @@ Route::get('category/{id}', [CustomerController::class, 'shopCategory']); //shop
 Route::get('customerProfile', [CustomerController::class, 'profile']); //customer profile page for viewing and editing.
 Route::get('editProfile', [CustomerController::class, 'edit']); //customer editing page.
 Route::Post('updateProfile', [CustomerController::class, 'update']); //update customer's information.
-Route::get('orderCart', [CustomerController::class, 'orderCart']); // a page
+Route::get('PreviousOrder', [CustomerController::class, 'PreviousOrder']); // a page
 
 //*Cart routing
 

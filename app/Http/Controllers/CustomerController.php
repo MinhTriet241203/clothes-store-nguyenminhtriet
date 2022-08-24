@@ -33,8 +33,8 @@ class CustomerController extends Controller
         return view('Customer.profile', compact('data', 'categories'));
     }
 
-    //handle show order cart page
-    public function orderCart()
+    //handle show Previous order page
+    public function PreviousOrder()
     {
         session()->forget('OrderIDArray');  //destroy only one session     
         $_SESSION['OrderIDArray'] = array();
@@ -88,7 +88,7 @@ class CustomerController extends Controller
             //check value of session
             //dd($value); die;    
             $categories = Categories::get();
-        return view('Navigate.orderCart', compact('categories','OrderDetailsIDDistinct'));          
+        return view('Navigate.PreviousOrder', compact('categories','OrderDetailsIDDistinct'));          
     }
 
     public function save(Request $request)

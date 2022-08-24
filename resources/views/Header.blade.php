@@ -107,8 +107,8 @@
                                         Profile
                                     </a>
                                 </li>
-                                <li><a class="dropdown-item" href="{{ url('orderCart') }}">
-                                    Order cart
+                                <li><a class="dropdown-item" href="{{ url('PreviousOrder') }}">
+                                    Previous order
                                     </a>
                                 </li>
                                 <li><a class="dropdown-item" href="{{ url('customerLogOut') }}">

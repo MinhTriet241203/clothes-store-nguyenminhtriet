@@ -11,7 +11,7 @@
             <div class="col-10">
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h3 class="fw-normal mb-0 text-black">Order Cart</h3>
+                    <h3 class="fw-normal mb-0 text-black">Previous order</h3>
                 </div>
 
                 {{-- <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data"> --}}
