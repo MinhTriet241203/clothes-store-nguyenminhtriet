@@ -20,10 +20,17 @@ class AdminController extends Controller
     {
         /* $categoryCount = Products::select("count (Category_ID) as categoryCount")->get(); */
         $categories = Categories::get()/* ->union($categoryCount)->get() */;
-        $products = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
-        $order_details = Order_details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')->get();
-        $top_5_Products = Order_details::select('Product_ID', 'SUM(Quantity)')->groupBy('Product_ID')->tosql();
-        return view('Admin.Dashboard', compact('products', 'categories', 'order_details','top_5_Products'));
+        $products = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')
+            ->get();
+        $order_details = Order_details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
+            ->get();
+        $top5Prod = Order_Details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
+            ->selectRaw('sum(Quantity) as sum, Product_Name')
+            ->groupBy('Order_details.Product_ID', 'Products.Product_Name')
+            ->orderBy('sum', 'desc')
+            ->limit(5)
+            ->get();
+        return view('Admin.Dashboard', compact('products', 'categories', 'order_details', 'top5Prod'));
     }
 
     public function index()

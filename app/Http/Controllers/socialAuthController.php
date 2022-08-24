@@ -25,6 +25,7 @@ class socialAuthController extends Controller
         $name = explode('.', $data->email);
         $data->username = $name[0];
         //split email before '@' into username
+        
         $Customer = Customers::where('Email', '=', $data->email)->where('Customer_Username', '=', $data->username)->first();
         //query customer for matching email or username with the google account
 
@@ -46,18 +47,24 @@ class socialAuthController extends Controller
             session()->put('loggedWith', 'google');
 
             return redirect('/');
+        } else {
 
-        } elseif (
-            $data->username === $Customer->Customer_Username &&
-            $data->name === $Customer->Customer_Name &&         //check for all fields being the same
-            $data->email === $Customer->Email
-        ) {
+            $customer = new Customers();
+
+            $customer->Customer_Username = $data->username;
+            $customer->Customer_Name = $data->name;
+            $customer->Email = $data->email;
+
+            Customers::where('Customer_ID', '=', $data->email)->update([
+                'Customer_Name' => $customer->Customer_Name,
+                'Customer_Username' => $customer->Customer_Username,    //update the name and username if user email 
+                                                                        //matches since the system allows for no duplicate emails
+            ]);
+
             session()->put('customerLoginID', $Customer->Customer_ID);
             session()->put('customerName', $Customer->Customer_Name);   //putting user into session - Log in user
             session()->put('loggedWith', 'google');
             return redirect('/');
-        } else {
-            return redirect()->view('Customer.customerLogin')->with('fail', 'There is an registered with the same Email or Username');
         }
     }
 }

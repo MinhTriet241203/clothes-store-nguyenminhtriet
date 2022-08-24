@@ -103,8 +103,10 @@ foreach ($order_details as $orderDetail) {
     $totalIncome += $smallIncome;
 }
 
-//danh sách 5 sản phẩm được bán nhiều nhất
-dd($top_5_Products);
+//danh sách 5 sản phẩm có số lượng bán tổng cao nhất
+// foreach ($top5Prod as $prod) {
+//     echo $prod->Product_Name.': '.$prod->sum.'<br>';
+// }
 
 ?>
 
@@ -272,143 +274,48 @@ dd($top_5_Products);
                                     //     .vAlign('middle');
                                 </script>
                             </div>
-                            <div class="col-lg-3 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
-                                <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i>  </div>
-                                
+                            <div class="col-lg-10 mb-4 order-0" style="background-color: #FFF">
+                                <canvas id="bar-chart" width="800" height="450"></canvas>
+                                <script>
+                                    new Chart(document.getElementById("bar-chart"), {
+                                        type: 'bar',
+                                        data: {
+                                            labels: [<?php
+                                                    foreach($top5Prod as $name){
+                                                        echo '"'.$name->Product_Name.'"'.",";
+                                                    }
+                                                ?>],
+                                            datasets: [{
+                                                label: "Total sales (products)",
+                                                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                                                data: [<?php
+                                                    foreach($top5Prod as $sum){
+                                                        echo $sum->sum.',';
+                                                    }
+                                                ?>]
+                                            }]
+                                        },
+                                        options: {
+                                            legend: {
+                                                display: false
+                                            },
+                                            title: {
+                                                display: true,
+                                                text: 'Top 5 best selling products',
+                                                fontSize: 40
+                                            }
+                                        }
+                                    });
+                                </script>
+                            </div>
+                            <div class="col-lg-3 mb-4 order-0"
+                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; margin-left:20px">
+                                <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i> $
+                                    {{ $totalIncome }}</div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-
-
-        {{-- <table class="graph">
-                    <caption>Bar Chart HTML From HTML Table</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Item</th>
-                            <th scope="col">Percent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="height:85%">
-                            <th scope="row">Your Blog</th>
-                            <td><span>85%</span></td>
-                        </tr>
-                        <tr style="height:23%">
-                            <th scope="row">Medium</th>
-                            <td><span>23%</span></td>
-                        </tr>
-                        <tr style="height:7%">
-                            <th scope="row">Tumblr</th>
-                            <td><span>7%</span></td>
-                        </tr>
-                        <tr style="height:38%">
-                            <th scope="row">Facebook</th>
-                            <td><span>38%</span></td>
-                        </tr>
-                        <tr style="height:35%">
-                            <th scope="row">Youtube</th>
-                            <td><span>35%</span></td>
-                        </tr>
-                        <tr style="height:30%">
-                            <th scope="row">LinkedIn</th>
-                            <td><span>30%</span></td>
-                        </tr>
-                        <tr style="height:5%">
-                            <th scope="row">Twitter</th>
-                            <td><span>5%</span></td>
-                        </tr>
-                        <tr style="height:20%">
-                            <th scope="row">Other</th>
-                            <td><span>20%</span></td>
-                        </tr>
-                    </tbody>
-                </table> --}}
-
-
-        <script>
-            anychart.onDocumentReady(function() {
-
-                // add data
-                var data = anychart.data.set([
-                    ['Spotify', 34],
-                    ['Apple Music', 21],
-                    ['Amazon Music', 15],
-                    ['Tencent apps', 11],
-                    ['YouTube Music', 6],
-                    ['Others', 13]
-                ]);
-
-                // create a pie chart with the data
-                var chart = anychart.pie(data);
-
-                // set the chart radius making a donut chart
-                chart.innerRadius('55%')
-
-                // create a color palette
-                var palette = anychart.palettes.distinctColors();
-
-                // set the colors according to the brands
-                palette.items([{
-                        color: '#1dd05d'
-                    },
-                    {
-                        color: '#000000'
-                    },
-                    {
-                        color: '#00a3da'
-                    },
-                    {
-                        color: '#156ef2'
-                    },
-                    {
-                        color: '#f60000'
-                    },
-                    {
-                        color: '#96a6a6'
-                    }
-                ]);
-
-                // apply the donut chart color palette
-                chart.palette(palette);
-
-                // set the position of labels
-                chart.labels().format('{%x} — {%y}%').fontSize(16);
-
-                // disable the legend
-                chart.legend(false);
-
-                // format the donut chart tooltip
-                chart.tooltip().format('Market share: {%PercentValue}%');
-
-                // create a standalone label
-                var label = anychart.standalones.label();
-
-                // configure the label settings
-                label
-                    .useHtml(true)
-                    .text(
-                        '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
-                        '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
-                    )
-                    .position('center')
-                    .anchor('center')
-                    .hAlign('center')
-                    .vAlign('middle');
-
-                // set the label as the center content
-                chart.center().content(label);
-
-                // set container id for the chart
-                chart.container('container');
-
-                // initiate chart drawing
-                chart.draw();
-
-            });
-        </script>
