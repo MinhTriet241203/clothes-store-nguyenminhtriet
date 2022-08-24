@@ -172,10 +172,11 @@
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                       <div class="row">
-                        <canvas id="myChart"></canvas>
+                        <div class="col-lg-10 mb-4 order-0" style="background-color: #FFF">
+                        <canvas id="myChart" ></canvas>
                         <script>
                             function color() {
-                                var r = () => Math.random() * 256 >> 0;
+                                var r = () => Math.random() * 250 >> 0;
                                 var color = `rgb(${r()}, ${r()}, ${r()})`;
                                 return color;
                             }
@@ -233,6 +234,7 @@
                             .hAlign('center')
                             .vAlign('middle');
                         </script>
+                      </div>
                       </div>
                     </div>
                 </div>
