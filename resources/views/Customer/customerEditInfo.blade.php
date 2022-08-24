@@ -35,8 +35,7 @@
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input id="name" type="text" class="form-control" placeholder="Name" name="name"
-                                value="{{ $data->Customer_Name }}"
-                                @if (session()->get('loggedWith') === 'google') @disabled(true) @endif>
+                                value="{{ $data->Customer_Name }}" <?php echo session()->get('loggedWith') === 'google' ? "readonly" : '' ?>>
                         </div>
                         @error('name')
                             <div class="alert alert-danger" role="alert">
@@ -91,16 +90,20 @@
                             </div>
                         @enderror
 
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input id="password" type="password" class="form-control" placeholder="Password to confirm changes"
-                                name="password">
-                        </div>
-                        @error('password')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
+                        @if (session()->get('loggedWith') === 'google' && Hash::check("EmptyPasswordForGoogleAccount", $data->Customer_Password))
+                            <input id="password" type="hidden" class="form-control" name="password" value="EmptyPasswordForGoogleAccount">
+                        @else
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input id="password" type="password" class="form-control"
+                                    placeholder="Password to confirm changes" name="password">
                             </div>
-                        @enderror
+                            @error('password')
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        @endif
 
                         <button
                             class="btn btn-primary btn-lg btn-block submit custom-btn btn-3"><span>Update</span></button>
