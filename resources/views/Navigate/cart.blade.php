@@ -14,44 +14,13 @@
                     <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
                 </div>
 
-                <form action="{{ url('purchase')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('purchase') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if (Session::has('success'))
                         <div class="alert alert-success" role="alert">
                             {{ Session::get('success') }}
                         </div>
                     @endif
-                    <div class="container py-5">
-                        <div class="row py-5">                          
-                            <div class="row">
-                                <div class="mb-3">
-                                    <label for="inputname">Recieve Address</label>
-                                    <input type="text" class="form-control mt-1" name="address"
-                                        placeholder="Address">
-                                </div>
-                                @error('address')
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <div class="mb-3">
-                                    <label for="inputemail">Recieve Phone</label>
-                                    <input type="text" class="form-control mt-1" name="phone"
-                                        placeholder="Phone">
-                                </div>
-                                @error('phone')
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <div class="mb-3">
-                                    <label for="inputmessage">Note</label>
-                                    <textarea class="form-control mt-1" id="message" name="note" placeholder="Note" rows="8"></textarea>
-                                </div>
-                            </div>          
-                        </div>
-                    </div>                        
-                    
 
                     <div class="card rounded-3 mb-4">
                         <div class="card-body p-4">
@@ -101,11 +70,47 @@
                             </div>
                         </div>
                     </div>
+
+                    @if (!empty(session('cart')))
+                        {{-- disables the information fields when no item is presence --}}
+                        <div class="card rounded-3 mb-4">
+                            <div class="card-body p-4">
+                                <div class="row">
+                                    <div class="mb-3">
+                                        <label for="inputname">Recieve Address</label>
+                                        <input type="text" class="form-control mt-1" name="address"
+                                            placeholder="Address">
+                                    </div>
+                                    @error('address')
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <div class="mb-3">
+                                        <label for="inputemail">Recieve Phone</label>
+                                        <input type="text" class="form-control mt-1" name="phone"
+                                            placeholder="Phone">
+                                    </div>
+                                    @error('phone')
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                    <div class="mb-3">
+                                        <label for="inputmessage">Note</label>
+                                        <textarea class="form-control mt-1" id="message" name="note" placeholder="Note" rows="5"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     @if (!empty(session('cart')))
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-3">
                                 {{-- <a href="" class="btn btn-success" style="float: right" type="submit">Purchase</a> --}}
-                                <button class="btn btn-block btn-primary" type="submit" style="margin-top: 10px">Purchase</button>
+                                <button class="btn btn-block btn-primary" type="submit"
+                                    style="float:right;">Purchase</button>
                                 <a href="{{ url()->previous() }}" class="btn btn-outline-danger"
                                     style="float: right; margin-right: 1%">Back</a>
                             </div>
