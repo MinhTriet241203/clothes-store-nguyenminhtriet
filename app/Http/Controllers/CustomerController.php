@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ProductController;
+
 use App\Models\Order_details;
 use Illuminate\Database\DBAL\TimestampType;
 
@@ -32,48 +33,62 @@ class CustomerController extends Controller
         return view('Customer.profile', compact('data', 'categories'));
     }
 
+    //handle show order cart page
     public function orderCart()
     {
+        session()->forget('OrderIDArray');  //destroy only one session     
+        $_SESSION['OrderIDArray'] = array();
+        
         $CustomerID = session()->get('customerLoginID');
 
         $OrderID = Orders::where('Customer_ID', '=', $CustomerID)->get();
+        
+        
+        
 
         foreach ($OrderID as $Order) {
+            
+            
+            $OrderIDGet = $Order->Order_ID;
+            
+            $OrderDetails = Order_details::where('Order_ID', $OrderIDGet)->get();  
+            
+            // $OrderDetailsDuplicate = Order_details::all();
+            // $usersUnique = $OrderDetailsDuplicate->unique(['Order_ID']);
+            // $userDuplicates = $OrderDetailsDuplicate->diff($usersUnique);
+            //$userDuplicates = array();
 
-            $OrderDetails = Order_details::where('order_id', $Order->Order_ID)->get();
+            // $userDuplicates->toArray();
+            // dd($userDuplicates);die;      
+                    $results = Order_details::whereIn('Order_ID', function ( $query ) {
+                        $query->select('Order_Details_ID')->from('order_details')->groupBy('Order_ID')->havingRaw('count(*) > 1');
+                    })->get(); 
+                    dd($results); die;
 
-            foreach ($OrderDetails as $OrderDetaisRow){
+            foreach ($OrderDetails as $OrderDetailsRow){
 
-                $Product = Products::where('Product_ID', '=' , $OrderDetaisRow['Product_ID']);
-
-            //     foreach($Product as $ProductRow){
-            //         $image = $Product['Images'];
-            //     }
+                $Product = Products::where('Product_ID', '=' , $OrderDetailsRow['Product_ID'])->get();
                 
+                foreach($Product as $Product){
+                    $OrderIDArray = collect([
+                        "name" => $Product ['Product_Name'],
+                        "img" => $Product['Images'],
+                        "size" => $OrderDetailsRow['Size'],
+                        "price" =>$Product['Price'],
+                        "quantity" =>$OrderDetailsRow['Quantity'],
 
-            //     $OrderIDArray= collect([
-            //         "OrderID" => $rowItem['Product_ID'],
-            //         "Quantity" => $rowItem['Quantity'],
-            //         "Size" => $rowItem['Size'],
-            //    ]);
-               
+                    ]);
+                }
+                session()->push('OrderIDArray', $OrderIDArray);
+                //$value = session()->get('OrderIDArray');        
             }
+           
         }
-
-        // Foreach($OrderID as $row){
-        //     $OrderIDArray= collect([
-        //         "OrderID" => $row['Order_ID'],
-        //     ]);
-        // }
-
-        // $_SESSION['OrderID'] = array(); 
-        // session()->push('OrderID', $OrderIDArray); 
-
-        // $OrderDetails = Order_details::where('Order_ID', '=', $OrderID)->get();
-        // $ProductID = $OrderDetails->Product_ID;
-        // $Product = Products::where('Product_ID', '=', $ProductID );
-        
-        return view('Navigate.orderCart', compact('OrdeDetails','Product'));
+        //dd($value); die;    
+        $categories = Categories::get();
+        return view('Navigate.orderCart', compact('categories'));
+         
+         
     }
 
     public function save(Request $request)
