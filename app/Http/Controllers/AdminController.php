@@ -22,7 +22,8 @@ class AdminController extends Controller
         $categories = Categories::get()/* ->union($categoryCount)->get() */;
         $products = Products::join('Categories', 'Categories.Category_ID', '=', 'Products.Category_ID')->get();
         $order_details = Order_details::join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')->get();
-        return view('Admin.Dashboard', compact('products', 'categories', 'order_details'));
+        $top_5_Products = Order_details::select('Product_ID', 'SUM(Quantity)')->groupBy('Product_ID')->tosql();
+        return view('Admin.Dashboard', compact('products', 'categories', 'order_details','top_5_Products'));
     }
 
     public function index()

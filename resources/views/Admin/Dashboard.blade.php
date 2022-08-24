@@ -100,8 +100,12 @@ $totalIncome = 0;
 $income = 0;
 foreach ($order_details as $orderDetail) {
     $smallIncome = $orderDetail->Price * $orderDetail->Quantity;
-    $bigIncome += $smallIncome;
+    $totalIncome += $smallIncome;
 }
+
+//danh sách 5 sản phẩm được bán nhiều nhất
+dd($top_5_Products);
+
 ?>
 
 <body>
