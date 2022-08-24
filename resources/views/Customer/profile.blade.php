@@ -36,14 +36,16 @@
                     </div>
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <a class="btn btn-primary" href="{{url('editProfile')}}">Update information</a>
-                            <a class="btn btn-primary" href="{{url('customerEditPassword')}}">Change password</a>
+                            <a class="btn btn-primary" href="{{ url('editProfile') }}">Update information</a>
+                            @if (session()->get('loggedWith' !== 'google'))
+                                <a class="btn btn-primary" href="{{ url('customerEditPassword') }}">Change password</a>
+                            @endif
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
-                        <div class="card-body"  style="font-size:20px;">
+                        <div class="card-body" style="font-size:20px;">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0"><i class="fas fa-address-card"></i> | Full Name</p>
