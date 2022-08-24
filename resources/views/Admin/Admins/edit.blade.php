@@ -198,6 +198,7 @@
                                             <option value="Product Operator" <?php echo $data->Admin_Class == 'Product Operator' ? 'selected' : ''; ?>>Product Operator</option>
                                             <option value="Full Control" <?php echo $data->Admin_Class == 'Full Control' ? 'selected' : ''; ?>>Full Control</option>
                                         </select>
+                                         {{--? This section selects the current admin's class --}}
                                     @else
                                         <select name="class" class="form-control form-select" style="width: 200px"
                                             disabled>
