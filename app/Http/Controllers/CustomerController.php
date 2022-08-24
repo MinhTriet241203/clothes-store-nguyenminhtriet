@@ -44,51 +44,51 @@ class CustomerController extends Controller
         $OrderID = Orders::where('Customer_ID', '=', $CustomerID)->get();
         
         
-        
+        $OrderDetailsIDDistinct = Order_Details::distinct()->get('Order_ID'); // take unique vulue base on Ỏder_ID
 
-        foreach ($OrderID as $Order) {
-            
-            
-            $OrderIDGet = $Order->Order_ID;
-            
-            $OrderDetails = Order_details::where('Order_ID', $OrderIDGet)->get();  
-            
-            // $OrderDetailsDuplicate = Order_details::all();
-            // $usersUnique = $OrderDetailsDuplicate->unique(['Order_ID']);
-            // $userDuplicates = $OrderDetailsDuplicate->diff($usersUnique);
-            //$userDuplicates = array();
-
-            // $userDuplicates->toArray();
-            // dd($userDuplicates);die;      
-                    $results = Order_details::whereIn('Order_ID', function ( $query ) {
-                        $query->select('Order_Details_ID')->from('order_details')->groupBy('Order_ID')->havingRaw('count(*) > 1');
-                    })->get(); 
-                    dd($results); die;
-
-            foreach ($OrderDetails as $OrderDetailsRow){
-
-                $Product = Products::where('Product_ID', '=' , $OrderDetailsRow['Product_ID'])->get();
+            foreach ($OrderID as $Order) {
                 
-                foreach($Product as $Product){
-                    $OrderIDArray = collect([
-                        "name" => $Product ['Product_Name'],
-                        "img" => $Product['Images'],
-                        "size" => $OrderDetailsRow['Size'],
-                        "price" =>$Product['Price'],
-                        "quantity" =>$OrderDetailsRow['Quantity'],
+                
+                $OrderIDGet = $Order->Order_ID;
+                
+                $OrderDetails = Order_details::where('Order_ID', $OrderIDGet)->get();  
+                
+                // $OrderDetailsDuplicate = Order_details::all();
+                // $usersUnique = $OrderDetailsDuplicate->unique(['Order_ID']);
+                // $userDuplicates = $OrderDetailsDuplicate->diff($usersUnique);
+                //$userDuplicates = array();
 
-                    ]);
+                // $userDuplicates->toArray();
+                // dd($userDuplicates);die;      
+                        // $results = Order_details::whereIn('Order_ID', function ( $query ) {
+                        //     $query->select('Order_Details_ID')->from('order_details')->groupBy('Order_ID')->havingRaw('count(*) > 1');
+                        // })->get(); 
+                        // dd($results); die;
+                            // if()
+                foreach ($OrderDetails as $OrderDetailsRow){
+
+                    $Product = Products::where('Product_ID', '=' , $OrderDetailsRow['Product_ID'])->get();
+                    
+
+                    foreach($Product as $Product){
+                        $OrderIDArray = collect([
+                            "OrderID" => $OrderDetailsRow['Order_ID'],
+                            "name" => $Product ['Product_Name'],
+                            "img" => $Product['Images'],
+                            "size" => $OrderDetailsRow['Size'],
+                            "price" =>$Product['Price'],
+                            "quantity" =>$OrderDetailsRow['Quantity'],
+                        ]);
+                    }
+                    session()->push('OrderIDArray', $OrderIDArray);                 
+                    //$value = session()->get('OrderIDArray');        
                 }
-                session()->push('OrderIDArray', $OrderIDArray);
-                //$value = session()->get('OrderIDArray');        
+            
             }
-           
-        }
-        //dd($value); die;    
-        $categories = Categories::get();
-        return view('Navigate.orderCart', compact('categories'));
-         
-         
+            //check value of session
+            //dd($value); die;    
+            $categories = Categories::get();
+        return view('Navigate.orderCart', compact('categories','OrderDetailsIDDistinct'));          
     }
 
     public function save(Request $request)
