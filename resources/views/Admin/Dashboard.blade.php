@@ -77,6 +77,32 @@
     <script src="{{ asset('vendor/js/chart.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('vendor/css/chart.css') }}" />
 </head>
+{{-- ! Just some backend shit cause I'm stupid at frontend --}}
+<?php
+// Tổng sản phẩm = tổng Available của tất cả sản phẩm
+$totalProduct = 0;
+foreach ($products as $product) {
+    $totalProduct += $product->Available;
+}
+
+// Tổng sản phẩm của từng category
+foreach ($categories as $category) {
+    $number = 0;
+    foreach ($products as $product) {
+        if ($product->Category_ID == $category->Category_ID) {
+            $number += $product->Available;
+        }
+    }
+}
+
+// Tổng lợi nhuận Này chưa test nha
+$totalIncome = 0;
+$income = 0;
+foreach ($order_details as $orderDetail) {
+    $smallIncome = $orderDetail->Price * $orderDetail->Quantity;
+    $bigIncome += $smallIncome;
+}
+?>
 
 <body>
     <!-- Layout wrapper -->
@@ -181,23 +207,29 @@
                                         var color = `rgb(${r()}, ${r()}, ${r()})`;
                                         return color;
                                     }
-                                    var xValues = [<?php foreach ($categories as $category) {
-                                        echo '"' . $category->Category_Name . '",';
-                                    } ?>];
-                                    var yValues = [<?php foreach ($categories as $category) {
-                                        $number = 0;
-                                        foreach ($products as $product) {
-                                            if ($product->Category_ID == $category->Category_ID) {
-                                                $number += $product->Available;
+
+                                    var xValues = [
+                                        <?php foreach ($categories as $category) {
+                                            echo '"' . $category->Category_Name . '",';
+                                        } ?>
+                                    ];
+
+                                    var yValues = [
+                                        <?php foreach ($categories as $category) {
+                                            $number = 0;
+                                            foreach ($products as $product) {
+                                                if ($product->Category_ID == $category->Category_ID) {
+                                                    $number += $product->Available;
+                                                }
                                             }
-                                        }
-                                        echo $number . ',';
-                                    } ?>];
+                                            echo $number . ',';
+                                        } ?>
+                                    ];
+
                                     var barColors = [
-                                        color(),
-                                        color(),
-                                        color(),
-                                        color()
+                                        <?php foreach ($categories as $category) {
+                                            echo 'color(),';
+                                        } ?>
                                     ];
 
                                     new Chart("myChart", {
@@ -220,20 +252,20 @@
 
                                     myChart.label.format('{%x} — {%y}%').fontSize(20);
 
-                                    // create a standalone label
-                                    var label = myChart.standalones.label();
+                                    // // create a standalone label
+                                    // var label = myChart.standalones.label();
 
-                                    // configure the label settings
-                                    label
-                                        .useHtml(true)
-                                        .text(
-                                            '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
-                                            '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
-                                        )
-                                        .position('center')
-                                        .anchor('center')
-                                        .hAlign('center')
-                                        .vAlign('middle');
+                                    // // configure the label settings
+                                    // label
+                                    //     .useHtml(true)
+                                    //     .text(
+                                    //         '<span style = "color: #313136; font-size:20px;">Global Market Share of <br/> Music Streaming Apps</span>' +
+                                    //         '<br/><br/></br><span style="color:#444857; font-size: 14px;"><i>Spotify and Apple Music have more <br/>than 50% of the total market share</i></span>'
+                                    //     )
+                                    //     .position('center')
+                                    //     .anchor('center')
+                                    //     .hAlign('center')
+                                    //     .vAlign('middle');
                                 </script>
                             </div>
                         </div>
@@ -372,32 +404,3 @@
 
             });
         </script>
-
-        {{-- ! Just some backend shit cause I'm stupid at frontend --}}
-        <?php
-        // Tổng sản phẩm = tổng Available của tất cả sản phẩm
-        $totalProduct = 0;
-        foreach ($products as $product) {
-            $totalProduct += $product->Available;
-        }
-        
-        // Tổng sản phẩm của từng category
-        foreach ($categories as $category) {
-            $number = 0;
-            foreach ($products as $product) {
-                if ($product->Category_ID == $category->Category_ID) {
-                    $number += $product->Available;
-                }
-            }
-        }
-        
-        echo '<br>';
-        
-        // Tổng lợi nhuận Này chưa test nha
-        $bigIncome = 0;
-        $smallIncome = 0;
-        foreach ($order_details as $orderDetail) {
-            $smallIncome = $orderDetail->Price * $orderDetail->Quantity;
-            $bigIncome += $smallIncome;
-        }
-        ?>
