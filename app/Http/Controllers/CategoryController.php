@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function save(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,Category_Name|max:50',
             'image' => 'required'
         ]);
 
@@ -54,21 +54,24 @@ class CategoryController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'image' => 'required',
+            'name' => 'required|unique:categories,Category_Name|max:50'
         ]);
         $id = $request->id;
-
         $data = Categories::where('Category_ID', '=', $id)->first();
-        $file = $data->Category_Image;
-        $path = public_path('img/categories/' . $file);
-        if (File::exists($path) && $path !== 'img/categories/') {
-            File::delete($path);
+        
+        if(!empty($request->image)){
+            $file = $data->Category_Image;
+            $path = public_path('img/categories/' . $file);
+            if (File::exists($path) && $path !== 'img/categories/') {
+                File::delete($path);
+            }
+
+            $filename = Date('usiHd') . $request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
+            $request->image->move(public_path('\img\categories'), $filename);
+        }else{
+            $filename = $data->Category_Image;
         }
-
-        $filename = Date('usiHd') . $request->image->getClientOriginalName(); //move uploaded image to category folder then save the name
-        $request->image->move(public_path('\img\categories'), $filename);
-
+        
         Categories::where('Category_ID', '=', $id)->update([
             'Category_Name' => $request->name,
             'Category_Image' => $filename
