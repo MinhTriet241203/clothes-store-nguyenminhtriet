@@ -5,12 +5,17 @@
     <style>
         @media (min-width: 1200px){.col-xl-1 {
             flex: 0 0 auto;
-            width: 15.3333333333%;
+            width: 12.3333333333%;
             }
         }
         @media (min-width: 992px){.col-xl-1 {
             flex: 0 0 auto;
             width: 17.3333333333%;
+            }
+        }
+        @media (min-width: 768px){.col-md-1{
+            flex: 0 0 auto;
+            width: 22.3333333333%;
             }
         }
     </style>
