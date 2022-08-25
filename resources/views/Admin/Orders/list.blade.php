@@ -191,39 +191,6 @@
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
-                            @if (!empty($notify))
-                                <div class="alert alert-primary" role="alert">
-                                    {{ $notify }}
-                                </div>
-                            @endif
-                            @if (!empty($fail))
-                                <div class="alert alert-danger" role="alert">
-                                    {{ $fail }}
-                                </div>
-                            @endif
-        
-                            {{-- Add button and search --}}
-                            @if (Session::has('LoginID'))
-                                {{-- Search function if admin is logged in --}}
-                                <div style="margin-right: 1%; float:right;">
-                                    <form action="{{ url('searchAdmin') }}" method="GET">
-                                        <div class="input-group mb-3">
-                                            {{-- <select name="searchType" class="form-control form-select">
-                                                <option value="none">Search by...</option>
-                                                <option value="username">Username</option>
-                                                <option value="name">Name</option>
-                                                <option value="class">Class</option>
-                                            </select> --}}
-                                            <input type="text" class="form-control" placeholder="Search admins" name="search">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="submit"
-                                                    style="height:100%;box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;"><i
-                                                        class="fa fa-search" aria-hidden="true"></i></button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            @endif
         
                             {{-- Page title --}}
                             <div style="margin-left: 5%; float:left;">
@@ -239,51 +206,25 @@
                                             {{-- Table header --}}
                                             <tr style="text-align: center; vertical-align:middle">
                                                 <th>Order ID</th>
-                                                <th>Name</th>
-                                                <th>Class</th>
-                                                <th>Actions</th>
+                                                <th>Customer Name</th>
+                                                <th>Product Name</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Size</th>
+                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {{-- Fetch table data --}}
                                             @foreach ($data as $row)
                                                 <tr style="text-align: center; vertical-align:middle">
-                                                    <td>{{ $row->Admin_Username }}</td>
-                                                    <td>{{ $row->Admin_Name }}</td>
-                                                    <td>{{ $row->Admin_Class }}</td>
-                                                    <td>
-                                                        @if (session()->get('Class') == 'Product Operator')
-                                                            {{-- If admin class is product operator then disable update, delete button on admin list page --}}
-                                                            <a class="btn btn-primary disabled">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <a class="btn btn-danger disabled">
-                                                                <i class="fas fa-trash-alt"></i>
-                                                            </a>
-                                                        @else
-                                                            {{-- If admin class is full control or manager then enable update, delete button --}}
-                                                            @if ($row->Admin_Username == 'admin')
-                                                                {{-- If admin username is admin then disable delete button --}}
-                                                                <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                                                    class="btn btn-info">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a class="btn btn-danger disabled">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
-                                                            @else
-                                                                {{-- If admin username is not admin then enable update, delete button --}}
-                                                                <a href="{{ url('editAdmin/' . $row->Admin_Username) }}"
-                                                                    class="btn btn-info">
-                                                                    <i class="fas fa-edit"></i>
-                                                                </a>
-                                                                <a href="{{ url('deleteAdmin/' . $row->Admin_Username) }}"
-                                                                    class="btn btn-danger" onclick="return confirm('Confirm delete?')">
-                                                                    <i class="fas fa-trash-alt"></i>
-                                                                </a>
-                                                            @endif
-                                                        @endif
-                                                    </td>
+                                                    <td>{{ $row->Order_ID }}</td>
+                                                    <td>{{ $row->Customer_Name }}</td>
+                                                    <td>{{ $row->Product_Name }}</td>
+                                                    <td>{{ $row->Quantity }}</td>
+                                                    <td>${{ $row->Quantity * $row->Price }}</td>
+                                                    <td>{{ $row->Size }}</td>
+                                                    <td>{{ $row->Date }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

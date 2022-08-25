@@ -170,4 +170,13 @@ class AdminController extends Controller
             }
         }
     }
+
+    public function orders()
+    {
+        $data = Orders::join('Order_Details', 'Orders.Order_ID', '=', 'Order_details.Order_ID')
+            ->join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
+            ->join('Customers', 'Customers.Customer_ID', '=', 'Orders.Customer_ID')
+            ->get();
+        return view('Admin.Orders.list', compact('data'));
+    }
 }

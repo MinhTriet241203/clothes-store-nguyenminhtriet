@@ -44,7 +44,8 @@ Route::get('editAdmin/{id}', [AdminController::class, 'edit']);
 Route::post('updateAdmin', [AdminController::class, 'update']); //!not a page.
 Route::get('deleteAdmin/{id}', [AdminController::class, 'delete']); //!not a page.
 Route::get('searchAdmin', [AdminController::class, 'search'])->middleware('isLoggedIn'); //query likeness from get to table Admins//!not a page.
-Route::get('dashboard', [AdminController::class, 'dashboard'])->middleware('isLoggedIn');;
+Route::get('dashboard', [AdminController::class, 'dashboard'])->middleware('isLoggedIn');
+Route::get('listOrders', [AdminController::class, 'orders'])->middleware('isLoggedIn');
 
 
 
