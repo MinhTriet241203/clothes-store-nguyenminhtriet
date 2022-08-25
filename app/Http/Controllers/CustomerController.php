@@ -73,11 +73,13 @@ class CustomerController extends Controller
                     foreach($Product as $Product){
                         $OrderIDArray = collect([
                             "OrderID" => $OrderDetailsRow['Order_ID'],
+                            "Product_ID" => $OrderDetailsRow['Product_ID'],
                             "name" => $Product ['Product_Name'],
                             "img" => $Product['Images'],
                             "size" => $OrderDetailsRow['Size'],
                             "price" =>$Product['Price'],
                             "quantity" =>$OrderDetailsRow['Quantity'],
+                            "purchaseDate" => $Order['Date'],
                         ]);
                     }
                     session()->push('OrderIDArray', $OrderIDArray);                 

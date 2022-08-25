@@ -2,6 +2,18 @@
 
 <head>
     <title>Cart</title>
+    <style>
+        @media (min-width: 1200px){.col-xl-1 {
+            flex: 0 0 auto;
+            width: 15.3333333333%;
+            }
+        }
+        @media (min-width: 992px){.col-xl-1 {
+            flex: 0 0 auto;
+            width: 17.3333333333%;
+            }
+        }
+    </style>
 </head>
 
 <!-- Open Content -->
@@ -18,11 +30,15 @@
                 @if (!empty(session('OrderIDArray')))   
                     @foreach ($OrderDetailsIDDistinct as $OrderDetailsIDDistinctRow)
                         <div class="card rounded-3 mb-4">
+                            
                             <?php $total = 0; $i = 0; ?>
                             @foreach (session('OrderIDArray') as $row)
                                 @if($OrderDetailsIDDistinctRow->Order_ID === $row['OrderID'])                                  
-
-                                    <div class="card-body p-4" style="padding: 10px 10px 0px 10px !important;">                   
+                                <div class="" style="float: right!important; Width=1000px!important;">
+                                    <p style="width:max-content; float:right; margin-right:10px;">Purchase Date: {{ $row['purchaseDate'] }}</p>
+                                </div>
+                                    <div class="card-body p-4" style="padding: 10px 10px 0px 10px !important;">  
+                 
                             
                                         <div class="row d-flex justify-content-between align-items-center">
                                                 
@@ -47,15 +63,17 @@
                                             <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                                                 <p>Ammount: {{ $row['quantity'] }}</p>
                                             </div>
-                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                <h5 class="mb-0">${{ $row['price'] }}</h5>
+                                            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" style="margin:inherit; width:auto;">
+                                                <h5 style="width:max-content;">${{ $row['price'] }}</h5>
                                             </div>
-                                            <div class="col-md-1 col-lg-1 col-xl-1  ">
-                                                <a href="removeItem/{{ $i }}" class="text-danger"
-                                                    onclick="return confirm('Confirm delete?')">
-                                                    <i class="fas fa-trash fa-lg"></i>
-                                                </a>
+                                            <div class="col-md-1 col-lg-1 col-xl-1  " style="">
+                                                <button type="button" class="btn btn-outline-success" 
+                                                        style="margin-right: 100px; margin-left:10px; width:100px; 
+                                               ">
+                                                    <a href="{{ url('shopSingle/' . $row['Product_ID']) }} " style="text-decoration: none;color : inherit; ">Buy again</a>
+                                                </button>  
                                             </div>
+                                            
                                         </div>                                       
                                         <hr>
                                         <?php $total += $row['price'] * $row['quantity'];
@@ -74,9 +92,9 @@
                                 @endif                          
                             @endforeach
 
-                            <div class="" style ="display:flex; float:left; padding-bottom:10px; ">                            
-                                    <button type="button" class="btn btn-outline-success" style="margin-right: 100px; margin-left:10px; width:100px;">Buy again</button>                       
-                                    <h5 class="" style="width: 150px; ">Total: ${{ $total }}</h5> 
+                            <div class="" style ="padding-bottom:10px; width:100%; ">                            
+                                                    
+                                    <h5 class="" style="width: 150px; margin-left: 15px;">Total: ${{ $total }}</h5> 
                                                    
                                 
                             </div>
