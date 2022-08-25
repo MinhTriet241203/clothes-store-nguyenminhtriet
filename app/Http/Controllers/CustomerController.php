@@ -53,18 +53,6 @@ class CustomerController extends Controller
                 
                 $OrderDetails = Order_details::where('Order_ID', $OrderIDGet)->get();  
                 
-                // $OrderDetailsDuplicate = Order_details::all();
-                // $usersUnique = $OrderDetailsDuplicate->unique(['Order_ID']);
-                // $userDuplicates = $OrderDetailsDuplicate->diff($usersUnique);
-                //$userDuplicates = array();
-
-                // $userDuplicates->toArray();
-                // dd($userDuplicates);die;      
-                        // $results = Order_details::whereIn('Order_ID', function ( $query ) {
-                        //     $query->select('Order_Details_ID')->from('order_details')->groupBy('Order_ID')->havingRaw('count(*) > 1');
-                        // })->get(); 
-                        // dd($results); die;
-                            // if()
                 foreach ($OrderDetails as $OrderDetailsRow){
 
                     $Product = Products::where('Product_ID', '=' , $OrderDetailsRow['Product_ID'])->get();
