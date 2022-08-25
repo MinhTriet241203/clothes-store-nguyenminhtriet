@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Category List</title>
+    <title>Dashboard</title>
 
     <meta name="description" content="" />
 
@@ -164,6 +164,18 @@
                         <a href="{{ url('listProduct') }}" class="menu-link">
                             <i class="menu-icon tf-icons fa-solid fa-shirt"></i>
                             <div data-i18n="Products">Products</div>
+                        </a>
+                    </li>
+
+                    <!-- Orders -->
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Orders</span>
+                    </li>
+                    {{-- Orders --}}
+                    <li class="menu-item">
+                        <a href="{{ url('listOrders') }}" class="menu-link">
+                            <i class="menu-icon tf-icons fa-solid fa-user"></i>
+                            <div data-i18n="Orders">Orders</div>
                         </a>
                     </li>
                 </ul>
