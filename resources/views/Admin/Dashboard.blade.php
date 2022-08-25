@@ -85,16 +85,6 @@ foreach ($products as $product) {
     $totalProduct += $product->Available;
 }
 
-// Tổng sản phẩm của từng category
-foreach ($categories as $category) {
-    $number = 0;
-    foreach ($products as $product) {
-        if ($product->Category_ID == $category->Category_ID) {
-            $number += $product->Available;
-        }
-    }
-}
-
 // Tổng lợi nhuận Này chưa test nha
 $totalIncome = 0;
 $income = 0;
@@ -205,7 +195,8 @@ foreach ($order_details as $orderDetail) {
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="row">
-                            <div class="col-lg-12 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
+                            <div class="col-lg-12 mb-4 order-0"
+                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
                                 <canvas id="myChart"></canvas>
                                 <script>
                                     function color() {
@@ -252,13 +243,13 @@ foreach ($order_details as $orderDetail) {
                                             title: {
                                                 display: true,
                                                 text: "Product number by categories",
-                                                fontSize: 40        //font-size of the title
+                                                fontSize: 40 //font-size of the title
                                             },
                                             legend: {
                                                 display: true,
                                                 position: 'bottom',
                                                 labels: {
-                                                    fontSize: 20,   //font-size of the label above the donut
+                                                    fontSize: 20, //font-size of the label above the donut
                                                     textAlign: 'left'
                                                 }
                                             },
@@ -266,13 +257,14 @@ foreach ($order_details as $orderDetail) {
                                                 animation: true,
                                                 easing: "easeOutSine",
                                                 percentageInnerCutout: 60,
-                                                segmentShowStroke : false
+                                                segmentShowStroke: false
                                             }
                                         }
                                     });
                                 </script>
                             </div>
-                            <div class="col-lg-12 mb-4 order-0" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
+                            <div class="col-lg-12 mb-2 order-0"
+                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:15px">
                                 <canvas id="bar-chart"></canvas>
                                 <script>
                                     new Chart(document.getElementById("bar-chart"), {
@@ -301,21 +293,38 @@ foreach ($order_details as $orderDetail) {
                                                 display: true,
                                                 text: 'Top 5 best selling products',
                                                 fontSize: 40
-                                            }
+                                            },
                                             scales: {
-                                                y:{
-                                                    min: 0
-                                                }
+                                                yAxes: [{
+                                                    ticks: {
+                                                        beginAtZero: true
+                                                    }
+                                                }]
                                             }
                                         }
                                     });
                                 </script>
                             </div>
-                            <div class="col-lg-3 mb-4 order-0"
+                            <div class="col-lg-2 mb-4 order-0"
+                                style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; text-align:center">
+                                <select name="income" id="income">
+                                    <option value="none">Total income...</option>
+                                    <option value="today">Today income</option>
+                                    <option value="yesterday">Yesterday income</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-1 mb-4 order-0"
                                 style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px">
-                                <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i> $
-                                    {{ $totalIncome }}</div>
-
+                                <div style="align-items: center; display: block"><i
+                                        class="fa-solid fa-sack-dollar"></i>
+                                    <script>
+                                        var e = document.getElementById("income");
+                                        var value = e.value;
+                                        if (value == "none") {
+                                            echo {{ $totalIncome }}
+                                        }
+                                    </script>
+                                </div>
                             </div>
                         </div>
                     </div>
