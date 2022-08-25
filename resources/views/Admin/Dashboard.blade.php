@@ -285,13 +285,7 @@
                                 </script>
                             </div>
                             <?php
-                            // Tổng sản phẩm = tổng Available của tất cả sản phẩm
-                            $totalProduct = 0;
-                            foreach ($products as $product) {
-                                $totalProduct += $product->Available;
-                            }
-
-                            // Tổng lợi nhuận
+                            // Total income
                             $totalIncome = 0;
                             $income = 0;
                             foreach ($order_details as $orderDetail) {
@@ -306,21 +300,12 @@
                                 $incomeToday1 = $order->Price * $order->Quantity;
                                 $incomeToday += $incomeToday1;
                             }
-
-                            //Total income yesterday
-                            $incomeYesterday = 0;
-                            $incomeYesterday1 = 0;
-                            foreach ($orders as $order) {
-                                $incomeYesterday1 = $order->Price * $order->Quantity;
-                                $incomeYesterday += $incomeYesterday1;
-                            }
                             ?>
                             <div class="col-lg-2 mb-4 order-0"
                                 style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px; text-align:center">
                                 <select name="income" id="income" onchange="changeIncome()">
                                     <option value="total">Total income</option>
                                     <option value="today">Today income</option>
-                                    <option value="yesterday">Yesterday income</option>
                                 </select>
                             </div>
                             <div class="col-lg-1 mb-4 order-0" 
@@ -334,9 +319,6 @@
                                             }
                                             else if(document.getElementById("income").value == "today"){
                                                 document.getElementById("test").innerHTML = {{$incomeToday}}
-                                            }
-                                            else if(document.getElementById("income").value == "yesterday"){
-                                                document.getElementById("test").innerHTML = {{$incomeYesterday}}
                                             }
                                         }
                                         changeIncome();

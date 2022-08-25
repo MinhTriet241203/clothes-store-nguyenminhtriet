@@ -35,10 +35,7 @@ class AdminController extends Controller
         $orders = Orders::join('Order_Details', 'Orders.Order_ID', '=', 'Order_details.Order_ID')->join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
             ->whereDate('Date', Carbon::today())
             ->get();
-        $orders_yesterday = Orders::join('Order_Details', 'Orders.Order_ID', '=', 'Order_details.Order_ID')->join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
-            ->where('Date', Carbon::yesterday())
-            ->get();
-        return view('Admin.Dashboard', compact('products', 'categories', 'order_details', 'top5Prod', 'orders', 'orders_yesterday'));
+        return view('Admin.Dashboard', compact('products', 'categories', 'order_details', 'top5Prod', 'orders'));
     }
 
     public function index()
