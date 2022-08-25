@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Add new Category</title>
+    <title>Orders List</title>
 
     <meta name="description" content="" />
 
@@ -66,7 +66,18 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- JS and CSS for charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-pie.min.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script src="{{ asset('vendor/js/chart.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/css/chart.css') }}" />
 </head>
+
 
 <body>
     <!-- Layout wrapper -->
@@ -142,7 +153,7 @@
                         <span class="menu-header-text">Products</span>
                     </li>
                     <!-- Categories -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="{{ url('listCategory') }}" class="menu-link">
                             <i class="menu-icon tf-icons fa-solid fa-arrow-down-short-wide"></i>
                             <div data-i18n="Categories">Categories</div>
@@ -161,7 +172,7 @@
                         <span class="menu-header-text">Orders</span>
                     </li>
                     {{-- Orders --}}
-                    <li class="menu-item">
+                    <li class="menu-item active">
                         <a href="{{ url('listOrders') }}" class="menu-link">
                             <i class="menu-icon tf-icons fa-solid fa-user"></i>
                             <div data-i18n="Orders">Orders</div>
@@ -174,87 +185,62 @@
                 <div class="container" style="margin-top: 20px;">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2>Add a new category</h2>
-                            <hr style="width: 500px;">
-                            {{-- Notification --}}
+                            {{-- Notifications --}}
                             @if (Session::has('success'))
-                                <div class="alert alert-success" role="alert">
+                                <div class="alert alert-danger" role="alert">
                                     {{ Session::get('success') }}
                                 </div>
                             @endif
-                            {{-- End notification --}}
-
-                            {{-- Start Form --}}
-                            <form action="{{ url('saveCategory') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                {{-- Enter category --}}
-                                <div class="md-3">
-                                    <label for="name" class="form-label">Category Name</label>
-                                    <input type="text" name="name" class="form-control"
-                                        placeholder="Enter category name" style="width: 250px">
-                                </div>
-                                @error('name')
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-
-                                <div class="md-3">
-                                    <label for="image" class="form-label">Category Image</label>
-                                    <input type="file" name="image" class="form-control" id="file-input"
-                                        style="width: 350px">
-                                    <br>
-                                    <label for="image_preview" class="form-label">Image Preview</label>
-                                    <div id="preview" style="width:220px;height:220px" class="form-control"></div>
-                                    {{-- preview area --}}
-                                    {{-- Script to preview multiple uploaded images --}}
-                                    <script>
-                                        function previewImages() {
-                                            var preview = document.querySelector('#preview');
-                                            preview.innerHTML = ''; //clear previous previews
-                                            preview.style =
-                                            "width:fit-content"; //change the preview <div> style to fit the new childs (images in this case)
-                                            if (this.files) {
-                                                [].forEach.call(this.files, readAndPreview);
-                                            }
-
-                                            function readAndPreview(file) {
-                                                // Make sure `file.name` matches our extensions criteria
-                                                if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
-                                                    return alert(file.name + " is not an image");
-                                                }
-                                                var reader = new FileReader();
-                                                reader.addEventListener("load", function() {
-                                                    var image = new Image();
-                                                    image.height = 210;
-                                                    image.width = 210;
-                                                    image.title = file.name;
-                                                    image.style = "border-radius: 10px; margin: 5px" //image attributes
-                                                    image.src = this.result;
-                                                    preview.appendChild(image);
-                                                });
-                                                reader.readAsDataURL(file);
-                                            }
-                                        }
-                                        document.querySelector('#file-input').addEventListener("change", previewImages);
-                                    </script>
-                                    {{-- End script --}}
-                                </div>
-                                @error('image')
-                                    <div class="alert alert-danger" role="alert">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-
-                                <br>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ url('listCategory') }}" class="btn btn-danger">Back</a>
-                            </form>
-                            {{-- End form --}}
+        
+                            {{-- Page title --}}
+                            <div style="margin-left: 5%; float:left;">
+                                <h2>Orders List</h2>
+                            </div>
+        
+                            @if (Session::has('LoginID'))
+                                {{-- If admin is logged in then show table --}}
+                                @if ($data->isNotEmpty())
+                                    {{-- If $data is not empty then fetch data --}}
+                                    <table class="table table-hover" style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;">
+                                        <thead>
+                                            {{-- Table header --}}
+                                            <tr style="text-align: center; vertical-align:middle">
+                                                <th>Order ID</th>
+                                                <th>Customer Name</th>
+                                                <th>Product Name</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Size</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{-- Fetch table data --}}
+                                            @foreach ($data as $row)
+                                                <tr style="text-align: center; vertical-align:middle">
+                                                    <td>{{ $row->Order_ID }}</td>
+                                                    <td>{{ $row->Customer_Name }}</td>
+                                                    <td>{{ $row->Product_Name }}</td>
+                                                    <td>{{ $row->Quantity }}</td>
+                                                    <td>${{ $row->Quantity * $row->Price }}</td>
+                                                    <td>{{ $row->Size }}</td>
+                                                    <td>{{ $row->Date }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    {{-- If $data is empty then show error message --}}
+                                    <br><br>
+                                    <hr>
+                                    <div class="text-danger">Error ! No data found !</div>
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </body>
-
 </html>

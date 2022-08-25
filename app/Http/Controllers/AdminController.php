@@ -7,6 +7,8 @@ use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Models\Order_details;
+use App\Models\Orders;
+use Carbon\Carbon;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +32,10 @@ class AdminController extends Controller
             ->orderBy('sum', 'desc')
             ->limit(5)
             ->get();
-        return view('Admin.Dashboard', compact('products', 'categories', 'order_details', 'top5Prod'));
+        $orders = Orders::join('Order_Details', 'Orders.Order_ID', '=', 'Order_details.Order_ID')->join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
+            ->whereDate('Date', Carbon::today())
+            ->get();
+        return view('Admin.Dashboard', compact('products', 'categories', 'order_details', 'top5Prod', 'orders'));
     }
 
     public function index()
@@ -164,5 +169,14 @@ class AdminController extends Controller
                 }
             }
         }
+    }
+
+    public function orders()
+    {
+        $data = Orders::join('Order_Details', 'Orders.Order_ID', '=', 'Order_details.Order_ID')
+            ->join('Products', 'Products.Product_ID', '=', 'Order_details.Product_ID')
+            ->join('Customers', 'Customers.Customer_ID', '=', 'Orders.Customer_ID')
+            ->get();
+        return view('Admin.Orders.list', compact('data'));
     }
 }
