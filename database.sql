@@ -6,7 +6,7 @@ USE abc_clothing;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2022 at 08:12 AM
+-- Generation Time: Aug 25, 2022 at 06:47 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -83,10 +83,10 @@ CREATE TABLE `customers` (
   `Customer_Password` text NOT NULL,
   `Customer_Name` varchar(50) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Phone` varchar(10),
-  `Address` varchar(100),
-  `Gender` varchar(6),
-  `Date_of_Birth` date
+  `Phone` varchar(10) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `Gender` varchar(6) DEFAULT NULL,
+  `Date_of_Birth` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -103,7 +103,10 @@ INSERT INTO `customers` (`Customer_ID`, `Customer_Username`, `Customer_Password`
 (7, 'TaiPKGCS200427', '$2y$10$h6gTt3oLip19lnXgvDbcheDVGNiChKUxMAJYXYlgjLAfNqoT.KdIO', 'Pham Kim Tai', 'TaiPKGCS200427@fpt.edu.vn', '0123456789', '1234567890 qwertyuiop', 'male', '2002-01-01'),
 (8, 'TinhTCTGCS200451', '$2y$10$8FjqOT1PN3O9AwQ9KG6PtuHt/IR//EUovk86GU56pl/IzhllFJqHW', 'Truong Cong Tue Tinh', 'TinhTCTGCS200451@fpt.edu.vn', '0123456789', '1234567890 qwertyuiop', 'female', '2002-01-01'),
 (9, 'LocDCGCS200461', '$2y$10$XMOOCHMthSMX6q7BNtCuXebFpE191xO3z6jdMewjLuiP912JEyobW', 'Duong Chi Loc', 'LocDCGCS200461@fpt.edu.vn', '0123456789', '1234567890 qwertyuiop', 'other', '2002-01-01'),
-(10, 'PhatSSGCS200485', '$2y$10$hQrdJH4MzRiTt5tgU1GkpOcDbiGtkC49F3EyCsdr44/aNh5LQYGQO', 'Su Say Phat', 'PhatSSGCS200485@fpt.edu.vn', '0123456789', '1234567890 qwertyuiop[', 'male', '2002-01-01');
+(10, 'PhatSSGCS200485', '$2y$10$hQrdJH4MzRiTt5tgU1GkpOcDbiGtkC49F3EyCsdr44/aNh5LQYGQO', 'Su Say Phat', 'PhatSSGCS200485@fpt.edu.vn', '0123456789', '1234567890 qwertyuiop[', 'male', '2002-01-01'),
+(11, 'speeding241203@gmail', '$2y$10$sgpJIUrX.9eJhgEbgQtUe.h3gca5Gy7j8QmcOJYU8T0KG0c/Zt7yG', 'Nguyen Minh Triet', 'speeding241203@gmail.com', NULL, NULL, NULL, NULL),
+(12, 'minhtriet241203@gmail', '$2y$10$yQSSMSWHlPT9tLSi1dvB5.STSFdVpRIRK7qoO0ecF7.L0sxvzf5vW', 'Minh Triết Nguyễn', 'minhtriet241203@gmail.com', NULL, NULL, NULL, NULL),
+(13, 'trietnmgcs210026@fpt', '$2y$10$PO8U4WCePBJPoFRxyeROcOkNYirtHgrw7HgBqP3eHW3Jg/HQZL8R2', 'Nguyen Minh Triet (FGW HCM)', 'trietnmgcs210026@fpt.edu.vn', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,6 +123,18 @@ CREATE TABLE `orders` (
   `Note` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Order_ID`, `Customer_ID`, `Receive_Phone`, `Receive_Address`, `Date`, `Note`) VALUES
+(1, 12, '0912241203', '10', '2022-08-24', 'Deliver in the afternoon please'),
+(2, 2, '0912241232', '11', '2022-08-24', ''),
+(3, 2, '0912332454', '12', '2022-08-24', 'Some notes here'),
+(4, 1, '0912345678', '13', '2022-08-24', ''),
+(5, 13, '0912345678', '14', '2022-08-24', ''),
+(6, 11, '0912243456', '15', '2022-08-25', '');
+
 -- --------------------------------------------------------
 
 --
@@ -133,6 +148,25 @@ CREATE TABLE `order_details` (
   `Quantity` int(4) NOT NULL,
   `Size` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`Order_Details_ID`, `Order_ID`, `Product_ID`, `Quantity`, `Size`) VALUES
+(1, 1, 1, 3, 'XL'),
+(2, 2, 3, 5, 'M'),
+(3, 3, 5, 2, 'XL'),
+(4, 3, 9, 5, 'M'),
+(5, 3, 7, 2, 'L'),
+(6, 4, 4, 1, 'XXL'),
+(7, 4, 8, 2, 'L'),
+(8, 4, 10, 1, 'XL'),
+(9, 5, 9, 2, 'XL'),
+(10, 5, 2, 2, 'XL'),
+(11, 5, 6, 1, 'XL'),
+(12, 6, 7, 3, 'L'),
+(13, 6, 6, 4, 'XL');
 
 -- --------------------------------------------------------
 
@@ -156,16 +190,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`Product_ID`, `Product_Name`, `Category_ID`, `Price`, `Details`, `Images`, `Size`, `Available`) VALUES
-(1, 'Áo Polo nam Pique Cotton USA thấm hút tối đa', 2, 15, 'Chất liệu: 97% Cotton USA + 3% Spandex\r\nVới chất liệu Cotton USA chất lượng cao, mang lại sự mềm mại và thấm hút mồ hôi tốt\r\nCo giãn 4 chiều mang lại sự thoải mái khi mặc\r\nBo cổ dệt bằng sợi Cotton, viền phối Polyester để đảm bảo độ đàn hồi, chống bai và giữ màu qua các lần giặt\r\nForm áo hơi ôm eo và phù hợp với dáng nam giới Việt\r\nTự hào sản xuất tại Việt Nam', '00000036570423Shirt1-1.jpg@@@00000037570423Shirt1-2.jpg@@@00000037570423Shirt1-3.jpg@@@00000037570423Shirt1-4.jpg', 'S M L XL XXL', 50),
-(2, 'Áo Tank top thể thao nam thoáng khí', 2, 5, 'Chất liệu 100% Recycle Polyester, theo xu hương thời trang bền vững\r\nVải được xử lý hoàn thiện theo công nghệ Wicking (thoáng khí) & Quick-Dry (Nhanh khô)\r\nKiểu dáng áo tanktop khoét nách sâu, đem đến sự thoải mái trong quá trình vận động\r\nNhà cung cấp vải hàng đầu thế giới trong lĩnh vực đồ thể thao: Promax\r\nTự hào may và hoàn thiện tại nhà máy Nobland, Bình Dương', '00000042110523Shirt2-1.jpg@@@00000042110523Shirt2-2.jpg@@@00000042110523Shirt2-3.jpg@@@00000042110523Shirt2-4.jpg', 'S M L XL', 50),
-(3, 'Áo thun thể thao nam Recycle Active V1', 2, 8, 'Chất liệu 100% Recycle Polyester, theo xu hương thời trang bền vững\r\nVải được xử lý hoàn thiện theo công nghệ Wicking (thoáng khí) & Quick-Dry (Nhanh khô)\r\nKiểu dáng áo thun thể thao vừa vặn với dáng nam giới Việt Nam\r\nNhà cung cấp vải hàng đầu thế giới trong lĩnh vực đồ thể thao: Promax\r\nTự hào may và hoàn thiện tại nhà máy Nobland, Bình Dương', '00000001150523Shirt3-1.jpg@@@00000001150523Shirt3-2.jpg@@@00000001150523Shirt3-3.jpg@@@00000002150523Shirt3-4.jpg', 'M L XL', 50),
-(4, 'Quần Short Nam New French Terry', 3, 9, 'Chất liệu: 60% Cotton + 35% Polyester + 5% Spandex đem đến bề mặt vải cứng cáp, không nhăn\r\nThiết kế đơn giản, kiểu dáng khỏe khoắn với đường may chắc chắn\r\nTúi 2 bên Có khoá YKK tiện lợi khi đựng đồ\r\nKiểu dệt French Terry mang lại sự Cooling khi tiếp xúc với da\r\nĐộ dài quần: 8 inch\r\nVải dệt và may tại Việt Nam', '00000056450523Pants1-1.jpg@@@00000056450523Pants1-2.jpg@@@00000056450523Pants1-3.jpg@@@00000057450523Pants1-4.jpg', 'M XL XXL', 50),
-(5, 'Quần Jeans Clean Denim dáng Slimfit S2', 3, 20, 'Vải Denim được dệt toàn bộ tại nhà máy Nhơn Trạch, Đồng Nai của Saitex\r\nChất liệu: 98% Regenerative Cotton (Cotton Tái sinh) + 2% Spandex, tạo sự co giãn đem đến sự thoải mái khi vận động\r\nĐịnh lượng vải: 12.5 Oz\r\nCông nghệ nhuộm KHÔNG sử dụng Sufur (lưu huỳnh) và KHÔNG có nước thải ra môi trường\r\nCông nghệ nhuộm Rope Dyeing mang lại độ bền màu cao hơn cho vải\r\nKiểu dáng Slimfit, không bo ống phù hợp mặc đa chức năng\r\nBẢO HÀNH TRỌN ĐỜI khoá kéo YKK, bất kỳ khi nào khoá kéo hỏng Coolmate sẽ đổi cho bạn sản phẩm mới!\r\nHDSD: Tránh ngâm trong nước quá lâu - Tránh tiếp xúc với các chất liệu gây loang màu - Không sử dụng chất tẩy, tránh giặt bằng máy', '00000013490523Pants2-1.jpg@@@00000014490523Pants2-2.jpg@@@00000014490523Pants2-3.jpg@@@00000015490523Pants2-4.jpg', 'XL', 50),
-(6, 'Quần dài Kaki Excool co giãn', 3, 18, 'Chất liệu: 43% Sợi Sorona + 57% Polyester co giãn\r\nQuần ống dài, lưng quần âu có chun CO GIÃN bên trong vừa vặn với cơ thể\r\nDáng quần hơi ôm một chút để bạn luôn cảm thấy thoải mái và lịch sự\r\nỨng dụng công nghệ Excool: Co giãn 4 chiều, Nhẹ, Thoáng khí, Chống tia UV SPF50+\r\nKhông nên ủi, nếu cần thì ủi ở nhiệt độ thấp dưới 110 độ\r\nTự hào sản xuất tại Việt Nam\r\nNgười mẫu: 1m80 - 75kg, mặc XL', '00000010520523Pants3-1.jpg@@@00000010520523Pants3-2.jpg@@@00000010520523Pants3-3.jpg@@@00000011520523Pants3-4.jpg', 'XL', 50),
-(7, 'Nón Bucket Hat thêu Care & Share Handwriting', 4, 8, 'Bucket hat còn được gọi là mũ của ngư dân. Nó được tạo ra cho những người Ireland chuyên đánh bắt cá đầu thập niên 1900. Những ngày đầu, chiếc mũ được làm từ chất liệu len thô pha vải tweed, rất được ngư dân và nông dân ưa chuộng bởi đặc tính không thấm nước, có khả năng bảo vệ đầu hiệu quả trong quá trình lao động.\r\n\r\nVào những năm 1980, mũ bucket hat bắt đầu trở thành vật dụng nổi tiếng khi nó xuất hiện cùng các ngôi sao hip hop như LL Cool J, Run DMC và tiếp tục làm mưa làm gió trong thập niên 90. Và đến thời điểm hiện tại những chiếc mũ này vẫn không ngừng làm mưa làm gió bởi sự tiện lợi và hữu ích mà nó mang lại.', '00000054550523Hat1-1.jpg@@@00000054550523Hat1-2.jpg@@@00000055550523Hat1-3.jpg', 'L', 50),
-(8, 'Nón lưỡi trai nam phối lưới Baseball Cap', 4, 7, 'Một chiếc mũ phù hợp cho nhiều hoạt động của bạn từ những buổi đi chơi dạo phố, hay những buổi luyện tập thể thao thì Baseball Cap chắc chắn sẽ là một người bạn đồng hành cực chất lượng với bạn', '00000054570523Hat2-1.jpg@@@00000055570523Hat2-2.jpg@@@00000056570523Hat2-3.jpg', 'L', 50),
-(9, 'Vớ thể thao cổ ngắn Compression Bouncing', 5, 3, 'Chất liệu: 65% nylon, 20% cotton, 10% polyester, 5% spandex\r\nTất thể thao có đệm dày ở gót, mũi và cổ chân tạo cảm giác êm ái, thoải mái\r\nPhần dệt thoáng, thoải mái khi sử dụng trong hoạt động thể thao nặng\r\nCông nghệ dệt nén để tất vừa vặn và ôm chân hơn khi vận động\r\nKiểu dệt mesh giúp cho chiếc tất ôm chân hơn và thoáng khí hơn\r\nLựa chọn 1 đôi, thoải mái trong mọi vận động\r\nTự hào sản xuất tại Việt Nam', '00000014000623Socks1-1.jpg@@@00000015000623Socks1-2.jpg@@@00000016000623Socks1-3.jpg', 'M L XL', 50),
-(10, 'Combo 3 đôi vớ cổ ngắn phối màu', 5, 5, 'Thành phần: 80% Cotton, 18% Polyester, 2% Spandex\r\nThoáng khí, hút ẩm, hút mùi và kháng khuẩn với thành phầnCotton\r\nCombo 3 màu phối lựa chọn\r\nTự hào sản xuất tại Việt Nam', '00000037030623Socks2-1.jpg@@@00000037030623Socks2-2.jpg@@@00000038030623Socks2-3.jpg', 'M L XL', 50);
+(1, 'Áo Polo nam Pique Cotton USA thấm hút tối đa', 2, 15, 'Chất liệu: 97% Cotton USA + 3% Spandex\r\nVới chất liệu Cotton USA chất lượng cao, mang lại sự mềm mại và thấm hút mồ hôi tốt\r\nCo giãn 4 chiều mang lại sự thoải mái khi mặc\r\nBo cổ dệt bằng sợi Cotton, viền phối Polyester để đảm bảo độ đàn hồi, chống bai và giữ màu qua các lần giặt\r\nForm áo hơi ôm eo và phù hợp với dáng nam giới Việt\r\nTự hào sản xuất tại Việt Nam', '00000036570423Shirt1-1.jpg@@@00000037570423Shirt1-2.jpg@@@00000037570423Shirt1-3.jpg@@@00000037570423Shirt1-4.jpg', 'S M L XL XXL', 47),
+(2, 'Áo Tank top thể thao nam thoáng khí', 2, 5, 'Chất liệu 100% Recycle Polyester, theo xu hương thời trang bền vững\r\nVải được xử lý hoàn thiện theo công nghệ Wicking (thoáng khí) & Quick-Dry (Nhanh khô)\r\nKiểu dáng áo tanktop khoét nách sâu, đem đến sự thoải mái trong quá trình vận động\r\nNhà cung cấp vải hàng đầu thế giới trong lĩnh vực đồ thể thao: Promax\r\nTự hào may và hoàn thiện tại nhà máy Nobland, Bình Dương', '00000042110523Shirt2-1.jpg@@@00000042110523Shirt2-2.jpg@@@00000042110523Shirt2-3.jpg@@@00000042110523Shirt2-4.jpg', 'S M L XL', 48),
+(3, 'Áo thun thể thao nam Recycle Active V1', 2, 8, 'Chất liệu 100% Recycle Polyester, theo xu hương thời trang bền vững\r\nVải được xử lý hoàn thiện theo công nghệ Wicking (thoáng khí) & Quick-Dry (Nhanh khô)\r\nKiểu dáng áo thun thể thao vừa vặn với dáng nam giới Việt Nam\r\nNhà cung cấp vải hàng đầu thế giới trong lĩnh vực đồ thể thao: Promax\r\nTự hào may và hoàn thiện tại nhà máy Nobland, Bình Dương', '00000001150523Shirt3-1.jpg@@@00000001150523Shirt3-2.jpg@@@00000001150523Shirt3-3.jpg@@@00000002150523Shirt3-4.jpg', 'M L XL', 45),
+(4, 'Quần Short Nam New French Terry', 3, 9, 'Chất liệu: 60% Cotton + 35% Polyester + 5% Spandex đem đến bề mặt vải cứng cáp, không nhăn\r\nThiết kế đơn giản, kiểu dáng khỏe khoắn với đường may chắc chắn\r\nTúi 2 bên Có khoá YKK tiện lợi khi đựng đồ\r\nKiểu dệt French Terry mang lại sự Cooling khi tiếp xúc với da\r\nĐộ dài quần: 8 inch\r\nVải dệt và may tại Việt Nam', '00000056450523Pants1-1.jpg@@@00000056450523Pants1-2.jpg@@@00000056450523Pants1-3.jpg@@@00000057450523Pants1-4.jpg', 'M XL XXL', 49),
+(5, 'Quần Jeans Clean Denim dáng Slimfit S2', 3, 20, 'Vải Denim được dệt toàn bộ tại nhà máy Nhơn Trạch, Đồng Nai của Saitex\r\nChất liệu: 98% Regenerative Cotton (Cotton Tái sinh) + 2% Spandex, tạo sự co giãn đem đến sự thoải mái khi vận động\r\nĐịnh lượng vải: 12.5 Oz\r\nCông nghệ nhuộm KHÔNG sử dụng Sufur (lưu huỳnh) và KHÔNG có nước thải ra môi trường\r\nCông nghệ nhuộm Rope Dyeing mang lại độ bền màu cao hơn cho vải\r\nKiểu dáng Slimfit, không bo ống phù hợp mặc đa chức năng\r\nBẢO HÀNH TRỌN ĐỜI khoá kéo YKK, bất kỳ khi nào khoá kéo hỏng Coolmate sẽ đổi cho bạn sản phẩm mới!\r\nHDSD: Tránh ngâm trong nước quá lâu - Tránh tiếp xúc với các chất liệu gây loang màu - Không sử dụng chất tẩy, tránh giặt bằng máy', '00000013490523Pants2-1.jpg@@@00000014490523Pants2-2.jpg@@@00000014490523Pants2-3.jpg@@@00000015490523Pants2-4.jpg', 'XL', 48),
+(6, 'Quần dài Kaki Excool co giãn', 3, 18, 'Chất liệu: 43% Sợi Sorona + 57% Polyester co giãn\r\nQuần ống dài, lưng quần âu có chun CO GIÃN bên trong vừa vặn với cơ thể\r\nDáng quần hơi ôm một chút để bạn luôn cảm thấy thoải mái và lịch sự\r\nỨng dụng công nghệ Excool: Co giãn 4 chiều, Nhẹ, Thoáng khí, Chống tia UV SPF50+\r\nKhông nên ủi, nếu cần thì ủi ở nhiệt độ thấp dưới 110 độ\r\nTự hào sản xuất tại Việt Nam\r\nNgười mẫu: 1m80 - 75kg, mặc XL', '00000010520523Pants3-1.jpg@@@00000010520523Pants3-2.jpg@@@00000010520523Pants3-3.jpg@@@00000011520523Pants3-4.jpg', 'XL', 45),
+(7, 'Nón Bucket Hat thêu Care & Share Handwriting', 4, 8, 'Bucket hat còn được gọi là mũ của ngư dân. Nó được tạo ra cho những người Ireland chuyên đánh bắt cá đầu thập niên 1900. Những ngày đầu, chiếc mũ được làm từ chất liệu len thô pha vải tweed, rất được ngư dân và nông dân ưa chuộng bởi đặc tính không thấm nước, có khả năng bảo vệ đầu hiệu quả trong quá trình lao động.\r\n\r\nVào những năm 1980, mũ bucket hat bắt đầu trở thành vật dụng nổi tiếng khi nó xuất hiện cùng các ngôi sao hip hop như LL Cool J, Run DMC và tiếp tục làm mưa làm gió trong thập niên 90. Và đến thời điểm hiện tại những chiếc mũ này vẫn không ngừng làm mưa làm gió bởi sự tiện lợi và hữu ích mà nó mang lại.', '00000054550523Hat1-1.jpg@@@00000054550523Hat1-2.jpg@@@00000055550523Hat1-3.jpg', 'L', 45),
+(8, 'Nón lưỡi trai nam phối lưới Baseball Cap', 4, 7, 'Một chiếc mũ phù hợp cho nhiều hoạt động của bạn từ những buổi đi chơi dạo phố, hay những buổi luyện tập thể thao thì Baseball Cap chắc chắn sẽ là một người bạn đồng hành cực chất lượng với bạn', '00000054570523Hat2-1.jpg@@@00000055570523Hat2-2.jpg@@@00000056570523Hat2-3.jpg', 'L', 48),
+(9, 'Vớ thể thao cổ ngắn Compression Bouncing', 5, 3, 'Chất liệu: 65% nylon, 20% cotton, 10% polyester, 5% spandex\r\nTất thể thao có đệm dày ở gót, mũi và cổ chân tạo cảm giác êm ái, thoải mái\r\nPhần dệt thoáng, thoải mái khi sử dụng trong hoạt động thể thao nặng\r\nCông nghệ dệt nén để tất vừa vặn và ôm chân hơn khi vận động\r\nKiểu dệt mesh giúp cho chiếc tất ôm chân hơn và thoáng khí hơn\r\nLựa chọn 1 đôi, thoải mái trong mọi vận động\r\nTự hào sản xuất tại Việt Nam', '00000014000623Socks1-1.jpg@@@00000015000623Socks1-2.jpg@@@00000016000623Socks1-3.jpg', 'M L XL', 43),
+(10, 'Combo 3 đôi vớ cổ ngắn phối màu', 5, 5, 'Thành phần: 80% Cotton, 18% Polyester, 2% Spandex\r\nThoáng khí, hút ẩm, hút mùi và kháng khuẩn với thành phầnCotton\r\nCombo 3 màu phối lựa chọn\r\nTự hào sản xuất tại Việt Nam', '00000037030623Socks2-1.jpg@@@00000037030623Socks2-2.jpg@@@00000038030623Socks2-3.jpg', 'M L XL', 49);
 
 --
 -- Indexes for dumped tables
@@ -225,19 +259,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `Customer_ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Customer_ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_ID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `Order_ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `Order_Details_ID` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `Order_Details_ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
