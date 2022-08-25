@@ -325,8 +325,6 @@
                             </div>
                             <div class="col-lg-1 mb-4 order-0" 
                                 style="box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; background-color: #FFF; padding:10px">
-                                <div style="align-items: center; display: block"><i
-                                        class="fa-solid fa-sack-dollar"></i>
                                 <div style="align-items: center"><i class="fa-solid fa-sack-dollar"></i>
                                     $<span id="test"></span>
                                     <script>
