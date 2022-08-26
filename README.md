@@ -17,7 +17,7 @@ How to use this project:
 4. Make sure to have the GD library enabled in personal hosting devices, for XAMPP as i used we do as follows:
 - go in to the php.ini in apache from XAMPP control panel.
 ![image](https://user-images.githubusercontent.com/111043449/186804926-50a9cf84-b995-4f2c-8a4d-51f9527d9e6c.png)
-- search for 'gd' and remove the ';' infront of the line
+- search for 'gd' and remove the ';' infront of the line.
 ![image](https://user-images.githubusercontent.com/111043449/186804993-216b1759-8732-4d92-b87b-be274ff9b9dd.png)
 
 5. Run 'php artisan serve' on file location in localhost.
