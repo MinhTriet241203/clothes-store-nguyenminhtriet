@@ -1,4 +1,5 @@
-# Assignment
+# Clothes Store application description
+
  Assignment
 
 Assignment WebG301 made by the Group Triet&Friends.
