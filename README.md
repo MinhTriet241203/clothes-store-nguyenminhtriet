@@ -45,3 +45,23 @@ To login as customer, go to "/customerLogin" and use
 }
 ```
 or use sign in with Google option to create an account.
+
+## 3. Database design
+
+For this project, we used MySQL hosted on XAMPP to store our data. The design of the database is as follow.
+
+<p align="center">
+  <img src="demo_images/database.png" alt="Database">
+</p>
+
+## 4. Technologies
+
+- The application was developed in Microsoft Visual Code due to its lightweight feature and how easy it is to get started
+
+- We used PHP language and Laravel framework to create the application thanks to flexibility and ease of implementation
+
+- The version control system (VCS) was GitHub to store and share our code between the members of the team because we were familiar with this technology from previous projects.
+
+- The database for this application was MySQL which will be hosted locally through XAMPP to facilitate hosting project on localhost
+
+#### More information on how we planned and implemented this application as well as difficulties we faced can be found [HERE](https://drive.google.com/file/d/1yKHo5hseKr03QTK7N724MF-8FVyzJUXj/view?usp=sharing)
